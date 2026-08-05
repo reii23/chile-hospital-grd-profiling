@@ -1,0 +1,96 @@
+# =============================================================================
+# Criterio: todo insumo que el pipeline necesita para ejecutarse se versiona.
+# Se excluye unicamente (a) material que el pipeline no consume y (b) los dos
+# artefactos de datos que exceden el limite de tamano de GitHub, que son
+# regenerables desde la fuente publica del MINSAL.
+# =============================================================================
+
+# =============================
+# Entornos y tooling
+# =============================
+.venv/
+venv/
+env/
+
+# VS Code (local)
+.vscode/
+# Metadata del IDE Kiro (local)
+.kiro/
+
+# =============================
+# Python
+# =============================
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+
+# =============================
+# Jupyter
+# =============================
+.ipynb_checkpoints/
+
+# =============================
+# Sistema operativo
+# =============================
+.DS_Store
+Thumbs.db
+
+# =============================
+# Locks temporales (LibreOffice/Excel)
+# =============================
+.~lock*#
+
+# =============================
+# Datos
+# =============================
+# Los egresos GRD crudos ocupan 3,8 GB y cada archivo anual supera el limite de
+# 100 MB por archivo de GitHub. Se descargan del Tablero GRD del MINSAL y se
+# colocan en data/raw/ (ver README).
+/data/raw/**
+!/data/raw/.gitkeep
+
+# grd_filtrado.parquet (198 MB) tambien excede el limite de GitHub. Lo genera
+# scripts/build_extended_grd.py a partir de data/raw/. El resto de los
+# artefactos intermedios SI se versiona: son pequenios y permiten ejecutar
+# todos los analisis sin reconstruir la base desde los archivos crudos.
+/data/processed/grd_filtrado.parquet
+/data/external/**
+
+# =============================
+# Artefactos opcionales
+# =============================
+*.log
+
+# =============================
+# Material que el pipeline no consume
+# =============================
+# Insumos de referencia y lectura de fondo: normas tecnicas, listados en PDF,
+# bases de apoyo no utilizadas por el codigo y una base local marcada de uso
+# interno. Las maestras que el pipeline SI necesita (CIE-10, CIE-9-MC y las
+# tablas maestras de las bases GRD) estan versionadas en insumos/maestras/.
+/insumos/fuentes-externas/
+/insumos/referencia/
+
+# Material institucional y de cursos, ajeno al pipeline.
+/tesis/
+/clases-add/
+/PPT/
+/generalidades/
+
+# Base de Establecimientos historica (2019), no utilizada por el codigo. La
+# version 2023, que si se utiliza, esta versionada.
+/info-hospitales/Base_Establecimientos_ChileDEIS_MINSAL(23-01-2019).xlsx
+
+/reports/presentacion_tesis.*
+Tesis.code-workspace
+
+# Retroalimentacion evaluativa del profesor guia (material privado)
+correcciones.txt
+
+# Notas internas de trabajo / revision
+ANALISIS_CALIDAD_REDACCION.md
+CAMBIOS_RETROALIMENTACION.md
+CORRECCION_RESUMEN_FINAL.md
+REVISION_INFORME_V1.md

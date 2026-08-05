@@ -1,0 +1,9 @@
+componente,interpretacion
+dim_01,"-Embarazo, Parto Y Puerperio (-0.24); +Otros GRD (fuera del Top-20) (0.23); -Procedimientos Obstetricos (-0.22)"
+dim_02,-Enfermedades De La Piel Y Del Tejido Subcutáneo (-0.27); +Operaciones Sobre El Sistema Nervioso (0.24); +Operaciones Sobre El Sistema Endocrino (0.23)
+dim_03,"-Enfermedades Del Aparato Circulatorio (-0.32); +Operaciones Sobre El Oido (0.27); +Malformaciones Congénitas, Deformidades Y Anomalías Cromosómicas (0.25)"
+dim_04,-PH Procedimientos Sobre Extremidad Superior (-0.34); -PH Procedimientos Sobre Rodilla Y Extremidad Inferior Excepto Pie (-0.31); -Operaciones Sobre El Aparato Musculoesqueletico (-0.31)
+dim_05,+Operaciones Sobre El Aparato Respiratorio (0.30); -Enfermedades Del Ojo Y Sus Anexos (-0.27); -Trastornos Mentales Y De Comportamiento (-0.26)
+dim_06,+Operaciones Sobre El Aparato Digestivo (0.37); +Otros Procedimientos Diagnosticos Y Terapeuticos Diversos (0.33); +Operaciones Sobre El Sistema Hematico Y Linfatico (0.32)
+dim_07,+PH Colecistectomía Laparoscópica (0.36); -MH Trastornos Del Anteparto W/Cc (-0.33); +PH Cesárea (0.26)
+dim_08,-Operaciones Sobre El Sistema Endocrino (-0.28); +MH Trastornos Del Anteparto W/Cc (0.26); -Otros Procedimientos Diagnosticos Y Terapeuticos Diversos (-0.22)

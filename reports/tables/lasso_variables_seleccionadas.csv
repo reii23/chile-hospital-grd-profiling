@@ -1,0 +1,9 @@
+variable,frecuencia_seleccion
+egresos_por_anio,1.0
+pct_estancia_larga,1.0
+pct_alta_traslado,1.0
+pct_femenino_fertil,0.8
+pct_uso_pabellon,0.8
+tasa_prematurez,0.6
+cv_estancia,0.6
+comorbilidades_promedio,0.6

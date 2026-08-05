@@ -1,0 +1,4 @@
+ARI=0.8091
+NMI=0.7498
+silhouette_sin_pandemia_K4=0.3557
+tamanos_sin_pandemia=[3, 51, 2, 9]

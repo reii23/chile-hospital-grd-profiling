@@ -1,0 +1,490 @@
+% ============================================================================
+%  ANEXO A — MATERIAL COMPLEMENTARIO
+% ============================================================================
+
+\chapter{Material complementario}
+\label{anexo:complementario}
+
+Este anexo reúne antecedentes de respaldo para la caracterización funcional
+presentada en los Capítulos~\ref{cap:metodologia} y~\ref{cap:resultados}. Se
+incluyen el diccionario de variables institucionales, el listado de
+establecimientos incluidos y excluidos, la asignación final de clústeres y los
+principales parámetros del pipeline computacional.
+
+\section{Diccionario de variables institucionales}
+\label{anexo:diccionario}
+
+La Tabla~\ref{tab:anexo-diccionario} detalla las 28 variables
+clínico-operativas directas construidas a nivel institucional. La variable
+\texttt{peso\_medio\_cma} se conserva para fines descriptivos, pero fue excluida
+de la matriz empleada en el clustering debido a que no es estructuralmente
+comparable entre todos los establecimientos. Las 27 variables directas restantes,
+junto con las 8 componentes principales de casuística
+(\texttt{dim\_01} a \texttt{dim\_08}), conforman la matriz final de
+$65 \times 35$ variables descrita en la Sección~\ref{sec:matriz-final}.
+
+\begin{longtable}{p{4.0cm} p{5.8cm} p{2.0cm} p{2.2cm}}
+\caption{Diccionario de las 28 variables clínico-operativas directas construidas a nivel institucional.}
+\label{tab:anexo-diccionario} \\
+\toprule
+\textbf{Variable} & \textbf{Definición operacional} & \textbf{Unidad} & \textbf{Grupo} \\
+\midrule
+\endfirsthead
+
+\multicolumn{4}{c}{\tablename\ \thetable{} -- continuación} \\
+\toprule
+\textbf{Variable} & \textbf{Definición operacional} & \textbf{Unidad} & \textbf{Grupo} \\
+\midrule
+\endhead
+
+\texttt{egresos\_por\_anio} &
+Promedio anual de egresos de hospitalización convencional durante el período analizado. &
+Conteo & Actividad \\
+
+\texttt{estancia\_media} &
+Media aritmética de los días de estancia entre ingreso y alta. &
+Días & Estadía \\
+
+\texttt{estancia\_mediana} &
+Mediana de los días de estancia entre ingreso y alta. &
+Días & Estadía \\
+
+\texttt{peso\_medio\_grd} &
+Promedio del peso relativo GRD de los egresos del establecimiento. &
+Adimensional & Complejidad \\
+
+\texttt{severidad\_media} &
+Promedio del índice de severidad clínica asignado por el agrupador GRD. &
+Adimensional (1--4) & Complejidad \\
+
+\texttt{mortalidad\_media} &
+Promedio del índice de riesgo de mortalidad asignado por el agrupador GRD. &
+Adimensional (1--4) & Complejidad \\
+
+\texttt{entropia\_grd} &
+Entropía de Shannon de la distribución de GRD del establecimiento. &
+Bits & Diversidad \\
+
+\texttt{comorbilidades\_promedio} &
+Promedio de diagnósticos secundarios registrados por egreso. &
+Conteo & Diversidad \\
+
+\texttt{tasa\_cma} &
+Proporción de egresos registrados como Cirugía Mayor Ambulatoria sobre el total institucional. &
+Proporción & CMA \\
+
+\texttt{peso\_medio\_cma} &
+Promedio del peso relativo GRD entre los egresos de CMA. Se emplea de forma descriptiva y se excluye del clustering final. &
+Adimensional & CMA \\
+
+\texttt{pct\_pediatrico} &
+Proporción de egresos de pacientes menores de 15 años. &
+Proporción & Perfil demográfico \\
+
+\texttt{pct\_geriatrico} &
+Proporción de egresos de pacientes de 65 años o más. &
+Proporción & Perfil demográfico \\
+
+\texttt{pct\_femenino\_fertil} &
+Proporción de egresos de mujeres entre 15 y 49 años. &
+Proporción & Perfil demográfico \\
+
+\texttt{edad\_mediana} &
+Mediana de edad al ingreso de los egresos institucionales. &
+Años & Perfil demográfico \\
+
+\texttt{pct\_urgencia} &
+Proporción de egresos cuyo tipo de ingreso fue urgencia. &
+Proporción & Modalidad de ingreso \\
+
+\texttt{pct\_programada} &
+Proporción de egresos cuyo tipo de ingreso fue programado. &
+Proporción & Modalidad de ingreso \\
+
+\texttt{pct\_obstetrica\_ingreso} &
+Proporción de egresos cuyo tipo de ingreso fue obstétrico. &
+Proporción & Modalidad de ingreso \\
+
+\texttt{pct\_alta\_domicilio} &
+Proporción de egresos con alta a domicilio. &
+Proporción & Tipo de alta \\
+
+\texttt{pct\_alta\_fallecido} &
+Proporción de egresos con alta por defunción. &
+Proporción & Tipo de alta \\
+
+\texttt{pct\_alta\_traslado} &
+Proporción de egresos con alta por traslado o derivación a otro establecimiento. &
+Proporción & Tipo de alta \\
+
+\texttt{pct\_origen\_emergencia} &
+Proporción de egresos procedentes del servicio de urgencia propio. &
+Proporción & Procedencia \\
+
+\texttt{pct\_origen\_referencia} &
+Proporción de egresos derivados desde otro establecimiento de la red. &
+Proporción & Procedencia \\
+
+\texttt{pct\_uso\_pabellon} &
+Proporción de egresos con al menos un uso de pabellón quirúrgico registrado. &
+Proporción & Actividad quirúrgica \\
+
+\texttt{pabellones\_promedio} &
+Promedio de usos de pabellón por egreso hospitalizado. &
+Conteo & Actividad quirúrgica \\
+
+\texttt{tasa\_partos} &
+Proporción de egresos con condición de alta neonatal registrada. &
+Proporción & Actividad obstétrica \\
+
+\texttt{tasa\_prematurez} &
+Proporción de partos con peso de nacimiento inferior a 2.500 gramos. &
+Proporción & Actividad obstétrica \\
+
+\texttt{pct\_estancia\_larga} &
+Proporción de egresos con estancia superior a 30 días. &
+Proporción & Estadía \\
+
+\texttt{cv\_estancia} &
+Coeficiente de variación de la duración de estancia. &
+Adimensional & Estadía \\
+
+\bottomrule
+\end{longtable}
+
+Las ocho componentes de casuística
+(\texttt{dim\_01}--\texttt{dim\_08}) se obtuvieron mediante PCA de la matriz
+de proporciones diagnósticas, de procedimientos y de GRD descrita en la
+Sección~\ref{sec:pca-detalle}. Cada componente es una combinación lineal de las
+variables originales, por lo que no posee una definición operacional única. Su
+interpretación se realiza mediante las cargas de mayor magnitud y debe
+considerarse complementaria a las variables institucionales directas.
+
+\section{Establecimientos incluidos, excluidos y asignación final}
+\label{anexo:hospitales}
+
+De los 72 establecimientos con datos GRD disponibles durante 2019--2024, 65
+cumplieron el criterio de presencia temporal mínima de tres de los seis años del
+período y conformaron el universo final de análisis. Los siete establecimientos
+excluidos se presentan en la Tabla~\ref{tab:anexo-excluidos}.
+
+\begin{table}[htbp]
+\centering
+\caption{Establecimientos excluidos por no cumplir el criterio de presencia temporal mínima.}
+\label{tab:anexo-excluidos}
+\begin{tabular}{c c}
+\toprule
+\textbf{Código} & \textbf{Años con presencia válida} \\
+\midrule
+110110 & 2 \\
+116107 & 1 \\
+116111 & 1 \\
+118106 & 2 \\
+119101 & 2 \\
+119102 & 1 \\
+200717 & 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+La partición final de Nivel~1 contiene tres hospitales pediátricos ($C0$), un
+núcleo generalista de 54 establecimientos ($C1$), un grupo de cinco hospitales
+con carga clínica y estancia prolongada ($C2$), y tres institutos monográficos
+($C3$). El núcleo generalista se subdividió de forma exploratoria mediante
+Ward con $K_{sub}=10$, cuyas etiquetas se presentan como $S0$ a $S9$.
+
+La Tabla~\ref{tab:anexo-hospitales} presenta la asignación final de los 65
+establecimientos. Las etiquetas de Nivel~2 solo se aplican a los miembros de
+$C1$; no constituyen categorías funcionales validadas equivalentes a los grupos
+del Nivel~1.
+
+\begin{longtable}{p{1.5cm} p{9.0cm} p{1.0cm} p{1.0cm}}
+\caption{Asignación final de los establecimientos en los Niveles 1 y 2 del clustering Ward.}
+\label{tab:anexo-hospitales} \\
+\toprule
+\textbf{Código} & \textbf{Establecimiento} & \textbf{N1} & \textbf{N2} \\
+\midrule
+\endfirsthead
+
+\multicolumn{4}{c}{\tablename\ \thetable{} -- continuación} \\
+\toprule
+\textbf{Código} & \textbf{Establecimiento} & \textbf{N1} & \textbf{N2} \\
+\midrule
+\endhead
+
+101100 & Hospital Dr.\ Juan Noé Crevanni (Arica) & $C1$ & $S6$ \\
+102100 & Hospital Dr.\ Ernesto Torres Galdames (Iquique) & $C1$ & $S6$ \\
+103100 & Hospital Dr.\ Leonardo Guzmán (Antofagasta) & $C1$ & $S8$ \\
+103101 & Hospital Dr.\ Carlos Cisternas (Calama) & $C1$ & $S6$ \\
+104100 & Hospital San José del Carmen (Copiapó) & $C1$ & $S6$ \\
+104103 & Hospital Provincial del Huasco Monseñor Fernando Ariztía Ruiz (Vallenar) & $C1$ & $S6$ \\
+105100 & Hospital San Juan de Dios (La Serena) & $C1$ & $S5$ \\
+105101 & Hospital San Pablo (Coquimbo) & $C1$ & $S6$ \\
+105102 & Hospital Dr.\ Antonio Tirado Lanas (Ovalle) & $C1$ & $S5$ \\
+106100 & Hospital Carlos Van Buren (Valparaíso) & $C1$ & $S8$ \\
+106102 & Hospital Dr.\ Eduardo Pereira Ramírez (Valparaíso) & $C3$ & --- \\
+106103 & Hospital Claudio Vicuña (San Antonio) & $C1$ & $S0$ \\
+107100 & Hospital Dr.\ Gustavo Fricke (Viña del Mar) & $C1$ & $S9$ \\
+107101 & Hospital San Martín (Quillota) & $C1$ & $S5$ \\
+107102 & Hospital de Quilpué & $C1$ & $S1$ \\
+108100 & Hospital de San Camilo (San Felipe) & $C1$ & $S5$ \\
+108101 & Hospital San Juan de Dios (Los Andes) & $C1$ & $S6$ \\
+109100 & Complejo Hospitalario San José (Santiago, Independencia) & $C1$ & $S3$ \\
+109101 & Hospital Clínico de Niños Dr.\ Roberto del Río & $C0$ & --- \\
+110100 & Hospital San Juan de Dios (Santiago) & $C1$ & $S8$ \\
+110120 & Hospital Dr.\ Félix Bulnes Cerda & $C1$ & $S3$ \\
+110130 & Hospital Adalberto Steeger (Talagante) & $C1$ & $S2$ \\
+110150 & Hospital San José (Melipilla) & $C1$ & $S2$ \\
+111100 & Hospital Clínico San Borja-Arriarán & $C1$ & $S4$ \\
+111101 & Hospital Clínico Metropolitano El Carmen Dr.\ Luis Valentín Ferrada & $C1$ & $S7$ \\
+111195 & Hospital de Urgencia Asistencia Pública Dr.\ Alejandro del Río & $C2$ & --- \\
+112100 & Hospital Del Salvador (Santiago, Providencia) & $C2$ & --- \\
+112101 & Hospital Dr.\ Luis Tisné B. & $C1$ & $S3$ \\
+112102 & Hospital de Niños Dr.\ Luis Calvo Mackenna & $C0$ & --- \\
+112103 & Instituto Nacional de Enfermedades Respiratorias y Cirugía Torácica & $C3$ & --- \\
+112104 & Instituto de Neurocirugía Dr.\ Alfonso Asenjo & $C3$ & --- \\
+113100 & Hospital Barros Luco Trudeau & $C1$ & $S7$ \\
+113130 & Hospital Dr.\ Exequiel González Cortés & $C0$ & --- \\
+113150 & Hospital San Luis (Buin) & $C1$ & $S2$ \\
+113180 & Hospital El Pino & $C1$ & $S3$ \\
+114101 & Complejo Hospitalario Dr.\ Sótero del Río & $C1$ & $S8$ \\
+114103 & Hospital Padre Alberto Hurtado & $C1$ & $S3$ \\
+114105 & Hospital Clínico Metropolitano La Florida Dra.\ Eloísa Díaz Inzunza & $C1$ & $S7$ \\
+115100 & Hospital Regional de Rancagua & $C1$ & $S7$ \\
+115107 & Hospital San Juan de Dios (San Fernando) & $C1$ & $S6$ \\
+115110 & Hospital de Santa Cruz & $C1$ & $S1$ \\
+116100 & Hospital San Juan de Dios (Curicó) & $C1$ & $S5$ \\
+116105 & Hospital Dr.\ César Garavagno Burotto (Talca) & $C1$ & $S8$ \\
+116108 & Hospital Presidente Carlos Ibáñez del Campo (Linares) & $C1$ & $S6$ \\
+116110 & Hospital San José (Parral) & $C1$ & $S0$ \\
+117101 & Hospital Clínico Herminda Martín (Chillán) & $C1$ & $S7$ \\
+117102 & Hospital de San Carlos & $C1$ & $S6$ \\
+118100 & Hospital Clínico Regional Dr.\ Guillermo Grant Benavente (Concepción) & $C1$ & $S8$ \\
+118105 & Hospital San José (Coronel) & $C1$ & $S0$ \\
+119100 & Hospital Las Higueras (Talcahuano) & $C1$ & $S6$ \\
+120101 & Complejo Asistencial Dr.\ Víctor Ríos Ruiz (Los Ángeles) & $C1$ & $S6$ \\
+121109 & Hospital Dr.\ Hernán Henríquez Aravena (Temuco) & $C1$ & $S8$ \\
+121110 & Hospital Dr.\ Abraham Godoy (Lautaro) & $C2$ & --- \\
+121114 & Hospital Intercultural de Nueva Imperial & $C2$ & --- \\
+121117 & Hospital de Pitrufquén & $C2$ & --- \\
+121121 & Hospital de Villarrica & $C1$ & $S1$ \\
+122100 & Hospital Clínico Regional (Valdivia) & $C1$ & $S8$ \\
+123100 & Hospital Base San José de Osorno & $C1$ & $S6$ \\
+124105 & Hospital de Puerto Montt & $C1$ & $S7$ \\
+125100 & Hospital Regional (Coihaique) & $C1$ & $S6$ \\
+126100 & Hospital Clínico de Magallanes Dr.\ Lautaro Navarro Avaria & $C1$ & $S8$ \\
+128109 & Hospital Provincial Dr.\ Rafael Avaría (Curanilahue) & $C1$ & $S1$ \\
+129100 & Hospital Dr.\ Mauricio Heyermann (Angol) & $C1$ & $S6$ \\
+129106 & Hospital San José (Victoria) & $C1$ & $S6$ \\
+133150 & Hospital de Castro & $C1$ & $S6$ \\
+
+\bottomrule
+\end{longtable}
+
+La asignación completa se encuentra en el archivo
+\texttt{reports/tables/asignacion\_jerarquica\_final.csv}. Las
+comparaciones con la clasificación administrativa MINSAL se presentan en la
+Sección~\ref{sec:res-minsal}; no se reproducen en esta tabla para concentrar el
+anexo en las asignaciones finales del procedimiento de clustering.
+
+\section{Parámetros del pipeline}
+\label{anexo:parametros}
+
+La Tabla~\ref{tab:anexo-parametros} consolida las decisiones metodológicas y
+los parámetros principales de la ejecución final. Las decisiones se justifican
+en detalle en el Capítulo~\ref{cap:metodologia}; aquí se presentan como
+referencia de implementación y reproducibilidad.
+
+\begin{longtable}{p{3.6cm} p{4.3cm} p{5.8cm}}
+\caption{Parámetros y decisiones de diseño del pipeline computacional.}
+\label{tab:anexo-parametros} \\
+\toprule
+\textbf{Etapa} & \textbf{Parámetro} & \textbf{Valor o decisión} \\
+\midrule
+\endfirsthead
+
+\multicolumn{3}{c}{\tablename\ \thetable{} -- continuación} \\
+\toprule
+\textbf{Etapa} & \textbf{Parámetro} & \textbf{Valor o decisión} \\
+\midrule
+\endhead
+
+Elegibilidad &
+Presencia temporal mínima &
+Al menos 3 de los 6 años del período 2019--2024. \\
+
+Universo final &
+Establecimientos incluidos &
+65 hospitales públicos de alta y mediana complejidad. \\
+
+Variables directas &
+Variables construidas &
+28 variables institucionales; \texttt{peso\_medio\_cma} se excluye de la matriz de clustering. \\
+
+Matriz final &
+Dimensión &
+65 establecimientos $\times$ 35 variables: 27 variables directas y 8 componentes PCA. \\
+
+Preprocesamiento &
+Transformación de asimetría &
+Transformación $\log(1+x)$ aplicada a variables con asimetría marcada, según la configuración de la ejecución final. \\
+
+Preprocesamiento &
+Escalado &
+\textit{RobustScaler}, basado en mediana y rango intercuartílico. \\
+
+Casuística &
+Reducción dimensional &
+PCA sobre la representación de casuística diagnóstica, de procedimientos y GRD. \\
+
+Casuística &
+Componentes retenidas &
+8 componentes principales, con $72{,}5\,\%$ de varianza acumulada. \\
+
+Clustering Nivel 1 &
+Algoritmo &
+Clustering jerárquico aglomerativo Ward con distancia euclidiana. \\
+
+Clustering Nivel 1 &
+Valores evaluados &
+$K \in \{2,\ldots,10\}$. \\
+
+Clustering Nivel 1 &
+Solución reportada &
+$K=4$, seleccionada como compromiso interpretativo; tamaños
+$[3,54,5,3]$. \\
+
+Clustering Nivel 2 &
+Subconjunto analizado &
+Núcleo generalista $C1$ ($n=54$). \\
+
+Clustering Nivel 2 &
+Algoritmo &
+Clustering jerárquico aglomerativo Ward. \\
+
+Clustering Nivel 2 &
+Solución reportada &
+$K_{sub}=10$, de carácter exploratorio. \\
+
+Caracterización por variable &
+Prueba &
+Kruskal--Wallis con corrección de Benjamini--Hochberg. \\
+
+Caracterización por variable &
+Tamaño de efecto &
+$\varepsilon^2$ para variables continuas. \\
+
+Atipicidad &
+Criterios &
+Isolation Forest global, distancia al centroide normalizada por MAD global y Silhouette individual negativo. \\
+
+Atipicidad &
+Sensibilidad &
+Isolation Forest evaluado con contaminación de 5\,\%, 10\,\%, 15\,\% y 20\,\%. \\
+
+Sensibilidad algorítmica &
+Métodos &
+K-means ($K=4$), GMM ($K=4$) y MST-kNN para sensibilidad interna. \\
+
+Sensibilidad algorítmica &
+MST-kNN &
+Evaluación con $k \in \{3,\ldots,8\}$; los resultados se interpretan como sensibilidad interna y no como validación externa. \\
+
+Sensibilidad temporal &
+Comparación &
+Período completo 2019--2024 frente a 2019 y 2022--2024, excluyendo 2020--2021. \\
+
+Sensibilidad composicional &
+Representación alternativa &
+Transformación CLR de la casuística antes de PCA. \\
+
+Reproducibilidad &
+Semilla aleatoria &
+\texttt{RANDOM\_STATE = 42} en los algoritmos estocásticos que admiten semilla. \\
+
+Reproducibilidad &
+Implementación &
+Python 3.11 y dependencias declaradas en \texttt{requirements.txt} y \texttt{pyproject.toml}. \\
+
+\bottomrule
+\end{longtable}
+
+\section{Estructura del repositorio y reproducibilidad}
+\label{anexo:repositorio}
+
+El código del proyecto está disponible en
+\url{https://github.com/reii23/chile-hospital-grd-profiling} y se organiza en
+los siguientes directorios principales:
+
+\begin{itemize}
+  \item \texttt{data/raw/}: archivos fuente GRD organizados por año.
+
+  \item \texttt{data/processed/}: matrices intermedias y finales generadas por
+  el pipeline, almacenadas principalmente en formato Parquet.
+
+  \item \texttt{src/etl/}: módulos de extracción, limpieza, homologación y
+  construcción de variables.
+
+  \item \texttt{src/modeling/}: módulos para construcción de matrices,
+  reducción dimensional, clustering y comparación de métodos.
+
+  \item \texttt{src/utils/}: funciones auxiliares de entrada, salida y
+  validación de datos, con un registro único de rutas de artefactos.
+
+  \item \texttt{scripts/}: ejecución no interactiva del pipeline. Comprende la
+  construcción del insumo GRD y de la matriz institucional
+  (\texttt{build\_*.py}), los contrastes estadísticos y los análisis de
+  sensibilidad (\texttt{analyze\_*.py}, \texttt{compare\_*.py}) y la
+  regeneración de las figuras incluidas en este documento
+  (\texttt{regenerar\_figuras\_*.py}).
+
+  \item \texttt{notebooks/}: registro exploratorio del proceso analítico.
+
+  \item \texttt{tests/}: pruebas unitarias y basadas en propiedades sobre los
+  módulos de \texttt{src/}, ejecutadas con \texttt{pytest} y
+  \texttt{hypothesis}.
+
+  \item \texttt{reports/tables/}: resultados tabulares en formato CSV. Todas
+  las cifras reportadas en el Capítulo~\ref{cap:resultados} provienen de estos
+  archivos.
+
+  \item \texttt{reports/figures/}: figuras exploratorias auxiliares. Las
+  figuras incluidas en este documento se generan en
+  \texttt{formato-tesis/}, junto con las fuentes \LaTeX{} del informe.
+
+  \item \texttt{requirements.txt}, \texttt{requirements-dev.txt} y
+  \texttt{pyproject.toml}: declaración de dependencias del entorno de ejecución.
+\end{itemize}
+
+Los insumos necesarios para ejecutar el pipeline se distribuyen junto con el
+código: las tablas maestras de clasificación clínica (CIE-10, CIE-9-MC y la
+maestra de establecimientos de las bases GRD), la Base de Establecimientos del
+DEIS empleada para recuperar el Nivel de Complejidad asignado por el MINSAL, y
+los artefactos intermedios en formato Parquet, entre ellos la matriz
+institucional de 65 hospitales y 38 columnas sobre la que operan los análisis.
+
+Se exceptúan dos artefactos que exceden el límite de tamaño por archivo de la
+plataforma de alojamiento: los seis archivos anuales de egresos GRD
+($3{,}8$\,GB en total), que se descargan del Tablero GRD del
+MINSAL~\citep{TableauGRD}, y el archivo consolidado
+\texttt{grd\_filtrado.parquet} ($198$\,MB), que se regenera desde
+los anteriores mediante \texttt{build\_extended\_grd.py}. Con esa excepción, 15
+de los 21 scripts se ejecutan directamente sobre una copia del repositorio; los
+seis restantes recorren los egresos individuales y requieren la descarga previa.
+
+El código se publica bajo licencia MIT, de modo que puede reutilizarse,
+modificarse e integrarse en trabajos posteriores conservando la atribución de
+autoría. Esta licencia cubre únicamente el código: los egresos GRD, las
+clasificaciones CIE y la Base de Establecimientos del DEIS se rigen por las
+condiciones de sus titulares originales. El documento de esta tesis se publica
+por separado bajo Licencia Creative Commons Atribución-Chile 3.0.
+
+El orden de ejecución es relevante, pues los análisis de sensibilidad y los
+contrastes estadísticos consumen la partición reportada. Esta se fija en
+\texttt{build\_hierarchical\_clustering.py} y se persiste en
+\texttt{reports/tables/asignacion\_jerarquica\_final.csv}. El archivo
+\texttt{README.md} del repositorio detalla la secuencia completa. Junto con los
+parámetros consolidados en la Tabla~\ref{tab:anexo-parametros} y las semillas
+aleatorias fijadas en el código, esta organización permite reconstruir el flujo
+de procesamiento y los análisis descritos en el
+Capítulo~\ref{cap:metodologia}.

@@ -1,0 +1,195 @@
+% === TABLA 1: METRICAS SELECCION K NIVEL 1 ===
+\begin{table}[htbp]
+\centering
+\caption{Métricas de validación interna para la selección de $K$ en el Nivel 1 (Ward global).}
+\label{tab:metricas-nivel1}
+\begin{tabular}{c c c c l}
+\toprule
+\textbf{$K$} & \textbf{Silhouette} & \textbf{Calinski-Harabasz} & \textbf{Davies-Bouldin} & \textbf{Tamaños de Clústeres} \\
+\midrule
+2 & 0,659 & 36,1 & 0,421 & 3, 62 \\
+3 & 0,430 & 28,6 & 1,4 & 3, 53, 9 \\
+\bfseries 4 & \bfseries 0,407 & \bfseries 27,3 & \bfseries 1,0 & \bfseries 3, 53, 2, 7 \\
+5 & 0,341 & 23,4 & 0,976 & 3, 53, 2, 4, 3 \\
+6 & 0,339 & 21,0 & 0,786 & 3, 53, 1, 1, 4, 3 \\
+7 & 0,226 & 19,7 & 1,2 & 3, 8, 45, 1, 1, 4, 3 \\
+8 & 0,122 & 18,9 & 1,3 & 3, 8, 20, 25, 1, 1, 4, 3 \\
+9 & 0,126 & 18,5 & 1,1 & 3, 8, 20, 25, 1, 1, 4, 2, 1 \\
+10 & 0,143 & 18,4 & 1,1 & 3, 5, 3, 20, 25, 1, 1, 4, 2, 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% === TABLA 2: PERFILES CLINICOS NIVEL 1 ===
+\begin{table}[htbp]
+\centering
+\caption{Perfiles funcionales (medianas) de los clústeres del Nivel 1 ($K=4$).}
+\label{tab:perfiles-nivel1}
+\begin{tabular}{l c c c c}
+\toprule
+\textbf{Variable} & \textbf{$C0$ (Pediátricos)} & \textbf{$C2$ (Institutos)} & \textbf{$C3$ (Alta CMA)} & \textbf{$C1$ (Mainstream)} \\
+\midrule
+Egresos por año & 7115,2 & 3681,7 & 4309,0 & 13136,8 \\
+Estancia media (días) & 6,1 & 7,9 & 8,7 & 6,8 \\
+Peso medio GRD & 1,2 & 2,0 & 0,943 & 0,951 \\
+Severidad media & 1,9 & 1,9 & 1,9 & 1,7 \\
+Tasa de CMA & 13,5\% & 0,006\% & 23,1\% & 14,5\% \\
+Egresos pediátricos & 95,4\% & 7,1\% & 2,5\% & 14,2\% \\
+Egresos geriátricos & 0,000\% & 33,4\% & 38,3\% & 25,5\% \\
+Ingresos obstétricos & 0,000\% & 0,000\% & 10,5\% & 20,0\% \\
+Tasa de partos & 0,000\% & 0,000\% & 0,461\% & 2,8\% \\
+Edad mediana (años) & 5,0 & 56,9 & 56,8 & 41,7 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% === TABLA 3: KRUSKAL-WALLIS NIVEL 1 ===
+\begin{table}[htbp]
+\centering
+\caption{Resultados de la prueba de Kruskal-Wallis en el Nivel 1 (ordenados por estadístico $H$).}
+\label{tab:kruskal-nivel1}
+\begin{tabular}{l c c c}
+\toprule
+\textbf{Variable} & \textbf{Estadístico $H$} & \textbf{$p$-valor} & \textbf{¿Discrimina?} \\
+\midrule
+tasa_partos & 29,0 & $2,23 \times 10^{-6}$ & Sí \\
+edad_mediana & 28,3 & $3,13 \times 10^{-6}$ & Sí \\
+pct_obstetrica_ingreso & 25,7 & $1,11 \times 10^{-5}$ & Sí \\
+pct_pediatrico & 25,3 & $1,31 \times 10^{-5}$ & Sí \\
+pct_geriatrico & 24,2 & $2,23 \times 10^{-5}$ & Sí \\
+pct_femenino_fertil & 23,2 & $3,64 \times 10^{-5}$ & Sí \\
+pct_alta_domicilio & 22,1 & $6,19 \times 10^{-5}$ & Sí \\
+severidad_media & 20,7 & 0,000 & Sí \\
+mortalidad_media & 20,7 & 0,000 & Sí \\
+tasa_prematurez & 20,6 & 0,000 & Sí \\
+pct_uso_pabellon & 19,9 & 0,000 & Sí \\
+comorbilidades_promedio & 18,1 & 0,000 & Sí \\
+egresos_por_anio & 16,3 & 0,001 & Sí \\
+pct_alta_fallecido & 14,6 & 0,002 & Sí \\
+estancia_mediana & 14,3 & 0,003 & Sí \\
+pct_urgencia & 13,9 & 0,003 & Sí \\
+peso_medio_cma & 13,1 & 0,004 & Sí \\
+pct_alta_traslado & 12,5 & 0,006 & Sí \\
+entropia_grd & 12,5 & 0,006 & Sí \\
+pabellones_promedio & 12,3 & 0,006 & Sí \\
+peso_medio_grd & 11,0 & 0,012 & Sí \\
+pct_programada & 10,1 & 0,017 & Sí \\
+estancia_media & 8,5 & 0,036 & Sí \\
+pct_origen_referencia & 8,5 & 0,037 & Sí \\
+\addlinespace
+pct_estancia_larga & 7,5 & 0,057 & No \\
+pct_origen_emergencia & 7,0 & 0,071 & No \\
+tasa_cma & 6,1 & 0,107 & No \\
+cv_estancia & 5,6 & 0,134 & No \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% === TABLA 4: METRICAS SELECCION K NIVEL 2 ===
+\begin{table}[htbp]
+\centering
+\caption{Búsqueda del número de subclústeres $K_{sub}$ para el Mainstream (Nivel 2).}
+\label{tab:metricas-nivel2}
+\begin{tabular}{c c c c c c}
+\toprule
+\textbf{$K_{sub}$} & \textbf{Silhouette} & \textbf{Davies-Bouldin} & \textbf{Singletons} & \textbf{Clusters $n \geq 4$} & \textbf{Tamaños de Clústeres} \\
+\midrule
+2 & 0,217 & 2,2 & 0 & 2 & 45, 8 \\
+3 & 0,088 & 2,3 & 0 & 3 & 25, 20, 8 \\
+4 & 0,112 & 1,9 & 0 & 3 & 25, 20, 5, 3 \\
+5 & 0,100 & 1,8 & 0 & 4 & 20, 15, 10, 5, 3 \\
+6 & 0,114 & 1,5 & 1 & 4 & 20, 15, 10, 5, 2, 1 \\
+7 & 0,103 & 1,6 & 1 & 5 & 15, 11, 10, 9, 5, 2, 1 \\
+8 & 0,115 & 1,5 & 1 & 6 & 15, 11, 10, 5, 5, 4, 2, 1 \\
+\bfseries 9 & \bfseries 0,106 & \bfseries 1,4 & \bfseries 1 & \bfseries 7 & \bfseries 11, 10, 9, 6, 5, 5, 4, 2, 1 \\
+10 & 0,102 & 1,4 & 1 & 7 & 10, 9, 8, 6, 5, 5, 4, 3, 2, 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% === TABLA 5: PERFILES CLINICOS NIVEL 2 ===
+\begin{table}[htbp]
+\centering
+\caption{Perfiles funcionales (medianas) de los subclústeres del Mainstream ($K_{sub}=9$).}
+\label{tab:perfiles-nivel2}
+\begin{tabular}{l c c c c c c c c c}
+\toprule
+\textbf{Variable} & \textbf{$S0$} & \textbf{$S1$} & \textbf{$S2$} & \textbf{$S3$} & \textbf{$S4$} & \textbf{$S5$} & \textbf{$S6$} & \textbf{$S7$} & \textbf{$S8$} \\
+\midrule
+Egresos por año & 5654,5 & 6312,7 & 16809,2 & 17336,5 & 6326,8 & 15070,3 & 22261,4 & 10325,0 & 7676,5 \\
+Estancia media (días) & 5,4 & 5,6 & 6,1 & 7,6 & 5,4 & 7,0 & 7,3 & 6,3 & 5,9 \\
+Peso medio GRD & 0,820 & 0,815 & 0,960 & 1,1 & 0,770 & 0,978 & 1,1 & 0,942 & 0,908 \\
+Egresos geriátricos & 23,5\% & 22,4\% & 15,1\% & 26,0\% & 26,3\% & 21,7\% & 25,6\% & 26,1\% & 27,8\% \\
+Ingresos programados & 13,4\% & 17,2\% & 46,5\% & 14,6\% & 9,3\% & 12,3\% & 29,6\% & 19,5\% & 23,2\% \\
+Uso de pabellón & 36,7\% & 47,8\% & 42,1\% & 44,2\% & 34,0\% & 43,3\% & 46,0\% & 46,9\% & 42,6\% \\
+Tasa de partos & 3,1\% & 5,0\% & 5,1\% & 2,8\% & 2,8\% & 4,3\% & 2,1\% & 3,5\% & 2,3\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% === TABLA 6: CONTINGENCIA MINSAL ===
+\begin{table}[htbp]
+\centering
+\caption{Tabla de contingencia entre clústeres del Nivel 1 y clasificación administrativa MINSAL.}
+\label{tab:contingencia-minsal}
+\begin{tabular}{l c c c}
+\toprule
+\textbf{Clúster} & \textbf{Alta Complejidad} & \textbf{Mediana Complejidad} & \textbf{Total} \\
+\midrule
+C0 & 3 & 0 & 3 \\
+C1 & 47 & 6 & 53 \\
+C2 & 2 & 0 & 2 \\
+C3 & 3 & 4 & 7 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% === TABLA 7: HOSPITALES ATIPICOS ===
+\begin{table}[htbp]
+\centering
+\caption{Hospitales detectados como atípicos según los criterios metodológicos.}
+\label{tab:outliers}
+\begin{tabular}{l c c c c}
+\toprule
+\textbf{Establecimiento} & \textbf{Clúster} & \textbf{Silhouette} & \textbf{Mecanismo de detección} & \textbf{Detalle métrico} \\
+\midrule
+Instituto Nacional de Enfermedades Respiratorias y Cirugía Torácica & $C2$ & 0,109 & Isolation Forest & Score: -0,651 \\
+Instituto de Neurocirugía Dr. Alfonso Asenjo & $C2$ & 0,038 & Isolation Forest & Score: -0,641 \\
+Hospital Dr. Eduardo Pereira Ramírez & $C3$ & 0,131 & Isolation Forest & Score: -0,621 \\
+Hospital Dr. Exequiel González Cortés & $C0$ & 0,676 & Isolation Forest & Score: -0,598 \\
+Hospital de Urgencia Asistencia Pública Dr. Alejandro del Río & $C3$ & 0,043 & Isolation Forest & Score: -0,585 \\
+Hospital de Niños Dr. Luis Calvo Mackenna & $C0$ & 0,645 & Isolation Forest & Score: -0,572 \\
+Hospital Del Salvador & $C3$ & 0,213 & Isolation Forest & Score: -0,568 \\
+Hospital Clínico San Borja-Arriarán & $C1$ & 0,399 & Distancia Centroide & $z = 3,6$ \\
+Hospital San José & $C3$ & -0,141 & Silhouette Negativo & Sil: -0,141 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% === TABLA 8: SENSIBILIDAD MST-kNN ===
+\begin{table}[htbp]
+\centering
+\caption{Resultados del análisis de sensibilidad con el algoritmo MST-kNN (modo mutuo).}
+\label{tab:mstknn-sensibilidad}
+\begin{tabular}{c c c c l}
+\toprule
+\textbf{$k$ vecinos} & \textbf{$K$ Descubierto} & \textbf{Clústeres $n \geq 3$} & \textbf{Singletons} & \textbf{Tamaños de Clústeres Principales} \\
+\midrule
+3 & 32 & 4 & 20 & [10, 13, 3, 3] \\
+4 & 28 & 3 & 19 & [27, 3, 4] \\
+5 & 24 & 4 & 16 & [30, 3, 4, 4] \\
+\bfseries 6 & \bfseries 21 & \bfseries 4 & \bfseries 14 & \bfseries [33, 3, 5, 4] \\
+7 & 16 & 4 & 11 & [42, 3, 3, 4] \\
+8 & 14 & 4 & 9 & [44, 3, 3, 4] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+

@@ -1,0 +1,5 @@
+# Overleaf ejecuta latexmk, que puede repetir XeLaTeX varias veces para
+# estabilizar referencias, indices y tablas largas. Dos pasadas por clic
+# evitan exceder el limite del plan gratuito; recompilar manualmente permite
+# completar la estabilizacion sin modificar la plantilla oficial.
+$max_repeat = 2;

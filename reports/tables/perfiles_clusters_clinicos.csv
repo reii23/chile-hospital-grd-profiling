@@ -1,0 +1,3 @@
+cluster,n_hospitales,capitulos_dominantes,secciones_dominantes,grds_dominantes,etiqueta_propuesta
+0,4,cap_09(24.0%);cap_02(13.8%);cap_19(12.8%),sec_16(68.3%);sec_07(11.0%);sec_09(4.6%),top20_grd_10(2.3%);top20_grd_05(1.8%);top20_grd_04(1.3%);top20_grd_08(1.2%);top20_grd_14(1.0%),Cardiovascular (diagnóstico)
+1,61,cap_15(19.2%);cap_11(14.0%);cap_19(10.5%),sec_16(73.5%);sec_13(6.5%);sec_09(4.7%),top20_grd_01(4.1%);top20_grd_03(2.7%);top20_grd_02(2.7%);top20_grd_04(2.2%);top20_grd_06(2.1%),Obstétrico (diagnóstico)

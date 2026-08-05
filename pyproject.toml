@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tesis-grd-clustering"
+version = "0.1.0"
+description = "Pipeline integrado de clustering hospitalario chileno con casuística clínica (CIE-10/CIE-9-MC), diversidad diagnóstica y CMA."
+authors = [{name = "Reinaldo Pacheco Parra"}]
+requires-python = ">=3.11,<3.13"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+namespaces = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+    "--hypothesis-seed=42",
+]
+markers = [
+    "unit: tests unitarios sobre módulos puros",
+    "property: tests property-based con Hypothesis",
+    "integration: tests de integración end-to-end",
+    "slow: tests que tardan > 10 segundos",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+]
+
+[tool.coverage.run]
+source = ["src"]
+branch = true
+omit = ["*/tests/*", "*/__init__.py"]
+
+[tool.coverage.report]
+precision = 2
+show_missing = true
+skip_covered = false

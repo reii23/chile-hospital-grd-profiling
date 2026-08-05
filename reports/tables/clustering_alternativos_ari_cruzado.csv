@@ -1,0 +1,704 @@
+metodo_1,metodo_2,ARI
+kmeans_K=2,aggl_K=2,1.0
+"leiden_k_nn=15, res=0.5","leiden_k_nn=20, res=0.5",1.0
+hdbscan_min_cluster_size=6,hdbscan_min_cluster_size=8,1.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=15, res=0.5",1.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=20, res=0.5",1.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=15, res=0.5",1.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=20, res=0.5",1.0
+aggl_K=6,aggl_K=7,0.9978513107004727
+aggl_K=4,aggl_K=5,0.9967337435695577
+gmm_K=6,gmm_K=7,0.9863588667366212
+kmeans_K=3,kmeans_K=4,0.9845224132013398
+hdbscan_min_cluster_size=4,hdbscan_min_cluster_size=5,0.8778367711318893
+kmeans_K=3,gmm_K=2,0.8677547698706936
+kmeans_K=4,gmm_K=2,0.8525789299768692
+gmm_K=3,gmm_K=4,0.8414815764078607
+"leiden_k_nn=10, res=1.0","leiden_k_nn=15, res=1.0",0.8123233649662125
+aggl_K=7,aggl_K=8,0.7576038736988605
+aggl_K=6,aggl_K=8,0.7555824853420776
+kmeans_K=2,aggl_K=3,0.6914514874984654
+aggl_K=2,aggl_K=3,0.6914514874984654
+hdbscan_min_cluster_size=3,hdbscan_min_cluster_size=4,0.6818174068383873
+aggl_K=3,aggl_K=4,0.6793656185940019
+aggl_K=3,aggl_K=5,0.6764382200387271
+"leiden_k_nn=10, res=1.5","leiden_k_nn=10, res=2.0",0.674107353538023
+hdbscan_min_cluster_size=3,hdbscan_min_cluster_size=5,0.6722948811352806
+"leiden_k_nn=10, res=0.5","leiden_k_nn=15, res=1.0",0.6621113781012925
+"leiden_k_nn=15, res=1.5","leiden_k_nn=15, res=2.0",0.6285265035831998
+kmeans_K=8,aggl_K=8,0.6182252368059724
+"leiden_k_nn=10, res=0.5","leiden_k_nn=10, res=1.0",0.6149232068010486
+"leiden_k_nn=10, res=0.5","leiden_k_nn=20, res=1.0",0.6016313720845886
+kmeans_K=7,gmm_K=8,0.5958415841584158
+kmeans_K=5,aggl_K=7,0.5879389427776525
+kmeans_K=5,aggl_K=6,0.5860383352094867
+kmeans_K=4,aggl_K=5,0.5675524125793979
+kmeans_K=4,aggl_K=4,0.5645068538443393
+kmeans_K=7,gmm_K=3,0.554182336276735
+kmeans_K=3,aggl_K=4,0.5522309866292255
+kmeans_K=8,aggl_K=7,0.5504571129098003
+kmeans_K=3,aggl_K=5,0.5493736751186085
+kmeans_K=8,aggl_K=6,0.5486918864750725
+kmeans_K=4,kmeans_K=5,0.5482251505961987
+kmeans_K=3,kmeans_K=5,0.5338707479197519
+gmm_K=7,gmm_K=8,0.5303407247160628
+gmm_K=6,gmm_K=8,0.5201716738197425
+kmeans_K=7,gmm_K=4,0.5047278551149003
+kmeans_K=6,aggl_K=7,0.5028836000324912
+kmeans_K=6,aggl_K=6,0.5010905579327684
+gmm_K=5,gmm_K=6,0.49980369061641144
+"leiden_k_nn=15, res=1.0","leiden_k_nn=20, res=1.0",0.4932658315212809
+gmm_K=5,gmm_K=7,0.4917312533938885
+kmeans_K=6,"leiden_k_nn=20, res=1.0",0.48849995744756647
+"leiden_k_nn=10, res=1.0","leiden_k_nn=10, res=1.5",0.48233133605363143
+"leiden_k_nn=10, res=2.0","leiden_k_nn=15, res=2.0",0.47912996265886604
+"leiden_k_nn=15, res=1.5","leiden_k_nn=20, res=1.5",0.4766623500929002
+kmeans_K=6,"leiden_k_nn=10, res=0.5",0.4733392336719239
+gmm_K=4,gmm_K=5,0.4731220785971581
+kmeans_K=8,"leiden_k_nn=10, res=1.0",0.46661219704975976
+kmeans_K=4,kmeans_K=7,0.46548891009679894
+"leiden_k_nn=10, res=2.0","leiden_k_nn=15, res=1.5",0.46033387501846657
+kmeans_K=7,gmm_K=7,0.45828059585239994
+kmeans_K=3,kmeans_K=7,0.45413586363733577
+gmm_K=3,gmm_K=8,0.4493327593628928
+kmeans_K=5,kmeans_K=6,0.449124323028579
+kmeans_K=8,"leiden_k_nn=15, res=1.0",0.44911250553376314
+kmeans_K=7,gmm_K=6,0.4486831913245546
+gmm_K=2,gmm_K=3,0.44642756759795377
+"leiden_k_nn=10, res=1.5","leiden_k_nn=15, res=1.0",0.4432232055223433
+kmeans_K=5,"leiden_k_nn=15, res=1.0",0.4384638072976263
+kmeans_K=7,aggl_K=8,0.4363638111535171
+kmeans_K=6,kmeans_K=8,0.4323698083919036
+"leiden_k_nn=10, res=1.0","leiden_k_nn=15, res=1.5",0.43075948423641647
+"leiden_k_nn=10, res=1.0","leiden_k_nn=20, res=1.0",0.4296317846219168
+"leiden_k_nn=10, res=1.5","leiden_k_nn=15, res=2.0",0.4288046011243669
+kmeans_K=2,aggl_K=4,0.4274592815903129
+aggl_K=2,aggl_K=4,0.4274592815903129
+aggl_K=2,aggl_K=5,0.4252678115966672
+kmeans_K=2,aggl_K=5,0.4252678115966672
+kmeans_K=6,"leiden_k_nn=15, res=1.0",0.42314611769048127
+kmeans_K=7,kmeans_K=8,0.42162988181132366
+gmm_K=4,gmm_K=8,0.41596165867889145
+kmeans_K=6,aggl_K=8,0.41492972988849186
+kmeans_K=5,gmm_K=2,0.4149120027652159
+"leiden_k_nn=15, res=1.0","leiden_k_nn=15, res=1.5",0.40905821823077065
+aggl_K=5,aggl_K=6,0.40227097049337635
+aggl_K=5,aggl_K=7,0.40089173628847236
+aggl_K=4,aggl_K=6,0.4001757726673502
+aggl_K=4,aggl_K=7,0.3988019290240263
+"leiden_k_nn=10, res=1.5","leiden_k_nn=15, res=1.5",0.3964571459152819
+gmm_K=4,gmm_K=6,0.3950739730556244
+gmm_K=3,gmm_K=6,0.3932890478623744
+kmeans_K=3,gmm_K=3,0.39250465945665935
+aggl_K=4,gmm_K=2,0.39051468004217116
+kmeans_K=4,aggl_K=6,0.3897993722245527
+kmeans_K=4,aggl_K=7,0.38799971797222027
+aggl_K=5,gmm_K=2,0.38781048464338164
+kmeans_K=7,gmm_K=5,0.3864973905318873
+gmm_K=4,gmm_K=7,0.3851887896137241
+kmeans_K=8,gmm_K=8,0.384467059453669
+gmm_K=3,gmm_K=5,0.38294736316170774
+gmm_K=3,gmm_K=7,0.3805426869622766
+"leiden_k_nn=10, res=1.5",gmm_K=8,0.38053955744164897
+kmeans_K=4,gmm_K=3,0.3789165398648538
+kmeans_K=3,aggl_K=6,0.3777800169859937
+kmeans_K=3,aggl_K=7,0.37600860677783754
+kmeans_K=7,"leiden_k_nn=10, res=1.0",0.3741219202960628
+kmeans_K=4,aggl_K=3,0.37069699303412296
+kmeans_K=5,kmeans_K=8,0.36785450103222406
+"leiden_k_nn=10, res=1.0",gmm_K=3,0.36515815007245045
+"leiden_k_nn=10, res=2.0",gmm_K=8,0.36469046839174585
+kmeans_K=7,gmm_K=2,0.3639165224913495
+gmm_K=2,gmm_K=4,0.3623832372732177
+kmeans_K=5,kmeans_K=7,0.36187202993744766
+kmeans_K=5,aggl_K=8,0.36154812697350247
+kmeans_K=5,"leiden_k_nn=10, res=1.0",0.36048100573927305
+kmeans_K=6,aggl_K=5,0.35725242122437095
+aggl_K=8,gmm_K=8,0.35534908415184496
+kmeans_K=6,aggl_K=4,0.3552456142236124
+kmeans_K=3,aggl_K=3,0.3544602540141604
+"leiden_k_nn=10, res=1.0","leiden_k_nn=10, res=2.0",0.3500471435824287
+"leiden_k_nn=15, res=2.0","leiden_k_nn=20, res=1.5",0.3469854650801348
+kmeans_K=5,"leiden_k_nn=20, res=1.0",0.34486606508522616
+kmeans_K=4,kmeans_K=6,0.3447234039864345
+gmm_K=5,gmm_K=8,0.34412060301507535
+"leiden_k_nn=15, res=1.0","leiden_k_nn=15, res=2.0",0.34239487802737695
+aggl_K=8,gmm_K=4,0.3399267844613259
+"leiden_k_nn=15, res=2.0","leiden_k_nn=20, res=2.0",0.338890518843231
+"leiden_k_nn=10, res=2.0","leiden_k_nn=20, res=1.5",0.33530917962055684
+kmeans_K=8,"leiden_k_nn=10, res=1.5",0.3346544305597062
+"leiden_k_nn=10, res=2.0","leiden_k_nn=15, res=1.0",0.3343721827180837
+kmeans_K=3,kmeans_K=6,0.3331603132680946
+kmeans_K=7,"leiden_k_nn=10, res=2.0",0.3317119009452214
+aggl_K=8,"leiden_k_nn=10, res=1.0",0.32956792116518424
+kmeans_K=6,"leiden_k_nn=10, res=1.0",0.3287778519067963
+"leiden_k_nn=10, res=1.0","leiden_k_nn=15, res=2.0",0.3277073584051189
+"leiden_k_nn=10, res=1.0","leiden_k_nn=20, res=1.5",0.32639279148847
+"leiden_k_nn=10, res=1.0",gmm_K=5,0.3248908748986387
+"leiden_k_nn=10, res=1.0",gmm_K=4,0.3232712624578177
+aggl_K=8,gmm_K=3,0.31928941656712584
+"leiden_k_nn=15, res=1.5","leiden_k_nn=20, res=1.0",0.3179433368310598
+kmeans_K=4,gmm_K=4,0.317049412678912
+aggl_K=6,"leiden_k_nn=15, res=1.0",0.31561021140021944
+kmeans_K=5,aggl_K=5,0.31494874881867846
+aggl_K=7,"leiden_k_nn=15, res=1.0",0.313044172857257
+kmeans_K=5,aggl_K=4,0.3124222881385223
+"leiden_k_nn=10, res=0.5","leiden_k_nn=10, res=1.5",0.30877985294608395
+"leiden_k_nn=15, res=1.0",gmm_K=3,0.30604843777116836
+kmeans_K=5,"leiden_k_nn=10, res=0.5",0.30447073101243577
+kmeans_K=3,gmm_K=4,0.3039347366066273
+"leiden_k_nn=10, res=1.5","leiden_k_nn=20, res=1.5",0.30375725551993854
+kmeans_K=7,aggl_K=7,0.30253420049338414
+"leiden_k_nn=10, res=1.5",gmm_K=7,0.30197241845231976
+kmeans_K=7,aggl_K=6,0.3009789052805736
+kmeans_K=4,gmm_K=8,0.3004442864759197
+"leiden_k_nn=10, res=1.5",gmm_K=6,0.2970112803814397
+"leiden_k_nn=10, res=1.5",gmm_K=5,0.2968946627182813
+aggl_K=8,"leiden_k_nn=15, res=1.0",0.2948634258675148
+kmeans_K=8,gmm_K=4,0.2922218343822225
+kmeans_K=3,gmm_K=8,0.29170044052863436
+kmeans_K=7,"leiden_k_nn=15, res=1.5",0.290298383063844
+kmeans_K=8,"leiden_k_nn=10, res=2.0",0.2873502493901207
+"leiden_k_nn=10, res=1.0",gmm_K=8,0.28259693417493237
+"leiden_k_nn=15, res=1.5",gmm_K=8,0.28157894736842104
+aggl_K=6,gmm_K=2,0.2808143394556318
+aggl_K=7,gmm_K=2,0.27929547088425594
+"leiden_k_nn=15, res=1.5","leiden_k_nn=20, res=2.0",0.278747614672415
+kmeans_K=8,"leiden_k_nn=20, res=1.0",0.2781912768402539
+"leiden_k_nn=15, res=2.0",gmm_K=8,0.27349116372124044
+aggl_K=8,gmm_K=5,0.27182219797668855
+kmeans_K=8,"leiden_k_nn=10, res=0.5",0.2715737357416562
+"leiden_k_nn=20, res=1.5","leiden_k_nn=20, res=2.0",0.271555648945857
+"leiden_k_nn=15, res=1.5",gmm_K=5,0.26907408979037595
+kmeans_K=7,aggl_K=5,0.2687510458366049
+kmeans_K=7,aggl_K=4,0.26704768272377194
+"leiden_k_nn=10, res=2.0",gmm_K=5,0.2669435262875385
+"leiden_k_nn=15, res=1.0","leiden_k_nn=20, res=1.5",0.26675565034592996
+kmeans_K=7,"leiden_k_nn=15, res=1.0",0.26629949009559645
+kmeans_K=8,gmm_K=5,0.2658751556387808
+aggl_K=5,aggl_K=8,0.2652038286186579
+"leiden_k_nn=20, res=1.0","leiden_k_nn=20, res=1.5",0.2650113717646152
+aggl_K=6,"leiden_k_nn=20, res=1.0",0.26436745373727183
+aggl_K=4,aggl_K=8,0.2637047049877083
+"leiden_k_nn=10, res=0.5","leiden_k_nn=15, res=1.5",0.263510707717862
+aggl_K=7,"leiden_k_nn=20, res=1.0",0.2620304412442987
+kmeans_K=4,gmm_K=6,0.2615636804219229
+"leiden_k_nn=10, res=2.0",gmm_K=6,0.2596884735202492
+"leiden_k_nn=15, res=1.0",gmm_K=4,0.2586505011944422
+kmeans_K=8,gmm_K=3,0.25861929547553486
+"leiden_k_nn=10, res=1.5","leiden_k_nn=20, res=1.0",0.25730523786987775
+kmeans_K=8,"leiden_k_nn=20, res=1.5",0.255950412726278
+aggl_K=6,"leiden_k_nn=10, res=0.5",0.25484329640381537
+"leiden_k_nn=10, res=2.0",gmm_K=7,0.2538043049751636
+aggl_K=7,"leiden_k_nn=10, res=0.5",0.25291229421392125
+kmeans_K=4,gmm_K=7,0.252784430338049
+kmeans_K=3,gmm_K=6,0.25270451813618044
+kmeans_K=6,kmeans_K=7,0.2510698379772872
+kmeans_K=6,"leiden_k_nn=10, res=1.5",0.24999668364239777
+kmeans_K=7,"leiden_k_nn=15, res=2.0",0.24845408089098614
+aggl_K=8,"leiden_k_nn=10, res=1.5",0.2480406966985578
+kmeans_K=5,aggl_K=3,0.2479979915431586
+kmeans_K=7,"leiden_k_nn=10, res=1.5",0.24702246423277865
+kmeans_K=8,"leiden_k_nn=15, res=2.0",0.24650290595808222
+"leiden_k_nn=15, res=1.0",gmm_K=5,0.24581496287346127
+kmeans_K=8,"leiden_k_nn=15, res=1.5",0.24574599825712057
+kmeans_K=8,gmm_K=7,0.24540953977525734
+kmeans_K=3,gmm_K=7,0.24410728321249106
+aggl_K=8,gmm_K=7,0.2420986996791416
+"leiden_k_nn=15, res=2.0",gmm_K=6,0.24129636662868717
+"leiden_k_nn=15, res=1.5",gmm_K=6,0.24126838235294118
+kmeans_K=6,gmm_K=2,0.24014815630765843
+aggl_K=8,"leiden_k_nn=10, res=0.5",0.23788136503948445
+"leiden_k_nn=10, res=1.0",gmm_K=6,0.23746889441877
+kmeans_K=8,gmm_K=6,0.23736218015394217
+"leiden_k_nn=15, res=1.0",gmm_K=2,0.23485838174389193
+aggl_K=8,gmm_K=6,0.2340315756887834
+"leiden_k_nn=10, res=0.5","leiden_k_nn=10, res=2.0",0.23142258405504146
+kmeans_K=8,aggl_K=5,0.22922731977622327
+aggl_K=5,gmm_K=4,0.22910334280626496
+aggl_K=6,"leiden_k_nn=10, res=1.0",0.2280742154089085
+aggl_K=3,aggl_K=6,0.22801319084575142
+kmeans_K=8,aggl_K=4,0.22779874547745715
+aggl_K=3,aggl_K=7,0.22714647989373263
+aggl_K=4,gmm_K=4,0.2268066696069826
+aggl_K=7,"leiden_k_nn=10, res=1.0",0.2254199208302129
+gmm_K=2,gmm_K=8,0.22342105263157894
+"leiden_k_nn=10, res=1.0",gmm_K=7,0.22311911876198545
+kmeans_K=2,gmm_K=2,0.22169477114921354
+aggl_K=2,gmm_K=2,0.22169477114921354
+"leiden_k_nn=15, res=1.5",gmm_K=7,0.2216291482942678
+aggl_K=7,gmm_K=8,0.22130177514792898
+"leiden_k_nn=10, res=1.5",gmm_K=3,0.2203207395480589
+aggl_K=6,gmm_K=8,0.22
+"leiden_k_nn=10, res=0.5","leiden_k_nn=20, res=1.5",0.21899916188893917
+"leiden_k_nn=15, res=2.0",gmm_K=7,0.21819551523505745
+kmeans_K=5,gmm_K=8,0.21714855433698904
+"leiden_k_nn=10, res=1.5","leiden_k_nn=20, res=2.0",0.2159578005639346
+kmeans_K=4,kmeans_K=8,0.21513560134505413
+"leiden_k_nn=10, res=2.0","leiden_k_nn=20, res=2.0",0.21452308368350223
+"leiden_k_nn=15, res=2.0","leiden_k_nn=20, res=1.0",0.21431250176131522
+"leiden_k_nn=10, res=1.5",gmm_K=4,0.21354022990954222
+"leiden_k_nn=15, res=2.0",gmm_K=5,0.21335140669057384
+kmeans_K=6,gmm_K=5,0.21319050066101836
+aggl_K=8,"leiden_k_nn=20, res=1.0",0.21248872385938883
+kmeans_K=6,gmm_K=8,0.21117524821057493
+kmeans_K=6,"leiden_k_nn=10, res=2.0",0.2093875228967785
+kmeans_K=5,"leiden_k_nn=15, res=1.5",0.2080462181483693
+kmeans_K=3,kmeans_K=8,0.20662057065472011
+kmeans_K=4,aggl_K=8,0.2025186998843545
+"leiden_k_nn=20, res=1.5",gmm_K=8,0.19949526813880125
+kmeans_K=6,aggl_K=3,0.19901785426906932
+kmeans_K=3,"leiden_k_nn=15, res=1.0",0.19746069293658314
+kmeans_K=5,gmm_K=3,0.19742522841177268
+aggl_K=8,"leiden_k_nn=10, res=2.0",0.19632630844596408
+"leiden_k_nn=10, res=2.0","leiden_k_nn=20, res=1.0",0.19487783020395824
+"leiden_k_nn=10, res=1.0",gmm_K=2,0.19443828324276366
+kmeans_K=3,aggl_K=8,0.1939717752102792
+"leiden_k_nn=10, res=0.5","leiden_k_nn=15, res=2.0",0.19086636720735023
+kmeans_K=5,gmm_K=7,0.18921871430983286
+aggl_K=5,gmm_K=8,0.1882534775888717
+aggl_K=4,gmm_K=8,0.18697329834851056
+aggl_K=8,"leiden_k_nn=20, res=1.5",0.1862671445412137
+kmeans_K=4,aggl_K=2,0.1860805946700121
+kmeans_K=2,kmeans_K=4,0.1860805946700121
+"leiden_k_nn=15, res=1.0",gmm_K=8,0.18543016759776537
+aggl_K=8,"leiden_k_nn=15, res=1.5",0.18453231697633793
+gmm_K=2,gmm_K=6,0.18319194061505834
+"leiden_k_nn=10, res=2.0",gmm_K=3,0.1830516543680076
+kmeans_K=5,"leiden_k_nn=15, res=2.0",0.18198046511342095
+kmeans_K=4,"leiden_k_nn=15, res=1.0",0.18065965590965524
+"leiden_k_nn=15, res=1.0",gmm_K=6,0.18055188221810808
+kmeans_K=5,gmm_K=6,0.17995715305879553
+kmeans_K=6,"leiden_k_nn=15, res=2.0",0.17935065540769649
+kmeans_K=6,"leiden_k_nn=15, res=1.5",0.17882407070145506
+"leiden_k_nn=15, res=1.0","leiden_k_nn=20, res=2.0",0.17696959663684272
+gmm_K=2,gmm_K=7,0.17610478962688542
+aggl_K=5,gmm_K=5,0.1730608013413284
+"leiden_k_nn=15, res=1.5",gmm_K=3,0.17198913158544762
+aggl_K=4,gmm_K=5,0.17151139563351156
+kmeans_K=6,"leiden_k_nn=20, res=1.5",0.17059276025883954
+kmeans_K=6,gmm_K=4,0.16900873678898964
+kmeans_K=7,"leiden_k_nn=20, res=1.5",0.1667925505513714
+"leiden_k_nn=15, res=1.0",gmm_K=7,0.1662335651808521
+kmeans_K=3,aggl_K=2,0.16553550016027607
+kmeans_K=2,kmeans_K=3,0.16553550016027607
+kmeans_K=3,"leiden_k_nn=10, res=1.0",0.16551696810982353
+aggl_K=8,"leiden_k_nn=15, res=2.0",0.16457930845524077
+"leiden_k_nn=15, res=2.0",gmm_K=3,0.16457582739124788
+kmeans_K=5,"leiden_k_nn=10, res=2.0",0.1626999330789311
+aggl_K=4,gmm_K=3,0.1616323090597964
+kmeans_K=5,"leiden_k_nn=10, res=1.5",0.16127930373408172
+"leiden_k_nn=10, res=2.0",gmm_K=4,0.16100385472407006
+"leiden_k_nn=10, res=0.5",gmm_K=2,0.16031098498285443
+aggl_K=5,gmm_K=3,0.15842378593207435
+kmeans_K=5,gmm_K=4,0.1561762149445454
+aggl_K=6,gmm_K=4,0.1553910036787344
+"leiden_k_nn=10, res=1.0","leiden_k_nn=20, res=2.0",0.15525090901683591
+aggl_K=7,"leiden_k_nn=10, res=1.5",0.15344567326946182
+aggl_K=7,gmm_K=4,0.152999152999153
+aggl_K=6,"leiden_k_nn=10, res=1.5",0.15239320930408615
+kmeans_K=4,gmm_K=5,0.15130407364011939
+aggl_K=6,"leiden_k_nn=15, res=1.5",0.15130192655027092
+aggl_K=7,"leiden_k_nn=20, res=1.5",0.14989655820951664
+aggl_K=6,"leiden_k_nn=20, res=1.5",0.14891978280124774
+kmeans_K=4,"leiden_k_nn=10, res=1.0",0.14842949843112702
+kmeans_K=6,gmm_K=3,0.14839652912822315
+aggl_K=3,gmm_K=2,0.1479318073762141
+aggl_K=7,"leiden_k_nn=15, res=1.5",0.1474767270945615
+"leiden_k_nn=20, res=2.0",gmm_K=8,0.14568642160540135
+kmeans_K=7,aggl_K=3,0.1452881268531649
+aggl_K=3,aggl_K=8,0.14493534406970152
+kmeans_K=3,gmm_K=5,0.14225010765469356
+kmeans_K=4,"leiden_k_nn=10, res=2.0",0.14163165496683217
+kmeans_K=8,aggl_K=3,0.1410228771253944
+aggl_K=6,"leiden_k_nn=15, res=2.0",0.1403709324556044
+aggl_K=6,gmm_K=3,0.13981948414865256
+kmeans_K=8,gmm_K=2,0.1397920755317456
+kmeans_K=3,"leiden_k_nn=10, res=0.5",0.13970623574341284
+"leiden_k_nn=15, res=1.5",gmm_K=4,0.13769088345705016
+aggl_K=7,gmm_K=3,0.13729176458300696
+kmeans_K=3,"leiden_k_nn=10, res=2.0",0.13654344682643416
+aggl_K=7,"leiden_k_nn=15, res=2.0",0.1360996116941048
+"leiden_k_nn=20, res=2.0",gmm_K=6,0.13479359730412804
+kmeans_K=4,"leiden_k_nn=15, res=2.0",0.13349979258370542
+aggl_K=6,gmm_K=5,0.13339351433928198
+aggl_K=5,gmm_K=7,0.13291464725958016
+kmeans_K=3,"leiden_k_nn=20, res=1.0",0.13240455522178413
+aggl_K=4,gmm_K=7,0.13164058548428514
+aggl_K=6,"leiden_k_nn=10, res=2.0",0.1314682578499462
+kmeans_K=6,gmm_K=7,0.1307342326419376
+aggl_K=7,gmm_K=5,0.13023833728679543
+kmeans_K=5,"leiden_k_nn=20, res=1.5",0.13005120574382492
+"leiden_k_nn=10, res=0.5",gmm_K=3,0.12995195190748707
+aggl_K=7,"leiden_k_nn=10, res=2.0",0.12979773849339066
+"leiden_k_nn=10, res=2.0",gmm_K=2,0.1290876701870467
+kmeans_K=3,"leiden_k_nn=15, res=2.0",0.1287236561275277
+gmm_K=2,gmm_K=5,0.12824517936012064
+kmeans_K=2,aggl_K=6,0.12733051852554675
+aggl_K=2,aggl_K=6,0.12733051852554675
+aggl_K=2,aggl_K=7,0.12681912681912683
+kmeans_K=2,aggl_K=7,0.12681912681912683
+aggl_K=8,gmm_K=2,0.12680379494538788
+"leiden_k_nn=20, res=1.0",gmm_K=2,0.12621497186380948
+aggl_K=5,gmm_K=6,0.12564070508813602
+kmeans_K=7,"leiden_k_nn=10, res=0.5",0.12544824111667605
+"leiden_k_nn=20, res=1.0",gmm_K=8,0.1250519318653926
+aggl_K=4,gmm_K=6,0.12435233160621761
+kmeans_K=4,"leiden_k_nn=10, res=0.5",0.12427488141145326
+aggl_K=7,gmm_K=7,0.12255045334893244
+kmeans_K=6,gmm_K=6,0.1224675206686654
+kmeans_K=5,gmm_K=5,0.12146649869903575
+"leiden_k_nn=15, res=2.0",gmm_K=4,0.12143707046988268
+aggl_K=6,gmm_K=7,0.12133740787344957
+aggl_K=2,gmm_K=4,0.11910346624967423
+kmeans_K=2,gmm_K=4,0.11910346624967423
+"leiden_k_nn=15, res=1.5",gmm_K=2,0.11798218355085975
+aggl_K=6,gmm_K=6,0.11765759312320917
+"leiden_k_nn=20, res=2.0",gmm_K=7,0.11697763190753095
+kmeans_K=4,"leiden_k_nn=20, res=1.0",0.11661286761418689
+kmeans_K=3,"leiden_k_nn=10, res=1.5",0.1164926099074698
+kmeans_K=4,"leiden_k_nn=15, res=1.5",0.11512744030874059
+kmeans_K=4,"leiden_k_nn=10, res=1.5",0.11506471336432701
+kmeans_K=7,"leiden_k_nn=20, res=2.0",0.1145820798536738
+aggl_K=7,gmm_K=6,0.11421911421911422
+"leiden_k_nn=20, res=1.5",gmm_K=3,0.1140165628685059
+aggl_K=3,gmm_K=7,0.11362401994234546
+"leiden_k_nn=15, res=2.0",gmm_K=2,0.11043606199741254
+kmeans_K=5,aggl_K=2,0.10985634248437443
+kmeans_K=2,kmeans_K=5,0.10985634248437443
+"leiden_k_nn=20, res=1.5",gmm_K=5,0.10959884598020107
+kmeans_K=3,"leiden_k_nn=15, res=1.5",0.10909039998879975
+"leiden_k_nn=20, res=2.0",gmm_K=5,0.10563371567863197
+aggl_K=3,gmm_K=6,0.10540449815374286
+"leiden_k_nn=10, res=1.5",gmm_K=2,0.10442653857080138
+aggl_K=3,gmm_K=8,0.10354687929612318
+kmeans_K=6,aggl_K=2,0.10326730848552397
+kmeans_K=2,kmeans_K=6,0.10326730848552397
+hdbscan_min_cluster_size=3,"leiden_k_nn=10, res=0.5",0.10127064286321642
+hdbscan_min_cluster_size=3,"leiden_k_nn=20, res=1.0",0.1008841705651019
+"leiden_k_nn=20, res=1.0","leiden_k_nn=20, res=2.0",0.09929515848940962
+"leiden_k_nn=10, res=0.5",gmm_K=5,0.09648641839925312
+aggl_K=6,"leiden_k_nn=20, res=2.0",0.09494690740817253
+aggl_K=8,"leiden_k_nn=20, res=2.0",0.09346298926143573
+aggl_K=7,"leiden_k_nn=20, res=2.0",0.09011373578302712
+aggl_K=3,gmm_K=5,0.08959462049021828
+kmeans_K=7,"leiden_k_nn=20, res=1.0",0.0893684329454299
+"leiden_k_nn=10, res=0.5","leiden_k_nn=20, res=2.0",0.08922912507514305
+"leiden_k_nn=20, res=2.0",gmm_K=3,0.08664962022216885
+kmeans_K=6,"leiden_k_nn=20, res=2.0",0.08487884120752674
+kmeans_K=5,"leiden_k_nn=20, res=2.0",0.08419675921594068
+kmeans_K=8,"leiden_k_nn=20, res=2.0",0.08297584973792312
+"leiden_k_nn=10, res=0.5",gmm_K=8,0.08257968865826538
+"leiden_k_nn=20, res=1.5",gmm_K=6,0.0819474572186069
+aggl_K=2,aggl_K=8,0.07929535165179973
+kmeans_K=2,aggl_K=8,0.07929535165179973
+aggl_K=2,gmm_K=3,0.0781003657936226
+kmeans_K=2,gmm_K=3,0.0781003657936226
+"leiden_k_nn=20, res=1.5",gmm_K=7,0.07785124470581066
+"leiden_k_nn=20, res=1.5",gmm_K=4,0.0775800344456127
+"leiden_k_nn=20, res=1.0",gmm_K=5,0.07728955833380598
+kmeans_K=2,kmeans_K=8,0.07708118141159075
+kmeans_K=8,aggl_K=2,0.07708118141159075
+kmeans_K=2,gmm_K=5,0.07286291780326684
+aggl_K=2,gmm_K=5,0.07286291780326684
+"leiden_k_nn=20, res=1.0",gmm_K=3,0.07224611852133407
+"leiden_k_nn=20, res=1.5",gmm_K=2,0.07219004664035672
+kmeans_K=3,"leiden_k_nn=20, res=1.5",0.07142371824242984
+"leiden_k_nn=20, res=2.0",gmm_K=4,0.07032803680118921
+kmeans_K=4,"leiden_k_nn=20, res=2.0",0.06987761272535055
+kmeans_K=3,"leiden_k_nn=20, res=2.0",0.06905393715615342
+aggl_K=3,gmm_K=4,0.06751245585189085
+kmeans_K=4,"leiden_k_nn=20, res=1.5",0.06716030343521194
+kmeans_K=7,aggl_K=2,0.06696497795893051
+kmeans_K=2,kmeans_K=7,0.06696497795893051
+"leiden_k_nn=10, res=0.5",gmm_K=4,0.06564469627716074
+"leiden_k_nn=20, res=2.0",gmm_K=2,0.06375939101447833
+"leiden_k_nn=10, res=0.5",gmm_K=6,0.05380966498665876
+kmeans_K=2,gmm_K=7,0.053018263293645625
+aggl_K=2,gmm_K=7,0.053018263293645625
+hdbscan_min_cluster_size=5,"leiden_k_nn=10, res=0.5",0.048413961716444645
+aggl_K=2,gmm_K=8,0.04751154438173422
+kmeans_K=2,gmm_K=8,0.04751154438173422
+"leiden_k_nn=10, res=0.5",gmm_K=7,0.04413890227180076
+aggl_K=2,gmm_K=6,0.04399748585795098
+kmeans_K=2,gmm_K=6,0.04399748585795098
+"leiden_k_nn=20, res=1.0",gmm_K=6,0.04219548376462832
+hdbscan_min_cluster_size=3,"leiden_k_nn=10, res=1.5",0.04067990782743189
+aggl_K=3,gmm_K=3,0.035163296191960555
+hdbscan_min_cluster_size=3,"leiden_k_nn=10, res=2.0",0.03260422395537868
+hdbscan_min_cluster_size=4,"leiden_k_nn=10, res=0.5",0.03176467980404762
+aggl_K=5,"leiden_k_nn=10, res=2.0",0.030754179876277134
+aggl_K=4,"leiden_k_nn=10, res=2.0",0.030139259607370884
+"leiden_k_nn=20, res=1.0",gmm_K=7,0.02950224002312282
+hdbscan_min_cluster_size=3,"leiden_k_nn=10, res=1.0",0.028039131733187495
+hdbscan_min_cluster_size=3,"leiden_k_nn=15, res=1.5",0.027709884216260004
+hdbscan_min_cluster_size=4,"leiden_k_nn=20, res=1.5",0.026957582227297695
+hdbscan_min_cluster_size=3,"leiden_k_nn=20, res=1.5",0.026844996168475854
+hdbscan_min_cluster_size=4,"leiden_k_nn=20, res=2.0",0.0251644840277549
+hdbscan_min_cluster_size=3,"leiden_k_nn=15, res=2.0",0.023211525937944042
+hdbscan_min_cluster_size=5,"leiden_k_nn=20, res=1.5",0.021220835538156086
+hdbscan_min_cluster_size=4,"leiden_k_nn=15, res=1.5",0.021168011665032557
+hdbscan_min_cluster_size=3,"leiden_k_nn=20, res=2.0",0.018482738757519702
+"leiden_k_nn=20, res=1.0",gmm_K=4,0.01832714618506135
+aggl_K=4,"leiden_k_nn=10, res=1.5",0.018198655081042587
+aggl_K=5,"leiden_k_nn=10, res=1.5",0.017424022632739605
+aggl_K=4,"leiden_k_nn=20, res=1.0",0.01711901385593507
+hdbscan_min_cluster_size=5,"leiden_k_nn=20, res=2.0",0.015608239255856438
+hdbscan_min_cluster_size=4,"leiden_k_nn=20, res=1.0",0.015487698874933576
+hdbscan_min_cluster_size=4,"leiden_k_nn=15, res=2.0",0.014066157074386474
+hdbscan_min_cluster_size=5,"leiden_k_nn=10, res=2.0",0.014049071477796049
+aggl_K=5,"leiden_k_nn=20, res=1.0",0.013903022683147925
+hdbscan_min_cluster_size=4,"leiden_k_nn=10, res=2.0",0.013470992360539455
+hdbscan_min_cluster_size=5,"leiden_k_nn=15, res=1.5",0.013322630500676915
+aggl_K=4,"leiden_k_nn=20, res=1.5",0.010091088356744679
+aggl_K=5,"leiden_k_nn=20, res=1.5",0.009217617211767398
+aggl_K=5,"leiden_k_nn=20, res=2.0",0.008223997904858962
+aggl_K=4,"leiden_k_nn=20, res=2.0",0.007939495616869971
+hdbscan_min_cluster_size=5,"leiden_k_nn=20, res=1.0",0.006531781594960257
+aggl_K=4,"leiden_k_nn=15, res=1.0",0.005892034978245504
+aggl_K=3,"leiden_k_nn=20, res=1.0",0.005541371032806643
+hdbscan_min_cluster_size=3,"leiden_k_nn=15, res=1.0",0.0054415802284149
+aggl_K=5,"leiden_k_nn=15, res=2.0",0.004818934855790702
+aggl_K=4,"leiden_k_nn=15, res=2.0",0.0042908166583958875
+aggl_K=3,"leiden_k_nn=10, res=0.5",0.0042136800702526
+hdbscan_min_cluster_size=5,"leiden_k_nn=10, res=1.5",0.004211014558462409
+aggl_K=3,"leiden_k_nn=10, res=2.0",0.002974768611413684
+aggl_K=3,"leiden_k_nn=20, res=1.5",0.0028027732703938633
+aggl_K=5,"leiden_k_nn=15, res=1.0",0.0024956070937673597
+aggl_K=2,"leiden_k_nn=15, res=1.0",0.0023744391177559295
+kmeans_K=2,"leiden_k_nn=15, res=1.0",0.0023744391177559295
+aggl_K=3,"leiden_k_nn=10, res=1.5",0.0023609719356414587
+hdbscan_min_cluster_size=5,"leiden_k_nn=15, res=2.0",0.002196810089505315
+kmeans_K=5,hdbscan_min_cluster_size=4,0.0018765350826194212
+aggl_K=8,hdbscan_min_cluster_size=3,0.0008397566030388416
+aggl_K=2,"leiden_k_nn=20, res=1.5",0.0006064165556494626
+kmeans_K=2,"leiden_k_nn=20, res=1.5",0.0006064165556494626
+"leiden_k_nn=15, res=0.5","leiden_k_nn=15, res=1.0",0.0
+aggl_K=5,"leiden_k_nn=15, res=0.5",0.0
+aggl_K=5,"leiden_k_nn=20, res=0.5",0.0
+aggl_K=5,hdbscan_min_cluster_size=6,0.0
+aggl_K=5,hdbscan_min_cluster_size=8,0.0
+"leiden_k_nn=15, res=2.0","leiden_k_nn=20, res=0.5",0.0
+"leiden_k_nn=20, res=0.5","leiden_k_nn=20, res=1.0",0.0
+"leiden_k_nn=20, res=0.5","leiden_k_nn=20, res=1.5",0.0
+"leiden_k_nn=20, res=0.5","leiden_k_nn=20, res=2.0",0.0
+"leiden_k_nn=20, res=0.5",gmm_K=2,0.0
+kmeans_K=3,hdbscan_min_cluster_size=6,0.0
+kmeans_K=5,"leiden_k_nn=20, res=0.5",0.0
+kmeans_K=4,hdbscan_min_cluster_size=6,0.0
+"leiden_k_nn=15, res=0.5","leiden_k_nn=15, res=1.5",0.0
+hdbscan_min_cluster_size=6,gmm_K=3,0.0
+hdbscan_min_cluster_size=6,gmm_K=4,0.0
+hdbscan_min_cluster_size=6,gmm_K=5,0.0
+hdbscan_min_cluster_size=6,gmm_K=6,0.0
+hdbscan_min_cluster_size=6,gmm_K=7,0.0
+aggl_K=3,"leiden_k_nn=15, res=0.5",0.0
+aggl_K=3,"leiden_k_nn=20, res=0.5",0.0
+"leiden_k_nn=10, res=0.5","leiden_k_nn=15, res=0.5",0.0
+kmeans_K=7,"leiden_k_nn=20, res=0.5",0.0
+"leiden_k_nn=10, res=1.0","leiden_k_nn=15, res=0.5",0.0
+"leiden_k_nn=10, res=1.0","leiden_k_nn=20, res=0.5",0.0
+"leiden_k_nn=15, res=0.5",gmm_K=6,0.0
+"leiden_k_nn=15, res=0.5",gmm_K=7,0.0
+kmeans_K=7,hdbscan_min_cluster_size=6,0.0
+kmeans_K=7,hdbscan_min_cluster_size=8,0.0
+kmeans_K=7,"leiden_k_nn=15, res=0.5",0.0
+kmeans_K=4,hdbscan_min_cluster_size=8,0.0
+"leiden_k_nn=10, res=0.5","leiden_k_nn=20, res=0.5",0.0
+aggl_K=8,"leiden_k_nn=20, res=0.5",0.0
+hdbscan_min_cluster_size=3,hdbscan_min_cluster_size=6,0.0
+"leiden_k_nn=20, res=0.5",gmm_K=4,0.0
+"leiden_k_nn=20, res=0.5",gmm_K=3,0.0
+"leiden_k_nn=20, res=0.5",gmm_K=8,0.0
+"leiden_k_nn=15, res=0.5","leiden_k_nn=20, res=2.0",0.0
+"leiden_k_nn=15, res=0.5",gmm_K=2,0.0
+kmeans_K=3,"leiden_k_nn=15, res=0.5",0.0
+"leiden_k_nn=15, res=0.5",gmm_K=4,0.0
+hdbscan_min_cluster_size=3,hdbscan_min_cluster_size=8,0.0
+aggl_K=6,hdbscan_min_cluster_size=6,0.0
+aggl_K=6,hdbscan_min_cluster_size=8,0.0
+aggl_K=6,"leiden_k_nn=15, res=0.5",0.0
+aggl_K=6,"leiden_k_nn=20, res=0.5",0.0
+"leiden_k_nn=15, res=0.5","leiden_k_nn=20, res=1.5",0.0
+aggl_K=7,"leiden_k_nn=20, res=0.5",0.0
+"leiden_k_nn=15, res=0.5",gmm_K=3,0.0
+kmeans_K=4,"leiden_k_nn=15, res=0.5",0.0
+kmeans_K=4,"leiden_k_nn=20, res=0.5",0.0
+hdbscan_min_cluster_size=6,gmm_K=2,0.0
+kmeans_K=3,"leiden_k_nn=20, res=0.5",0.0
+kmeans_K=6,"leiden_k_nn=15, res=0.5",0.0
+kmeans_K=6,"leiden_k_nn=20, res=0.5",0.0
+kmeans_K=5,hdbscan_min_cluster_size=6,0.0
+aggl_K=8,"leiden_k_nn=15, res=0.5",0.0
+kmeans_K=5,"leiden_k_nn=15, res=0.5",0.0
+"leiden_k_nn=15, res=0.5",gmm_K=8,0.0
+"leiden_k_nn=15, res=1.0","leiden_k_nn=20, res=0.5",0.0
+"leiden_k_nn=15, res=1.5","leiden_k_nn=20, res=0.5",0.0
+kmeans_K=6,hdbscan_min_cluster_size=6,0.0
+kmeans_K=6,hdbscan_min_cluster_size=8,0.0
+aggl_K=8,hdbscan_min_cluster_size=6,0.0
+aggl_K=8,hdbscan_min_cluster_size=8,0.0
+kmeans_K=5,hdbscan_min_cluster_size=8,0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=10, res=2.0",0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=15, res=1.0",0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=15, res=1.5",0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=15, res=2.0",0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=20, res=1.0",0.0
+hdbscan_min_cluster_size=5,"leiden_k_nn=15, res=0.5",0.0
+"leiden_k_nn=10, res=2.0","leiden_k_nn=20, res=0.5",0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=20, res=1.5",0.0
+hdbscan_min_cluster_size=4,"leiden_k_nn=20, res=0.5",0.0
+hdbscan_min_cluster_size=4,hdbscan_min_cluster_size=8,0.0
+hdbscan_min_cluster_size=5,"leiden_k_nn=20, res=0.5",0.0
+hdbscan_min_cluster_size=5,hdbscan_min_cluster_size=6,0.0
+hdbscan_min_cluster_size=5,hdbscan_min_cluster_size=8,0.0
+aggl_K=3,hdbscan_min_cluster_size=6,0.0
+aggl_K=3,hdbscan_min_cluster_size=8,0.0
+aggl_K=2,"leiden_k_nn=15, res=0.5",0.0
+kmeans_K=8,hdbscan_min_cluster_size=6,0.0
+"leiden_k_nn=15, res=0.5",gmm_K=5,0.0
+hdbscan_min_cluster_size=4,hdbscan_min_cluster_size=6,0.0
+kmeans_K=2,"leiden_k_nn=20, res=0.5",0.0
+kmeans_K=2,hdbscan_min_cluster_size=6,0.0
+kmeans_K=2,"leiden_k_nn=15, res=0.5",0.0
+"leiden_k_nn=20, res=0.5",gmm_K=7,0.0
+aggl_K=7,hdbscan_min_cluster_size=8,0.0
+aggl_K=7,"leiden_k_nn=15, res=0.5",0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=10, res=1.5",0.0
+kmeans_K=3,hdbscan_min_cluster_size=8,0.0
+aggl_K=7,hdbscan_min_cluster_size=6,0.0
+hdbscan_min_cluster_size=4,"leiden_k_nn=15, res=0.5",0.0
+"leiden_k_nn=20, res=0.5",gmm_K=6,0.0
+hdbscan_min_cluster_size=3,"leiden_k_nn=15, res=0.5",0.0
+hdbscan_min_cluster_size=3,"leiden_k_nn=20, res=0.5",0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=10, res=0.5",0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=10, res=1.0",0.0
+kmeans_K=2,hdbscan_min_cluster_size=8,0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=20, res=2.0",0.0
+hdbscan_min_cluster_size=8,gmm_K=2,0.0
+hdbscan_min_cluster_size=8,gmm_K=3,0.0
+hdbscan_min_cluster_size=8,gmm_K=4,0.0
+hdbscan_min_cluster_size=8,gmm_K=5,0.0
+hdbscan_min_cluster_size=8,gmm_K=6,0.0
+hdbscan_min_cluster_size=6,gmm_K=8,0.0
+aggl_K=2,"leiden_k_nn=20, res=0.5",0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=10, res=1.0",0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=10, res=1.5",0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=10, res=2.0",0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=15, res=1.0",0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=15, res=1.5",0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=15, res=2.0",0.0
+"leiden_k_nn=20, res=0.5",gmm_K=5,0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=20, res=2.0",0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=10, res=0.5",0.0
+aggl_K=2,hdbscan_min_cluster_size=6,0.0
+aggl_K=2,hdbscan_min_cluster_size=8,0.0
+aggl_K=4,hdbscan_min_cluster_size=6,0.0
+aggl_K=4,hdbscan_min_cluster_size=8,0.0
+hdbscan_min_cluster_size=8,gmm_K=7,0.0
+hdbscan_min_cluster_size=8,gmm_K=8,0.0
+"leiden_k_nn=15, res=0.5","leiden_k_nn=15, res=2.0",0.0
+"leiden_k_nn=15, res=0.5","leiden_k_nn=20, res=1.0",0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=20, res=1.5",0.0
+kmeans_K=8,"leiden_k_nn=15, res=0.5",0.0
+kmeans_K=8,"leiden_k_nn=20, res=0.5",0.0
+"leiden_k_nn=10, res=1.5","leiden_k_nn=15, res=0.5",0.0
+"leiden_k_nn=10, res=1.5","leiden_k_nn=20, res=0.5",0.0
+"leiden_k_nn=10, res=2.0","leiden_k_nn=15, res=0.5",0.0
+aggl_K=4,"leiden_k_nn=15, res=0.5",0.0
+aggl_K=4,"leiden_k_nn=20, res=0.5",0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=20, res=1.0",0.0
+kmeans_K=8,hdbscan_min_cluster_size=8,0.0
+hdbscan_min_cluster_size=5,"leiden_k_nn=10, res=1.0",-3.663137843877065e-05
+aggl_K=2,"leiden_k_nn=10, res=2.0",-0.00010548152315319434
+kmeans_K=2,"leiden_k_nn=10, res=2.0",-0.00010548152315319434
+aggl_K=3,"leiden_k_nn=15, res=2.0",-0.0004895431310267882
+hdbscan_min_cluster_size=4,"leiden_k_nn=10, res=1.5",-0.000881730635206267
+aggl_K=2,"leiden_k_nn=15, res=1.5",-0.0009034843068704089
+kmeans_K=2,"leiden_k_nn=15, res=1.5",-0.0009034843068704089
+aggl_K=4,"leiden_k_nn=10, res=0.5",-0.0015622864782812633
+aggl_K=3,"leiden_k_nn=20, res=2.0",-0.00211622511981034
+aggl_K=2,"leiden_k_nn=20, res=2.0",-0.003701197914593863
+kmeans_K=2,"leiden_k_nn=20, res=2.0",-0.003701197914593863
+aggl_K=5,"leiden_k_nn=10, res=0.5",-0.004454227823042319
+hdbscan_min_cluster_size=3,gmm_K=6,-0.004516265612871357
+hdbscan_min_cluster_size=4,"leiden_k_nn=10, res=1.0",-0.004786322452017288
+aggl_K=2,"leiden_k_nn=10, res=1.0",-0.006223199034866637
+kmeans_K=2,"leiden_k_nn=10, res=1.0",-0.006223199034866637
+aggl_K=4,"leiden_k_nn=10, res=1.0",-0.006758720687431719
+aggl_K=2,"leiden_k_nn=10, res=1.5",-0.008196501558627044
+kmeans_K=2,"leiden_k_nn=10, res=1.5",-0.008196501558627044
+hdbscan_min_cluster_size=5,"leiden_k_nn=15, res=1.0",-0.008392965656629824
+aggl_K=3,"leiden_k_nn=15, res=1.5",-0.008627816759587051
+kmeans_K=5,hdbscan_min_cluster_size=5,-0.008762419918243374
+hdbscan_min_cluster_size=4,"leiden_k_nn=15, res=1.0",-0.008785522636718382
+hdbscan_min_cluster_size=3,gmm_K=7,-0.009192585998713214
+aggl_K=5,"leiden_k_nn=10, res=1.0",-0.01018477032440132
+kmeans_K=8,hdbscan_min_cluster_size=3,-0.010186203014749085
+aggl_K=5,"leiden_k_nn=15, res=1.5",-0.010842529762623457
+kmeans_K=2,"leiden_k_nn=15, res=2.0",-0.011118162144319928
+aggl_K=2,"leiden_k_nn=15, res=2.0",-0.011118162144319928
+aggl_K=4,"leiden_k_nn=15, res=1.5",-0.011621318609781679
+aggl_K=2,"leiden_k_nn=10, res=0.5",-0.012404312747975633
+kmeans_K=2,"leiden_k_nn=10, res=0.5",-0.012404312747975633
+aggl_K=3,"leiden_k_nn=15, res=1.0",-0.015495960133077968
+aggl_K=8,hdbscan_min_cluster_size=4,-0.015834107448855685
+hdbscan_min_cluster_size=3,gmm_K=8,-0.01586073500967118
+aggl_K=3,"leiden_k_nn=10, res=1.0",-0.016391194019614568
+kmeans_K=2,"leiden_k_nn=20, res=1.0",-0.02220127694462915
+aggl_K=2,"leiden_k_nn=20, res=1.0",-0.02220127694462915
+kmeans_K=6,hdbscan_min_cluster_size=3,-0.024155438583588866
+aggl_K=8,hdbscan_min_cluster_size=5,-0.024244941146587734
+hdbscan_min_cluster_size=3,gmm_K=5,-0.024418493109316545
+kmeans_K=8,hdbscan_min_cluster_size=5,-0.025054718361602547
+hdbscan_min_cluster_size=4,gmm_K=6,-0.02715634294581663
+hdbscan_min_cluster_size=5,gmm_K=6,-0.02769670247779917
+kmeans_K=8,hdbscan_min_cluster_size=4,-0.029299989326640383
+hdbscan_min_cluster_size=5,gmm_K=7,-0.029591386530229965
+hdbscan_min_cluster_size=4,gmm_K=7,-0.029885650694321243
+kmeans_K=6,hdbscan_min_cluster_size=5,-0.03137295924208716
+kmeans_K=5,hdbscan_min_cluster_size=3,-0.03259970213470131
+aggl_K=6,hdbscan_min_cluster_size=4,-0.03556741741332825
+aggl_K=7,hdbscan_min_cluster_size=4,-0.0368469942938028
+kmeans_K=6,hdbscan_min_cluster_size=4,-0.039646115378169325
+hdbscan_min_cluster_size=5,gmm_K=8,-0.04
+aggl_K=6,hdbscan_min_cluster_size=5,-0.041221515879441
+hdbscan_min_cluster_size=4,gmm_K=8,-0.04133290611983339
+aggl_K=7,hdbscan_min_cluster_size=5,-0.04230876996357523
+aggl_K=6,hdbscan_min_cluster_size=3,-0.04574928471812862
+hdbscan_min_cluster_size=4,gmm_K=5,-0.04691546780369182
+aggl_K=7,hdbscan_min_cluster_size=3,-0.04744329463430587
+hdbscan_min_cluster_size=5,gmm_K=2,-0.04838709677419355
+hdbscan_min_cluster_size=5,gmm_K=5,-0.04972463579066593
+hdbscan_min_cluster_size=5,gmm_K=3,-0.059178474738072674
+kmeans_K=7,hdbscan_min_cluster_size=5,-0.059251246535623074
+hdbscan_min_cluster_size=4,gmm_K=3,-0.061471326457283905
+hdbscan_min_cluster_size=4,gmm_K=2,-0.06313178878633767
+kmeans_K=7,hdbscan_min_cluster_size=4,-0.06550322418336137
+hdbscan_min_cluster_size=3,gmm_K=3,-0.06613874859530483
+kmeans_K=3,hdbscan_min_cluster_size=5,-0.0729633786217806
+kmeans_K=7,hdbscan_min_cluster_size=3,-0.07792827097316034
+kmeans_K=4,hdbscan_min_cluster_size=5,-0.07879009693143686
+aggl_K=2,hdbscan_min_cluster_size=3,-0.08069696259919887
+kmeans_K=2,hdbscan_min_cluster_size=3,-0.08069696259919887
+aggl_K=2,hdbscan_min_cluster_size=4,-0.0807242023823915
+kmeans_K=2,hdbscan_min_cluster_size=4,-0.0807242023823915
+aggl_K=2,hdbscan_min_cluster_size=5,-0.08108382537353594
+kmeans_K=2,hdbscan_min_cluster_size=5,-0.08108382537353594
+kmeans_K=3,hdbscan_min_cluster_size=4,-0.08737408431407058
+hdbscan_min_cluster_size=3,gmm_K=2,-0.089248544450813
+kmeans_K=4,hdbscan_min_cluster_size=4,-0.09457592814890334
+hdbscan_min_cluster_size=5,gmm_K=4,-0.0988952077246398
+hdbscan_min_cluster_size=4,gmm_K=4,-0.1030250414310996
+hdbscan_min_cluster_size=3,gmm_K=4,-0.11326068012201959
+kmeans_K=3,hdbscan_min_cluster_size=3,-0.11429644198437935
+aggl_K=3,hdbscan_min_cluster_size=5,-0.12411716243272361
+kmeans_K=4,hdbscan_min_cluster_size=3,-0.12436512093754158
+aggl_K=3,hdbscan_min_cluster_size=4,-0.12620008715901238
+aggl_K=3,hdbscan_min_cluster_size=3,-0.1306622489387099
+aggl_K=4,hdbscan_min_cluster_size=5,-0.16715287508672266
+aggl_K=5,hdbscan_min_cluster_size=5,-0.16907507460771798
+aggl_K=4,hdbscan_min_cluster_size=4,-0.1740777764431152
+aggl_K=5,hdbscan_min_cluster_size=4,-0.17625520246382176
+aggl_K=4,hdbscan_min_cluster_size=3,-0.188402507060766
+aggl_K=5,hdbscan_min_cluster_size=3,-0.19106150791758766

@@ -1,0 +1,6 @@
+indicador,media_truncada,media_completa,delta_media,max_delta_hospital
+comorbilidades_promedio,2.864559338704548,4.701128306893965,1.836568968189418,3.7963078848560703
+vector_capitulos_ponderado_L1,0.0,0.18148622730102465,,
+vector_secciones_L1,0.0,0.17927583053155938,,
+Ward_K4_silhouette,0.41396518156048984,0.4003084431227775,-0.013656738437712312,
+Ward_K4_ARI_particiones,,0.9264985399294754,,

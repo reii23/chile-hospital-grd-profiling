@@ -1,0 +1,12 @@
+variable,mediana_cobertura_completa,mediana_cobertura_incompleta,n_completa,n_incompleta,mannwhitney_p
+egresos_por_anio,10666.833333333334,,65,0,
+estancia_media,6.969361366673396,,65,0,
+peso_medio_grd,0.9585059730274927,,65,0,
+severidad_media,1.685791284243952,,65,0,
+mortalidad_media,1.5085347382897072,,65,0,
+tasa_cma,0.14300237207726194,,65,0,
+pct_pediatrico,0.140555168313584,,65,0,
+pct_geriatrico,0.25717851767556255,,65,0,
+pct_urgencia,0.6089674239692271,,65,0,
+pct_programada,0.17876864948653362,,65,0,
+cv_estancia,1.8786519311808654,,65,0,

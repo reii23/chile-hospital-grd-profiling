@@ -1,0 +1,105 @@
+% ============================================================================
+%  CAPÍTULO 5 — CONCLUSIONES
+% ============================================================================
+
+\chapter{Conclusiones}
+\label{cap:conclusiones}
+
+Esta investigación caracterizó funcionalmente a los hospitales públicos chilenos
+de alta y mediana complejidad a partir de registros administrativos GRD del
+período 2019--2024. El pipeline reproducible construido transforma los egresos
+registrados con fines administrativos en una representación institucional basada
+en producción, complejidad, diversidad, casuística, modalidad de ingreso y alta,
+composición demográfica y actividad quirúrgico-obstétrica.
+
+La respuesta a la pregunta de investigación es afirmativa: los datos GRD permiten
+identificar perfiles funcionales distinguibles que no coinciden de forma estrecha
+con la clasificación administrativa vigente. La solución Ward con $K=4$, aplicada
+sobre una matriz de $65 \times 35$ variables, distingue tres hospitales
+pediátricos, un núcleo generalista de 54 establecimientos, un grupo de cinco
+hospitales con carga clínica y estancia prolongada, y tres institutos
+monográficos. La elección de cuatro grupos se sostiene como un compromiso
+interpretativo: la solución $K=2$ maximiza las métricas internas, pero reduce la
+red a un bloque de 62 hospitales y tres casos singulares, lo que no permite el
+perfilamiento funcional propuesto.
+
+La matriz final integra 27 variables clínico-operativas directas y ocho
+componentes principales de casuística. Estas componentes condensan
+aproximadamente el $72{,}3\,\%$ de la varianza de las proporciones construidas a
+partir de capítulos CIE-10, secciones CIE-9-MC y GRD frecuentes. La cobertura
+ampliada de los campos diagnósticos y de procedimientos permite incorporar una
+parte sustantiva de la información clínica registrada. Sin embargo, indicadores
+como las comorbilidades promedio deben interpretarse como carga clínica
+registrada, pues pueden reflejar simultáneamente diferencias de casuística y
+diferencias en la exhaustividad de la codificación entre establecimientos.
+
+La comparación con MINSAL confirma que las dos clasificaciones describen
+dimensiones diferentes de la red. La concordancia entre Ward $K=4$ y las
+categorías de Alta y Mediana Complejidad fue baja
+(ARI $=0{,}112$; NMI $=0{,}107$). En particular, el núcleo generalista contiene
+47 hospitales de Alta y 7 de Mediana Complejidad, mientras que el grupo de carga
+clínica reúne 2 y 3 establecimientos, respectivamente. Esta divergencia no
+implica que una clasificación sea intrínsecamente correcta y la otra incorrecta;
+indica que la clasificación administrativa y el patrón de producción clínica no
+son intercambiables.
+
+La hipótesis de mayor homogeneidad funcional se evaluó directamente sobre la
+misma matriz preprocesada. Ward $K=4$ obtuvo una dispersión intragrupo
+normalizada WSS/TSS $=0{,}475$ y Silhouette $=0{,}401$, frente a WSS/TSS
+$=0{,}944$ y Silhouette $=0{,}070$ para MINSAL. Al controlar el número de
+grupos, Ward $K=2$ mantuvo menor dispersión que MINSAL
+(WSS/TSS $=0{,}707$ frente a $0{,}944$). Las pruebas de permutación con 2.000
+reasignaciones preservando los tamaños de grupo confirman que ambas particiones
+son más homogéneas que asignaciones aleatorias comparables, aunque la distancia
+respecto de la distribución nula es considerablemente mayor para las soluciones
+Ward. Por tanto, la evidencia respalda que la segmentación funcional produce
+grupos más homogéneos en el espacio de variables utilizado, sin que ello
+constituya una validación externa de su utilidad operativa.
+
+Los análisis de estabilidad y sensibilidad matizan el alcance de esta conclusión.
+En 100 submuestras sin reposición del $80\,\%$ de los hospitales, la mediana del
+ARI respecto de la solución completa fue $0{,}958$ y la del NMI fue $0{,}917$.
+La transformación composicional CLR conservó exactamente la partición principal
+(ARI $=1{,}000$), con un Silhouette de $0{,}438$. En cambio, la exclusión de los
+años 2020--2021 produjo una concordancia menor
+(ARI $=0{,}809$; NMI $=0{,}750$). En consecuencia, la separación global de los
+perfiles se sostiene bajo estas perturbaciones, pero las fronteras entre grupos
+pequeños y la interpretación de componentes finas de casuística son sensibles al
+período y a la representación utilizada.
+
+El análisis descriptivo posterior al agrupamiento, realizado variable por variable,
+identificó diferencias significativas, tras la corrección de
+Benjamini--Hochberg, en 26 de las 28 variables directas entre los cuatro grupos
+de Nivel 1. Este resultado permite caracterizar los perfiles obtenidos, pero no
+constituye una prueba independiente de la partición, porque las mismas variables
+participaron en su construcción. La prueba de permutación del flujo completo
+acota esta circularidad: ninguna de las 500 matrices sin estructura real alcanzó
+las 26 variables significativas observadas. Aun así, esta evidencia no reemplaza
+una validación externa con nuevos años, hospitales o variables no utilizadas para
+descubrir la partición.
+
+La interpretación de los grupos debe mantener una distinción fundamental: los
+perfiles identificados describen actividad clínica registrada, pero no miden
+calidad, desempeño ni eficiencia. El estudio no incorporó costos, camas,
+equipamiento, dotación de personal, tiempos de espera ni desenlaces posteriores
+al alta. Por ello, los resultados pueden apoyar una caracterización
+complementaria de la red, pero no justifican por sí solos decisiones de
+financiamiento, asignación de recursos o evaluación de desempeño institucional.
+
+Las principales limitaciones se relacionan con la naturaleza administrativa de
+los datos, la heterogeneidad en las prácticas de codificación, la inclusión de
+los años afectados por la pandemia de COVID-19, la geometría composicional de
+los vectores de casuística y la ausencia de validación externa independiente.
+La prueba CLR indica que la clausura composicional no alteró la identidad de los
+cuatro grupos en este análisis, pero no excluye que otras transformaciones, como
+ILR, aporten matices adicionales. Del mismo modo, la estabilidad temporal permite
+sostener la existencia de perfiles generales, pero no interpretar de manera
+rígida las asignaciones que se encuentran próximas a los límites entre grupos.
+
+Como trabajo futuro, resulta prioritario validar longitudinalmente el pipeline
+con nuevos años de egresos y evaluar su generalización al incorporar hospitales
+recientemente integrados al sistema GRD. También sería relevante combinar el
+perfil funcional con demanda territorial, recursos humanos, camas, costos y
+resultados clínicos. Esa integración permitiría pasar desde una tipología
+descriptiva de la producción hacia análisis más completos de organización,
+capacidad y eficiencia de la red asistencial.

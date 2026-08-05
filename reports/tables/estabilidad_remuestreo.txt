@@ -1,0 +1,12 @@
+N_ITERACIONES=100
+FRAC_SUBMUESTRA=0.8
+n_sub=52
+silhouette_mediana=0.3954
+silhouette_ic95_lo=0.2252
+silhouette_ic95_hi=0.4596
+ari_mediana=0.9580
+ari_ic95_lo=0.5136
+ari_ic95_hi=1.0000
+nmi_mediana=0.9171
+nmi_ic95_lo=0.6562
+nmi_ic95_hi=1.0000

@@ -1,0 +1,8 @@
+COD_HOSPITAL,anios_presentes,anios_validos,elegible,motivo
+110110,2,2,False,anios_presentes < 3
+116107,1,1,False,anios_presentes < 3
+116111,1,1,False,anios_presentes < 3
+118106,2,2,False,anios_presentes < 3
+119101,2,2,False,anios_presentes < 3
+119102,1,1,False,anios_presentes < 3
+200717,1,1,False,anios_presentes < 3

@@ -1,0 +1,95 @@
+\PassOptionsToPackage{headheight=14pt,letterpaper}{geometry}
+\documentclass{tesis-usach}
+
+% Plantilla oficial USACH sin modificaciones en tesis-usach.cls,
+% tesis-finales.sty, tesis-enumeracion.sty, fontspec ni apa-good.bst.
+\usepackage{pdfpages}
+\usepackage{inputenc}
+\usepackage{multirow}
+\usepackage{array}
+
+% Dependencia del diagrama de flujo incluido en el capítulo de metodología.
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc}
+
+% La tesis no tiene profesor co-guía. Esta adaptación local del comando de
+% cubierta evita modificar la clase oficial y solo elimina esa línea vacía.
+\makeatletter
+\patchcmd{\makecubierta}
+  {{\normalsize \hspace{7cm} Profesor co-gu\'ia: \@profesorcoguia}\\}
+  {}
+  {}
+  {\PackageWarning{tesis-reinaldo}{No se pudo ocultar la linea de profesor co-guia}}
+\makeatother
+
+\begin{document}
+\baselineskip 23pt
+\frontmatter                                % Utiliza numeración romana
+
+% ### Cubierta de la tesis ###
+\thispagestyle{empty}
+\include{preliminares/cubierta}
+
+% Hyphenation
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+% ### Páginas preliminares de la tesis ###
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{}
+\fancyhead[C]{}
+\fancyhead[R]{}
+
+{\setstretch{1.0}                           % Interlineado preliminares
+%\makecopyright
+
+% ### Resumen de la tesis ###
+\setcounter{page}{1}
+\include{preliminares/resumen}
+%\include{preliminares/abstract}
+
+% ### Dedicatoria y agradecimientos (optativos) ###
+%\input{preliminares/dedicatoria}
+%\input{preliminares/agradecimiento}
+
+% ### Índices ###
+\tableofcontents
+\listoftables
+\listoffigures
+%\listofalgorithms
+\AtBeginEnvironment{algorithmic}{\setstretch{1.5}}
+} % end \setstretch{1.0}
+
+% ### Cuerpo de la tesis ###
+\mainmatter
+
+% ### Capítulos de la tesis ###
+\input{chapters/1-Introduccion}
+\input{chapters/2-fundamentos-teoricos-y-rev-lit}
+\input{chapters/3-Diseno-y-procedimiento}
+\input{chapters/4-Discusion}
+\input{chapters/5-Conclusiones}
+
+{\setstretch{1.0}                           % Interlineado páginas finales
+% ### Glosario (optativo; no utilizado) ###
+%\clearpage
+%\addcontentsline{toc}{chapter}{Glosario}
+%\input{finales/Glosario}
+
+% ### Bibliografía de la tesis ###
+\clearpage
+\addcontentsline{toc}{chapter}{Referencias bibliogr\'aficas}
+\bibliographystyle{apa-good}
+\bibliography{bibliografia}
+
+% ### Anexos de la tesis ###
+\clearpage
+\anexo
+\addcontentsline{toc}{chapter}{Anexos}
+\input{finales/Anexo-1}
+} % end \setstretch{1.0}
+
+\end{document}

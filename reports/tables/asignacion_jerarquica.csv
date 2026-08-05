@@ -1,0 +1,66 @@
+COD_HOSPITAL,NOMBRE,nivel1,nivel2
+101100,Hospital Dr. Juan Noé Crevanni (Arica),MAINSTREAM,S4
+102100,Hospital Dr. Ernesto Torres Galdames (Iquique),MAINSTREAM,S4
+103100,Hospital Dr. Leonardo Guzmán (Antofagasta),MAINSTREAM,S5
+103101,Hospital Dr. Carlos Cisternas (Calama),MAINSTREAM,S1
+104100,Hospital San José del Carmen (Copiapó),MAINSTREAM,S4
+104103,Hospital Provincial del Huasco Monseñor Fernando Ariztía Ruiz (Vallenar),MAINSTREAM,S4
+105100,Hospital San Juan de Dios (La Serena),MAINSTREAM,S6
+105101,Hospital San Pablo (Coquimbo),MAINSTREAM,S4
+105102,Hospital Dr. Antonio Tirado Lanas (Ovalle),MAINSTREAM,S6
+106100,Hospital Carlos Van Buren (Valparaíso),MAINSTREAM,S5
+106102,Hospital Dr. Eduardo Pereira Ramírez (Valparaíso),C3,C3
+106103,Hospital Claudio Vicuña (San Antonio),MAINSTREAM,S1
+107100,Hospital Dr. Gustavo Fricke (Viña del Mar),MAINSTREAM,S5
+107101,Hospital San Martín (Quillota),MAINSTREAM,S6
+107102,Hospital de Quilpué,MAINSTREAM,S0
+108100,Hospital de San Camilo (San Felipe),MAINSTREAM,S6
+108101,Hospital San Juan de Dios (Los Andes),MAINSTREAM,S4
+109100,"Complejo Hospitalario San José (Santiago, Independencia)",MAINSTREAM,S2
+109101,"Hospital Clínico de Niños Dr. Roberto del Río (Santiago, Independencia)",C0,C0
+110100,"Hospital San Juan de Dios (Santiago, Santiago)",MAINSTREAM,S5
+110120,"Hospital Dr. Félix Bulnes Cerda (Santiago, Quinta Normal)",MAINSTREAM,S7
+110130,Hospital Adalberto Steeger (Talagante),MAINSTREAM,S2
+110150,Hospital San José (Melipilla),MAINSTREAM,S2
+111100,"Hospital Clínico San Borja-Arriarán (Santiago, Santiago)",MAINSTREAM,S3
+111101,Hospital Clínico Metropolitano El Carmen Doctor Luis Valentín Ferrada,MAINSTREAM,S7
+111195,Hospital de Urgencia Asistencia Pública Dr. Alejandro del Río,C3,C3
+112100,"Hospital Del Salvador (Santiago, Providencia)",C3,C3
+112101,"Hospital Dr. Luis Tisné B. (Santiago, Peñalolén)",MAINSTREAM,S2
+112102,"Hospital de Niños Dr. Luis Calvo Mackenna (Santiago, Providencia)",C0,C0
+112103,Instituto Nacional de Enfermedades Respiratorias y Cirugía Torácica,C2,C2
+112104,Instituto de Neurocirugía Dr. Alfonso Asenjo,C2,C2
+113100,"Hospital Barros Luco Trudeau (Santiago, San Miguel)",MAINSTREAM,S7
+113130,"Hospital Dr. Exequiel González Cortés (Santiago, San Miguel)",C0,C0
+113150,Hospital San Luis (Buin),MAINSTREAM,S1
+113180,"Hospital El Pino (Santiago, San Bernardo)",MAINSTREAM,S1
+114101,"Complejo Hospitalario Dr. Sótero del Río (Santiago, Puente Alto)",MAINSTREAM,S5
+114103,Hospital Padre Alberto Hurtado (San Ramón),MAINSTREAM,S7
+114105,Hospital Clínico Metropolitano La Florida Dra. Eloisa Díaz Inzunza,MAINSTREAM,S7
+115100,Hospital Regional de Rancagua,MAINSTREAM,S7
+115107,Hospital San Juan de Dios (San Fernando),MAINSTREAM,S4
+115110,Hospital de Santa Cruz,MAINSTREAM,S0
+116100,Hospital San Juan de Dios (Curicó),MAINSTREAM,S6
+116105,Hospital Dr. César Garavagno Burotto (Talca),MAINSTREAM,S5
+116108,Hospital Presidente Carlos Ibáñez del Campo (Linares),MAINSTREAM,S4
+116110,Hospital San José (Parral),C3,C3
+117101,Hospital Clínico Herminda Martín (Chillán),MAINSTREAM,S6
+117102,Hospital de San Carlos,MAINSTREAM,S4
+118100,Hospital Clínico Regional Dr. Guillermo Grant Benavente (Concepción),MAINSTREAM,S5
+118105,Hospital San José (Coronel),MAINSTREAM,S1
+119100,Hospital Las Higueras (Talcahuano),MAINSTREAM,S4
+120101,Complejo Asistencial Dr. Víctor Ríos Ruiz (Los Ángeles),MAINSTREAM,S4
+121109,Hospital Dr. Hernán Henríquez Aravena (Temuco),MAINSTREAM,S5
+121110,Hospital Dr. Abraham Godoy (Lautaro),C3,C3
+121114,Hospital Intercultural de Nueva Imperial,C3,C3
+121117,Hospital de Pitrufquén,C3,C3
+121121,Hospital de Villarrica,MAINSTREAM,S0
+122100,Hospital Clínico Regional (Valdivia),MAINSTREAM,S5
+123100,Hospital Base San José de Osorno,MAINSTREAM,S4
+124105,Hospital de Puerto Montt,MAINSTREAM,S7
+125100,Hospital Regional (Coihaique),MAINSTREAM,S4
+126100,Hospital Clínico de Magallanes Dr. Lautaro Navarro Avaria,MAINSTREAM,S5
+128109,Hospital Provincial Dr. Rafael Avaría (Curanilahue),MAINSTREAM,S0
+129100,Hospital Dr. Mauricio Heyermann (Angol),MAINSTREAM,S4
+129106,Hospital San José (Victoria),MAINSTREAM,S4
+133150,Hospital de Castro,MAINSTREAM,S4
