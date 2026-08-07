@@ -105,7 +105,7 @@ Pabellones promedio & 0,533 & 0,209 & 0,186 & 0,494 & 1,4 \\
 \% Programada & 21,3\% & 13,0\% & 1,0\% & 17,9\% & 81,6\% \\
 \% Urgencia & 60,5\% & 11,4\% & 18,4\% & 60,9\% & 99,0\% \\
 \% Uso de pabellón & 42,4\% & 9,3\% & 18,6\% & 42,8\% & 77,7\% \\
-Tasa de partos & 2,5\% & 1,4\% & 0,000\% & 2,7\% & 5,6\% \\
+Proporción de egresos neonatales & 2,5\% & 1,4\% & 0,000\% & 2,7\% & 5,6\% \\
 Tasa de prematurez & 6,5\% & 3,6\% & 0,000\% & 6,5\% & 13,1\% \\
 \bottomrule
 \end{tabular}
@@ -138,6 +138,19 @@ relevante en la geometría original y debe hacerse explícita al interpretar los
 perfiles. No obstante, los otros tres bloques aportan conjuntamente el
 $62{,}9\%$ de la distancia, por lo que la partición no puede atribuirse solo a
 la demografía.
+
+Dentro de ese bloque, la variable técnica \texttt{tasa\_partos} se reporta en
+este documento como \emph{proporción de egresos neonatales}: corresponde a los
+egresos hospitalarios con \texttt{CONDICIONDEALTANEONATO1} informada y no a un
+conteo ni a una tasa clínica de partos atendidos. Su correlación con la
+proporción de ingresos obstétricos es alta (Pearson $r=0{,}928$; Spearman
+$\rho=0{,}924$; $n=65$), por lo que ambas variables contienen información
+redundante respecto de la orientación obstétrico-neonatal. La correlación con la
+proporción de egresos de mujeres fértiles también es alta, pero inferior al
+umbral de redundancia predefinido ($\rho=0{,}875$). Por transparencia, ambas
+variables se conservan en la matriz canónica; esta redundancia se considera al
+interpretar el peso del bloque demográfico-obstétrico y no permite atribuir el
+resultado a una medida independiente de partos.
 
 \begin{table}[htbp]
 \centering
@@ -306,7 +319,7 @@ Tasa de CMA & 13,5\% & 14,4\% & 34,8\% & 0,0\% \\
 Egresos pediátricos & 95,4\% & 14,2\% & 2,5\% & 0,0\% \\
 Egresos geriátricos & 0,0\% & 25,6\% & 37,2\% & 46,0\% \\
 Ingresos obstétricos & 0,0\% & 20,0\% & 10,5\% & 0,0\% \\
-Tasa de partos & 0,0\% & 2,8\% & 0,461\% & 0,0\% \\
+Proporción de egresos neonatales & 0,0\% & 2,8\% & 0,461\% & 0,0\% \\
 Edad mediana (años) & 5,0 & 41,8 & 56,8 & 63,6 \\
 \bottomrule
 \end{tabular}
@@ -358,7 +371,7 @@ partición.
 
     \item \textbf{Clúster $C1$ ($n=54$): Núcleo Generalista.} Es el grupo
     mayoritario de hospitales generales de la red pública. Presenta una mediana
-    de 13.124 egresos anuales, estancia media de $6{,}8$ días, peso medio GRD de $0{,}947$ y una composición asistencial mixta, con $14{,}2\%$ de egresos pediátricos, $25{,}6\%$ de egresos geriátricos, $20{,}0\%$ de ingresos obstétricos y una tasa de partos de $2{,}8\%$. La diversidad y el equilibrio relativo de su actividad
+    de 13.124 egresos anuales, estancia media de $6{,}8$ días, peso medio GRD de $0{,}947$ y una composición asistencial mixta, con $14{,}2\%$ de egresos pediátricos, $25{,}6\%$ de egresos geriátricos, $20{,}0\%$ de ingresos obstétricos y una proporción de egresos neonatales de $2{,}8\%$. La diversidad y el equilibrio relativo de su actividad
     permiten describirlo como el Núcleo Generalista de la red.
 \end{itemize}
 
@@ -540,7 +553,7 @@ Ingresos programados & 8,0\% & 15,0\% & 16,2\% & 12,3\% & 46,5\% &
 15,0\% & 21,3\% & 13,9\% & 29,8\% & 22,2\% \\
 Uso de pabellón & 23,7\% & 36,4\% & 46,3\% & 43,3\% & 42,1\% &
 44,9\% & 44,6\% & 42,6\% & 46,7\% & 43,2\% \\
-Tasa de partos & 2,1\% & 3,1\% & 4,4\% & 4,3\% & 5,1\% &
+Proporción de egresos neonatales & 2,1\% & 3,1\% & 4,4\% & 4,3\% & 5,1\% &
 3,4\% & 2,6\% & 2,8\% & 2,3\% & 1,9\% \\
 \bottomrule
 \end{tabular}%
@@ -575,7 +588,7 @@ los patrones observados.
 
     \item \textbf{Subclúster $S2$ ($n=3$): hospitales de menor volumen con
     uso elevado de pabellón.} Mantiene volumen bajo (5.810 egresos), pero el uso
-    de pabellón alcanza $46{,}3\%$ y la tasa de partos $4{,}4\%$. Está compuesto
+    de pabellón alcanza $46{,}3\%$ y la proporción de egresos neonatales $4{,}4\%$. Está compuesto
     por:
     \begin{itemize}
         \item Hospital Adalberto Steeger (Talagante);
@@ -585,7 +598,7 @@ los patrones observados.
 
     \item \textbf{Subclúster $S3$ ($n=5$): hospitales metropolitanos de
     volumen intermedio-alto.} Presenta una mediana de 15.070 egresos, estancia
-    de 7,0 días, peso medio GRD de 0,978 y tasa de partos de $4{,}3\%$. Está
+    de 7,0 días, peso medio GRD de 0,978 y proporción de egresos neonatales de $4{,}3\%$. Está
     compuesto por:
     \begin{itemize}
         \item Complejo Hospitalario San José (Santiago, Independencia);
@@ -1556,4 +1569,4 @@ Los resultados de sensibilidad muestran patrones diferenciados según el tipo de
 
 Frente al cambio de algoritmo, la evidencia es asimétrica. K-means presenta una concordancia elevada con Ward, mientras que GMM y MST-kNN reorganizan de forma más importante la partición completa. Sin embargo, ambos métodos tienden a conservar, en distinta magnitud, la separación entre el bloque generalista y los establecimientos especializados. En consecuencia, los perfiles especializados muestran mayor persistencia frente a cambios metodológicos que la composición detallada del núcleo generalista.
 
-Finalmente, la sensibilidad temporal afecta especialmente algunas componentes de casuística y la tasa de partos. Por ello, la interpretación de los perfiles funcionales globales cuenta con mayor respaldo que una lectura exhaustiva de las componentes específicas del PCA o de diferencias clínicas finas entre los grupos.
+Finalmente, la sensibilidad temporal afecta especialmente algunas componentes de casuística y la proporción de egresos neonatales. Por ello, la interpretación de los perfiles funcionales globales cuenta con mayor respaldo que una lectura exhaustiva de las componentes específicas del PCA o de diferencias clínicas finas entre los grupos.
