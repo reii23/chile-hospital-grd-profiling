@@ -139,8 +139,9 @@ administrativa vigente.
 \begin{quote}
 \textbf{¿Qué perfiles asistenciales y funcionales emergen al agrupar los hospitales 
 públicos de alta y mediana complejidad según sus datos de producción GRD del 
-período 2019--2024, y en qué medida esa segmentación permite comparaciones más 
-homogéneas que la clasificación administrativa vigente?}
+período 2019--2024, y qué grado de concordancia y compactación en bloques de
+variables retenidos presenta esa segmentación respecto de la clasificación
+administrativa vigente?}
 \end{quote}
 
 De esta interrogante principal se desprenden las siguientes preguntas
@@ -178,10 +179,12 @@ de este pipeline se desarrolla en el Capítulo~\ref{cap:metodologia}.
 Se plantea como hipótesis de trabajo que una segmentación funcional basada en
 indicadores GRD de producción, complejidad y casuística permite identificar
 perfiles funcionales con cohesión y estabilidad interna evaluables en los
-hospitales públicos chilenos de alta y mediana complejidad. Su relación con la
-clasificación administrativa vigente se examina mediante medidas de concordancia
-y de homogeneidad evaluadas en variables no utilizadas para construir cada
-partición.
+hospitales públicos chilenos de alta y mediana complejidad. La estabilidad se
+evalúa exclusivamente como propiedad de la solución Ward bajo submuestreo. Su
+relación con la clasificación administrativa vigente se examina mediante medidas
+de concordancia y de compactación evaluadas en variables no utilizadas para
+construir cada partición, sin interpretar el contraste como una prueba de
+superioridad entre clasificaciones.
 
 Esta hipótesis se sustenta en cuatro antecedentes desarrollados en el
 Capítulo~\ref{cap:marco}: la evidencia nacional que reporta baja coherencia
@@ -217,15 +220,16 @@ datos GRD del período 2019--2024.
         y agregación de los registros GRD del período 2019--2024.
   \item Determinar una segmentación funcional de los hospitales, mediante
         agrupamiento jerárquico y criterios predefinidos de cohesión,
-        separación y estabilidad.
+        separación y estabilidad interna bajo submuestreo.
   \item Caracterizar los perfiles obtenidos en términos de sus diferencias
         clínicas y operativas, mediante indicadores descriptivos y análisis
         post-hoc.
   \item Identificar los establecimientos atípicos respecto de los perfiles
         funcionales, mediante criterios multivariados de singularidad.
   \item Contrastar la segmentación funcional con la clasificación
-        administrativa del MINSAL, mediante medidas comparables de
-        homogeneidad interna y concordancia.
+        administrativa del MINSAL, mediante medidas de concordancia y de
+        compactación evaluada en bloques de variables retenidos, sin establecer
+        superioridad entre clasificaciones.
 \end{enumerate}
 
 \subsection{Alcances}
