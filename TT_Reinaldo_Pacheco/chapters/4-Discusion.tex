@@ -1529,6 +1529,16 @@ Los tres hospitales de $C0$ permanecen agrupados al excluir los años de pandemi
 
 La sensibilidad temporal por variable se concentra especialmente en algunas componentes de casuística. Las componentes \texttt{dim\_07} y \texttt{dim\_08} presentan cambios relativos medianos de $124{,}7\%$ y $104{,}7\%$, respectivamente, mientras que \texttt{tasa\_partos} presenta un cambio relativo mediano de $41{,}0\%$. Estos resultados indican que las interpretaciones clínicas finas asociadas a componentes específicas del PCA son más sensibles a la exclusión de 2020--2021 que los perfiles funcionales globales.
 
+Como contraste adicional, se ponderaron las ocho componentes por la raíz de su
+varianza explicada: \texttt{dim\_01} explica $22{,}8\%$ y \texttt{dim\_08}
+$3{,}4\%$. La ponderación mejoró las métricas internas (Silhouette de $0{,}401$
+a $0{,}446$; Davies--Bouldin de $0{,}990$ a $0{,}881$), pero reorganizó tres
+hospitales entre los dos grupos pequeños ($ARI=0{,}992$; $NMI=0{,}944$). Por
+ello se mantiene la ponderación uniforme de la solución canónica y el resultado
+ponderado se interpreta como evidencia de sensibilidad: la estructura global
+persiste, pero las fronteras finas entre perfiles especializados dependen del
+peso asignado a la casuística.
+
 Los 65 hospitales del universo final poseen cobertura completa para los seis años del período analizado. En consecuencia, no se compararon hospitales con cobertura temporal completa e incompleta dentro de esta muestra, ya que dicha heterogeneidad fue removida previamente por el criterio de elegibilidad descrito en la Sección~\ref{sec:elegibilidad}.
 
 \subsection*{Sensibilidad composicional: transformación CLR de la casuística}
