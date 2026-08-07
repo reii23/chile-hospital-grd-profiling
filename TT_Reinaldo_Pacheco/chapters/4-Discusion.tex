@@ -397,6 +397,45 @@ Tabla~\ref{tab:metricas-nivel2}. Además de las métricas internas, se reportan
 los tamaños de grupo, la cantidad de grupos unitarios y el número de
 subclústeres con al menos cuatro hospitales.
 
+Para evaluar si estas divisiones se reproducen al perturbar la muestra, se
+aplicó al Nivel~2 el mismo protocolo de 100 submuestras sin reposición empleado
+para el Nivel~1. En cada réplica se seleccionaron 43 de los 54 hospitales,
+se ajustó nuevamente el preprocesamiento y se aplicó Ward. La Tabla~\ref{tab:estabilidad-nivel2}
+resume la concordancia con la partición de referencia para $K_{sub}=2$, $3$ y
+$10$.
+
+\begin{table}[htbp]
+\centering
+\caption{Estabilidad por submuestreo del Nivel~2 (100 réplicas del 80\,\% del núcleo generalista). Los intervalos corresponden a los percentiles 2,5 y 97,5.}
+\label{tab:estabilidad-nivel2}
+\begin{tabular}{c c c c}
+\toprule
+\textbf{$K_{sub}$} & \textbf{Silhouette original} & \textbf{ARI mediano [P2,5; P97,5]} & \textbf{NMI mediano [P2,5; P97,5]} \\
+\midrule
+2 & 0,169 & 0,507 [$-0,071$; 0,906] & 0,486 [0,024; 0,851] \\
+3 & 0,080 & 0,354 [0,177; 0,795] & 0,459 [0,275; 0,814] \\
+10 & 0,103 & 0,476 [0,272; 0,761] & 0,748 [0,628; 0,865] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+La solución con dos grupos tiene el mayor Silhouette del barrido y la mayor
+concordancia mediana, pero su ARI de 0,507 sigue lejos de la estabilidad del
+Nivel~1 (ARI mediano 0,958). La solución de diez grupos tampoco reproduce una
+tipología robusta: aunque su NMI es mayor, su ARI mediano es 0,476, y contiene
+dos subgrupos unitarios. En consecuencia, el Nivel~2 se limita en el cuerpo del
+texto a una separación exploratoria amplia en dos bloques de 38 y 16 hospitales;
+no se sostienen diez perfiles funcionales generalizables. La asignación de diez
+subgrupos y sus perfiles descriptivos se conserva en el Anexo como material
+suplementario.
+
+Los casos $S4$ (Hospital Clínico San Borja--Arriarán) y $S9$ (Hospital Dr. Gustavo
+Fricke) de la solución suplementaria son observaciones unitarias alejadas del
+centroide del núcleo, no subtipos funcionales. Por tanto, no se usan para
+inferencias ni para etiquetar categorías hospitalarias.
+
+\iffalse
+
 \begin{table}[htbp]
 \centering
 \small
@@ -640,6 +679,8 @@ los patrones observados.
 \end{itemize}
 
 
+
+\fi
 
 \section{Estabilidad de la partición mediante submuestreo}
 \label{sec:res-estabilidad}
