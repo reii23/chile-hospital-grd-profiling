@@ -126,6 +126,74 @@ heterogeneidad multidimensional motiva el uso de clustering como herramienta
 exploratoria para identificar perfiles funcionales de hospitales con patrones de
 actividad y casuística relativamente similares.
 
+\section{Contribución de bloques a la geometría de distancia}
+\label{sec:res-bloques}
+
+La Tabla~\ref{tab:contribucion-bloques} descompone la suma de distancias
+euclidianas cuadradas de la matriz preprocesada según los cuatro macro-bloques
+definidos en la Sección~\ref{sec:bloques-variables}. El bloque
+demográfico-obstétrico aporta $37{,}1\%$ de la distancia total, la fracción más
+alta entre los bloques. Por tanto, la composición de demanda tiene una influencia
+relevante en la geometría original y debe hacerse explícita al interpretar los
+perfiles. No obstante, los otros tres bloques aportan conjuntamente el
+$62{,}9\%$ de la distancia, por lo que la partición no puede atribuirse solo a
+la demografía.
+
+\begin{table}[htbp]
+\centering
+\caption{Contribución de los macro-bloques a la suma de distancias euclidianas
+cuadradas en la matriz preprocesada.}
+\label{tab:contribucion-bloques}
+\begin{tabular}{l c c}
+\toprule
+\textbf{Bloque} & \textbf{Variables} & \textbf{Fracción de distancia} \\
+\midrule
+Gestión, diversidad y CMA & 9 & 15,2\% \\
+Perfil operativo no demográfico & 11 & 27,1\% \\
+Demográfico-obstétrico & 7 & 37,1\% \\
+Componentes PCA de casuística & 8 & 20,6\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+La Tabla~\ref{tab:sensibilidad-bloques} evalúa dos sensibilidades. La
+ponderación por $1/\sqrt{p_b}$ por bloque conserva exactamente la partición
+principal ($ARI=NMI=1{,}000$) y mejora marginalmente sus métricas internas.
+Al excluir las siete variables demográfico-obstétricas, la partición mantiene
+una concordancia alta con la original ($ARI=0{,}933$; $NMI=0{,}906$): los tres
+hospitales pediátricos y los tres de perfil monográfico permanecen agrupados,
+los 54 hospitales del núcleo continúan juntos y solo uno de los cinco miembros
+del grupo $C2$ se incorpora al núcleo. La menor cohesión de esta solución
+(Silhouette $=0{,}320$ frente a $0{,}401$) indica que el bloque excluido aporta
+separación, pero su remoción no elimina los perfiles principales.
+
+\begin{table}[htbp]
+\centering
+\caption{Sensibilidad Ward $K=4$ a la ponderación por bloques y a la exclusión
+del bloque demográfico-obstétrico. La concordancia se calcula respecto de la
+partición base.}
+\label{tab:sensibilidad-bloques}
+\small
+\begin{tabular}{l c c c c c}
+\toprule
+\textbf{Escenario} & \textbf{Variables} & \textbf{Silhouette} &
+\textbf{DB} & \textbf{ARI} & \textbf{NMI} \\
+\midrule
+Base & 35 & 0,401 & 0,990 & 1,000 & 1,000 \\
+Ponderación por bloque & 35 & 0,409 & 0,974 & 1,000 & 1,000 \\
+Sin demográfico-obstétrico & 28 & 0,320 & 1,036 & 0,933 & 0,906 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize\raggedright
+\textit{Nota.} DB: índice de Davies--Bouldin; un valor menor indica grupos más
+compactos y separados. La exclusión afecta solo las siete variables directas;
+las componentes PCA de casuística se conservan porque mezclan múltiples
+dimensiones clínicas, incluidas algunas cargas obstétricas.
+\end{minipage}
+\end{table}
+
 \section{Clustering de nivel 1}
 \label{sec:nivel1}
 

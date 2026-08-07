@@ -1125,6 +1125,30 @@ configuraciones produjeron la misma partición de los 65 hospitales
 (ARI $= 1{,}00$), por lo que la corrección mejora la coherencia del
 preprocesamiento sin alterar los perfiles funcionales reportados.
 
+\subsubsection{Diagnóstico y sensibilidad de bloques de variables}
+\label{sec:bloques-variables}
+
+Dado que la distancia euclidiana acumula la contribución de cada variable, se
+cuantificó la fracción de la suma de distancias cuadradas entre todos los pares
+de hospitales atribuible a cuatro macro-bloques de la matriz ya preprocesada:
+gestión, diversidad y CMA (9 variables); perfil operativo no demográfico (11);
+demanda demográfica-obstétrica (7); y componentes PCA de casuística (8). El
+bloque demográfico-obstétrico comprende porcentaje pediátrico, geriátrico y
+femenino fértil, edad mediana, porcentaje de ingreso obstétrico, proporción de
+egresos neonatales y tasa de prematurez. Esta definición distingue la
+composición de demanda de las variables operativas y no atribuye a priori las
+componentes PCA a un bloque demográfico, pues cada componente resume una mezcla
+de variables de casuística.
+
+Como sensibilidad de ponderación, después del escalado robusto cada variable de
+un macro-bloque se multiplica por $1/\sqrt{p_b}$, donde $p_b$ es el número de
+variables del bloque. Esta transformación evita que un bloque tenga mayor peso
+solo por contener más columnas. Además, se re-ejecuta Ward $K=4$ excluyendo las
+siete variables demográfico-obstétricas. En ambos escenarios se comparan las
+particiones con la solución principal mediante ARI y NMI, y se reportan
+Silhouette, Calinski--Harabasz, Davies--Bouldin y tamaños de grupo. Los
+resultados se presentan en la Sección~\ref{sec:res-bloques}.
+
 % ============================================================================
 % ============================================================================
 \section{Modelado}
