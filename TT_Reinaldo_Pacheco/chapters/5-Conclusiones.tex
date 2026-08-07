@@ -95,11 +95,15 @@ identificó diferencias significativas, tras la corrección de
 Benjamini--Hochberg, en 26 de las 28 variables directas entre los cuatro grupos
 de Nivel 1. Este resultado permite caracterizar los perfiles obtenidos, pero no
 constituye una prueba independiente de la partición, porque las mismas variables
-participaron en su construcción. La prueba de permutación del flujo completo
-acota esta circularidad: ninguna de las 500 matrices sin estructura real alcanzó
-las 26 variables significativas observadas. Aun así, esta evidencia no reemplaza
-una validación externa con nuevos años, hospitales o variables no utilizadas para
-descubrir la partición.
+participaron en su construcción. La permutación por columnas del flujo completo
+muestra que 26 diferencias no se obtienen cuando se destruye toda dependencia
+entre variables. Sin embargo, una nula normal multivariada que preserva la
+covarianza observada alcanzó o superó ese valor en 40 de 500 réplicas
+($p_{\mathrm{emp}}=0{,}0818$). Por ello, las pruebas por variable se mantienen
+como caracterización descriptiva de los perfiles, no como evidencia de que la
+partición exceda una geometría correlacionada sin grupos explícitos. Esta
+limitación refuerza la necesidad de validación externa con nuevos años,
+hospitales o variables no utilizadas para descubrir la partición.
 
 La interpretación de los grupos debe mantener una distinción fundamental: los
 perfiles identificados describen actividad clínica registrada, pero no miden

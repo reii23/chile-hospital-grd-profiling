@@ -857,11 +857,48 @@ pabellones\_promedio
 \end{tabular}
 \end{table}
 
-La circularidad asociada a esta caracterización se examinó además mediante la prueba de permutación descrita en la Sección~\ref{sec:permutacion-circularidad}. En 500 repeticiones se permutó independientemente cada variable entre hospitales, preservando su distribución marginal, pero eliminando la estructura conjunta entre variables. Sobre cada matriz nula se repitió el flujo completo, que incluyó el
-preprocesamiento, el clustering Ward con $K=4$, la prueba de
-Kruskal-Wallis y la corrección BH.
+La circularidad asociada a esta caracterización se examinó mediante dos
+nulas sobre el flujo completo descritas en la
+Sección~\ref{sec:permutacion-circularidad}. La primera permutó de forma
+independiente cada variable entre hospitales, preservando su distribución
+marginal y eliminando la estructura conjunta. En 500 repeticiones, la mediana
+del número de variables significativas fue 1, el percentil 95 fue 5 y el máximo
+fue 10. Ninguna réplica alcanzó las 26 variables observadas. Este resultado
+muestra que Ward no genera el patrón observado cuando se eliminan por completo
+las dependencias entre variables.
 
-En los datos observados, 26 de las 28 variables resultaron significativas. En contraste, bajo la distribución nula el número de variables significativas tuvo mediana igual a 1, percentil 95 igual a 5 y máximo igual a 10. Ninguna de las 500 repeticiones alcanzó o superó las 26 variables significativas observadas. Este resultado respalda la presencia de diferenciación empírica en los datos, pero no transforma las pruebas por variable en una validación externa, pues la caracterización sigue realizándose en el mismo espacio de información empleado para construir los clústeres.
+La segunda nula simuló 500 matrices normales multivariadas con la media y
+covarianza observadas después de las transformaciones y el escalado robusto. Al
+preservar la dependencia lineal, esta referencia es más exigente: la mediana
+fue 22 variables significativas, el percentil 95 fue 26 y el máximo fue 28. En
+40 de 500 réplicas la nula igualó o superó las 26 variables observadas
+($p_{\mathrm{emp}}=0{,}0818$, con corrección de continuidad). Por tanto, el
+número de diferencias detectadas por Kruskal--Wallis no supera de forma
+concluyente lo esperable de una geometría correlacionada sin una estructura de
+grupos explícita. Estas pruebas mantienen utilidad descriptiva para ordenar los
+atributos que difieren en la partición obtenida, pero no aportan validación
+independiente de los clústeres.
+
+\begin{table}[htbp]
+\centering
+\caption{Nulas del flujo Ward $K=4$ y Kruskal--Wallis/BH: número de variables significativas de 28 evaluadas.}
+\label{tab:nulas-circularidad}
+\begin{tabular}{l c c c c}
+\toprule
+\textbf{Nula} & \textbf{Mediana} & \textbf{P95} & \textbf{Máximo} & \textbf{$p_{\mathrm{emp}}$} \\
+\midrule
+Permutación independiente por columna & 1 & 5 & 10 & $<0{,}002$ \\
+Normal multivariada con covarianza preservada & 22 & 26 & 28 & 0,0818 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize\raggedright
+\textit{Nota.} Ambas nulas usan 500 réplicas. El valor observado fue 26. En la
+segunda nula, la covarianza se preserva en esperanza; el error relativo mediano
+entre la covarianza muestral simulada y la observada fue 0,310.
+\end{minipage}
+\end{table}
 
 En el Nivel~2 (Tabla~\ref{tab:kruskal-nivel2}), el análisis se restringe a los 54 hospitales del núcleo generalista y compara los diez subclústeres exploratorios ($S0$ a $S9$). En ella, 24 de las 28 variables presentan diferencias estadísticamente detectables entre subgrupos. Las variables con mayor tamaño de efecto son \texttt{peso\_medio\_grd} ($\varepsilon^2=0{,}766$), \texttt{tasa\_prematurez} ($\varepsilon^2=0{,}662$), \texttt{pct\_estancia\_larga} ($\varepsilon^2=0{,}653$), \texttt{egresos\_por\_anio} ($\varepsilon^2=0{,}615$), \texttt{pct\_obstetrica\_ingreso} ($\varepsilon^2=0{,}603$) y \texttt{pct\_programada} ($\varepsilon^2=0{,}595$).
 
@@ -1167,6 +1204,56 @@ superioridad general de la clasificación funcional sobre la administrativa; sí
 documenta que ambas organizan de manera distinta la actividad hospitalaria y que
 los perfiles Ward muestran cohesión interna y estabilidad bajo las sensibilidades
 reportadas.
+
+\subsection{Discusión de los resultados frente a antecedentes nacionales e internacionales}
+\label{sec:discusion-literatura}
+
+La baja cohesión de la clasificación MINSAL observada en esta muestra es
+congruente con la evidencia nacional previa. \citet{Giglio2021} reportaron
+valores de Silhouette inferiores a $0{,}2$ para esa clasificación en los años
+2014--2018, con casos negativos en algunos períodos. En este estudio, evaluada
+sobre una matriz distinta, construida con registros GRD de 2019--2024 y solo con
+hospitales de alta y mediana complejidad, la partición MINSAL alcanzó un
+Silhouette de $0{,}070$. Los valores no son directamente intercambiables por las
+diferencias de universo, período y variables, pero su coincidencia cualitativa
+refuerza la conclusión acotada de que las etiquetas administrativas no capturan
+por sí solas una estructura compacta de actividad clínica y casuística.
+
+Los resultados también actualizan y matizan el hallazgo de \citet{Carlier2020},
+quienes identificaron a la categoría de mediana complejidad como la menos
+consistente entre años al intentar reproducir la clasificación administrativa
+mediante indicadores de producción. En la presente partición, siete de los diez
+hospitales MINSAL de mediana complejidad se integran al núcleo generalista $C1$,
+junto con 47 hospitales de alta complejidad, los tres restantes se ubican en el
+grupo $C2$, que también contiene dos hospitales de alta complejidad. Esta
+distribución indica que las categorías administrativas no se corresponden de
+forma exclusiva con los perfiles funcionales identificados. Sin embargo, no
+permite atribuir la discrepancia a una categoría administrativa particular ni
+comparar directamente la estabilidad temporal de ambos estudios, ya que sus
+datos, variables y procedimientos de agrupamiento son distintos.
+
+La comparación con el estudio francés de \citet{Chrusciel2021} muestra, a su
+vez, que los ejes de organización funcional dependen de la información incluida
+y del contexto de red. Ese trabajo identificó tres grupos principalmente
+asociados con tamaño, diversidad y movilidad de pacientes. En esta tesis, la
+solución de cuatro grupos distingue un núcleo generalista y perfiles pediátrico,
+monográfico y de carga clínica heterogénea. La composición
+demográfico-obstétrica aporta el $37{,}1\,\%$ de la distancia total, aunque la
+partición se conserva en gran medida al excluir ese bloque ($ARI=0{,}933$).
+Por tanto, la estructura chilena estudiada no se explica solo por la composición
+de la demanda, pero esta dimensión participa más explícitamente que en el diseño
+francés. La diferencia no contradice el antecedente internacional, ilustra que
+las tipologías obtenidas son sensibles a las variables disponibles y que no
+corresponde trasladar un número de grupos ni etiquetas funcionales entre redes
+sin una evaluación contextual.
+
+En conjunto, los tres antecedentes sitúan el aporte de esta investigación como una
+actualización reproducible de la caracterización funcional de hospitales
+chilenos con datos GRD recientes. La evidencia respalda la utilidad descriptiva
+de complementar las categorías administrativas con información de producción y
+casuística, pero no valida una tipología universal ni justifica usar la
+partición Ward como criterio único para decisiones de financiamiento, desempeño
+o asignación de recursos.
 
 \subsection{Regresión LASSO: variables clínicas asociadas a la etiqueta MINSAL}
 \label{sec:res-lasso}

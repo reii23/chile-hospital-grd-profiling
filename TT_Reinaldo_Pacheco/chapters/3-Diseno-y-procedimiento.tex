@@ -1439,19 +1439,24 @@ con corrección BH sobre las mismas 28 variables interpretables. El
 procedimiento se repite 500 veces, registrando en cada repetición cuántas de
 las 28 variables resultan significativas ($p_{\text{BH}} \leq 0{,}05$).
 
-Si el flujo completo --y no la estructura real de los datos-- fuera el
+Si el flujo completo (y no la estructura real de los datos) fuera el
 principal responsable de producir variables significativas, la distribución
 nula debería concentrarse en valores cercanos al resultado real (26 de 28).
-El resultado obtenido, reportado en el Capítulo~\ref{cap:resultados}, muestra
-lo contrario: bajo la hipótesis nula de ausencia de estructura, el número de
-variables significativas es sistemáticamente bajo. Esto acota, aunque no
-elimina por completo, la preocupación de circularidad: demuestra que Ward no
-\textit{fabrica} 24 variables significativas de la nada por el solo hecho de
-particionar datos sin estructura real, aunque no demuestra que la partición
-identificada sea la única o la mejor estructura posible en los datos reales,
-ni sustituye a una validación externa genuina sobre una muestra o un período
-distinto al empleado para construir los grupos, algo que este trabajo no
-realizó.
+Esta nula por permutación responde específicamente al caso de variables sin
+ninguna dependencia conjunta; por ello, funciona como un control de referencia,
+pero no conserva las correlaciones presentes en la matriz institucional.
+
+Como control más exigente, se simulan además 500 matrices normales
+multivariadas de 65 hospitales con la media y matriz de covarianza estimadas
+sobre las 36 variables numéricas transformadas y escaladas. En cada réplica se
+aplica Ward sobre las 35 variables de la matriz de clustering y
+Kruskal--Wallis con corrección BH sobre las 28 variables interpretables. Esta
+nula conserva en esperanza la covarianza lineal observada, pero no preserva las
+observaciones originales, las etiquetas hospitalarias ni una estructura de
+grupos. Tampoco conserva necesariamente las distribuciones marginales ni las
+dependencias no lineales, por lo que se interpreta como complemento de la
+permutación por columnas y no como una validación externa. Ambas distribuciones
+nulas se reportan en el Capítulo~\ref{cap:resultados}.
 
 
 \subsection{Validación de estabilidad mediante submuestreo}
