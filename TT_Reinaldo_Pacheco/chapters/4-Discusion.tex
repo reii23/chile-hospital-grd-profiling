@@ -977,13 +977,74 @@ clasificación MINSAL también presenta una dispersión menor que la esperable b
 asignaciones aleatorias con sus mismos tamaños de grupo, aunque con una
 distancia menor respecto de su distribución nula.
 
-Estos resultados muestran que, sobre la matriz funcional utilizada en este
-estudio, las soluciones Ward presentan grupos más compactos que la clasificación
-MINSAL. No obstante, esta comparación es interna al mismo espacio de variables
-empleado para construir el clustering. Por ello, describe la compactación de
-cada partición respecto de la actividad clínica, pero no constituye una
-validación externa ni permite concluir que una clasificación sea superior a la
-otra para propósitos administrativos, de financiamiento o de gestión.
+Estos resultados describen la compactación interna de las particiones sobre la
+matriz funcional completa. Sin embargo, Ward fue ajustado en ese mismo espacio,
+por lo que sus menores valores de dispersión no constituyen una prueba
+confirmatoria de mayor homogeneidad frente a MINSAL. La comparación se conserva
+como diagnóstico descriptivo y se complementa a continuación con una evaluación
+en bloques de variables no usados para construir las etiquetas Ward.
+
+\subsection{Validación cruzada por bloques de variables}
+\label{sec:res-homogeneidad-cruzada}
+
+La Tabla~\ref{tab:homogeneidad-cruzada} evalúa cada partición en un bloque de
+variables distinto del que se utilizó para construir Ward. Al agrupar con las 27
+variables directas y evaluar sobre las 8 componentes de casuística, Ward $K=4$
+obtuvo WSS/TSS $=0{,}616$, frente a $0{,}956$ para MINSAL; la diferencia
+MINSAL--Ward fue $0{,}340$ (IC bootstrap 95\,\% $[0{,}176;0{,}540]$). En el
+sentido inverso, al agrupar con componentes de casuística y evaluar sobre las
+variables directas, Ward $K=4$ obtuvo WSS/TSS $=0{,}533$, frente a $0{,}940$
+para MINSAL; la diferencia fue $0{,}407$ (IC 95\,\%
+$[0{,}198;0{,}616]$). En ambas direcciones, la partición de cuatro grupos
+conserva menor dispersión en el bloque retenido.
+
+\begin{table}[htbp]
+\centering
+\caption{Validación cruzada de homogeneidad por bloques de variables. Ward se
+ajusta solo en el bloque de agrupamiento y ambas particiones se evalúan en el
+bloque retenido. La diferencia es $\mathrm{WSS/TSS}_{\mathrm{MINSAL}}-
+\mathrm{WSS/TSS}_{\mathrm{Ward}}$; valores positivos favorecen menor dispersión
+para Ward.}
+\label{tab:homogeneidad-cruzada}
+\small
+\begin{tabular}{l c c c c}
+\toprule
+\textbf{Bloque de agrupamiento} & \textbf{$K$ Ward} &
+\textbf{WSS/TSS Ward} & \textbf{WSS/TSS MINSAL} &
+\textbf{Diferencia (IC 95\,\%)} \\
+\midrule
+Directas $\rightarrow$ casuística & 4 & 0,616 & 0,956 &
+0,340 $[0,176;0,540]$ \\
+Casuística $\rightarrow$ directas & 4 & 0,533 & 0,940 &
+0,407 $[0,198;0,616]$ \\
+\addlinespace
+Directas $\rightarrow$ casuística & 2 & 0,850 & 0,956 &
+0,106 $[-0,057;0,262]$ \\
+Casuística $\rightarrow$ directas & 2 & 0,740 & 0,940 &
+0,200 $[-0,073;0,449]$ \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize\raggedright
+\textit{Nota.} Los intervalos se obtuvieron mediante 5.000 remuestreos de los
+65 hospitales. La evaluación cruzada por bloques no es independiente en sentido
+temporal: ambos bloques derivan de los mismos establecimientos y período.
+\end{minipage}
+\end{table}
+
+Al restringir Ward a $K=2$, para igualar el número de categorías de MINSAL, las
+diferencias puntuales continúan siendo favorables a Ward, pero sus intervalos
+bootstrap incluyen cero en ambas direcciones. Por tanto, esta evaluación no
+entrega evidencia robusta de que Ward sea más homogéneo que MINSAL cuando se
+controla simultáneamente la reutilización del espacio de evaluación y el número
+de grupos. El resultado más acotado es que la solución Ward $K=4$ conserva una
+compactación mayor en bloques retenidos, aunque parte de esa diferencia puede
+asociarse a su mayor granularidad. En consecuencia, el estudio no establece una
+superioridad general de la clasificación funcional sobre la administrativa; sí
+documenta que ambas organizan de manera distinta la actividad hospitalaria y que
+los perfiles Ward muestran cohesión interna y estabilidad bajo las sensibilidades
+reportadas.
 
 \subsection{Regresión LASSO: variables clínicas asociadas a la etiqueta MINSAL}
 \label{sec:res-lasso}

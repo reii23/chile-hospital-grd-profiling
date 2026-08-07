@@ -43,18 +43,21 @@ implica que una clasificación sea intrínsecamente correcta y la otra incorrect
 indica que la clasificación administrativa y el patrón de producción clínica no
 son intercambiables.
 
-La hipótesis de mayor homogeneidad funcional se evaluó directamente sobre la
-misma matriz preprocesada. Ward $K=4$ obtuvo una dispersión intragrupo
-normalizada WSS/TSS $=0{,}475$ y Silhouette $=0{,}401$, frente a WSS/TSS
-$=0{,}944$ y Silhouette $=0{,}070$ para MINSAL. Al controlar el número de
-grupos, Ward $K=2$ mantuvo menor dispersión que MINSAL
-(WSS/TSS $=0{,}707$ frente a $0{,}944$). Las pruebas de permutación con 2.000
-reasignaciones preservando los tamaños de grupo confirman que ambas particiones
-son más homogéneas que asignaciones aleatorias comparables, aunque la distancia
-respecto de la distribución nula es considerablemente mayor para las soluciones
-Ward. Por tanto, la evidencia respalda que la segmentación funcional produce
-grupos más homogéneos en el espacio de variables utilizado, sin que ello
-constituya una validación externa de su utilidad operativa.
+La comparación interna original mostró menor dispersión para Ward que para
+MINSAL en la matriz completa, pero no se interpreta como una prueba confirmatoria:
+Ward fue construido optimizando esa misma geometría. Para evitar esa circularidad,
+se realizó una validación cruzada por bloques. Con Ward $K=4$, la evaluación en
+un bloque de variables no utilizado para agrupar mantuvo menor WSS/TSS que MINSAL
+en ambas direcciones: $0{,}616$ frente a $0{,}956$ al evaluar casuística, y
+$0{,}533$ frente a $0{,}940$ al evaluar variables directas. Sin embargo, al
+restringir Ward a $K=2$ para igualar el número de categorías de MINSAL, los
+intervalos bootstrap de ambas diferencias incluyeron cero. Por tanto, el estudio
+no establece una superioridad robusta de homogeneidad frente a MINSAL al controlar
+simultáneamente el espacio de evaluación y el número de grupos. La conclusión
+sostenible es más acotada: los perfiles Ward $K=4$ conservan compactación en
+bloques retenidos, pero su mayor granularidad contribuye a esa ventaja y no
+permite declarar una clasificación superior para fines administrativos u
+operativos.
 
 Los análisis de estabilidad y sensibilidad matizan el alcance de esta conclusión.
 En 100 submuestras sin reposición del $80\,\%$ de los hospitales, la mediana del

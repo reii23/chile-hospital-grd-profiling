@@ -1625,17 +1625,40 @@ agrupación aleatoria de igual tamaño de grupos, y no solo comparar los
 valores puntuales entre ambas. Los resultados de esta comparación se
 presentan en la Sección~\ref{sec:res-minsal} del Capítulo~\ref{cap:resultados}.
 
-Lo que valida la solución empírica no es únicamente su comparación de
-homogeneidad frente a MINSAL, sino el conjunto de evidencia presentado en
+Lo que respalda la utilidad descriptiva de la solución empírica no es una
+comparación aislada con MINSAL, sino el conjunto de evidencia presentado en
 este capítulo: la cohesión interna medida por Silhouette, Calinski-Harabasz y
 Davies-Bouldin (Sección~\ref{sec:nivel1}), la estabilidad frente a
-submuestreo (Sección~\ref{sec:bootstrap}) y la significancia estadística de
+submuestreo (Sección~\ref{sec:bootstrap}) y la caracterización posterior de
 las diferencias entre grupos (Sección~\ref{sec:validacion-grupos}), con las
-salvedades de circularidad ya señaladas en esa misma sección. El contraste con
-MINSAL es un componente adicional de esa evidencia, no la validación
-principal: aporta información sobre qué hospitales cambian de categoría entre
-ambas perspectivas y sobre cuál de las dos particiones exhibe mayor cohesión
-interna, lo que tiene valor directo para la gestión sanitaria.
+salvedades de circularidad ya señaladas. El contraste interno con MINSAL aporta
+información descriptiva sobre la compactación de las particiones en el espacio
+completo, pero no constituye una prueba confirmatoria porque Ward se ajustó en
+ese mismo espacio.
+
+\subsubsection{Validación cruzada por bloques de variables}
+\label{sec:comparacion-homogeneidad-cruzada}
+
+Para evitar esa reutilización, se añade una evaluación cruzada por bloques de
+variables. La matriz se divide en las 27 variables clínico-operativas directas y
+las 8 componentes PCA de casuística. En una primera dirección, Ward se ajusta
+solo con las variables directas y su partición se evalúa, junto con la
+clasificación MINSAL, exclusivamente sobre las componentes de casuística. En la
+segunda dirección, Ward se ajusta con las componentes y ambas particiones se
+evalúan sobre las variables directas. Cada bloque de evaluación se transforma
+con el mismo preprocesamiento del pipeline, ajustado dentro del bloque, pero no
+interviene en la construcción de las etiquetas Ward.
+
+Se reporta WSS/TSS y Silhouette en el bloque retenido. Además, la diferencia
+$\mathrm{WSS/TSS}_{\mathrm{MINSAL}}-\mathrm{WSS/TSS}_{\mathrm{Ward}}$ se
+acompaña de un intervalo percentilar bootstrap del 95\,\% obtenido con 5.000
+remuestreos de hospitales. El análisis se ejecuta con Ward $K=4$, que conserva
+la granularidad de la solución principal, y con Ward $K=2$, para contrastar con
+el mismo número de categorías de MINSAL. Una diferencia positiva cuyo intervalo
+no incluye cero indica menor dispersión de Ward en un espacio que no utilizó
+para agrupar. Como los bloques proceden de los mismos hospitales y las
+componentes PCA se estimaron sobre la muestra completa, esta es una validación
+interna por bloques y no una validación temporal o externa independiente.
 
 \subsection{Detección de hospitales atípicos}
 \label{sec:outliers-metodo}
