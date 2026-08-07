@@ -1231,6 +1231,29 @@ red hospitalaria.
 
 \label{sec:res-outliers}
 
+\subsection{Influencia de las marcas globales antes del clustering}
+\label{sec:res-outliers-preclustering}
+
+Como prueba de sensibilidad previa, Isolation Forest se ajustó globalmente
+sobre los 65 hospitales antes de construir Ward. Con contaminación $=10\,\%$
+marcó siete establecimientos. Al excluirlos temporalmente y re-estimar Ward
+$K=4$ sobre los 58 restantes, el Silhouette disminuyó de $0{,}401$ a $0{,}181$
+y la concordancia con la partición base, restringida a los hospitales retenidos,
+fue baja ($ARI=0{,}265$; $NMI=0{,}506$). Al reasignar las siete marcas al
+centroide más próximo de la solución entrenada sin ellas, la concordancia sobre
+los 65 hospitales se mantuvo baja ($ARI=0{,}317$; $NMI=0{,}500$) y el
+Silhouette fue $0{,}154$.
+
+Las marcas incluyen dos hospitales pediátricos, los tres miembros del grupo
+$C3$ y dos hospitales de $C2$. Por tanto, la exclusión no elimina ruido aislado:
+retira perfiles especializados que participan en la estructura que el análisis
+pretende describir. La solución sin marcas fragmenta el núcleo en grupos de 16
+y 38 hospitales y produce un grupo unitario. En consecuencia, la partición
+principal conserva los 65 establecimientos. Isolation Forest se interpreta como
+una señal de influencia global y no como un criterio de eliminación automática;
+los criterios posteriores permiten caracterizar con mayor detalle los casos
+alejados o con asignación ambigua.
+
 \subsection{Sensibilidad al parámetro de contaminación de Isolation Forest}
 
 \label{sec:res-outliers-sensibilidad}

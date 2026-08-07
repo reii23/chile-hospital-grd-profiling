@@ -1,0 +1,4 @@
+escenario,n_hospitales_ajuste,n_excluidos_isolation_forest,silhouette,calinski_harabasz,davies_bouldin,tamanos,ARI_vs_base_65,NMI_vs_base_65,ARI_vs_base_retenidos,NMI_vs_base_retenidos
+base_65_hospitales,65,0,0.40082961396310834,22.44596042591438,0.990225023110036,"[3, 54, 5, 3]",1.0,1.0,1.0,1.0
+ward_sin_marcas_IF_58_hospitales,58,7,0.1810591709908883,12.21607729309712,1.492442570854015,"[3, 16, 38, 1]",,,0.26469477879913256,0.505976627532799
+sin_IF_con_marcas_reasignadas_65_hospitales,58,7,0.1537644373449007,16.98215399071802,1.6040203822811063,"[5, 16, 41, 3]",0.3166035367664898,0.49963525063219266,0.26469477879913256,0.505976627532799

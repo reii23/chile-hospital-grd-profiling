@@ -1692,9 +1692,23 @@ de Mahalanobis fueron descartados por razones operativas. Con $n = 65$, LOF es
 sensible a la elección del parámetro de vecindad y puede producir resultados
 inestables en muestras pequeñas. La distancia de Mahalanobis requiere estimar la
 matriz de covarianza, operación mal condicionada cuando el número de variables
-(35) es del mismo orden que el número de observaciones. En su lugar se implementa
-una estrategia que combina tres criterios complementarios, cada uno sensible a
-una faceta distinta de la atipicidad:
+(35) es del mismo orden que el número de observaciones. En su lugar se combina
+una sensibilidad previa mediante Isolation Forest con dos criterios posteriores
+que requieren una partición ya construida.
+
+Antes de ajustar Ward, Isolation Forest se entrena una vez sobre los 65
+hospitales y las 35 variables preprocesadas. Con contaminación $10\,\%$, sus
+marcas se excluyen temporalmente y Ward $K=4$ se re-estima sobre los hospitales
+restantes. La concordancia ARI/NMI con la solución base se calcula tanto sobre
+los establecimientos retenidos como sobre los 65 hospitales, reasignando cada
+marca al centroide más próximo de la solución entrenada sin ella. Esta exclusión
+es una prueba de sensibilidad, no una regla de depuración permanente: si retirar
+los casos degrada o transforma materialmente la estructura, estos se conservan
+en la partición reportada y se interpretan como perfiles poco frecuentes o
+influyentes, no como errores automáticos.
+
+Después del clustering, se aplica una estrategia que combina tres criterios
+complementarios, cada uno sensible a una faceta distinta de la atipicidad:
 
 \begin{enumerate}
   \item \textbf{Coeficiente de Silhouette por observación}: un hospital con

@@ -574,9 +574,13 @@ hospitalaria, habilitando la distinción de perfiles funcionales específicos y
 (iii) la combinación de múltiples criterios de detección de atípicos
 (Silhouette por observación, Isolation Forest y distancia normalizada al
 centroide) con evaluación explícita de sensibilidad a sus parámetros, en
-lugar de un único criterio ad-hoc, permitiendo identificar establecimientos
-con comportamiento divergente antes de construir los grupos y evitando que
-estos distorsionen la solución de agrupamiento.
+lugar de un único criterio ad-hoc. Isolation Forest se aplica antes del
+clustering como una prueba de influencia: se excluyen temporalmente sus marcas,
+se re-estima la partición y se cuantifica el cambio resultante. Los criterios que
+requieren grupos (Silhouette individual y distancia al centroide) se utilizan
+posteriormente para caracterizar asignaciones ambiguas o alejadas. Esta
+separación evita tratar de manera automática los perfiles funcionales poco
+frecuentes como errores que deban eliminarse.
 
 \section{Metodologías computacionales aplicadas a datos hospitalarios}
 \label{sec:metodologias-comp}
