@@ -667,13 +667,13 @@ El índice de Calinski-Harabasz cuantifica la relación entre la dispersión
 inter-grupos y la dispersión intra-grupos. Una partición óptima maximiza la
 separación entre grupos mientras minimiza la heterogeneidad dentro de cada grupo.
 Valores altos de este índice favorecen soluciones con grupos compactos y bien
-separados.
+separados~\citep{CalinskiHarabasz1974}.
 
 El índice de Davies-Bouldin mide la peor relación de similitud entre cada grupo
 y su vecino más cercano a diferencia del anterior, valores bajos indican mejor
 separación. Esta métrica penaliza soluciones donde existen pares de grupos con
 alta similitud interna pero baja separación mutua, situación indeseable desde la
-perspectiva de interpretabilidad~\citep{Arbelaitz2013}.
+perspectiva de interpretabilidad~\citep{DaviesBouldin1979, Arbelaitz2013}.
 
 Más allá de las métricas puntuales, la estabilidad de las soluciones constituye
 un criterio de validación complementario. Técnicas de remuestreo como el
