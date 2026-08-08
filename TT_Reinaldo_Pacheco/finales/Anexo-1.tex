@@ -213,7 +213,7 @@ error relativo absoluto mediano con bootstrap al 95\,\%.
 \par\smallskip
 \begin{minipage}{\textwidth}
 \footnotesize\raggedright
-\textit{Nota.} El umbral de tres años corresponde al primer punto en que la reducción marginal del error empieza a estabilizarse. El mayor beneficio se obtiene entre $k=1$ y $k=3$; agregar un cuarto o quinto año reduce el error en apenas 1{,}4 y 1{,}2 puntos adicionales. La tasa de CMA mantiene un error comparativamente alto incluso con tres años (8{,}0\,\%), ya que se calcula sobre un subconjunto minoritario de egresos más sensible a la variación anual.
+\textit{Nota.} El umbral de tres años corresponde al primer punto en que la reducción marginal del error empieza a estabilizarse. El mayor beneficio se obtiene entre $k=1$ y $k=3$, mientras que agregar un cuarto o quinto año reduce el error en apenas 1{,}4 y 1{,}2 puntos adicionales. La tasa de CMA mantiene un error comparativamente alto incluso con tres años (8{,}0\,\%), ya que se calcula sobre un subconjunto minoritario de egresos más sensible a la variación anual.
 \end{minipage}
 \end{table}
 
@@ -226,7 +226,7 @@ presentan como $S0$ a $S8$.
 
 La Tabla~\ref{tab:anexo-hospitales} presenta la asignación final de los 65
 establecimientos. Las etiquetas de Nivel~2 solo se aplican a los miembros de
-$C1$; no constituyen categorías funcionales validadas equivalentes a los grupos
+$C1$, por lo que no constituyen categorías funcionales validadas equivalentes a los grupos
 del Nivel~1.
 
 \begin{longtable}{p{1.3cm} p{6.8cm} p{2.4cm} p{1.0cm} p{1.0cm}}
@@ -326,7 +326,7 @@ Sección~\ref{sec:res-minsal}.
 
 La Tabla~\ref{tab:anexo-parametros} consolida las decisiones metodológicas y
 los parámetros principales de la ejecución final. Las decisiones se justifican
-en detalle en el Capítulo~\ref{cap:metodologia}; aquí se presentan como
+en detalle en el Capítulo~\ref{cap:metodologia}, y aquí se presentan como
 referencia de implementación y reproducibilidad.
 
 \begin{longtable}{p{3.6cm} p{4.3cm} p{5.8cm}}
@@ -353,7 +353,7 @@ Establecimientos incluidos &
 
 Variables directas &
 Variables construidas &
-28 variables institucionales; \texttt{peso\_medio\_cma} se excluye de la matriz de clustering. \\
+28 variables institucionales, con \texttt{peso\_medio\_cma} excluida de la matriz de clustering. \\
 
 Matriz final &
 Dimensión &
@@ -385,7 +385,7 @@ $K \in \{2,\ldots,10\}$. \\
 
 Clustering Nivel 1 &
 Solución reportada &
-$K=4$, seleccionada como compromiso interpretativo; tamaños
+$K=4$, seleccionada como compromiso interpretativo, con tamaños
 $[3,54,5,3]$. \\
 
 Clustering Nivel 2 &
@@ -398,7 +398,7 @@ Clustering jerárquico aglomerativo Ward. \\
 
 Clustering Nivel 2 &
 Solución reportada &
-$K_{sub}=9$, de carácter exploratorio suplementario; maximiza el número de
+$K_{sub}=9$, de carácter exploratorio suplementario, que maximiza el número de
 subgrupos con al menos cuatro hospitales sin introducir pares. \\
 
 Caracterización por variable &
@@ -423,7 +423,7 @@ K-means ($K=4$), GMM ($K=4$) y MST-kNN para sensibilidad interna. \\
 
 Sensibilidad algorítmica &
 MST-kNN &
-Evaluación con $k \in \{3,\ldots,8\}$; los resultados se interpretan como sensibilidad interna y no como validación externa. \\
+Evaluación con $k \in \{3,\ldots,8\}$, cuyos resultados se interpretan como sensibilidad interna y no como validación externa. \\
 
 Sensibilidad temporal &
 Comparación &
@@ -505,7 +505,7 @@ plataforma de alojamiento: los seis archivos anuales de egresos GRD
 MINSAL~\citep{TableauGRD}, y el archivo consolidado
 \texttt{grd\_filtrado.parquet} ($198$\,MB), que se regenera desde
 los anteriores mediante \texttt{build\_extended\_grd.py}. Con esa excepción, 15
-de los 21 scripts se ejecutan directamente sobre una copia del repositorio; los
+de los 21 scripts se ejecutan directamente sobre una copia del repositorio, mientras que los
 seis restantes recorren los egresos individuales y requieren la descarga previa.
 
 El código se publica bajo licencia MIT, de modo que puede reutilizarse,

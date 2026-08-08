@@ -205,8 +205,8 @@ Sin demográfico-obstétrico & 28 & 0,238 & 1,343 & 0,571 & 0,599 \\
 \begin{minipage}{\textwidth}
 \footnotesize\raggedright
 \textit{Nota.} DB: índice de Davies--Bouldin; un valor menor indica grupos más
-compactos y separados. La exclusión afecta solo las siete variables directas;
-las componentes PCA de casuística se conservan porque mezclan múltiples
+compactos y separados. La exclusión afecta solo las siete variables directas,
+mientras que las componentes PCA de casuística se conservan porque mezclan múltiples
 dimensiones clínicas, incluidas algunas cargas obstétricas.
 \end{minipage}
 \end{table}
@@ -282,7 +282,7 @@ pediátrica y sus coeficientes Silhouette individuales son positivos
 ($0{,}627$ a $0{,}736$). Los tres establecimientos del clúster $C3$ presentan
 un perfil de mayor complejidad y especialización, aunque sus valores individuales
 de Silhouette son más heterogéneos. Por ello, la caracterización de los grupos
-pequeños se limita a describir sus perfiles clínico-operativos; en particular,
+pequeños se limita a describir sus perfiles clínico-operativos. En particular,
 la heterogeneidad de los valores Silhouette no permite afirmar que las
 asignaciones individuales de los establecimientos de $C3$ sean inequívocas.
 
@@ -472,7 +472,7 @@ mediano de 0,526 sigue lejos de la estabilidad del Nivel~1 (ARI mediano
 0,958). La solución de nueve grupos tampoco reproduce una tipología robusta:
 aunque su NMI es mayor, su ARI mediano es 0,559, y contiene dos subgrupos
 unitarios. En consecuencia, el Nivel~2 se limita en el cuerpo del texto a una
-separación exploratoria amplia en dos bloques de 40 y 14 hospitales; no se
+separación exploratoria amplia en dos bloques de 40 y 14 hospitales, por lo que no se
 sostienen nueve perfiles funcionales generalizables. La asignación de nueve
 subgrupos y sus perfiles descriptivos se conserva en el Anexo como material
 suplementario.
@@ -682,14 +682,14 @@ Normal multivariada con covarianza preservada & 23 & 26 & 28 & 0,1198 \\
 \begin{minipage}{\textwidth}
 \footnotesize\raggedright
 \textit{Nota.} Ambas nulas usan 500 réplicas. El valor observado fue 26. En la
-segunda nula, la covarianza se preserva en esperanza; el error relativo mediano
-entre la covarianza muestral simulada y la observada fue 0,308.
+segunda nula, la covarianza se preserva en esperanza, con un error relativo mediano
+entre la covarianza muestral simulada y la observada de 0,308.
 \end{minipage}
 \end{table}
 
 En el Nivel~2 (Tabla~\ref{tab:kruskal-nivel2}), el análisis se restringe a los 54 hospitales del núcleo generalista y compara los nueve subclústeres exploratorios ($S0$ a $S8$). De las 28 variables evaluadas, 24 presentan diferencias estadísticamente detectables entre subgrupos después del ajuste BH. Las seis con mayor tamaño de efecto corresponden a \texttt{peso\_medio\_grd}, \texttt{pct\_femenino\_fertil}, \texttt{pct\_obstetrica\_ingreso}, \texttt{entropia\_grd}, \texttt{pct\_estancia\_larga} y \texttt{tasa\_prematurez}.
 
-En consecuencia, la subtipología exploratoria diferencia principalmente gradientes de complejidad clínica, composición de la casuística, permanencia hospitalaria y orientación obstétrica. Por tratarse de un segundo nivel exploratorio construido sobre el mismo conjunto de variables, los $p_{\text{BH}}$ no constituyen evidencia independiente de categorías externas o definitivas; su utilidad es descriptiva para ordenar los atributos que distinguen los perfiles obtenidos.
+En consecuencia, la subtipología exploratoria diferencia principalmente gradientes de complejidad clínica, composición de la casuística, permanencia hospitalaria y orientación obstétrica. Por tratarse de un segundo nivel exploratorio construido sobre el mismo conjunto de variables, los $p_{\text{BH}}$ no constituyen evidencia independiente de categorías externas o definitivas, de modo que su utilidad es descriptiva para ordenar los atributos que distinguen los perfiles obtenidos.
 
 \begin{table}[htbp]
 \centering
@@ -715,7 +715,7 @@ tasa\_prematurez & 33,881 & $4{,}2686 \times 10^{-5}$ & 0,00019920 & 0,57514 \\
 \end{minipage}
 \end{table}
 
-La magnitud de los tamaños de efecto debe considerarse junto con la significancia. Las seis variables resumidas en la Tabla~\ref{tab:kruskal-nivel2} son las que muestran las diferencias relativas más intensas entre los subgrupos; este ordenamiento no implica que las fronteras entre ellos sean robustas o generalizables.
+La magnitud de los tamaños de efecto debe considerarse junto con la significancia. Las seis variables resumidas en la Tabla~\ref{tab:kruskal-nivel2} son las que muestran las diferencias relativas más intensas entre los subgrupos. Este ordenamiento, sin embargo, no implica que las fronteras entre ellos sean robustas o generalizables.
 
 Adicionalmente, se examinó la asociación entre la asignación de clústeres y la pertenencia a Servicios de Salud mediante una prueba de chi-cuadrado de independencia. En el Nivel~1 se obtuvo $\chi^2=65{,}329$ ($\text{gl}=84$, $p=0{,}935$), mientras que en el Nivel~2 se obtuvo $\chi^2=206{,}944$ ($\text{gl}=224$, $p=0{,}787$). En ambos niveles no se detectó una asociación estadísticamente significativa entre los clústeres y el Servicio de Salud.
 
@@ -870,7 +870,7 @@ MINSAL & 0,944 & $-4{,}68$ & 0,003 \\
 \par\smallskip
 \begin{minipage}{\textwidth}
 \footnotesize\raggedright
-\textit{Nota metodológica.} La distribución nula de WSS/TSS para MINSAL es marcadamente asimétrica (sesgo positivo): la mayor parte de las 2.000 permutaciones produce dispersiones intragrupo elevadas, con una cola derecha extendida. Esta asimetría es esperable en particiones muy desbalanceadas (grupos de 55 y 10 hospitales), donde la asignación aleatoria rara vez genera subconjuntos tan compactos como los observados. El $z$-score de $-4{,}68$ se calcula respecto de la media y desviación estándar de la distribución nula y no presupone normalidad; el $p$-valor empírico de $0{,}003$ indica que aproximadamente 6 de las 2.000 reasignaciones alcanzaron una dispersión igual o menor que la observada (WSS/TSS $= 0{,}944$). Este resultado confirma que la clasificación MINSAL presenta una compactación estadísticamente superior a la esperable por azar bajo sus propios tamaños de grupo, aunque notoriamente menor que la de las soluciones Ward.
+\textit{Nota metodológica.} La distribución nula de WSS/TSS para MINSAL es marcadamente asimétrica (sesgo positivo): la mayor parte de las 2.000 permutaciones produce dispersiones intragrupo elevadas, con una cola derecha extendida. Esta asimetría es esperable en particiones muy desbalanceadas (grupos de 55 y 10 hospitales), donde la asignación aleatoria rara vez genera subconjuntos tan compactos como los observados. El $z$-score de $-4{,}68$ se calcula respecto de la media y desviación estándar de la distribución nula y no presupone normalidad, mientras que el $p$-valor empírico de $0{,}003$ indica que aproximadamente 6 de las 2.000 reasignaciones alcanzaron una dispersión igual o menor que la observada (WSS/TSS $= 0{,}944$). Este resultado confirma que la clasificación MINSAL presenta una compactación estadísticamente superior a la esperable por azar bajo sus propios tamaños de grupo, aunque notoriamente menor que la de las soluciones Ward.
 \end{minipage}
 \end{table}
 
@@ -894,11 +894,11 @@ en bloques de variables no usados para construir las etiquetas Ward.
 La Tabla~\ref{tab:homogeneidad-cruzada} evalúa cada partición en un bloque de
 variables distinto del que se utilizó para construir Ward. Al agrupar con las 27
 variables directas y evaluar sobre las 8 componentes de casuística, Ward $K=4$
-obtuvo WSS/TSS $=0{,}616$, frente a $0{,}956$ para MINSAL; la diferencia
-MINSAL--Ward fue $0{,}340$ (IC bootstrap 95\,\% $[0{,}176;0{,}540]$). En el
+obtuvo WSS/TSS $=0{,}616$, frente a $0{,}956$ para MINSAL, con una diferencia
+MINSAL--Ward de $0{,}340$ (IC bootstrap 95\,\% $[0{,}176;0{,}540]$). En el
 sentido inverso, al agrupar con componentes de casuística y evaluar sobre las
 variables directas, Ward $K=4$ obtuvo WSS/TSS $=0{,}533$, frente a $0{,}940$
-para MINSAL; la diferencia fue $0{,}407$ (IC 95\,\%
+para MINSAL, con una diferencia de $0{,}407$ (IC 95\,\%
 $[0{,}198;0{,}616]$). En ambas direcciones, la partición de cuatro grupos
 conserva menor dispersión en el bloque retenido.
 
@@ -945,7 +945,7 @@ controla simultáneamente la reutilización del espacio de evaluación y el núm
 de grupos. El resultado más acotado es que la solución Ward $K=4$ conserva una
 compactación mayor en bloques retenidos, aunque parte de esa diferencia puede
 asociarse a su mayor granularidad. En consecuencia, el estudio no establece una
-superioridad general de la clasificación funcional sobre la administrativa; sí
+superioridad general de la clasificación funcional sobre la administrativa, aunque sí
 documenta que ambas organizan de manera distinta la actividad hospitalaria y que
 los perfiles Ward muestran cohesión interna y estabilidad bajo las sensibilidades
 reportadas.
@@ -1136,7 +1136,7 @@ retira perfiles especializados que participan en la estructura que el análisis
 pretende describir. La solución sin marcas fragmenta el núcleo en grupos de 16
 y 38 hospitales y produce un grupo unitario. En consecuencia, la partición
 principal conserva los 65 establecimientos. Isolation Forest se interpreta como
-una señal de influencia global y no como un criterio de eliminación automática;
+una señal de influencia global y no como un criterio de eliminación automática, por lo que
 los criterios posteriores permiten caracterizar con mayor detalle los casos
 alejados o con asignación ambigua.
 

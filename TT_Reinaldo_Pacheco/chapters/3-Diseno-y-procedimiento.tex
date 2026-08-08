@@ -379,7 +379,7 @@ establecimiento explica un $51\,\%$ de la varianza en profundidad de
 codificación, proporción que sugiere un componente institucional o
 administrativo y no puramente clínico. Dos elementos acotan esa lectura. Por
 una parte, la dispersión dentro de un mismo Servicio de Salud sigue siendo
-amplia --en Araucanía Sur la profundidad va de $1{,}28$ a $3{,}80$--, por lo que
+amplia (en Araucanía Sur la profundidad va de $1{,}28$ a $3{,}80$), por lo que
 el fenómeno no se reduce a un patrón regional homogéneo. Por otra, el aumento
 del promedio de comorbilidades al incorporar los campos completos correlaciona
 positivamente con la severidad media ($r = 0{,}64$) y con la mortalidad media
@@ -764,7 +764,7 @@ H_{\text{norm}} = \frac{-\sum_{i=1}^{G} p_i \, \log_2(p_i)}{\log_2 G}
 La división por $\log_2 G$, que es el valor máximo que puede alcanzar la
 entropía cuando la distribución es uniforme, acota el indicador al intervalo
 $[0, 1]$ y lo hace comparable entre hospitales con distinto número de GRD
-distintos; por convención se asigna el valor 0 cuando $G \leq 1$ y se excluyen
+distintos. Por convención, se asigna el valor 0 cuando $G \leq 1$ y se excluyen
 los términos con $p_i = 0$. Un hospital con entropía normalizada alta atiende una
 gran variedad de condiciones con frecuencias relativamente uniformes (perfil
 generalista), mientras que uno con entropía baja concentra su actividad en pocos
@@ -844,7 +844,7 @@ maestra CIE-9-MC empleada, es decir, las 17 secciones numeradas de 00 a 16 y la
 sección 03A. El tercero describe la concentración del establecimiento en los
 20 GRD más frecuentes a nivel nacional. Cada vector incluye una categoría
 residual. En los dos primeros casos reúne los códigos que no admiten mapeo a un
-capítulo o una sección de la tabla maestra; en el tercero agrupa los GRD que
+capítulo o una sección de la tabla maestra, mientras que en el tercero agrupa los GRD que
 quedan fuera del Top-20 nacional. Estas categorías permiten que cada vector
 forme una distribución completa cuya suma es igual a 1.
 
@@ -913,8 +913,8 @@ del clustering final (Tabla~\ref{tab:barrido-k-pca}). Con la variante
 ponderada, las 8 componentes explican el 72{,}3\,\% de la varianza acumulada
 de las 63 columnas de casuística. Incorporar componentes adicionales
 incrementa la varianza retenida, pero no mejora la calidad de la partición
-resultante. Por el contrario, al aumentar $K$ de 8 a 11 --el número mínimo
-que acumularía el 80\,\% de la varianza-- el coeficiente de Silhouette desciende
+resultante. Por el contrario, al aumentar $K$ de 8 a 11 (el número mínimo
+que acumularía el 80\,\% de la varianza) el coeficiente de Silhouette desciende
 de $0{,}398$ a $0{,}379$, el índice de Calinski-Harabasz cae de $22{,}1$ a
 $19{,}6$ y el índice de Davies-Bouldin empeora de $0{,}994$ a $1{,}076$. Las
 soluciones con 9, 10 y 11 componentes conservan la misma partición de cuatro
@@ -1052,7 +1052,7 @@ mediana no se transformó logarítmicamente: presenta asimetría negativa
 ($-1{,}38$), y $\log(1+x)$ está orientada a comprimir colas derechas, por lo que
 su aplicación habría acentuado ese patrón. Las variables restantes no se
 transformaron logarítmicamente, pues no presentaban colas derechas de magnitud
-comparable; sus diferencias de escala se abordan mediante el escalado robusto.
+comparable, de modo que sus diferencias de escala se abordan directamente mediante el escalado robusto.
 
 \textbf{Escalado robusto:} Posteriormente, todas las variables de la matriz,
 incluidas las transformadas, se estandarizaron mediante un escalador robusto que
@@ -1086,8 +1086,8 @@ preprocesamiento sin alterar los perfiles funcionales reportados.
 Dado que la distancia euclidiana acumula la contribución de cada variable, se
 cuantificó la fracción de la suma de distancias cuadradas entre todos los pares
 de hospitales atribuible a cuatro macro-bloques de la matriz ya preprocesada:
-gestión, diversidad y CMA (9 variables); perfil operativo no demográfico (11);
-demanda demográfica-obstétrica (7); y componentes PCA de casuística (8). El
+gestión, diversidad y CMA (9 variables); perfil operativo no demográfico (11 variables);
+demanda demográfica-obstétrica (7 variables), y componentes PCA de casuística (8 variables). El
 bloque demográfico-obstétrico comprende porcentaje pediátrico, geriátrico y
 femenino fértil, edad mediana, porcentaje de ingreso obstétrico, proporción de
 egresos neonatales y tasa de prematurez. Esta definición distingue la
@@ -1378,8 +1378,8 @@ Secciones~\ref{sec:sensibilidad-analisis}, \ref{sec:bootstrap} y
 \label{sec:permutacion-circularidad}
 
 Para cuantificar, en lugar de solo señalar, cuánta de la significancia
-observada podría atribuirse al mero acto de agrupar --sin que exista ninguna
-estructura real que separar-- se diseñó una prueba de permutación sobre el
+observada podría atribuirse al mero acto de agrupar sin que exista ninguna
+estructura real que separar se diseñó una prueba de permutación sobre el
 pipeline completo. Se generan matrices institucionales nulas permutando de
 forma independiente cada una de las 35 columnas entre los 65 hospitales
 (\textit{shuffle} por columna), lo que destruye cualquier estructura de
@@ -1594,7 +1594,7 @@ comparación se reporta en dos versiones: una \textbf{no controlada}, entre la
 partición Ward $K=4$ efectivamente utilizada en este trabajo y MINSAL ($K=2$),
 que refleja la comparación de interés sustantivo pero con distinto número de
 grupos, y una \textbf{controlada por $K$}, entre una partición Ward restringida
-a $K=2$ --el mismo número de categorías que MINSAL-- y MINSAL, sobre las
+a $K=2$ y MINSAL, sobre las
 mismas variables y métricas, que aísla el efecto de la homogeneidad de la
 partición del efecto mecánico del número de grupos.
 
@@ -1720,8 +1720,8 @@ marcados por un solo criterio corresponden a hospitales en la frontera entre
 perfiles. La condición de ``atípico'' es, en todos los casos, puramente
 estadística y descriptiva: no implica por sí sola una anomalía en el sentido
 de un error, una falla de gestión o una necesidad de auditoría, y su
-interpretación sustantiva --especialización genuina, perfil híbrido o posible
-problema de codificación-- se desarrolla caso por caso en el
+interpretación como especialización genuina, perfil híbrido o posible
+problema de codificación se desarrolla caso por caso en el
 Capítulo~\ref{cap:resultados}.
 
 \subsection{Interpretabilidad y proyecciones visuales}
@@ -1756,9 +1756,7 @@ cuánto dependen los resultados de cada una de ellas. Los resultados de las cuat
 pruebas se reportan en el Capítulo~\ref{cap:resultados}.
 
 Las tres últimas pruebas comparten un mismo protocolo. Se altera una sola decisión
-de diseño, se recalcula el pipeline completo --construcción de variables,
-reducción PCA, preprocesamiento y clustering aglomerativo Ward con $K=4$-- y se
-compara la partición obtenida con la del pipeline definitivo mediante el índice de
+de diseño, se recalcula el pipeline completo y se compara la partición obtenida con la del pipeline definitivo mediante el índice de
 Rand ajustado (ARI) y la información mutua normalizada (NMI), acompañados del
 coeficiente de Silhouette como medida de cohesión interna de cada solución. La
 elección de ARI y NMI responde a que ambos índices son invariantes a la
@@ -1845,7 +1843,7 @@ Sección~\ref{sec:elegibilidad}. La elegibilidad no se re-deriva sobre el perío
 reducido, de modo que cualquier diferencia observada sea atribuible al cambio de
 período y no a un cambio en la composición del universo de análisis. Sobre esta
 matriz alternativa, construida con 4{,}158{,}029 egresos de los años 2019 y
-2022--2024 --un 71{,}6\,\% del total del período--, se repiten el
+2022--2024 (un 71{,}6\,\% del total del período), se repiten el
 preprocesamiento de la Sección~\ref{sec:preprocesamiento} y el clustering
 aglomerativo Ward con $K=4$.
 
@@ -1868,8 +1866,8 @@ en lugar de operar sobre las proporciones brutas. La transformación CLR proyect
 cada composición al espacio logarítmico de razones respecto a su media
 geométrica, lo que remueve la restricción de suma constante y constituye la
 alternativa estándar en el análisis de datos composicionales. Los ceros
-estructurales de los vectores de proporciones --frecuentes en establecimientos
-que no registran actividad en determinado capítulo, sección o GRD-- se tratan
+estructurales de los vectores de proporciones frecuentes en establecimientos
+que no registran actividad en determinado capítulo, sección o GRD se tratan
 mediante un pseudo-conteo multiplicativo ($\delta = 1/(2D)$, con $D$ el número de
 partes de cada composición), que evita la indeterminación de $\log(0)$ sin
 distorsionar de forma relevante las proporciones no nulas.
@@ -1891,8 +1889,7 @@ aunque no elimina, la distorsión de clausura, porque las componentes resultante
 capturan patrones de covariación conjunta entre partes en lugar de operar sobre
 cada proporción aislada. Esto no descarta el problema: el vector de Top-20 GRD,
 en particular, incluye proporciones individuales de hasta $0{,}978$ en algunos
-hospitales altamente concentrados en un único GRD --precisamente el tipo de
-composición donde el efecto de clausura es más severo--, por lo que la robustez
+hospitales altamente concentrados en un único GRD, por lo que la robustez
 frente a este problema no puede darse por sentada a priori y requiere la
 comparación empírica que esta prueba provee. El pipeline no explora la
 transformación ILR (\textit{isometric log-ratio}), que evita además la
