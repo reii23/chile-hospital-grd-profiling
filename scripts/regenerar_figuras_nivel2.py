@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 TABLES_DIR = ROOT / "reports" / "tables"
 SEARCH_PATH = TABLES_DIR / "busqueda_subclustering.csv"
 ASSIGNMENT_PATH = TABLES_DIR / "asignacion_jerarquica_final.csv"
-OUTPUT_DIR = ROOT / "formato-tesis" / "Tesis_Reinaldo_Pacheco_Editable" / "img"
+OUTPUT_DIR = ROOT / "TT_Reinaldo_Pacheco" / "img"
 
 
 def main() -> None:
