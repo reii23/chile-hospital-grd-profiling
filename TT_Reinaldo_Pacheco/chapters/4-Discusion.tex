@@ -260,7 +260,8 @@ un bloque amplio frente a tres establecimientos singulares. La solución $K=3$, 
 
 Siguiendo el criterio declarado en la Sección~\ref{sec:seleccion-k}, se adoptó
 la partición $K=4$. Esta elección se declara explícitamente como un compromiso interpretativo,
-pues identifica un núcleo de 54 hospitales generalistas, tres hospitales pediátricos, tres establecimientos de perfil monográfico y un grupo de cinco
+pues identifica un núcleo de 54 hospitales generalistas, tres hospitales pediátricos,
+tres establecimientos de especialización clínica heterogénea y un grupo de cinco
 hospitales con una combinación particular de
 carga clínica, estancia y composición de pacientes. La solución presenta un
 Silhouette de $0{,}398$ y un Davies-Bouldin de $0{,}994$. En consecuencia, no se
@@ -347,16 +348,21 @@ partición.
     Río, el Hospital de Niños Dr.\ Luis Calvo Mackenna y el Hospital Dr.\
     Exequiel González Cortés.
 
-    \item \textbf{Clúster $C3$ ($n=3$): perfil monográfico.} Registra el peso
-    medio GRD más alto entre los cuatro perfiles (mediana $1{,}874$), la mayor
-    edad mediana de la red ($63{,}6$ años), una estancia media de $8{,}7$ días
-    y actividad obstétrica, pediátrica y CMA nula. Integra al Instituto Nacional
-    de Enfermedades Respiratorias y Cirugía Torácica (INER), al Instituto de
-    Neurocirugía Dr.\ Alfonso Asenjo y al Hospital Dr.\ Eduardo Pereira Ramírez
-    de Valparaíso. Estas características permiten describirlo como un perfil
-    predominantemente monográfico. Sin embargo, la heterogeneidad de los
-    coeficientes Silhouette impide considerar inequívoca la asignación individual
-    de sus tres establecimientos a $C3$.
+    \item \textbf{Clúster $C3$ ($n=3$): grupo de especialización clínica
+    heterogénea.} Registra el peso medio GRD más alto entre los cuatro perfiles
+    (mediana $1{,}874$), la mayor edad mediana de la red ($63{,}6$ años), una
+    estancia media de $8{,}7$ días y actividad obstétrica, pediátrica y CMA
+    nula. Integra al Instituto Nacional de Enfermedades Respiratorias y Cirugía
+    Torácica (INER), al Instituto de Neurocirugía Dr.\ Alfonso Asenjo y al
+    Hospital Dr.\ Eduardo Pereira Ramírez de Valparaíso. Los dos primeros son
+    establecimientos especializados, mientras que el tercero es un hospital
+    general. Los coeficientes Silhouette individuales son $0{,}270$ para INER,
+    $0{,}053$ para el Instituto de Neurocirugía y $-0{,}173$ para el Hospital
+    Eduardo Pereira. Este último también cumple los tres criterios de atipicidad
+    combinados (Sección~\ref{sec:res-outliers-combinados}), por lo que su
+    asignación a $C3$ debe interpretarse como ambigua. En consecuencia, la
+    etiqueta describe un patrón de especialización clínica del grupo, sin
+    atribuir carácter monográfico al conjunto de sus tres establecimientos.
 
     \item \textbf{Clúster $C2$ ($n=5$): grupo de carga clínica heterogénea.}
     Comparte con $C3$ una estancia media prolongada ($8{,}7$ días) y una
@@ -1012,7 +1018,7 @@ presenta la distribución de los 65 hospitales entre ambas clasificaciones.
 $C0$ (pediátricos) & 3 & 0 & 3 \\
 $C1$ (núcleo generalista) & 47 & 7 & 54 \\
 $C2$ (perfil de carga clínica) & 2 & 3 & 5 \\
-$C3$ (perfil monográfico) & 3 & 0 & 3 \\
+$C3$ (especialización clínica heterogénea) & 3 & 0 & 3 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1030,10 +1036,11 @@ en los egresos.
 
 La contingencia permite precisar cómo se distribuyen los perfiles funcionales
 respecto de las categorías administrativas. Los tres hospitales pediátricos de
-$C0$ y los tres establecimientos del perfil monográfico $C3$ están clasificados
-por MINSAL como de Alta Complejidad. Esta coincidencia describe la ubicación
-administrativa de los perfiles más especializados identificados en el Nivel~1,
-sin constituir una validación externa de la partición.
+$C0$ y los tres establecimientos del grupo de especialización clínica
+heterogénea $C3$ están clasificados por MINSAL como de Alta Complejidad. Esta
+coincidencia describe la ubicación administrativa de los perfiles más
+especializados identificados en el Nivel~1, sin constituir una validación externa
+de la partición.
 
 El núcleo generalista $C1$ concentra 47 hospitales de Alta Complejidad y 7 de
 Mediana Complejidad. Por tanto, este perfil funcional reúne establecimientos
