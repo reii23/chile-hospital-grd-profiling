@@ -62,8 +62,8 @@ Promedio del índice de riesgo de mortalidad asignado por el agrupador GRD. &
 Adimensional (1--4) & Complejidad \\
 
 \texttt{entropia\_grd} &
-Entropía de Shannon de la distribución de GRD del establecimiento. &
-Bits & Diversidad \\
+Entropía de Shannon normalizada de la distribución de GRD del establecimiento. &
+Adimensional (0--1) & Diversidad \\
 
 \texttt{comorbilidades\_promedio} &
 Promedio de diagnósticos secundarios registrados por egreso. &
@@ -122,7 +122,7 @@ Proporción de egresos procedentes del servicio de urgencia propio. &
 Proporción & Procedencia \\
 
 \texttt{pct\_origen\_referencia} &
-Proporción de egresos derivados desde otro establecimiento de la red. &
+Proporción de egresos cuya procedencia normalizada es \texttt{OTROS\_HOSPITALES} o \texttt{RED\_NACIONAL}. &
 Proporción & Procedencia \\
 
 \texttt{pct\_uso\_pabellon} &
@@ -133,13 +133,13 @@ Proporción & Actividad quirúrgica \\
 Promedio de usos de pabellón por egreso hospitalizado. &
 Conteo & Actividad quirúrgica \\
 
-\texttt{tasa\_partos} &
-Proporción de egresos con condición de alta neonatal registrada. &
-Proporción & Actividad obstétrica \\
+\texttt{tasa\_partos} (nombre técnico legado) &
+Proporción de egresos hospitalarios con condición de alta neonatal registrada; no equivale a una tasa ni a un conteo de partos atendidos. &
+Proporción & Actividad neonatal \\
 
 \texttt{tasa\_prematurez} &
-Proporción de partos con peso de nacimiento inferior a 2.500 gramos. &
-Proporción & Actividad obstétrica \\
+Proporción de egresos neonatales registrados con peso de nacimiento inferior a 2{,}500 gramos. &
+Proporción & Actividad neonatal \\
 
 \texttt{pct\_estancia\_larga} &
 Proporción de egresos con estancia superior a 30 días. &
@@ -172,127 +172,161 @@ excluidos se presentan en la Tabla~\ref{tab:anexo-excluidos}.
 \centering
 \caption{Establecimientos excluidos por no cumplir el criterio de presencia temporal mínima.}
 \label{tab:anexo-excluidos}
-\begin{tabular}{c c}
+\begin{tabular}{p{1.3cm} p{4.3cm} p{3.1cm} c r}
 \toprule
-\textbf{Código} & \textbf{Años con presencia válida} \\
+\textbf{Código} & \textbf{Establecimiento} & \textbf{Servicio de Salud} & \textbf{Años} & \textbf{Egresos} \\
 \midrule
-110110 & 2 \\
-116107 & 1 \\
-116111 & 1 \\
-118106 & 2 \\
-119101 & 2 \\
-119102 & 1 \\
-200717 & 1 \\
+110110 & Instituto Traumatológico Dr. T. Gebauer & Metropolitano Suroriente & 2023, 2024 & 6{,}206 \\
+116107 & Hospital de Constitución & Del Maule & 2024 & 2{,}796 \\
+116111 & Hospital San Juan de Dios (Cauquenes) & Del Maule & 2024 & 4{,}461 \\
+118106 & Hospital de Lota & Concepción & 2023, 2024 & 7{,}706 \\
+119101 & Hospital de Tomé & Talcahuano & 2023, 2024 & 6{,}365 \\
+119102 & Hospital Penco-Lirquén & Concepción & 2024 & 2{,}751 \\
+200717 & Complejo Asistencial Padre Las Casas & Araucanía Sur & 2024 & 6{,}389 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
+La Tabla~\ref{tab:simulacion-anios} presenta el error relativo mediano al estimar
+seis indicadores institucionales clave con $k$ años de datos en lugar de los
+seis años completos del período 2019--2024. La simulación se realizó sobre los
+65 hospitales con cobertura completa mediante submuestreo de todas las
+combinaciones posibles de $k \in \{1, 2, 3, 4, 5\}$ años (o una muestra
+aleatoria de 200 combinaciones cuando el total superaba ese valor), midiendo el
+error relativo absoluto mediano con bootstrap al 95\,\%.
+
+\begin{table}[htbp]
+\centering
+\caption{Error relativo mediano (\%) al estimar cada indicador institucional con $k$ años en lugar de los 6 años completos, con intervalo de confianza 95\,\% (\textit{bootstrap}).}
+\label{tab:simulacion-anios}
+\begin{tabular}{c c c c c c c}
+\toprule
+\textbf{$k$ años} & \textbf{Egresos/año} & \textbf{Estancia} & \textbf{Peso GRD} & \textbf{Severidad} & \textbf{Mortalidad} & \textbf{Tasa CMA} \\
+\midrule
+1 & 9{,}3\,\% & 5{,}8\,\% & 4{,}2\,\% & 4{,}6\,\% & 3{,}8\,\% & 21{,}3\,\% \\
+2 & 6{,}0\,\% & 4{,}5\,\% & 4{,}9\,\% & 3{,}8\,\% & 3{,}2\,\% & 10{,}9\,\% \\
+\textbf{3} & \textbf{4{,}5\,\%} & \textbf{3{,}3\,\%} & \textbf{3{,}6\,\%} & \textbf{2{,}8\,\%} & \textbf{2{,}4\,\%} & \textbf{8{,}0\,\%} \\
+4 & 3{,}0\,\% & 2{,}2\,\% & 2{,}4\,\% & 1{,}9\,\% & 1{,}6\,\% & 5{,}3\,\% \\
+5 & 1{,}9\,\% & 1{,}1\,\% & 0{,}8\,\% & 0{,}9\,\% & 0{,}7\,\% & 4{,}2\,\% \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize\raggedright
+\textit{Nota.} El umbral de tres años corresponde al primer punto en que la reducción marginal del error empieza a estabilizarse. El mayor beneficio se obtiene entre $k=1$ y $k=3$, mientras que agregar un cuarto o quinto año reduce el error en apenas 1{,}4 y 1{,}2 puntos adicionales. La tasa de CMA mantiene un error comparativamente alto incluso con tres años (8{,}0\,\%), ya que se calcula sobre un subconjunto minoritario de egresos más sensible a la variación anual.
+\end{minipage}
+\end{table}
+
 La partición final de Nivel~1 contiene tres hospitales pediátricos ($C0$), un
 núcleo generalista de 54 establecimientos ($C1$), un grupo de cinco hospitales
-con carga clínica y estancia prolongada ($C2$), y tres institutos monográficos
-($C3$). El núcleo generalista se subdividió de forma exploratoria mediante
-Ward con $K_{sub}=10$, cuyas etiquetas se presentan como $S0$ a $S9$.
+con carga clínica y estancia prolongada ($C2$), y tres establecimientos de
+especialización clínica heterogénea ($C3$). El núcleo generalista se subdividió
+de forma exploratoria mediante Ward con $K_{sub}=9$, cuyas etiquetas se
+presentan como $S0$ a $S8$.
 
 La Tabla~\ref{tab:anexo-hospitales} presenta la asignación final de los 65
 establecimientos. Las etiquetas de Nivel~2 solo se aplican a los miembros de
-$C1$; no constituyen categorías funcionales validadas equivalentes a los grupos
+$C1$, por lo que no constituyen categorías funcionales validadas equivalentes a los grupos
 del Nivel~1.
 
-\begin{longtable}{p{1.5cm} p{9.0cm} p{1.0cm} p{1.0cm}}
-\caption{Asignación final de los establecimientos en los Niveles 1 y 2 del clustering Ward.}
+\begin{longtable}{p{1.3cm} p{6.8cm} p{2.4cm} p{1.0cm} p{1.0cm}}
+\caption{Asignación final de los establecimientos en los Niveles 1 y 2 del clustering Ward y categoría de complejidad MINSAL.}
 \label{tab:anexo-hospitales} \\
 \toprule
-\textbf{Código} & \textbf{Establecimiento} & \textbf{N1} & \textbf{N2} \\
+\textbf{Código} & \textbf{Establecimiento} & \textbf{MINSAL} & \textbf{N1} & \textbf{N2} \\
 \midrule
 \endfirsthead
 
-\multicolumn{4}{c}{\tablename\ \thetable{} -- continuación} \\
+\multicolumn{5}{c}{\tablename\ \thetable{} -- continuación} \\
 \toprule
-\textbf{Código} & \textbf{Establecimiento} & \textbf{N1} & \textbf{N2} \\
+\textbf{Código} & \textbf{Establecimiento} & \textbf{MINSAL} & \textbf{N1} & \textbf{N2} \\
 \midrule
 \endhead
 
-101100 & Hospital Dr.\ Juan Noé Crevanni (Arica) & $C1$ & $S6$ \\
-102100 & Hospital Dr.\ Ernesto Torres Galdames (Iquique) & $C1$ & $S6$ \\
-103100 & Hospital Dr.\ Leonardo Guzmán (Antofagasta) & $C1$ & $S8$ \\
-103101 & Hospital Dr.\ Carlos Cisternas (Calama) & $C1$ & $S6$ \\
-104100 & Hospital San José del Carmen (Copiapó) & $C1$ & $S6$ \\
-104103 & Hospital Provincial del Huasco Monseñor Fernando Ariztía Ruiz (Vallenar) & $C1$ & $S6$ \\
-105100 & Hospital San Juan de Dios (La Serena) & $C1$ & $S5$ \\
-105101 & Hospital San Pablo (Coquimbo) & $C1$ & $S6$ \\
-105102 & Hospital Dr.\ Antonio Tirado Lanas (Ovalle) & $C1$ & $S5$ \\
-106100 & Hospital Carlos Van Buren (Valparaíso) & $C1$ & $S8$ \\
-106102 & Hospital Dr.\ Eduardo Pereira Ramírez (Valparaíso) & $C3$ & --- \\
-106103 & Hospital Claudio Vicuña (San Antonio) & $C1$ & $S0$ \\
-107100 & Hospital Dr.\ Gustavo Fricke (Viña del Mar) & $C1$ & $S9$ \\
-107101 & Hospital San Martín (Quillota) & $C1$ & $S5$ \\
-107102 & Hospital de Quilpué & $C1$ & $S1$ \\
-108100 & Hospital de San Camilo (San Felipe) & $C1$ & $S5$ \\
-108101 & Hospital San Juan de Dios (Los Andes) & $C1$ & $S6$ \\
-109100 & Complejo Hospitalario San José (Santiago, Independencia) & $C1$ & $S3$ \\
-109101 & Hospital Clínico de Niños Dr.\ Roberto del Río & $C0$ & --- \\
-110100 & Hospital San Juan de Dios (Santiago) & $C1$ & $S8$ \\
-110120 & Hospital Dr.\ Félix Bulnes Cerda & $C1$ & $S3$ \\
-110130 & Hospital Adalberto Steeger (Talagante) & $C1$ & $S2$ \\
-110150 & Hospital San José (Melipilla) & $C1$ & $S2$ \\
-111100 & Hospital Clínico San Borja-Arriarán & $C1$ & $S4$ \\
-111101 & Hospital Clínico Metropolitano El Carmen Dr.\ Luis Valentín Ferrada & $C1$ & $S7$ \\
-111195 & Hospital de Urgencia Asistencia Pública Dr.\ Alejandro del Río & $C2$ & --- \\
-112100 & Hospital Del Salvador (Santiago, Providencia) & $C2$ & --- \\
-112101 & Hospital Dr.\ Luis Tisné B. & $C1$ & $S3$ \\
-112102 & Hospital de Niños Dr.\ Luis Calvo Mackenna & $C0$ & --- \\
-112103 & Instituto Nacional de Enfermedades Respiratorias y Cirugía Torácica & $C3$ & --- \\
-112104 & Instituto de Neurocirugía Dr.\ Alfonso Asenjo & $C3$ & --- \\
-113100 & Hospital Barros Luco Trudeau & $C1$ & $S7$ \\
-113130 & Hospital Dr.\ Exequiel González Cortés & $C0$ & --- \\
-113150 & Hospital San Luis (Buin) & $C1$ & $S2$ \\
-113180 & Hospital El Pino & $C1$ & $S3$ \\
-114101 & Complejo Hospitalario Dr.\ Sótero del Río & $C1$ & $S8$ \\
-114103 & Hospital Padre Alberto Hurtado & $C1$ & $S3$ \\
-114105 & Hospital Clínico Metropolitano La Florida Dra.\ Eloísa Díaz Inzunza & $C1$ & $S7$ \\
-115100 & Hospital Regional de Rancagua & $C1$ & $S7$ \\
-115107 & Hospital San Juan de Dios (San Fernando) & $C1$ & $S6$ \\
-115110 & Hospital de Santa Cruz & $C1$ & $S1$ \\
-116100 & Hospital San Juan de Dios (Curicó) & $C1$ & $S5$ \\
-116105 & Hospital Dr.\ César Garavagno Burotto (Talca) & $C1$ & $S8$ \\
-116108 & Hospital Presidente Carlos Ibáñez del Campo (Linares) & $C1$ & $S6$ \\
-116110 & Hospital San José (Parral) & $C1$ & $S0$ \\
-117101 & Hospital Clínico Herminda Martín (Chillán) & $C1$ & $S7$ \\
-117102 & Hospital de San Carlos & $C1$ & $S6$ \\
-118100 & Hospital Clínico Regional Dr.\ Guillermo Grant Benavente (Concepción) & $C1$ & $S8$ \\
-118105 & Hospital San José (Coronel) & $C1$ & $S0$ \\
-119100 & Hospital Las Higueras (Talcahuano) & $C1$ & $S6$ \\
-120101 & Complejo Asistencial Dr.\ Víctor Ríos Ruiz (Los Ángeles) & $C1$ & $S6$ \\
-121109 & Hospital Dr.\ Hernán Henríquez Aravena (Temuco) & $C1$ & $S8$ \\
-121110 & Hospital Dr.\ Abraham Godoy (Lautaro) & $C2$ & --- \\
-121114 & Hospital Intercultural de Nueva Imperial & $C2$ & --- \\
-121117 & Hospital de Pitrufquén & $C2$ & --- \\
-121121 & Hospital de Villarrica & $C1$ & $S1$ \\
-122100 & Hospital Clínico Regional (Valdivia) & $C1$ & $S8$ \\
-123100 & Hospital Base San José de Osorno & $C1$ & $S6$ \\
-124105 & Hospital de Puerto Montt & $C1$ & $S7$ \\
-125100 & Hospital Regional (Coihaique) & $C1$ & $S6$ \\
-126100 & Hospital Clínico de Magallanes Dr.\ Lautaro Navarro Avaria & $C1$ & $S8$ \\
-128109 & Hospital Provincial Dr.\ Rafael Avaría (Curanilahue) & $C1$ & $S1$ \\
-129100 & Hospital Dr.\ Mauricio Heyermann (Angol) & $C1$ & $S6$ \\
-129106 & Hospital San José (Victoria) & $C1$ & $S6$ \\
-133150 & Hospital de Castro & $C1$ & $S6$ \\
+101100 & Hospital Dr.\ Juan Noé Crevanni (Arica) & Alta Complejidad & $C1$ & $S4$ \\
+102100 & Hospital Dr.\ Ernesto Torres Galdames (Iquique) & Alta Complejidad & $C1$ & $S6$ \\
+103100 & Hospital Dr.\ Leonardo Guzmán (Antofagasta) & Alta Complejidad & $C1$ & $S5$ \\
+103101 & Hospital Dr.\ Carlos Cisternas (Calama) & Alta Complejidad & $C1$ & $S6$ \\
+104100 & Hospital San José del Carmen (Copiapó) & Alta Complejidad & $C1$ & $S4$ \\
+104103 & Hospital Provincial del Huasco Monseñor Fernando Ariztía Ruiz (Vallenar) & Mediana Complejidad & $C1$ & $S4$ \\
+105100 & Hospital San Juan de Dios (La Serena) & Alta Complejidad & $C1$ & $S6$ \\
+105101 & Hospital San Pablo (Coquimbo) & Alta Complejidad & $C1$ & $S4$ \\
+105102 & Hospital Dr.\ Antonio Tirado Lanas (Ovalle) & Alta Complejidad & $C1$ & $S6$ \\
+106100 & Hospital Carlos Van Buren (Valparaíso) & Alta Complejidad & $C1$ & $S7$ \\
+106102 & Hospital Dr.\ Eduardo Pereira Ramírez (Valparaíso) & Alta Complejidad & $C3$ & --- \\
+106103 & Hospital Claudio Vicuña (San Antonio) & Alta Complejidad & $C1$ & $S3$ \\
+107100 & Hospital Dr.\ Gustavo Fricke (Viña del Mar) & Alta Complejidad & $C1$ & $S8$ \\
+107101 & Hospital San Martín (Quillota) & Alta Complejidad & $C1$ & $S6$ \\
+107102 & Hospital de Quilpué & Alta Complejidad & $C1$ & $S2$ \\
+108100 & Hospital de San Camilo (San Felipe) & Alta Complejidad & $C1$ & $S6$ \\
+108101 & Hospital San Juan de Dios (Los Andes) & Alta Complejidad & $C1$ & $S4$ \\
+109100 & Complejo Hospitalario San José (Santiago, Independencia) & Alta Complejidad & $C1$ & $S0$ \\
+109101 & Hospital Clínico de Niños Dr.\ Roberto del Río & Alta Complejidad & $C0$ & --- \\
+110100 & Hospital San Juan de Dios (Santiago) & Alta Complejidad & $C1$ & $S5$ \\
+110120 & Hospital Dr.\ Félix Bulnes Cerda & Alta Complejidad & $C1$ & $S6$ \\
+110130 & Hospital Adalberto Steeger (Talagante) & Mediana Complejidad & $C1$ & $S0$ \\
+110150 & Hospital San José (Melipilla) & Alta Complejidad & $C1$ & $S0$ \\
+111100 & Hospital Clínico San Borja-Arriarán & Alta Complejidad & $C1$ & $S1$ \\
+111101 & Hospital Clínico Metropolitano El Carmen Dr.\ Luis Valentín Ferrada & Alta Complejidad & $C1$ & $S7$ \\
+111195 & Hospital de Urgencia Asistencia Pública Dr.\ Alejandro del Río & Alta Complejidad & $C2$ & --- \\
+112100 & Hospital Del Salvador (Santiago, Providencia) & Alta Complejidad & $C2$ & --- \\
+112101 & Hospital Dr.\ Luis Tisné B. & Alta Complejidad & $C1$ & $S0$ \\
+112102 & Hospital de Niños Dr.\ Luis Calvo Mackenna & Alta Complejidad & $C0$ & --- \\
+112103 & Instituto Nacional de Enfermedades Respiratorias y Cirugía Torácica & Alta Complejidad & $C3$ & --- \\
+112104 & Instituto de Neurocirugía Dr.\ Alfonso Asenjo & Alta Complejidad & $C3$ & --- \\
+113100 & Hospital Barros Luco Trudeau & Alta Complejidad & $C1$ & $S7$ \\
+113130 & Hospital Dr.\ Exequiel González Cortés & Alta Complejidad & $C0$ & --- \\
+113150 & Hospital San Luis (Buin) & Mediana Complejidad & $C1$ & $S3$ \\
+113180 & Hospital El Pino & Alta Complejidad & $C1$ & $S0$ \\
+114101 & Complejo Hospitalario Dr.\ Sótero del Río & Alta Complejidad & $C1$ & $S7$ \\
+114103 & Hospital Padre Alberto Hurtado & Alta Complejidad & $C1$ & $S6$ \\
+114105 & Hospital Clínico Metropolitano La Florida Dra.\ Eloísa Díaz Inzunza & Alta Complejidad & $C1$ & $S7$ \\
+115100 & Hospital Regional de Rancagua & Alta Complejidad & $C1$ & $S7$ \\
+115107 & Hospital San Juan de Dios (San Fernando) & Alta Complejidad & $C1$ & $S4$ \\
+115110 & Hospital de Santa Cruz & Mediana Complejidad & $C1$ & $S2$ \\
+116100 & Hospital San Juan de Dios (Curicó) & Alta Complejidad & $C1$ & $S6$ \\
+116105 & Hospital Dr.\ César Garavagno Burotto (Talca) & Alta Complejidad & $C1$ & $S5$ \\
+116108 & Hospital Presidente Carlos Ibáñez del Campo (Linares) & Alta Complejidad & $C1$ & $S4$ \\
+116110 & Hospital San José (Parral) & Mediana Complejidad & $C1$ & $S3$ \\
+117101 & Hospital Clínico Herminda Martín (Chillán) & Alta Complejidad & $C1$ & $S7$ \\
+117102 & Hospital de San Carlos & Alta Complejidad & $C1$ & $S4$ \\
+118100 & Hospital Clínico Regional Dr.\ Guillermo Grant Benavente (Concepción) & Alta Complejidad & $C1$ & $S7$ \\
+118105 & Hospital San José (Coronel) & Alta Complejidad & $C1$ & $S3$ \\
+119100 & Hospital Las Higueras (Talcahuano) & Alta Complejidad & $C1$ & $S4$ \\
+120101 & Complejo Asistencial Dr.\ Víctor Ríos Ruiz (Los Ángeles) & Alta Complejidad & $C1$ & $S4$ \\
+121109 & Hospital Dr.\ Hernán Henríquez Aravena (Temuco) & Alta Complejidad & $C1$ & $S5$ \\
+121110 & Hospital Dr.\ Abraham Godoy (Lautaro) & Mediana Complejidad & $C2$ & --- \\
+121114 & Hospital Intercultural de Nueva Imperial & Alta Complejidad & $C2$ & --- \\
+121117 & Hospital de Pitrufquén & Alta Complejidad & $C2$ & --- \\
+121121 & Hospital de Villarrica & Alta Complejidad & $C1$ & $S2$ \\
+122100 & Hospital Clínico Regional (Valdivia) & Alta Complejidad & $C1$ & $S5$ \\
+123100 & Hospital Base San José de Osorno & Alta Complejidad & $C1$ & $S4$ \\
+124105 & Hospital de Puerto Montt & Alta Complejidad & $C1$ & $S7$ \\
+125100 & Hospital Regional (Coihaique) & Alta Complejidad & $C1$ & $S4$ \\
+126100 & Hospital Clínico de Magallanes Dr.\ Lautaro Navarro Avaria & Alta Complejidad & $C1$ & $S7$ \\
+128109 & Hospital Provincial Dr.\ Rafael Avaría (Curanilahue) & Alta Complejidad & $C1$ & $S2$ \\
+129100 & Hospital Dr.\ Mauricio Heyermann (Angol) & Alta Complejidad & $C1$ & $S4$ \\
+129106 & Hospital San José (Victoria) & Alta Complejidad & $C1$ & $S4$ \\
+133150 & Hospital de Castro & Alta Complejidad & $C1$ & $S4$ \\
 
 \bottomrule
 \end{longtable}
 
 La asignación completa se encuentra en el archivo
-\texttt{reports/tables/asignacion\_jerarquica\_final.csv}. Las
-comparaciones con la clasificación administrativa MINSAL se presentan en la
-Sección~\ref{sec:res-minsal}; no se reproducen en esta tabla para concentrar el
-anexo en las asignaciones finales del procedimiento de clustering.
+\texttt{reports/tables/asignacion\_jerarquica\_final.csv}. La columna
+\textbf{MINSAL} incluida en esta tabla permite cotejar directamente las
+asignaciones funcionales de Nivel~1 y Nivel~2 con la categoría administrativa
+de complejidad de cada establecimiento. El análisis cuantitativo de la
+concordancia entre ambas particiones se presenta en la
+Sección~\ref{sec:res-minsal}.
+
 
 \section{Parámetros del pipeline}
 \label{anexo:parametros}
 
 La Tabla~\ref{tab:anexo-parametros} consolida las decisiones metodológicas y
 los parámetros principales de la ejecución final. Las decisiones se justifican
-en detalle en el Capítulo~\ref{cap:metodologia}; aquí se presentan como
+en detalle en el Capítulo~\ref{cap:metodologia}, y aquí se presentan como
 referencia de implementación y reproducibilidad.
 
 \begin{longtable}{p{3.6cm} p{4.3cm} p{5.8cm}}
@@ -319,7 +353,7 @@ Establecimientos incluidos &
 
 Variables directas &
 Variables construidas &
-28 variables institucionales; \texttt{peso\_medio\_cma} se excluye de la matriz de clustering. \\
+28 variables institucionales, con \texttt{peso\_medio\_cma} excluida de la matriz de clustering. \\
 
 Matriz final &
 Dimensión &
@@ -339,7 +373,7 @@ PCA sobre la representación de casuística diagnóstica, de procedimientos y GR
 
 Casuística &
 Componentes retenidas &
-8 componentes principales, con $72{,}5\,\%$ de varianza acumulada. \\
+8 componentes principales, con $72{,}3\,\%$ de varianza acumulada. \\
 
 Clustering Nivel 1 &
 Algoritmo &
@@ -351,7 +385,7 @@ $K \in \{2,\ldots,10\}$. \\
 
 Clustering Nivel 1 &
 Solución reportada &
-$K=4$, seleccionada como compromiso interpretativo; tamaños
+$K=4$, seleccionada como compromiso interpretativo, con tamaños
 $[3,54,5,3]$. \\
 
 Clustering Nivel 2 &
@@ -364,7 +398,8 @@ Clustering jerárquico aglomerativo Ward. \\
 
 Clustering Nivel 2 &
 Solución reportada &
-$K_{sub}=10$, de carácter exploratorio. \\
+$K_{sub}=9$, de carácter exploratorio suplementario, que maximiza el número de
+subgrupos con al menos cuatro hospitales sin introducir pares. \\
 
 Caracterización por variable &
 Prueba &
@@ -388,7 +423,7 @@ K-means ($K=4$), GMM ($K=4$) y MST-kNN para sensibilidad interna. \\
 
 Sensibilidad algorítmica &
 MST-kNN &
-Evaluación con $k \in \{3,\ldots,8\}$; los resultados se interpretan como sensibilidad interna y no como validación externa. \\
+Evaluación con $k \in \{3,\ldots,8\}$, cuyos resultados se interpretan como sensibilidad interna y no como validación externa. \\
 
 Sensibilidad temporal &
 Comparación &
@@ -404,7 +439,7 @@ Semilla aleatoria &
 
 Reproducibilidad &
 Implementación &
-Python 3.11 y dependencias declaradas en \texttt{requirements.txt} y \texttt{pyproject.toml}. \\
+Python 3.11, dependencias de ejecución en \texttt{requirements.txt}, herramientas de desarrollo y pruebas en \texttt{requirements-dev.txt}, y metadatos y configuración de pruebas en \texttt{pyproject.toml}. \\
 
 \bottomrule
 \end{longtable}
@@ -461,7 +496,8 @@ código: las tablas maestras de clasificación clínica (CIE-10, CIE-9-MC y la
 maestra de establecimientos de las bases GRD), la Base de Establecimientos del
 DEIS empleada para recuperar el Nivel de Complejidad asignado por el MINSAL, y
 los artefactos intermedios en formato Parquet, entre ellos la matriz
-institucional de 65 hospitales y 38 columnas sobre la que operan los análisis.
+institucional de 65 hospitales y 35 variables (27 directas y 8 componentes
+PCA) sobre la que operan los análisis.
 
 Se exceptúan dos artefactos que exceden el límite de tamaño por archivo de la
 plataforma de alojamiento: los seis archivos anuales de egresos GRD
@@ -469,7 +505,7 @@ plataforma de alojamiento: los seis archivos anuales de egresos GRD
 MINSAL~\citep{TableauGRD}, y el archivo consolidado
 \texttt{grd\_filtrado.parquet} ($198$\,MB), que se regenera desde
 los anteriores mediante \texttt{build\_extended\_grd.py}. Con esa excepción, 15
-de los 21 scripts se ejecutan directamente sobre una copia del repositorio; los
+de los 21 scripts se ejecutan directamente sobre una copia del repositorio, mientras que los
 seis restantes recorren los egresos individuales y requieren la descarga previa.
 
 El código se publica bajo licencia MIT, de modo que puede reutilizarse,
@@ -488,3 +524,20 @@ parámetros consolidados en la Tabla~\ref{tab:anexo-parametros} y las semillas
 aleatorias fijadas en el código, esta organización permite reconstruir el flujo
 de procesamiento y los análisis descritos en el
 Capítulo~\ref{cap:metodologia}.
+
+\section{Detalle suplementario del Nivel 2}
+\label{anexo:nivel2-exploratorio}
+
+La solución Ward de $K_{sub}=9$ sobre los 54 hospitales del núcleo generalista
+se conserva únicamente como exploración suplementaria. La validación por
+submuestreo mostró una concordancia mediana de ARI $=0{,}559$ y NMI $=0{,}774$,
+insuficiente para sostener una tipología funcional estable. Por ello, las
+etiquetas $S0$--$S8$ de la Tabla~\ref{tab:anexo-hospitales} no son categorías
+validadas ni deben utilizarse para inferencia. En particular, $S1$ (Hospital
+Clínico San Borja--Arriarán) y $S8$ (Hospital Dr. Gustavo Fricke) son
+observaciones unitarias y se interpretan como establecimientos alejados del
+centroide del núcleo, no como subtipos colectivos.
+
+Los resultados reproducibles de las 100 réplicas, matrices de coasignación y
+estabilidad individual se entregan en los archivos
+\texttt{reports/tables/estabilidad\_nivel2\_*.csv} del repositorio.

@@ -7,12 +7,12 @@ composicional respecto de aplicar primero una transformacion CLR
 (centered log-ratio), que es la alternativa estandar para datos
 composicionales.
 
-Ademas, corrige la circularidad en la seleccion de variante de capitulos
-(principal vs. ponderado): en el pipeline original, la variante se elegia
-maximizando el Silhouette del clustering final sobre la MISMA matriz
-candidata que luego se usa como solucion definitiva. Aqui se selecciona en
-cambio con un criterio interno al PCA (varianza explicada acumulada a K fijo),
-independiente de cualquier clustering posterior.
+Ademas, documenta la sensibilidad de la variante de capitulos
+(principal vs. ponderado). El análisis utiliza la variante ponderada por
+incorporar diagnósticos secundarios con peso acotado; el análisis
+reporta la varianza PCA de ambas variantes y reconstruye sus particiones Ward
+para cuantificar la concordancia, sin usar esas metricas para declarar
+superioridad.
 
 Estrategia:
   1. Cargar los tres vectores composicionales ya persistidos.
@@ -22,14 +22,17 @@ Estrategia:
   4. Construir la matriz candidata CLR+PCA analoga a la Hospital_Matrix_Integrada
      y correr el mismo clustering Ward K=4.
   5. Comparar (ARI, NMI, Silhouette, tamanos) contra la particion original.
-  6. Seleccionar la variante de capitulos (principal/ponderado) con un
-     criterio no circular: la variante cuyo PCA (K=8 fijo) explica mayor
-     varianza acumulada, evaluado independientemente en PCA convencional y
-     en PCA sobre CLR.
+  6. Calcular la varianza acumulada de ambas variantes de capítulos
+     (principal/ponderado) con un criterio independiente del clustering.
+  7. Reconstruir la matriz y Ward K=4 para ambas variantes, reportando ARI,
+     NMI, Silhouette, asignaciones y contingencia entre particiones.
 
 Salidas (reports/tables/):
   - sensibilidad_composicional.csv
   - seleccion_variante_no_circular.csv
+  - sensibilidad_variantes_capitulos.csv
+  - sensibilidad_variantes_capitulos_asignaciones.csv
+  - sensibilidad_variantes_capitulos_contingencia.csv
 """
 from __future__ import annotations
 
@@ -63,7 +66,7 @@ print("=" * 80)
 # ---------------------------------------------------------------------------
 # 1. Cargar vectores composicionales y matriz original
 # ---------------------------------------------------------------------------
-print("\n[1/6] Cargando vectores de casuistica y matriz institucional original...")
+print("\n[1/7] Cargando vectores de casuistica y matriz institucional original...")
 v_caps = pd.read_parquet(PROCESSED_DIR / "casuistica_capitulos.parquet")
 v_secs = pd.read_parquet(PROCESSED_DIR / "casuistica_procedimientos.parquet")
 v_top20 = pd.read_parquet(PROCESSED_DIR / "casuistica_top20_grds.parquet")
@@ -130,7 +133,7 @@ def clr_transform(df_prop: pd.DataFrame, id_col: str = "COD_HOSPITAL", delta: fl
     return out
 
 
-print("\n[2/6] Aplicando transformacion CLR a los tres vectores composicionales...")
+print("\n[2/7] Aplicando transformacion CLR a los tres vectores composicionales...")
 cas_ponderado = concatenar(v_cap_ponderado)
 clr_cas = clr_transform(cas_ponderado)
 print(f"  Matriz CLR (ponderado + secciones + top20): {clr_cas.shape}")
@@ -139,7 +142,7 @@ print(f"  Matriz CLR (ponderado + secciones + top20): {clr_cas.shape}")
 # 3. PCA sobre CLR (K=8 fijo, igual al pipeline original, para comparar en
 #    igualdad de condiciones) y PCA convencional (referencia)
 # ---------------------------------------------------------------------------
-print(f"\n[3/6] PCA sobre representacion CLR (K={K_PCA} fijo, comparable al original)...")
+print(f"\n[3/7] PCA sobre representacion CLR (K={K_PCA} fijo, comparable al original)...")
 
 
 def pca_fijo(df_num: pd.DataFrame, id_col: str, k: int, scaler_cls=StandardScaler):
@@ -169,7 +172,7 @@ print(f"  Varianza acumulada (PCA convencional, K={K_PCA}, referencia del pipeli
 # ---------------------------------------------------------------------------
 # 4. Construir matriz candidata CLR+PCA analoga a Hospital_Matrix_Integrada
 # ---------------------------------------------------------------------------
-print("\n[4/6] Ensamblando matriz candidata con componentes CLR+PCA...")
+print("\n[4/7] Ensamblando matriz candidata con componentes CLR+PCA...")
 
 cols_directas = [
     c for c in matriz_original.columns
@@ -203,7 +206,7 @@ print(f"  Ward K=4 (CLR+PCA): Silhouette={sil_clr:.3f} | tamanos={sizes_clr}")
 # ---------------------------------------------------------------------------
 # 5. Comparar particion CLR+PCA vs particion original (PCA convencional)
 # ---------------------------------------------------------------------------
-print("\n[5/6] Comparando particion CLR+PCA vs particion original (PCA convencional)...")
+print("\n[5/7] Comparando particion CLR+PCA vs particion original (PCA convencional)...")
 
 comparacion = pd.DataFrame({
     "COD_HOSPITAL": ids_clr,
@@ -249,7 +252,7 @@ print(f"  Persistido: v4_comparacion_pca_vs_clr.csv, comparacion_particiones_com
 #    (criterio: varianza acumulada del PCA a K=8 fijo, tanto en PCA
 #    convencional como en CLR+PCA; no se usa Silhouette del clustering final)
 # ---------------------------------------------------------------------------
-print("\n[6/6] Seleccion de variante de capitulos con criterio no circular...")
+print("\n[6/7] Seleccion de variante de capitulos con criterio no circular...")
 
 filas_variante = []
 for nombre, v_cap in [("principal", v_cap_principal), ("ponderado", v_cap_ponderado)]:
@@ -273,13 +276,80 @@ df_variante = pd.DataFrame(filas_variante)
 ganador_conv = df_variante.loc[df_variante["varianza_acumulada_pca_convencional_K8"].idxmax(), "variante_capitulos"]
 ganador_clr = df_variante.loc[df_variante["varianza_acumulada_clr_pca_K8"].idxmax(), "variante_capitulos"]
 df_variante.to_csv(TABLES_DIR / "seleccion_variante_no_circular.csv", index=False)
-print(f"\n  Variante ganadora (criterio no circular, PCA convencional): {ganador_conv}")
-print(f"  Variante ganadora (criterio no circular, CLR+PCA): {ganador_clr}")
-print(f"  Variante seleccionada originalmente en el pipeline (via Silhouette circular): ponderado")
+print(f"\n  Variante con mayor varianza PCA convencional: {ganador_conv}")
+print(f"  Variante con mayor varianza CLR+PCA: {ganador_clr}")
+print("  La variante canónica ponderada se fundamenta en la incorporación "
+      "ponderada de diagnósticos secundarios; la varianza se reporta como contexto.")
 print(f"  Persistido: seleccion_variante_no_circular.csv")
 
+# ---------------------------------------------------------------------------
+# 7. Sensibilidad directa de la partición: capítulos principal vs. ponderado
+# ---------------------------------------------------------------------------
+print("\n[7/7] Comparando directamente las variantes principal y ponderada...")
+
+particiones_variantes: dict[str, np.ndarray] = {}
+ids_variantes: list[str] | None = None
+filas_particiones: list[dict[str, object]] = []
+
+for nombre, v_cap in [("principal", v_cap_principal), ("ponderado", v_cap_ponderado)]:
+    componentes, varianza = pca_fijo(
+        concatenar(v_cap), "COD_HOSPITAL", K_PCA, scaler_cls=StandardScaler
+    )
+    matriz_variante = matriz_original[["COD_HOSPITAL"] + cols_directas].merge(
+        componentes, on="COD_HOSPITAL", how="inner", validate="1:1"
+    )
+    X_variante, ids_variante = preprocesar(matriz_variante)
+    labels_variante = fcluster(linkage(X_variante, method="ward"), t=4, criterion="maxclust") - 1
+    labels_canonicos = np.array([int(labels_original[h]) for h in ids_variante])
+
+    if ids_variantes is None:
+        ids_variantes = ids_variante
+    elif ids_variantes != ids_variante:
+        raise ValueError("Las variantes no contienen los mismos hospitales en el mismo orden.")
+
+    particiones_variantes[nombre] = labels_variante
+    filas_particiones.append({
+        "variante_capitulos": nombre,
+        "varianza_acumulada_pca_K8": varianza,
+        "silhouette_ward_K4": float(silhouette_score(X_variante, labels_variante)),
+        "tamanos_ward_K4": str(pd.Series(labels_variante).value_counts().sort_index().tolist()),
+        "ARI_vs_canonica_ponderada": float(adjusted_rand_score(labels_canonicos, labels_variante)),
+        "NMI_vs_canonica_ponderada": float(normalized_mutual_info_score(labels_canonicos, labels_variante)),
+    })
+
+ari_variantes = float(adjusted_rand_score(
+    particiones_variantes["principal"], particiones_variantes["ponderado"]
+))
+nmi_variantes = float(normalized_mutual_info_score(
+    particiones_variantes["principal"], particiones_variantes["ponderado"]
+))
+asignaciones_variantes = pd.DataFrame({
+    "COD_HOSPITAL": ids_variantes,
+    "cluster_principal": particiones_variantes["principal"],
+    "cluster_ponderado": particiones_variantes["ponderado"],
+})
+contingencia_variantes = pd.crosstab(
+    asignaciones_variantes["cluster_principal"],
+    asignaciones_variantes["cluster_ponderado"],
+    rownames=["principal"],
+    colnames=["ponderado"],
+)
+resumen_variantes = pd.DataFrame(filas_particiones)
+resumen_variantes["ARI_principal_vs_ponderado"] = ari_variantes
+resumen_variantes["NMI_principal_vs_ponderado"] = nmi_variantes
+resumen_variantes.to_csv(TABLES_DIR / "sensibilidad_variantes_capitulos.csv", index=False)
+asignaciones_variantes.to_csv(TABLES_DIR / "sensibilidad_variantes_capitulos_asignaciones.csv", index=False)
+contingencia_variantes.to_csv(TABLES_DIR / "sensibilidad_variantes_capitulos_contingencia.csv")
+print(resumen_variantes.to_string(index=False, float_format="%.4f"))
+print("\n  Contingencia principal vs. ponderado:")
+print(contingencia_variantes.to_string())
+print(f"  ARI principal vs. ponderado: {ari_variantes:.4f} | NMI: {nmi_variantes:.4f}")
+print("  Persistido: sensibilidad_variantes_capitulos.csv, "
+      "sensibilidad_variantes_capitulos_asignaciones.csv y "
+      "sensibilidad_variantes_capitulos_contingencia.csv")
+
 print("\n" + "=" * 80)
-print("RESUMEN FINAL — Sensibilidad composicional (PCA convencional vs CLR+PCA)")
+print("RESUMEN FINAL — Sensibilidad composicional y de variante diagnóstica")
 print("=" * 80)
 print(f"  ARI: {ari:.3f} | NMI: {nmi:.3f}")
 print(f"  Silhouette: {sil_clr:.3f} (CLR+PCA) vs "
@@ -287,5 +357,6 @@ print(f"  Silhouette: {sil_clr:.3f} (CLR+PCA) vs "
 print(f"  Varianza acumulada K=8: {var_clr:.3f} (CLR+PCA) vs "
       f"{var_pca_convencional:.3f} (PCA convencional)")
 print(f"  Hospitales que cambian de cluster: {n_cambian} de {len(comparacion)}")
+print(f"  Variante de capítulos: ARI={ari_variantes:.3f} | NMI={nmi_variantes:.3f}")
 print(f"  Variante de capitulos ganadora sin circularidad: {ganador_conv} (PCA) / {ganador_clr} (CLR+PCA)")
 print("\nAnalisis completo.")

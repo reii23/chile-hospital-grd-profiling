@@ -1,0 +1,6 @@
+indicador_tecnico,etiqueta_publica,variable_relacionada,descripcion_variable,n_hospitales,pearson_r,spearman_rho,redundancia_rho_ge_0_90
+tasa_partos,proporcion_egresos_neonatales,pct_obstetrica_ingreso,Proporción de ingresos obstétricos,65,0.9271738928290806,0.9259145807806759,True
+tasa_partos,proporcion_egresos_neonatales,pct_femenino_fertil,Proporción de egresos de mujeres fértiles,65,0.8783660828988245,0.8761918899334353,False
+tasa_partos,proporcion_egresos_neonatales,edad_mediana,Edad mediana al ingreso,65,-0.17420327323227847,-0.5146562928259397,False
+tasa_partos,proporcion_egresos_neonatales,tasa_prematurez,Proporción de egresos neonatales con peso < 2.500 g,65,0.415238655481589,0.2618151584106424,False
+tasa_partos,proporcion_egresos_neonatales,pct_pediatrico,Proporción de egresos pediátricos,65,-0.26374885641267787,0.10474068262493526,False

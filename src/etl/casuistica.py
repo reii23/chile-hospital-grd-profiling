@@ -155,11 +155,17 @@ class Constructor_Features:
         return self.df_grd.loc[mask, columnas]
 
     def _mask_modalidad(self, modalidad: str) -> np.ndarray:
-        """Máscara booleana cacheada de una modalidad de egreso."""
+
+        La categoría histórica ``HOSPITALIZACION`` puede contener actividad
+        diurna en artefactos construidos antes de R-11. Esa actividad se excluye
+        explícitamente de los indicadores hospitalarios; los Parquet nuevos la
+        persisten como ``HOSPITALIZACION_DIURNA``.
+        """
         if modalidad not in self._mascaras:
-            self._mascaras[modalidad] = (
-                self.df_grd["MODALIDAD"].to_numpy() == modalidad
-            )
+            mask = self.df_grd["MODALIDAD"].to_numpy() == modalidad
+            if modalidad == "HOSPITALIZACION" and "TIPO_ACTIVIDAD" in self.df_grd.columns:
+                mask &= self.df_grd["TIPO_ACTIVIDAD"].to_numpy() != "HOSPITALIZACIÓN DIURNA"
+            self._mascaras[modalidad] = mask
         return self._mascaras[modalidad]
 
     def _mask_hosp_elegibles(self) -> np.ndarray:

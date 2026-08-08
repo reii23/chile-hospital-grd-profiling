@@ -1,2 +1,3 @@
-variable,chi2,gl,p_valor,discrimina,nota
-SERVICIO_SALUD,42.211390635918946,56,0.9137153241528645,no,tabla dispersa (n pequeño): referencial
+nivel,variable,test,estadistico_chi2,gl,p_valor,V_cramer_sin_corregir,V_cramer_bergsma,discrimina (p<=0.05),nota
+nivel1,SERVICIO_SALUD,Chi-cuadrado,65.32901234567899,84,0.9346257157356411,0.5788096199370628,0.0,no,"tabla dispersa (n pequeno, muchas categorias de Servicio de Salud): V sin corregir esta inflado; se reporta V corregido por sesgo (Bergsma 2013) como referencia principal"
+nivel2_mainstream,SERVICIO_SALUD,Chi-cuadrado,206.92500000000004,224,0.7871206024482801,0.6920932419519465,0.0,no,"tabla dispersa (n pequeno, muchas categorias de Servicio de Salud): V sin corregir esta inflado; se reporta V corregido por sesgo (Bergsma 2013) como referencia principal"

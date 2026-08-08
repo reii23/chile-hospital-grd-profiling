@@ -1,33 +1,50 @@
 \resumenCastellano{
-El sistema público de salud chileno clasifica administrativamente sus hospitales
-por nivel de complejidad; sin embargo, esta clasificación puede no reflejar las
-diferencias en su actividad clínica. El objetivo de este estudio fue identificar
-perfiles funcionales empíricos de hospitales públicos chilenos de alta y mediana
-complejidad a partir de su casuística de Grupos Relacionados por el Diagnóstico
-(GRD).
+El sistema público de salud chileno clasifica sus hospitales por nivel de
+complejidad administrativo, clasificación que puede no reflejar la
+heterogeneidad de su actividad clínica real. El objetivo de este estudio fue
+identificar perfiles funcionales empíricos de hospitales públicos chilenos de
+alta y mediana complejidad a partir de su casuística de Grupos Relacionados por
+el Diagnóstico (GRD) del período 2019--2024.
 
-Se procesaron 5{,}808{,}515 egresos GRD del período 2019--2024, los que se
-agregaron para caracterizar la unidad final de análisis: 65 hospitales elegibles.
-Se construyó una matriz institucional de 35 variables, integrada por 27
-indicadores clínico-operativos directos y ocho componentes principales que
-resumen, mediante reducción de dimensionalidad, la casuística de capítulos
-CIE-10, secciones CIE-9-MC y GRD frecuentes. Sobre esa matriz se aplicó
-clustering jerárquico aglomerativo de Ward en dos niveles, complementado con
-validación estadística, comparación con la clasificación del Ministerio de Salud
-(MINSAL) y detección de hospitales atípicos.
+Se procesaron 5{.}808{.}515 egresos GRD, de los cuales 5{.}771{.}841
+corresponden a los 65 hospitales elegibles que conforman la unidad de análisis.
+Se construyó una matriz institucional de $65 \times 35$ variables: 27
+indicadores clínico-operativos directos y ocho componentes principales ponderadas
+por varianza explicada, que resumen la casuística de capítulos CIE-10, secciones
+CIE-9-MC y GRD frecuentes ($72{,}3\,\%$ de varianza acumulada). Sobre esa
+matriz se aplicó agrupamiento jerárquico aglomerativo de Ward en dos niveles: un
+primer nivel con validación estadística y un segundo nivel de naturaleza
+exploratoria sobre el núcleo generalista. El pipeline se complementó con
+análisis de sensibilidad de bloques de variables, comparación con la
+clasificación del Ministerio de Salud (MINSAL) mediante validación cruzada por
+bloques no utilizados para agrupar, y detección multivariada de hospitales
+atípicos.
 
-En el primer nivel, la solución de cuatro grupos obtuvo un coeficiente Silhouette
-de $0{,}401$. Se identificaron un núcleo generalista de 54 hospitales, 3
-hospitales pediátricos, 3 establecimientos de perfil monográfico y un cuarto
-grupo de 5 hospitales que comparten estancia prolongada, población de mayor edad
-y más comorbilidades registradas, sin un rasgo funcional único compartido por
-todos sus integrantes. La concordancia con la clasificación del MINSAL fue baja
-(ARI $=0{,}112$; NMI $=0{,}107$), y se detectaron 9 hospitales atípicos. Estos
-resultados muestran que la casuística permite describir una heterogeneidad
-funcional que complementa la clasificación administrativa, sin
-establecer una jerarquía entre ambas, y ofrece una base empírica para el análisis
-y la planificación de la red hospitalaria.
+En el primer nivel, la solución de cuatro grupos alcanzó un coeficiente
+Silhouette de $0{,}401$ y una mediana de ARI de $0{,}958$ bajo submuestreo
+repetido. Se distinguieron tres hospitales pediátricos, un núcleo generalista de
+54 establecimientos, un grupo de cinco hospitales con carga clínica heterogénea
+y estancia prolongada, y tres establecimientos de especialización clínica
+heterogénea. La concordancia con la clasificación MINSAL fue baja
+(ARI $= 0{,}112$; NMI $= 0{,}107$), indicando que ambas clasificaciones
+describen dimensiones distintas de la red. La evaluación en bloques de variables
+retenidos mostró menor dispersión intragrupo para Ward $K=4$ que para MINSAL,
+aunque al controlar el número de grupos ($K=2$) los intervalos \textit{bootstrap}
+incluyeron cero, por lo que el estudio no establece una superioridad robusta de
+homogeneidad. El bloque demográfico-obstétrico concentra el $36{,}3\,\%$ de la
+distancia total, y su exclusión conserva parcialmente los perfiles ($ARI = 0{,}571$),
+evidenciando que la composición de la demanda contribuye de manera material a la
+tipología. Se identificaron nueve hospitales atípicos mediante Isolation Forest,
+distancia al centroide y coeficiente Silhouette individual. La subdivisión
+exploratoria del núcleo generalista no alcanzó estabilidad comparable
+(ARI mediano $= 0{,}559$ para $K_{sub} = 9$), por lo que se presenta como
+material suplementario.
+
+Los resultados muestran que los datos GRD permiten describir una heterogeneidad
+funcional que complementa la clasificación administrativa, sin establecer una
+jerarquía entre ambas ni justificar su uso directo en decisiones de
+financiamiento o evaluación de desempeño.
 
 \vspace*{0.5cm}
-\KeywordsES{Aprendizaje no supervisado; clustering jerárquico; Grupos Relacionados por Diagnóstico; perfilamiento hospitalario; sistema público de salud; reducción de dimensionalidad.}
+\KeywordsES{aprendizaje no supervisado; clustering jerárquico; grupos relacionados por el diagnóstico (GRD); perfilamiento hospitalario; sistema público de salud; selección de variables.}
 }

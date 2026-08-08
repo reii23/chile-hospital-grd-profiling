@@ -12,6 +12,8 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc}
 
+\def\urlprefix{Disponible en: }
+
 % La tesis no tiene profesor co-guía. Esta adaptación local del comando de
 % cubierta evita modificar la clase oficial y solo elimina esa línea vacía.
 \makeatletter
@@ -81,12 +83,14 @@
 
 % ### Bibliografía de la tesis ###
 \clearpage
+\phantomsection
 \addcontentsline{toc}{chapter}{Referencias bibliogr\'aficas}
 \bibliographystyle{apa-good}
 \bibliography{bibliografia}
 
 % ### Anexos de la tesis ###
 \clearpage
+\phantomsection
 \anexo
 \addcontentsline{toc}{chapter}{Anexos}
 \input{finales/Anexo-1}

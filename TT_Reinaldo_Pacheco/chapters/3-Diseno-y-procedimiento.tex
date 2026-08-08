@@ -93,12 +93,15 @@ estadísticos y los análisis de sensibilidad. Los \textit{notebooks} Jupyter
 (\texttt{01\_etl.ipynb}, \texttt{02\_eda.ipynb}, \texttt{03\_clustering.ipynb},
 \texttt{04\_xai\_outliers.ipynb}, \texttt{05\_clustering\_alternativos.ipynb})
 conservan el registro exploratorio del análisis. Los archivos
-\texttt{requirements.txt} y \texttt{requirements-dev.txt} declaran las versiones
-exactas de todas las librerías empleadas, y las semillas aleatorias están
-fijadas en el código (\texttt{RANDOM\_STATE = 42}), de modo que cualquier
-ejecución posterior reproduzca los mismos resultados. La verificación del
-comportamiento de los módulos se automatiza con \texttt{pytest} y
-\texttt{hypothesis} en el directorio \texttt{tests/}.
+\texttt{requirements.txt} declaran las versiones exactas de las dependencias de
+ejecución, mientras que \texttt{requirements-dev.txt} incorpora las herramientas
+de desarrollo y pruebas junto con esas dependencias. El archivo
+\texttt{pyproject.toml} consolida los metadatos del paquete y la configuración
+de \texttt{pytest}. Las semillas aleatorias están fijadas en el código
+(\texttt{RANDOM\_STATE = 42}), de modo que cualquier ejecución posterior
+reproduzca los mismos resultados. La verificación del comportamiento de los
+módulos se automatiza con \texttt{pytest} y \texttt{hypothesis} en el directorio
+\texttt{tests/}.
 
 Los datos fuente corresponden a los seis archivos GRD públicos del MINSAL para el
 período 2019--2024, disponibles en la plataforma Tablero GRD del Ministerio de
@@ -127,10 +130,13 @@ Calinski-Harabasz y el índice de Davies-Bouldin, respaldadas por pruebas de
 estabilidad a través de remuestreo. La segunda dimensión es de dominio y exige
 que cada perfil pueda caracterizarse con atributos de casuística y producción que
 tengan sentido desde la gestión sanitaria, más allá de constituir una partición
-matemáticamente óptima. Ambas dimensiones se complementan con una condición
-adicional: los perfiles obtenidos deben exhibir mayor homogeneidad interna que la
-clasificación administrativa del MINSAL en las variables de producción clínica,
-lo que se verifica mediante el contraste estadístico entre ambas segmentaciones.
+matemáticamente óptima. Ambas dimensiones se complementan con un contraste descriptivo respecto de la
+clasificación administrativa del MINSAL: se examinan la concordancia entre
+particiones y la compactación de los grupos en bloques de variables no utilizados
+para construir cada partición. Este contraste no se interpreta como una prueba de
+superioridad de una clasificación sobre la otra, pues ambas responden a criterios
+distintos y la granularidad de las particiones también influye en su dispersión
+interna.
 
 En lo que respecta a las restricciones operativas, el proyecto se enmarca en
 tres definiciones que delimitan su alcance. La unidad de análisis es el hospital
@@ -373,7 +379,7 @@ establecimiento explica un $51\,\%$ de la varianza en profundidad de
 codificación, proporción que sugiere un componente institucional o
 administrativo y no puramente clínico. Dos elementos acotan esa lectura. Por
 una parte, la dispersión dentro de un mismo Servicio de Salud sigue siendo
-amplia --en Araucanía Sur la profundidad va de $1{,}28$ a $3{,}80$--, por lo que
+amplia (en Araucanía Sur la profundidad va de $1{,}28$ a $3{,}80$), por lo que
 el fenómeno no se reduce a un patrón regional homogéneo. Por otra, el aumento
 del promedio de comorbilidades al incorporar los campos completos correlaciona
 positivamente con la severidad media ($r = 0{,}64$) y con la mortalidad media
@@ -562,15 +568,17 @@ ambulatoria (CMA) agrupa procedimientos quirúrgicos o de alto costo que se
 resuelven sin estadía nocturna, con alta el mismo día de la
 intervención~\citep{TableauGRD}.
 
-La distinción entre hospitalización convencional y CMA es relevante para el
-perfilamiento porque ambas modalidades responden a lógicas funcionales distintas.
-La CMA se asocia a procedimientos electivos de baja complejidad relativa y
-estancia nula o mínima, mientras que la hospitalización convencional concentra los
-episodios de mayor duración, severidad y consumo de recursos. Incorporar ambas en
-los mismos indicadores de estancia y peso GRD distorsionaría los perfiles, por lo
-que los indicadores se calculan por separado según modalidad. La distribución
-de los registros por tipo de actividad se presenta en la
-Tabla~\ref{tab:actividad}.
+La distinción entre hospitalización convencional, hospitalización diurna y CMA
+es relevante para el perfilamiento porque estas modalidades responden a lógicas
+funcionales distintas. La CMA se asocia a procedimientos ambulatorios, mientras
+que la actividad diurna requiere atención y eventualmente cama durante el día,
+sin pernoctación; ambas difieren de los episodios de hospitalización nocturna en
+la duración y el consumo de recursos. Por ello, los indicadores de estancia,
+peso GRD, severidad, mortalidad y casuística hospitalaria se calculan solo sobre
+hospitalización convencional y de urgencia, excluyendo tanto CMA como
+hospitalización diurna. Esta última se conserva como modalidad analítica
+separada y no se incorpora a la tasa de CMA. La distribución de los registros
+por tipo de actividad se presenta en la Tabla~\ref{tab:actividad}.
 
 
 \begin{table}[htbp]
@@ -591,33 +599,38 @@ Hospitalización diurna           &    55{,}328   &  1{,}0 \\
 \end{tabular}
 \end{table}
 
+La decisión de separar la hospitalización diurna se verificó empíricamente en
+los 65 establecimientos elegibles. Aunque representa el 1{,}13\,% de los
+episodios inicialmente agrupados como hospitalización y su mediana institucional
+es 0{,}21\,\%, su distribución es heterogénea: cuatro establecimientos superan
+5\,% y uno alcanza 12{,}92\,%. Al excluirla de los denominadores hospitalarios,
+el cambio máximo en la estancia media es 14{,}83\,% y en el peso medio GRD es
+6{,}71\,%. Por tanto, conservarla mezclada con hospitalización nocturna podría
+alterar de forma diferencial el perfil de un subconjunto de establecimientos,
+aun cuando su incidencia nacional sea reducida. El detalle reproducible por
+establecimiento se reporta en el archivo
+\texttt{hospitalizacion\_diurna\_por\_establecimiento.csv}.
+
 \subsection{Criterios de elegibilidad}
 \label{sec:elegibilidad}
 
 La base depurada abarca 72 establecimientos con datos GRD en el período. Para
 garantizar que los indicadores agregados sean comparables entre hospitales, se
 aplica un criterio de inclusión: presencia en al menos tres de los seis años
-del período. Este umbral responde a que los indicadores institucionales como
-la estancia media, la proporción de CMA o la diversidad diagnóstica son
-estimaciones estadísticas que requieren varios años de observación para no
-depender de las particularidades de un único año. Un establecimiento con
-datos en uno o dos años podría presentar valores atípicos debidos a factores
-circunstanciales como cierres temporales, cambios de gestión o
-incorporación reciente al sistema de información, que no reflejan su perfil
-funcional habitual.
+del período, umbral que responde a que estimaciones como la estancia media, la
+proporción de CMA o la diversidad diagnóstica requieren varios años de
+observación para no depender de particularidades circunstanciales de un único
+ejercicio.
 
-Una primera observación empírica reduce la relevancia práctica de elegir un
-punto de corte exacto: la distribución real de años presentes entre los 72
-establecimientos de la base depurada es marcadamente bimodal. Como muestra la
-Tabla~\ref{tab:distribucion-anios}, 4 hospitales reportan datos en un único
-año y 3 en dos años, todos ellos incorporados al sistema de información
-recién en 2023 o 2024, mientras que los 65 hospitales restantes reportan
-los seis años completos del período. Ningún establecimiento del
-universo real tiene exactamente 3, 4 o 5 años de datos. En consecuencia,
-cualquier umbral situado en ese rango (3, 4 o 5) produce exactamente el mismo
-universo final de 65 hospitales elegibles: la elección del valor específico
-``3'' no es, en los hechos, una decisión consecuente sobre qué establecimientos
-se incluyen o excluyen, sino que opera sobre un vacío natural de los datos.
+La distribución real de años presentes entre los 72 establecimientos es
+marcadamente bimodal (Tabla~\ref{tab:distribucion-anios}): 7 hospitales
+reportan datos en uno o dos años (todos incorporados al sistema recién en
+2023 o 2024) mientras que los 65 restantes tienen cobertura completa del
+período. Ningún establecimiento tiene exactamente 3, 4 o 5 años de datos. En
+consecuencia, cualquier umbral en ese rango produce el mismo universo final de
+65 hospitales elegibles: la elección del valor ``3'' opera sobre un vacío
+natural de los datos, sin consecuencias prácticas sobre qué establecimientos
+se incluyen.
 
 \begin{table}[htbp]
 \centering
@@ -635,88 +648,24 @@ se incluyen o excluyen, sino que opera sobre un vacío natural de los datos.
 \end{tabular}
 \end{table}
 
-Para cuantificar el segundo aspecto de la observación, se realizó
+Para cuantificar la ganancia de precisión que justifica el umbral, se realizó
 una simulación de error por submuestreo sobre los 65 hospitales con cobertura
-completa. Tomando el valor de cada indicador calculado con los seis años como
-referencia (``verdad''), se recalculó el mismo indicador usando todas las
-combinaciones posibles de $k \in \{1, 2, 3, 4, 5\}$ años (o una muestra
-aleatoria de 200 combinaciones cuando el total de combinaciones superaba ese
-valor) y se midió el error relativo absoluto resultante, con un intervalo de
-confianza del 95\,\% obtenido por bootstrap sobre la mediana. La
-Tabla~\ref{tab:simulacion-anios} resume el error relativo mediano para las
-seis variables tradicionales del pipeline.
-
-\begin{table}[htbp]
-\centering
-\caption{Error relativo mediano (\%) al estimar cada indicador institucional con $k$ años en lugar de los 6 años completos, con intervalo de confianza 95\,\% (\textit{bootstrap}).}
-\label{tab:simulacion-anios}
-\begin{tabular}{c c c c c c c}
-\toprule
-\textbf{$k$ años} & \textbf{Egresos/año} & \textbf{Estancia} & \textbf{Peso GRD} & \textbf{Severidad} & \textbf{Mortalidad} & \textbf{Tasa CMA} \\
-\midrule
-1 & 9{,}3\,\% & 5{,}8\,\% & 4{,}2\,\% & 4{,}6\,\% & 3{,}8\,\% & 21{,}3\,\% \\
-2 & 6{,}0\,\% & 4{,}5\,\% & 4{,}9\,\% & 3{,}8\,\% & 3{,}2\,\% & 10{,}9\,\% \\
-\textbf{3} & \textbf{4{,}5\,\%} & \textbf{3{,}3\,\%} & \textbf{3{,}6\,\%} & \textbf{2{,}8\,\%} & \textbf{2{,}4\,\%} & \textbf{8{,}0\,\%} \\
-4 & 3{,}0\,\% & 2{,}2\,\% & 2{,}4\,\% & 1{,}9\,\% & 1{,}6\,\% & 5{,}3\,\% \\
-5 & 1{,}9\,\% & 1{,}1\,\% & 0{,}8\,\% & 0{,}9\,\% & 0{,}7\,\% & 4{,}2\,\% \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-El error decrece de forma monótona con $k$ para las seis variables, pero el patrón de la reducción marginal es lo que sustenta el
-umbral adoptado: el error promedio (sobre las seis variables) cae de
-$8{,}2\,\%$ con un año a $4{,}1\,\%$ con tres años (una reducción de
-$4{,}1$ puntos porcentuales) mientras que agregar un cuarto y un quinto año
-reduce el error en $1{,}4$ y $1{,}2$ puntos porcentuales adicionales,
-respectivamente. Es decir, el mayor beneficio marginal de sumar años se
-obtiene entre $k=1$ y $k=3$. A partir de tres años, cada año adicional
-reduce el error a una tasa aproximadamente constante y sustancialmente menor
-que en el tramo inicial. Este patrón de rendimientos decrecientes, y no una
-referencia externa, es lo que justifica fijar el umbral en tres años: es el
-primer punto en el que la reducción del error empieza a estabilizarse. La
-única excepción es la tasa de CMA, cuyo error relativo permanece
-comparativamente alto incluso con tres años ($8{,}0\,\%$), lo esperable dado
-que es una proporción calculada sobre un subconjunto minoritario de egresos
-(los de modalidad CMA) y por tanto más sensible a la variación año a año que
-los indicadores calculados sobre la totalidad de los egresos de
-hospitalización.
-
-Con esta evidencia, el umbral de tres años se sostiene como un punto de
-compromiso cuantificado no arbitrario, aunque tampoco derivado de una regla
-de decisión formal única entre la reducción de error que ofrece cada año
-adicional de datos y el tamaño del universo de análisis disponible. El
-detalle completo de la simulación (código, valores por hospital y por
-combinación de años) se encuentra en
-los artefactos de análisis reproducibles y la documentación de resultados del repositorio del
-proyecto.
+completa. El error relativo mediano decrece de forma monótona pero con
+rendimientos decrecientes: la mayor reducción se produce entre $k=1$ y $k=3$
+años ($8{,}2\,\%$ a $4{,}1\,\%$ de error promedio en seis variables), mientras
+que agregar un cuarto o quinto año reduce el error en apenas $1{,}4$ y
+$1{,}2$ puntos adicionales. Tres años constituye así el primer punto en que la
+reducción del error empieza a estabilizarse. Los resultados completos de la
+simulación se presentan en la
+Tabla~\ref{tab:simulacion-anios} del Anexo~\ref{anexo:hospitales}.
 
 La aplicación de este criterio reduce el conjunto a 65 establecimientos, que
 constituyen la población de análisis sobre la cual se construye la matriz
-institucional descrita en la sección siguiente. El efecto de este criterio sobre
-la partición final, y no solo sobre el error de los indicadores, se evalúa
-mediante el análisis de sensibilidad definido en la
-Sección~\ref{sec:sensibilidad-elegibilidad}.
+institucional descrita en la sección siguiente. El efecto sobre la partición
+final se evalúa en la Sección~\ref{sec:sensibilidad-elegibilidad}. El detalle
+de los siete establecimientos excluidos se presenta en la
+Tabla~\ref{tab:anexo-excluidos} del Anexo~\ref{anexo:hospitales}.
 
-La Tabla~\ref{tab:descartados} detalla los siete establecimientos excluidos, los
-años en que reportaron datos y el total de egresos registrados en el período.
-\begin{table}[htbp]
-\centering
-\caption{Establecimientos excluidos por no cumplir el criterio de presencia temporal.}
-\label{tab:descartados}
-\begin{tabular}{p{6.2cm} p{3.8cm} p{1.8cm} r}
-\toprule
-\textbf{Establecimiento} & \textbf{Servicio de Salud} & \textbf{Años con datos} & \textbf{Egresos} \\
-\midrule
-Instituto Traumatológico Dr. T. Gebauer & Metropolitano Suroriente & 2023, 2024 & 6{,}206 \\
-Hospital de Constitución                & Del Maule               & 2024       & 2{,}796 \\
-Hospital San Juan de Dios (Cauquenes)   & Del Maule               & 2024       & 4{,}461 \\
-Hospital de Lota                        & Concepción              & 2023, 2024 & 7{,}706 \\
-Hospital de Tomé                        & Talcahuano              & 2023, 2024 & 6{,}365 \\
-Hospital Penco-Lirquén                  & Concepción              & 2024       & 2{,}751 \\
-Complejo Asistencial Padre Las Casas    & Araucanía Sur           & 2024       & 6{,}389 \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \subsection{Construcción de variables e ingeniería de características}
 \label{sec:variables}
@@ -784,11 +733,14 @@ promedio por egreso (diagnósticos secundarios 2 a 35, rango teórico $[0,34]$).
 Tasa de CMA, peso medio de los GRD de CMA. \\
 \addlinespace
 \raggedright Perfil funcional agregado &
-Distribución demográfica (\% pediátrico, \% geriátrico, \% femenino fértil), mezcla
-por tipo de ingreso (\% urgencia, \% programado, \% referencia), tipo de alta (\%
-domicilio, \% traslado, \% fallecido), uso de pabellón, actividad obstétrica (tasa
-de partos, \% obstétrica, tasa de prematurez), dispersión de la estancia
-(coeficiente de variación). \\
+Distribución demográfica (\% pediátrico, \% geriátrico, \% femenino fértil, edad
+mediana), mezcla por tipo de ingreso (\% urgencia, \% programado, \% obstétrica),
+tipo de alta (\% domicilio, \% traslado, \% fallecido), procedencia (\% origen
+emergencia, \% origen referencia), actividad quirúrgica (\% uso de pabellón,
+promedio de usos de pabellón), actividad obstétrico-neonatal (proporción de
+egresos con condición de alta neonatal, proporción de esos egresos con peso de
+nacimiento inferior a 2.500 gramos) y estadía (\% estancia larga, coeficiente de
+variación). \\
 \bottomrule
 \end{longtable}
 }
@@ -812,7 +764,7 @@ H_{\text{norm}} = \frac{-\sum_{i=1}^{G} p_i \, \log_2(p_i)}{\log_2 G}
 La división por $\log_2 G$, que es el valor máximo que puede alcanzar la
 entropía cuando la distribución es uniforme, acota el indicador al intervalo
 $[0, 1]$ y lo hace comparable entre hospitales con distinto número de GRD
-distintos; por convención se asigna el valor 0 cuando $G \leq 1$ y se excluyen
+distintos. Por convención, se asigna el valor 0 cuando $G \leq 1$ y se excluyen
 los términos con $p_i = 0$. Un hospital con entropía normalizada alta atiende una
 gran variedad de condiciones con frecuencias relativamente uniformes (perfil
 generalista), mientras que uno con entropía baja concentra su actividad en pocos
@@ -854,8 +806,9 @@ Edad mediana & Mediana de la edad al ingreso de los egresos. \\
 ingreso. \\
 \% alta domicilio / fallecido / traslado & Proporción de egresos según tipo de
 alta. \\
-\% origen emergencia / referencia & Proporción según procedencia del paciente
-(servicio de urgencia propio vs.\ derivación de otro establecimiento). \\
+\% origen emergencia / referencia & Proporción de egresos según procedencia:
+servicio de urgencia propio o derivación con procedencia normalizada
+\texttt{OTROS\_HOSPITALES} o \texttt{RED\_NACIONAL}. \\
 \% uso de pabellón & Proporción de egresos con al menos un uso de pabellón
 quirúrgico. \\
 Tasa de partos & Proporción de egresos con condición de alta neonatal registrada.
@@ -891,7 +844,7 @@ maestra CIE-9-MC empleada, es decir, las 17 secciones numeradas de 00 a 16 y la
 sección 03A. El tercero describe la concentración del establecimiento en los
 20 GRD más frecuentes a nivel nacional. Cada vector incluye una categoría
 residual. En los dos primeros casos reúne los códigos que no admiten mapeo a un
-capítulo o una sección de la tabla maestra; en el tercero agrupa los GRD que
+capítulo o una sección de la tabla maestra, mientras que en el tercero agrupa los GRD que
 quedan fuera del Top-20 nacional. Estas categorías permiten que cada vector
 forme una distribución completa cuya suma es igual a 1.
 
@@ -930,20 +883,28 @@ $1{,}0$ al diagnóstico principal y $0{,}5$ a cada secundario, con el propósito
 de reflejar las comorbilidades del episodio sin que estas lleguen a dominar
 sobre el motivo principal de ingreso. La ponderación es, por tanto, por posición
 del diagnóstico dentro del episodio y no por el peso relativo del GRD asignado.
-La comparación entre ambas variantes se resolvió mediante un criterio interno al
-propio PCA:
-para cada variante se ejecutó el PCA con el número de componentes fijado en
-$K=8$ (justificado más adelante en esta sección) y se comparó la varianza
-acumulada explicada, sin recurrir a ninguna métrica de clustering posterior.
-La variante ponderada explica el 72{,}3\,\% de la varianza acumulada frente al
-71{,}8\,\% de la variante basada solo en el diagnóstico principal, por lo que fue seleccionada
-para el pipeline definitivo. Este criterio de selección --varianza explicada
-por el propio PCA-- es deliberadamente independiente del clustering que se
-describe en las secciones siguientes, para evitar que la elección de una
-decisión de preprocesamiento quede determinada por la misma métrica con la
-que luego se evalúa la solución final. Esta misma comparación se repite bajo una
-representación composicional alternativa (CLR) como parte del análisis de
-sensibilidad definido en la Sección~\ref{sec:sensibilidad-composicional}.
+En el pipeline se utilizó la variante ponderada porque incorpora
+los diagnósticos secundarios disponibles para representar la carga clínica
+registrada, manteniendo el diagnóstico principal con el doble de peso para que
+el motivo de ingreso siga siendo dominante. La elección no se justifica por la
+diferencia aislada de varianza acumulada: con $K=8$, la variante ponderada
+retiene $72{,}3\,\%$ frente a $71{,}8\,\%$ de la variante principal, una
+diferencia pequeña que se reporta solo como antecedente descriptivo.
+
+La sensibilidad se evaluó reconstruyendo la matriz completa y aplicando Ward
+con $K=4$ bajo ambas variantes. La concordancia fue alta (ARI $=0{,}936$;
+NMI $=0{,}909$): los perfiles pediátrico y de especialización clínica se
+mantuvieron, y solo el Hospital San José de Parral pasó del grupo de carga
+clínica al núcleo generalista. La variante ponderada obtuvo un Silhouette de
+$0{,}399$, frente a $0{,}375$ con la variante principal. Estos resultados
+muestran que la decisión de incorporar diagnósticos secundarios tiene una
+influencia acotada, pero no nula, sobre la frontera entre esos dos grupos. No
+constituyen una prueba de superioridad, debido a que, ambas construcciones se evalúan en
+los mismos hospitales y período. Las asignaciones, la contingencia y las
+métricas de esta sensibilidad se conservan en los artefactos reproducibles del
+repositorio. La misma comparación de varianza se repite bajo una representación
+composicional alternativa (CLR) como parte del análisis definido en la
+Sección~\ref{sec:sensibilidad-composicional}.
 
 El número de componentes a retener se fija en $K=8$, decisión que se
 verificó empíricamente mediante un barrido de $K \in \{8, 9, 10, 11\}$
@@ -952,23 +913,17 @@ del clustering final (Tabla~\ref{tab:barrido-k-pca}). Con la variante
 ponderada, las 8 componentes explican el 72{,}3\,\% de la varianza acumulada
 de las 63 columnas de casuística. Incorporar componentes adicionales
 incrementa la varianza retenida, pero no mejora la calidad de la partición
-resultante. Por el contrario, al aumentar $K$ de 8 a 11 --el número mínimo
-que acumularía el 80\,\% de la varianza-- el coeficiente de Silhouette
-desciende de $0{,}401$ a $0{,}380$, el índice de Calinski-Harabasz cae de
-$22{,}4$ a $19{,}7$ y el índice de Davies-Bouldin empeora de $0{,}990$ a
-$1{,}076$. El valor $K=9$ obtiene el mejor Silhouette del barrido
-($0{,}422$), pero fragmenta los grupos especializados de forma menos
-interpretable que $K=8$: reintroduce un grupo de apenas dos establecimientos
-(tamaños $3$, $54$, $2$, $6$ frente a $3$, $54$, $5$, $3$), precisamente la
-situación en que las pruebas de significancia basadas en aproximaciones
-asintóticas pierden validez (Sección~\ref{sec:nivel2-metodo}). Se retienen,
-por tanto, las 8 componentes por ser el valor que ofrece el mejor balance
-entre las tres métricas de validación interna y la interpretabilidad de los
-grupos resultantes, y no un porcentaje de varianza explicada fijado de
-antemano: agregar componentes de casuística más allá de este punto introduce
-ruido de alta dimensionalidad relativa (Sección~\ref{sec:pca}) que degrada la
-cohesión y separación del clustering en mayor medida que lo que aporta en
-varianza retenida.
+resultante. Por el contrario, al aumentar $K$ de 8 a 11 (el número mínimo
+que acumularía el 80\,\% de la varianza) el coeficiente de Silhouette desciende
+de $0{,}398$ a $0{,}379$, el índice de Calinski-Harabasz cae de $22{,}1$ a
+$19{,}6$ y el índice de Davies-Bouldin empeora de $0{,}994$ a $1{,}076$. Las
+soluciones con 9, 10 y 11 componentes conservan la misma partición de cuatro
+perfiles, pero no mejoran sus métricas internas. Se retienen, por tanto, las 8
+componentes por ofrecer el mejor balance entre las tres métricas de validación
+interna y la parsimonia de la representación, y no un porcentaje de varianza
+explicada fijado de antemano: agregar componentes de casuística más allá de
+este punto introduce dimensiones que degradan la cohesión y separación del
+clustering sin alterar la partición.
 
 \begin{table}[htbp]
 \centering
@@ -978,10 +933,10 @@ varianza retenida.
 \toprule
 \textbf{$K$ (componentes)} & \textbf{Varianza acum.} & \textbf{Silhouette} & \textbf{CH} & \textbf{DB} & \textbf{Tamaños} \\
 \midrule
-\bfseries 8 & \bfseries 72{,}3\,\% & 0{,}401 & \bfseries 22{,}4 & \bfseries 0{,}990 & 3, 54, 5, 3 \\
-9 & 75{,}2\,\% & \bfseries 0{,}422 & 21{,}9 & 0{,}991 & 3, 54, 2, 6 \\
-10 & 77{,}7\,\% & 0{,}384 & 20{,}4 & 1{,}045 & 3, 54, 5, 3 \\
-11 & 80{,}0\,\% & 0{,}380 & 19{,}7 & 1{,}076 & 3, 54, 5, 3 \\
+\bfseries 8 & \bfseries 72{,}3\,\% & \bfseries 0{,}398 & \bfseries 22{,}1 & \bfseries 0{,}994 & 3, 54, 5, 3 \\
+9 & 75{,}2\,\% & 0{,}391 & 21{,}1 & 1{,}031 & 3, 54, 5, 3 \\
+10 & 77{,}7\,\% & 0{,}383 & 20{,}3 & 1{,}046 & 3, 54, 5, 3 \\
+11 & 80{,}0\,\% & 0{,}379 & 19{,}6 & 1{,}076 & 3, 54, 5, 3 \\
 \bottomrule
 \end{tabular}
 \par\smallskip
@@ -1097,7 +1052,7 @@ mediana no se transformó logarítmicamente: presenta asimetría negativa
 ($-1{,}38$), y $\log(1+x)$ está orientada a comprimir colas derechas, por lo que
 su aplicación habría acentuado ese patrón. Las variables restantes no se
 transformaron logarítmicamente, pues no presentaban colas derechas de magnitud
-comparable; sus diferencias de escala se abordan mediante el escalado robusto.
+comparable, de modo que sus diferencias de escala se abordan directamente mediante el escalado robusto.
 
 \textbf{Escalado robusto:} Posteriormente, todas las variables de la matriz,
 incluidas las transformadas, se estandarizaron mediante un escalador robusto que
@@ -1124,6 +1079,30 @@ obtenida con y sin transformación logarítmica de la edad mediana. Ambas
 configuraciones produjeron la misma partición de los 65 hospitales
 (ARI $= 1{,}00$), por lo que la corrección mejora la coherencia del
 preprocesamiento sin alterar los perfiles funcionales reportados.
+
+\subsubsection{Diagnóstico y sensibilidad de bloques de variables}
+\label{sec:bloques-variables}
+
+Dado que la distancia euclidiana acumula la contribución de cada variable, se
+cuantificó la fracción de la suma de distancias cuadradas entre todos los pares
+de hospitales atribuible a cuatro macro-bloques de la matriz ya preprocesada:
+gestión, diversidad y CMA (9 variables); perfil operativo no demográfico (11 variables);
+demanda demográfica-obstétrica (7 variables), y componentes PCA de casuística (8 variables). El
+bloque demográfico-obstétrico comprende porcentaje pediátrico, geriátrico y
+femenino fértil, edad mediana, porcentaje de ingreso obstétrico, proporción de
+egresos neonatales y tasa de prematurez. Esta definición distingue la
+composición de demanda de las variables operativas y no atribuye a priori las
+componentes PCA a un bloque demográfico, pues cada componente resume una mezcla
+de variables de casuística.
+
+Como sensibilidad de ponderación, después del escalado robusto cada variable de
+un macro-bloque se multiplica por $1/\sqrt{p_b}$, donde $p_b$ es el número de
+variables del bloque. Esta transformación evita que un bloque tenga mayor peso
+solo por contener más columnas. Además, se re-ejecuta Ward $K=4$ excluyendo las
+siete variables demográfico-obstétricas. En ambos escenarios se comparan las
+particiones con la solución principal mediante ARI y NMI, y se reportan
+Silhouette, Calinski--Harabasz, Davies--Bouldin y tamaños de grupo. Los
+resultados se presentan en la Sección~\ref{sec:res-bloques}.
 
 % ============================================================================
 % ============================================================================
@@ -1155,7 +1134,7 @@ partición particular, haciendo visible cómo se fusionan los hospitales y a qu�
 costo de cohesión.
 
 El criterio de enlace de Ward minimiza, en cada fusión, el incremento de la suma
-de cuadrados intra-grupo. Para dos clusters $A$ y $B$, el criterio es:
+de cuadrados intra-grupo. Para dos clústeres $A$ y $B$, el criterio es:
 
 \begin{equation}
   \Delta(A, B) = \frac{|A|\,|B|}{|A| + |B|}
@@ -1163,7 +1142,7 @@ de cuadrados intra-grupo. Para dos clusters $A$ y $B$, el criterio es:
   \label{eq:ward}
 \end{equation}
 
-donde $|A|$ y $|B|$ son los tamaños de los clusters y $\mathbf{c}_A$,
+donde $|A|$ y $|B|$ son los tamaños de los clústeres y $\mathbf{c}_A$,
 $\mathbf{c}_B$ sus centroides. Este criterio produce grupos compactos y
 relativamente equilibrados, propiedad deseable cuando el objetivo es maximizar
 la homogeneidad funcional dentro de cada perfil.
@@ -1399,8 +1378,8 @@ Secciones~\ref{sec:sensibilidad-analisis}, \ref{sec:bootstrap} y
 \label{sec:permutacion-circularidad}
 
 Para cuantificar, en lugar de solo señalar, cuánta de la significancia
-observada podría atribuirse al mero acto de agrupar --sin que exista ninguna
-estructura real que separar-- se diseñó una prueba de permutación sobre el
+observada podría atribuirse al mero acto de agrupar sin que exista ninguna
+estructura real que separar se diseñó una prueba de permutación sobre el
 pipeline completo. Se generan matrices institucionales nulas permutando de
 forma independiente cada una de las 35 columnas entre los 65 hospitales
 (\textit{shuffle} por columna), lo que destruye cualquier estructura de
@@ -1412,19 +1391,24 @@ con corrección BH sobre las mismas 28 variables interpretables. El
 procedimiento se repite 500 veces, registrando en cada repetición cuántas de
 las 28 variables resultan significativas ($p_{\text{BH}} \leq 0{,}05$).
 
-Si el flujo completo --y no la estructura real de los datos-- fuera el
+Si el flujo completo (y no la estructura real de los datos) fuera el
 principal responsable de producir variables significativas, la distribución
 nula debería concentrarse en valores cercanos al resultado real (26 de 28).
-El resultado obtenido, reportado en el Capítulo~\ref{cap:resultados}, muestra
-lo contrario: bajo la hipótesis nula de ausencia de estructura, el número de
-variables significativas es sistemáticamente bajo. Esto acota, aunque no
-elimina por completo, la preocupación de circularidad: demuestra que Ward no
-\textit{fabrica} 24 variables significativas de la nada por el solo hecho de
-particionar datos sin estructura real, aunque no demuestra que la partición
-identificada sea la única o la mejor estructura posible en los datos reales,
-ni sustituye a una validación externa genuina sobre una muestra o un período
-distinto al empleado para construir los grupos, algo que este trabajo no
-realizó.
+Esta nula por permutación responde específicamente al caso de variables sin
+ninguna dependencia conjunta; por ello, funciona como un control de referencia,
+pero no conserva las correlaciones presentes en la matriz institucional.
+
+Como control más exigente, se simulan además 500 matrices normales
+multivariadas de 65 hospitales con la media y matriz de covarianza estimadas
+sobre las 36 variables numéricas transformadas y escaladas. En cada réplica se
+aplica Ward sobre las 35 variables de la matriz de clustering y
+Kruskal--Wallis con corrección BH sobre las 28 variables interpretables. Esta
+nula conserva en esperanza la covarianza lineal observada, pero no preserva las
+observaciones originales, las etiquetas hospitalarias ni una estructura de
+grupos. Tampoco conserva necesariamente las distribuciones marginales ni las
+dependencias no lineales, por lo que se interpreta como complemento de la
+permutación por columnas y no como una validación externa. Ambas distribuciones
+nulas se reportan en el Capítulo~\ref{cap:resultados}.
 
 
 \subsection{Validación de estabilidad mediante submuestreo}
@@ -1610,7 +1594,7 @@ comparación se reporta en dos versiones: una \textbf{no controlada}, entre la
 partición Ward $K=4$ efectivamente utilizada en este trabajo y MINSAL ($K=2$),
 que refleja la comparación de interés sustantivo pero con distinto número de
 grupos, y una \textbf{controlada por $K$}, entre una partición Ward restringida
-a $K=2$ --el mismo número de categorías que MINSAL-- y MINSAL, sobre las
+a $K=2$ y MINSAL, sobre las
 mismas variables y métricas, que aísla el efecto de la homogeneidad de la
 partición del efecto mecánico del número de grupos.
 
@@ -1625,17 +1609,40 @@ agrupación aleatoria de igual tamaño de grupos, y no solo comparar los
 valores puntuales entre ambas. Los resultados de esta comparación se
 presentan en la Sección~\ref{sec:res-minsal} del Capítulo~\ref{cap:resultados}.
 
-Lo que valida la solución empírica no es únicamente su comparación de
-homogeneidad frente a MINSAL, sino el conjunto de evidencia presentado en
+Lo que respalda la utilidad descriptiva de la solución empírica no es una
+comparación aislada con MINSAL, sino el conjunto de evidencia presentado en
 este capítulo: la cohesión interna medida por Silhouette, Calinski-Harabasz y
 Davies-Bouldin (Sección~\ref{sec:nivel1}), la estabilidad frente a
-submuestreo (Sección~\ref{sec:bootstrap}) y la significancia estadística de
+submuestreo (Sección~\ref{sec:bootstrap}) y la caracterización posterior de
 las diferencias entre grupos (Sección~\ref{sec:validacion-grupos}), con las
-salvedades de circularidad ya señaladas en esa misma sección. El contraste con
-MINSAL es un componente adicional de esa evidencia, no la validación
-principal: aporta información sobre qué hospitales cambian de categoría entre
-ambas perspectivas y sobre cuál de las dos particiones exhibe mayor cohesión
-interna, lo que tiene valor directo para la gestión sanitaria.
+salvedades de circularidad ya señaladas. El contraste interno con MINSAL aporta
+información descriptiva sobre la compactación de las particiones en el espacio
+completo, pero no constituye una prueba confirmatoria porque Ward se ajustó en
+ese mismo espacio.
+
+\subsubsection{Validación cruzada por bloques de variables}
+\label{sec:comparacion-homogeneidad-cruzada}
+
+Para evitar esa reutilización, se añade una evaluación cruzada por bloques de
+variables. La matriz se divide en las 27 variables clínico-operativas directas y
+las 8 componentes PCA de casuística. En una primera dirección, Ward se ajusta
+solo con las variables directas y su partición se evalúa, junto con la
+clasificación MINSAL, exclusivamente sobre las componentes de casuística. En la
+segunda dirección, Ward se ajusta con las componentes y ambas particiones se
+evalúan sobre las variables directas. Cada bloque de evaluación se transforma
+con el mismo preprocesamiento del pipeline, ajustado dentro del bloque, pero no
+interviene en la construcción de las etiquetas Ward.
+
+Se reporta WSS/TSS y Silhouette en el bloque retenido. Además, la diferencia
+$\mathrm{WSS/TSS}_{\mathrm{MINSAL}}-\mathrm{WSS/TSS}_{\mathrm{Ward}}$ se
+acompaña de un intervalo percentilar bootstrap del 95\,\% obtenido con 5.000
+remuestreos de hospitales. El análisis se ejecuta con Ward $K=4$, que conserva
+la granularidad de la solución principal, y con Ward $K=2$, para contrastar con
+el mismo número de categorías de MINSAL. Una diferencia positiva cuyo intervalo
+no incluye cero indica menor dispersión de Ward en un espacio que no utilizó
+para agrupar. Como los bloques proceden de los mismos hospitales y las
+componentes PCA se estimaron sobre la muestra completa, esta es una validación
+interna por bloques y no una validación temporal o externa independiente.
 
 \subsection{Detección de hospitales atípicos}
 \label{sec:outliers-metodo}
@@ -1645,9 +1652,23 @@ de Mahalanobis fueron descartados por razones operativas. Con $n = 65$, LOF es
 sensible a la elección del parámetro de vecindad y puede producir resultados
 inestables en muestras pequeñas. La distancia de Mahalanobis requiere estimar la
 matriz de covarianza, operación mal condicionada cuando el número de variables
-(35) es del mismo orden que el número de observaciones. En su lugar se implementa
-una estrategia que combina tres criterios complementarios, cada uno sensible a
-una faceta distinta de la atipicidad:
+(35) es del mismo orden que el número de observaciones. En su lugar se combina
+una sensibilidad previa mediante Isolation Forest con dos criterios posteriores
+que requieren una partición ya construida.
+
+Antes de ajustar Ward, Isolation Forest se entrena una vez sobre los 65
+hospitales y las 35 variables preprocesadas. Con contaminación $10\,\%$, sus
+marcas se excluyen temporalmente y Ward $K=4$ se re-estima sobre los hospitales
+restantes. La concordancia ARI/NMI con la solución base se calcula tanto sobre
+los establecimientos retenidos como sobre los 65 hospitales, reasignando cada
+marca al centroide más próximo de la solución entrenada sin ella. Esta exclusión
+es una prueba de sensibilidad, no una regla de depuración permanente: si retirar
+los casos degrada o transforma materialmente la estructura, estos se conservan
+en la partición reportada y se interpretan como perfiles poco frecuentes o
+influyentes, no como errores automáticos.
+
+Después del clustering, se aplica una estrategia que combina tres criterios
+complementarios, cada uno sensible a una faceta distinta de la atipicidad:
 
 \begin{enumerate}
   \item \textbf{Coeficiente de Silhouette por observación}: un hospital con
@@ -1699,8 +1720,8 @@ marcados por un solo criterio corresponden a hospitales en la frontera entre
 perfiles. La condición de ``atípico'' es, en todos los casos, puramente
 estadística y descriptiva: no implica por sí sola una anomalía en el sentido
 de un error, una falla de gestión o una necesidad de auditoría, y su
-interpretación sustantiva --especialización genuina, perfil híbrido o posible
-problema de codificación-- se desarrolla caso por caso en el
+interpretación como especialización genuina, perfil híbrido o posible
+problema de codificación se desarrolla caso por caso en el
 Capítulo~\ref{cap:resultados}.
 
 \subsection{Interpretabilidad y proyecciones visuales}
@@ -1710,19 +1731,14 @@ La descripción clínica de cada grupo se apoya en una interpretación
 \textit{post-hoc} basada en las medianas de las variables más discriminantes,
 realizada exclusivamente después del clustering para no sesgar la formación de
 los grupos. Complementariamente, se proyecta la matriz a dos dimensiones
-mediante cinco técnicas independientes: PCA, UMAP, MDS, t-SNE e Isomap. El
-propósito de estas proyecciones es exclusivamente ilustrativo y exploratorio:
-permiten inspeccionar de forma visual si la separación entre grupos observada
-bajo PCA se mantiene reconocible bajo otras técnicas de reducción con supuestos
-geométricos distintos, lo que descarta que esa separación sea un artefacto
-exclusivo de la proyección PCA en particular. La coincidencia visual entre
-proyecciones no constituye, sin embargo, evidencia cuantitativa de la validez
-del clustering ni sustituye a los índices de concordancia de partición (ARI,
-NMI) que se emplean para ese propósito en la Sección~\ref{sec:sensibilidad}: una
-proyección bidimensional descarta necesariamente información de las 35
-variables originales, y la similitud visual entre dos nubes de puntos es una
-apreciación cualitativa sujeta a la interpretación de quien observa la figura,
-no una medida estadística.
+mediante PCA. Esta proyección tiene un propósito exclusivamente ilustrativo y
+exploratorio: facilita inspeccionar la disposición relativa de los hospitales y
+no constituye evidencia cuantitativa de la validez del clustering ni sustituye
+los índices de concordancia de partición (ARI, NMI) que se emplean para ese
+propósito en la Sección~\ref{sec:sensibilidad}. Una proyección bidimensional
+omite necesariamente información de las 35 variables originales, por ello, su
+lectura es cualitativa y queda subordinada a los análisis de sensibilidad y
+estabilidad.
 
 % ============================================================================
 \section{Análisis de sensibilidad del diseño}
@@ -1740,9 +1756,7 @@ cuánto dependen los resultados de cada una de ellas. Los resultados de las cuat
 pruebas se reportan en el Capítulo~\ref{cap:resultados}.
 
 Las tres últimas pruebas comparten un mismo protocolo. Se altera una sola decisión
-de diseño, se recalcula el pipeline completo --construcción de variables,
-reducción PCA, preprocesamiento y clustering aglomerativo Ward con $K=4$-- y se
-compara la partición obtenida con la del pipeline definitivo mediante el índice de
+de diseño, se recalcula el pipeline completo y se compara la partición obtenida con la del pipeline definitivo mediante el índice de
 Rand ajustado (ARI) y la información mutua normalizada (NMI), acompañados del
 coeficiente de Silhouette como medida de cohesión interna de cada solución. La
 elección de ARI y NMI responde a que ambos índices son invariantes a la
@@ -1787,8 +1801,7 @@ HDBSCAN & \texttt{min\_cluster\_size} $\in \{3,\ldots,8\}$ & Descubre $k$ por de
 MST-kNN & $k$ de vecindad $=6$ & Algoritmo del depto.\ USACH,
 descubre $k$ y observaciones aisladas. \\
 \addlinespace
-Proyecciones 2D & PCA, UMAP, MDS, t-SNE, Isomap & Inspección visual
-exploratoria de la separación, no constituye validación cuantitativa. \\
+Proyección 2D & PCA & Inspección visual exploratoria; no constituye validación cuantitativa. \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1797,7 +1810,7 @@ La inclusión del algoritmo \textbf{MST-kNN}~\citep{inostroza2008}, utilizado pr
 razones: es el algoritmo de referencia desarrollado en el Departamento de
 Ingeniería Informática de la USACH, lo que sitúa este trabajo en continuidad con
 la línea de investigación local, y no requiere especificar el número de grupos,
-descubriendo automáticamente tanto los clusters como los hospitales de perfil
+descubriendo automáticamente tanto los clústeres como los hospitales de perfil
 único. Adicionalmente, se exploran
 particiones con $k \in \{5, \ldots, 20\}$ para verificar el comportamiento de las
 métricas en rangos de alta granularidad y una gran cantidad de grupos.
@@ -1812,7 +1825,7 @@ existen hospitales con 3, 4 o 5 años de datos, por lo que elevar el umbral a 4 
 5 años no altera el universo analizado y no constituye una prueba informativa. La
 perturbación que sí modifica el universo es la contraria: eliminar por completo
 el filtro de presencia temporal e incorporar los 7 hospitales excluidos
-(Tabla~\ref{tab:descartados}) con los datos parciales de uno o dos años que
+(Tabla~\ref{tab:anexo-excluidos}) con los datos parciales de uno o dos años que
 efectivamente tienen disponibles. Se reconstruye la matriz institucional sobre
 este universo ampliado de 72 hospitales, se repite el clustering aglomerativo
 Ward con $K=4$ y la concordancia con la partición original se calcula
@@ -1830,7 +1843,7 @@ Sección~\ref{sec:elegibilidad}. La elegibilidad no se re-deriva sobre el perío
 reducido, de modo que cualquier diferencia observada sea atribuible al cambio de
 período y no a un cambio en la composición del universo de análisis. Sobre esta
 matriz alternativa, construida con 4{,}158{,}029 egresos de los años 2019 y
-2022--2024 --un 71{,}6\,\% del total del período--, se repiten el
+2022--2024 (un 71{,}6\,\% del total del período), se repiten el
 preprocesamiento de la Sección~\ref{sec:preprocesamiento} y el clustering
 aglomerativo Ward con $K=4$.
 
@@ -1853,8 +1866,8 @@ en lugar de operar sobre las proporciones brutas. La transformación CLR proyect
 cada composición al espacio logarítmico de razones respecto a su media
 geométrica, lo que remueve la restricción de suma constante y constituye la
 alternativa estándar en el análisis de datos composicionales. Los ceros
-estructurales de los vectores de proporciones --frecuentes en establecimientos
-que no registran actividad en determinado capítulo, sección o GRD-- se tratan
+estructurales de los vectores de proporciones frecuentes en establecimientos
+que no registran actividad en determinado capítulo, sección o GRD se tratan
 mediante un pseudo-conteo multiplicativo ($\delta = 1/(2D)$, con $D$ el número de
 partes de cada composición), que evita la indeterminación de $\log(0)$ sin
 distorsionar de forma relevante las proporciones no nulas.
@@ -1876,8 +1889,7 @@ aunque no elimina, la distorsión de clausura, porque las componentes resultante
 capturan patrones de covariación conjunta entre partes en lugar de operar sobre
 cada proporción aislada. Esto no descarta el problema: el vector de Top-20 GRD,
 en particular, incluye proporciones individuales de hasta $0{,}978$ en algunos
-hospitales altamente concentrados en un único GRD --precisamente el tipo de
-composición donde el efecto de clausura es más severo--, por lo que la robustez
+hospitales altamente concentrados en un único GRD, por lo que la robustez
 frente a este problema no puede darse por sentada a priori y requiere la
 comparación empírica que esta prueba provee. El pipeline no explora la
 transformación ILR (\textit{isometric log-ratio}), que evita además la

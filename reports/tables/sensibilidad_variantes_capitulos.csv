@@ -1,0 +1,3 @@
+variante_capitulos,varianza_acumulada_pca_K8,silhouette_ward_K4,tamanos_ward_K4,ARI_vs_canonica_ponderada,NMI_vs_canonica_ponderada,ARI_principal_vs_ponderado,NMI_principal_vs_ponderado
+principal,0.7175088168898658,0.3749268922951315,"[3, 53, 6, 3]",0.9355202156737613,0.9094607899607428,0.9355202156737613,0.9094607899607428
+ponderado,0.7226226982696651,0.39929140311522215,"[3, 54, 5, 3]",1.0,1.0,0.9355202156737613,0.9094607899607428

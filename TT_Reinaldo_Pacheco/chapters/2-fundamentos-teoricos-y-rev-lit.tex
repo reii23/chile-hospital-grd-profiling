@@ -71,8 +71,7 @@ demográficas y determina el grupo al que pertenece el caso. Cada GRD posee un
 peso relativo que refleja la intensidad esperada de recursos requeridos para
 atender ese tipo de hospitalización, calculado a partir de promedios históricos
 de duración de estancia y costos. Este peso permite cuantificar la complejidad
-agregada de la producción de un hospital, concepto conocido como casuística o
-\textit{case-mix}.
+agregada de la producción de un hospital, concepto conocido como casuística.
 
 La agregación de los GRD de un establecimiento permite cuantificar su carga de
 enfermedad y vincular la actividad clínica con los costos, habilitando
@@ -103,7 +102,7 @@ corta estancia del sector público, consolidando a los GRD como el principal
 estándar de registro de la producción asistencial en la red. En el plano
 presupuestario, la Ley de Presupuestos 2023 asignó al Programa 05
 \textit{Financiamiento Hospitales por Grupo Relacionado de Diagnóstico} un total
-cercano a 4,65 billones de pesos, distribuidos entre 68 establecimientos
+cercano a 4{,}65 billones de pesos, distribuidos entre 68 establecimientos
 identificados individualmente en la partida~\citep{DIPRES_Programa05_2023}.
 
 Sin embargo, la transición desde el registro clínico-administrativo hacia su uso
@@ -326,7 +325,7 @@ El análisis factorial condensó los seis indicadores en tres factores asociados
 con capacidad médica, eficiencia y seguridad. Posteriormente, el agrupamiento se
 realizó por separado dentro de los hospitales secundarios y terciarios. Esta
 decisión permitió evitar que las diferencias estructurales entre ambos niveles
-determinaran los resultados. En cada nivel se identificaron tres grupos de
+determaran los resultados. En cada nivel se identificaron tres grupos de
 desempeño denominados ``excelente'', ``medio'' e ``inferior''. Estas
 denominaciones se establecieron a partir de los valores promedio de los
 indicadores DRG en cada conglomerado.
@@ -357,7 +356,7 @@ Suiza mediante un modelo estadístico de regresión orientado a explicar las
 diferencias en los costos hospitalarios. A partir de datos de 116 hospitales y
 más de un millón de casos correspondientes a 2019, los autores construyeron un
 modelo de regresión para explicar diferencias en los costos hospitalarios
-promedio ajustados por \textit{case-mix}. El modelo final incluyó cinco
+promedio ajustados por casuística. El modelo final incluyó cinco
 atributos estructurales. Estos fueron el número de altas, la proporción de
 ingresos de urgencia o ambulancia, la tasa de GRD por paciente, el potencial de
 pérdida esperado según la mezcla de GRD y la ubicación en una gran aglomeración.
@@ -478,14 +477,19 @@ Suiza
 En el contexto nacional, el problema de la caracterización funcional de
 hospitales ha sido abordado por una línea de investigación desarrollada en el
 Departamento de Ingeniería Informática de la Universidad de Santiago de Chile.
-Esta línea de trabajo, ha explorado sistemáticamente la
-aplicación de técnicas computacionales avanzadas para superar las limitaciones de
-las clasificaciones administrativas vigentes.
+Esta línea de trabajo ha explorado sistemáticamente la aplicación de técnicas
+computacionales avanzadas para superar las limitaciones de las clasificaciones
+administrativas vigentes.
 
-El trabajo de \citet{Villalobos2016} introdujo un enfoque basado en teoría de grafos para construir grupos homogéneos de hospitales según su casuística, en un contexto donde los datos GRD no estaban aún plenamente consolidados. Los autores desarrollaron una metodología para identificar grupos homogéneos de establecimientos comparables, permitiendo evaluar eficiencia técnica entre hospitales con perfiles de producción equivalentes dentro de cada grupo.
+El trabajo de \citet{Villalobos2016} introdujo un enfoque basado en teoría de
+grafos para construir grupos homogéneos de hospitales según su casuística, en
+un contexto donde los datos GRD no estaban aún plenamente consolidados. Los
+autores desarrollaron una metodología para identificar grupos homogéneos de
+establecimientos comparables, permitiendo evaluar eficiencia técnica entre
+hospitales con perfiles de producción equivalentes dentro de cada grupo.
 
 \citet{Carlier2020} evaluaron directamente si la categorización
-administrativa del Ministerio de Salud se corresponde con el \textit{case-mix}
+administrativa del Ministerio de Salud se corresponde con la casuística
 real de los hospitales. Mediante un algoritmo genético que combina selección de
 variables y clustering, los autores buscaron subconjuntos de indicadores del DEIS
 que replicaran los cinco grupos MINSAL (alta complejidad adultos, alta complejidad
@@ -495,19 +499,19 @@ superior a 0{,}9 respecto a la clasificación oficial, estas variables eran
 procedimientos muy específicos que cambiaban entre años, sin rasgos comunes
 estables a lo largo del período. El grupo de mediana complejidad fue el más
 inconsistente entre años. La conclusión es que no existe evidencia suficiente para
-establecer que la categorización MINSAL refleja el \textit{case-mix} de los
+establecer que la categorización MINSAL refleja la casuística de los
 hospitales, por lo que los autores recomiendan construir agrupamientos alternativos
 basados en variables de producción clínica para cualquier análisis de eficiencia.
 
 \citet{Giglio2021} extendieron esta línea aplicando un enfoque
 basado en CRISP-DM sobre 187 hospitales públicos chilenos con datos del período
 2014--2018. A diferencia del trabajo anterior, seleccionaron variables del DEIS
-filtradas por correlación con los pesos DRG, aproximando así el \textit{case-mix}
+filtradas por correlación con los pesos DRG, aproximando así la casuística
 sin requerir la implementación completa del sistema. Los autores evaluaron la
 categorización MINSAL mediante índices internos de validez de clustering
 (Silhouette y Ball-Hall) obteniendo valores de Silhouette inferiores a 0{,}2 en
 todos los años analizados, con valores negativos en algunos casos, lo que indica
-que varios hospitales estaban mal asignados según el criterio de case-mix.
+que varios hospitales estaban mal asignados según el criterio de casuística.
 Compararon además particiones alternativas obtenidas mediante K-means, PAM,
 CLARA, FANNY, DBSCAN y un algoritmo NSGA-II multiobjetivo, encontrando que este
 último generó sistemáticamente las mejores particiones en términos de cohesión y
@@ -518,11 +522,11 @@ eficiencia técnica, y propuso una nueva categorización de consenso basada en l
 mejores resultados por año como punto de partida para trabajos futuros.
 
 Los hallazgos de estas tres investigaciones muestran evidencia de que las
-etiquetas administrativas vigentes no reflejan adecuadamente el
-\textit{case-mix} de los hospitales y de que los métodos de agrupamiento basados
-en datos de producción generan particiones con mayor coherencia interna. No
-obstante, estos trabajos también evidenciaron limitaciones metodológicas que
-motivan la presente investigación.
+etiquetas administrativas vigentes no reflejan adecuadamente la
+casuística real de los hospitales~\citep{Carlier2020, Giglio2021} y de que los
+métodos de agrupamiento basados en datos de producción generan particiones con
+mayor coherencia interna. No obstante, estos trabajos también evidenciaron
+limitaciones metodológicas que motivan la presente investigación.
 
 \subsection{Brechas identificadas en la evidencia nacional}
 \label{sec:brechas-nacionales}
@@ -574,9 +578,13 @@ hospitalaria, habilitando la distinción de perfiles funcionales específicos y
 (iii) la combinación de múltiples criterios de detección de atípicos
 (Silhouette por observación, Isolation Forest y distancia normalizada al
 centroide) con evaluación explícita de sensibilidad a sus parámetros, en
-lugar de un único criterio ad-hoc, permitiendo identificar establecimientos
-con comportamiento divergente antes de construir los grupos y evitando que
-estos distorsionen la solución de agrupamiento.
+lugar de un único criterio ad-hoc. Isolation Forest se aplica antes del
+clustering como una prueba de influencia: se excluyen temporalmente sus marcas,
+se re-estima la partición y se cuantifica el cambio resultante. Los criterios que
+requieren grupos (Silhouette individual y distancia al centroide) se utilizan
+posteriormente para caracterizar asignaciones ambiguas o alejadas. Esta
+separación evita tratar de manera automática los perfiles funcionales poco
+frecuentes como errores que deban eliminarse.
 
 \section{Metodologías computacionales aplicadas a datos hospitalarios}
 \label{sec:metodologias-comp}
@@ -601,8 +609,8 @@ de encontrar patrones sin supervisión es fundamental cuando el objetivo es
 precisamente cuestionar y redefinir la taxonomía existente.
 
 En el contexto hospitalario, el aprendizaje no supervisado permite que los propios
-datos clínicos, reflejados en variables como casuística, complejidad del
-case-mix, estancia media y perfiles de procedimientos, revelen qué
+datos clínicos, reflejados en variables como casuística, complejidad clínica,
+estancia media y perfiles de procedimientos, revelen qué
 hospitales funcionan de manera similar, independientemente de su etiqueta
 administrativa. Esta aproximación ha sido validada internacionalmente en sistemas
 de salud complejos, donde ha demostrado revelar estructuras funcionales de la red
@@ -624,7 +632,7 @@ hospitalaria presente una geometría no convexa que este método esté
 especialmente capacitado para capturar.
 
 El clustering jerárquico aglomerativo construye una jerarquía de grupos uniendo
-iterativamente los pares de observaciones o clusters más cercanos según una
+iterativamente los pares de observaciones o clústeres más cercanos según una
 medida de distancia. Esta aproximación presenta dos ventajas específicas para el
 problema hospitalario. Primero, no requiere especificar a priori el
 número de grupos, permitiendo explorar distintos niveles de granularidad mediante
@@ -663,13 +671,13 @@ El índice de Calinski-Harabasz cuantifica la relación entre la dispersión
 inter-grupos y la dispersión intra-grupos. Una partición óptima maximiza la
 separación entre grupos mientras minimiza la heterogeneidad dentro de cada grupo.
 Valores altos de este índice favorecen soluciones con grupos compactos y bien
-separados.
+separados~\citep{CalinskiHarabasz1974}.
 
 El índice de Davies-Bouldin mide la peor relación de similitud entre cada grupo
 y su vecino más cercano a diferencia del anterior, valores bajos indican mejor
 separación. Esta métrica penaliza soluciones donde existen pares de grupos con
 alta similitud interna pero baja separación mutua, situación indeseable desde la
-perspectiva de interpretabilidad~\citep{Arbelaitz2013}.
+perspectiva de interpretabilidad~\citep{DaviesBouldin1979, Arbelaitz2013}.
 
 Más allá de las métricas puntuales, la estabilidad de las soluciones constituye
 un criterio de validación complementario. Técnicas de remuestreo como el

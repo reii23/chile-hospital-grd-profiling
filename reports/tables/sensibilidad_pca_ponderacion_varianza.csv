@@ -1,0 +1,3 @@
+escenario,silhouette,davies_bouldin,tamanos,ARI_vs_canonica,NMI_vs_canonica
+canonica_componentes_peso_igual,0.39795163468699657,0.9941519555311455,"[3, 54, 5, 3]",1.0,1.0
+pca_ponderada_por_sqrt_varianza,0.40203241097665543,0.9801954617291355,"[3, 53, 6, 3]",0.9355202156737613,0.9094607899607428

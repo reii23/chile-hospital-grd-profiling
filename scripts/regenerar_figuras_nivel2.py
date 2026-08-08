@@ -10,7 +10,8 @@ ROOT = Path(__file__).resolve().parents[1]
 TABLES_DIR = ROOT / "reports" / "tables"
 SEARCH_PATH = TABLES_DIR / "busqueda_subclustering.csv"
 ASSIGNMENT_PATH = TABLES_DIR / "asignacion_jerarquica_final.csv"
-OUTPUT_DIR = ROOT / "formato-tesis" / "Tesis_Reinaldo_Pacheco_Editable" / "img"
+OUTPUT_DIR = ROOT / "TT_Reinaldo_Pacheco" / "img"
+REPORTED_K_SUB = 9
 
 
 def main() -> None:
@@ -22,9 +23,9 @@ def main() -> None:
     axis_db = axis_silhouette.twinx()
     axis_silhouette.plot(search["K_sub"], search["silhouette_sub"], "o-", color="tab:blue", label="Silhouette", linewidth=2)
     axis_db.plot(search["K_sub"], search["davies_sub"], "s--", color="tab:orange", label="Davies-Bouldin", linewidth=2)
-    selected = search.loc[search["K_sub"] == 10].iloc[0]
-    axis_silhouette.scatter(10, selected["silhouette_sub"], s=90, color="tab:blue", zorder=4)
-    axis_db.scatter(10, selected["davies_sub"], s=90, color="tab:orange", zorder=4)
+    selected = search.loc[search["K_sub"] == REPORTED_K_SUB].iloc[0]
+    axis_silhouette.scatter(REPORTED_K_SUB, selected["silhouette_sub"], s=90, color="tab:blue", zorder=4)
+    axis_db.scatter(REPORTED_K_SUB, selected["davies_sub"], s=90, color="tab:orange", zorder=4)
     axis_silhouette.axhline(0.20, color="gray", linestyle="--", alpha=0.55, label="Referencia 0,20")
     axis_silhouette.set(xlabel=r"$K_{sub}$", ylabel="Silhouette", title=f"Métricas internas del Nivel 2 (n={n_mainstream})")
     axis_db.set_ylabel("Davies-Bouldin", color="tab:orange")
@@ -41,7 +42,7 @@ def main() -> None:
     axis.plot(search["K_sub"], search["sub_n_clusters_n4plus"], "o-", linewidth=2, color="tab:green", label=r"Clústeres $n\geq4$")
     axis.plot(search["K_sub"], search["sub_n_singletons"], "s--", linewidth=2, color="tab:red", label="Grupos unitarios")
     axis.plot(search["K_sub"], search["sub_n_pares"], "^--", linewidth=2, color="tab:purple", label="Pares")
-    axis.axvline(10, color="black", linestyle=":", alpha=0.7, label=r"Solución reportada ($K_{sub}=10$)")
+    axis.axvline(REPORTED_K_SUB, color="black", linestyle=":", alpha=0.7, label=rf"Solución reportada ($K_{{sub}}={REPORTED_K_SUB}$)")
     axis.set(xlabel=r"$K_{sub}$", ylabel="Cantidad de grupos", title=f"Balance de tamaños del Nivel 2 (n={n_mainstream})")
     axis.set_xticks(search["K_sub"])
     axis.set_ylim(bottom=-0.25)

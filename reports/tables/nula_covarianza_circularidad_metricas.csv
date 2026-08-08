@@ -1,0 +1,2 @@
+n_repeticiones,n_variables_significativas_real,mediana_nula,percentil_95_nula,maximo_nula,repeticiones_nula_igual_o_mayor_real,p_valor_empirico_con_correccion,error_relativo_covarianza_frobenius_mediano
+500,26,23.0,26.0,28,59,0.11976047904191617,0.3075131829614657

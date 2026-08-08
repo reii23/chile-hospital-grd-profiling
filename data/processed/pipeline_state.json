@@ -5,7 +5,7 @@
   "varianza_pca": 0.7226226982696651,
   "K_natural": 2,
   "K_optimo": 4,
-  "silhouette_K_optimo": 0.40082961396310834,
+  "silhouette_K_optimo": 0.39795163468699657,
   "silhouette_K_natural": 0.6045212326302407,
   "silhouette_media_bootstrap": 0.3954,
   "silhouette_ic_inf": 0.2252,

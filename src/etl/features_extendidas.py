@@ -26,9 +26,10 @@ Calcula bloques adicionales sobre `grd_filtrado_v2.parquet` para enriquecer la
     - pct_uso_pabellon (al menos un USOSPABELLON > 0)
     - pabellones_promedio
 
-  Atencion obstetrica/neonatal explicita:
-    - tasa_partos (CONDICIONDEALTANEONATO1 no nulo / total egresos hosp)
-    - tasa_prematurez (PESORN1 < 2500 / partos)
+  Atención obstétrica/neonatal explícita:
+    - tasa_partos (nombre técnico legado): proporción de egresos con
+      CONDICIONDEALTANEONATO1 no nula sobre egresos hospitalarios
+    - tasa_prematurez (PESORN1 < 2500 / egresos neonatales registrados)
 
   Ratios de eficiencia:
     - cv_estancia (coeficiente de variacion de estancia)
@@ -81,6 +82,8 @@ class Constructor_Features_Extendidas:
             mask = (self.df_grd["MODALIDAD"].to_numpy() == "HOSPITALIZACION") & (
                 self.df_grd["COD_HOSPITAL"].isin(self.hospitales_elegibles).to_numpy()
             )
+            if "TIPO_ACTIVIDAD" in self.df_grd.columns:
+                mask &= self.df_grd["TIPO_ACTIVIDAD"].to_numpy() != "HOSPITALIZACIÓN DIURNA"
             cols = [c for c in COLS_REQUERIDAS if c in self.df_grd.columns]
             self._cache = self.df_grd.loc[mask, cols]
         return self._cache
@@ -190,13 +193,15 @@ class Constructor_Features_Extendidas:
         es_prematuro = peso_rn < 2500  # < 2500 g indicador clasico de prematurez
 
         agg = df.groupby("COD_HOSPITAL").agg(n_total=("EDAD", "size"))
-        agg["n_partos"] = tiene_neonato.groupby(df["COD_HOSPITAL"]).sum()
+        agg["n_egresos_neonatales"] = tiene_neonato.groupby(df["COD_HOSPITAL"]).sum()
         agg["n_prematuros"] = (tiene_neonato & es_prematuro).groupby(df["COD_HOSPITAL"]).sum()
 
-        agg["tasa_partos"] = agg["n_partos"] / agg["n_total"]
-        # Prematurez sobre el total de partos (no sobre el total de egresos)
+        # Nombre técnico legado: mide egresos con condición neonatal informada,
+        # no el número clínicamente validado de partos atendidos.
+        agg["tasa_partos"] = agg["n_egresos_neonatales"] / agg["n_total"]
+        # Prematurez sobre egresos neonatales registrados, no sobre partos.
         agg["tasa_prematurez"] = np.where(
-            agg["n_partos"] > 0, agg["n_prematuros"] / agg["n_partos"], 0.0
+            agg["n_egresos_neonatales"] > 0, agg["n_prematuros"] / agg["n_egresos_neonatales"], 0.0
         )
 
         result = agg[["tasa_partos", "tasa_prematurez"]].copy()

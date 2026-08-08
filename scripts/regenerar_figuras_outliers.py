@@ -17,10 +17,21 @@ from src.utils.io import PROCESSED_DIR, TABLES_DIR
 from src.modeling.referencia import COLS_DROP_CLUSTERING, LOG1P_COLS
 
 RANDOM_STATE = 42
-OUTPUT_PATH = ROOT / "formato-tesis" / "Tesis_Reinaldo_Pacheco_Editable" / "img" / "atipicos_pca.png"
+OUTPUT_PATH = ROOT / "TT_Reinaldo_Pacheco" / "img" / "atipicos_pca.png"
 CLUSTER_COLORS = {0: "#d1495b", 1: "#4c6fd0", 2: "#e58b3c", 3: "#55a868"}
 CLUSTER_LABELS = {0: "C0 (n=3)", 1: "C1 (n=54)", 2: "C2 (n=5)", 3: "C3 (n=3)"}
 SHORT_NAMES = {"106102": "Eduardo Pereira", "112104": "Neurocirugía", "111195": "HUAP", "112103": "INER", "113130": "Exequiel González", "112102": "Luis Calvo Mackenna", "112100": "Del Salvador", "111100": "San Borja-Arriarán", "107100": "Gustavo Fricke"}
+LABEL_OFFSETS = {
+    "106102": (8, 9),
+    "112104": (8, -13),
+    "111195": (8, 10),
+    "112103": (-42, 9),
+    "113130": (-70, -12),
+    "112102": (-90, 10),
+    "112100": (8, -14),
+    "111100": (8, 10),
+    "107100": (8, -14),
+}
 
 
 def main() -> None:
@@ -42,16 +53,30 @@ def main() -> None:
     if len(outlier_ids) != 9:
         raise ValueError(f"Se esperaban 9 hospitales marcados; se encontraron {len(outlier_ids)}.")
 
-    coordinates = PCA(n_components=2, random_state=RANDOM_STATE).fit_transform(X)
-    figure, axis = plt.subplots(figsize=(11, 7.4))
+    pca = PCA(n_components=2, random_state=RANDOM_STATE).fit(X)
+    coordinates = pca.transform(X)
+    figure, axis = plt.subplots(figsize=(13, 8.4))
     for cluster, label in CLUSTER_LABELS.items():
         mask = labels == cluster
         axis.scatter(coordinates[mask, 0], coordinates[mask, 1], s=66, color=CLUSTER_COLORS[cluster], edgecolors="#303030", linewidth=0.45, alpha=0.86, label=label)
     outlier_indices = [index for index, hospital_id in enumerate(ids) if hospital_id in outlier_ids]
     axis.scatter(coordinates[outlier_indices, 0], coordinates[outlier_indices, 1], s=175, facecolors="none", edgecolors="#e53935", linewidth=1.8, label="Atípico por $\\geq 1$ criterio (n=9)", zorder=4)
     for index in outlier_indices:
-        axis.annotate(SHORT_NAMES.get(ids[index], ids[index]), (coordinates[index, 0], coordinates[index, 1]), xytext=(4, 4), textcoords="offset points", fontsize=7.4, zorder=5)
-    axis.set(title="PCA de hospitales y atípicos identificados — Ward K=4", xlabel="PC1", ylabel="PC2")
+        hospital_id = ids[index]
+        axis.annotate(
+            SHORT_NAMES.get(hospital_id, hospital_id),
+            (coordinates[index, 0], coordinates[index, 1]),
+            xytext=LABEL_OFFSETS.get(hospital_id, (6, 6)),
+            textcoords="offset points",
+            fontsize=7.8,
+            zorder=5,
+            arrowprops={"arrowstyle": "-", "color": "0.45", "lw": 0.55},
+        )
+    axis.set(
+        title="PCA de hospitales y atípicos identificados — Ward K=4",
+        xlabel=f"PC1 ({pca.explained_variance_ratio_[0]:.1%})",
+        ylabel=f"PC2 ({pca.explained_variance_ratio_[1]:.1%})",
+    )
     axis.grid(True, alpha=0.25)
     axis.legend(loc="best", fontsize=8, framealpha=0.95)
     figure.tight_layout()
