@@ -132,25 +132,28 @@ actividad y casuística relativamente similares.
 La Tabla~\ref{tab:contribucion-bloques} descompone la suma de distancias
 euclidianas cuadradas de la matriz preprocesada según los cuatro macro-bloques
 definidos en la Sección~\ref{sec:bloques-variables}. El bloque
-demográfico-obstétrico aporta $37{,}1\%$ de la distancia total, la fracción más
+demográfico-obstétrico aporta $36{,}3\%$ de la distancia total, la fracción más
 alta entre los bloques. Por tanto, la composición de demanda tiene una influencia
 relevante en la geometría original y debe hacerse explícita al interpretar los
 perfiles. No obstante, los otros tres bloques aportan conjuntamente el
-$62{,}9\%$ de la distancia, por lo que la partición no puede atribuirse solo a
+$63{,}7\%$ de la distancia, por lo que la partición no puede atribuirse solo a
 la demografía.
 
 Dentro de ese bloque, la variable técnica \texttt{tasa\_partos} se reporta en
 este documento como \emph{proporción de egresos neonatales}: corresponde a los
 egresos hospitalarios con \texttt{CONDICIONDEALTANEONATO1} informada y no a un
 conteo ni a una tasa clínica de partos atendidos. Su correlación con la
-proporción de ingresos obstétricos es alta (Pearson $r=0{,}928$; Spearman
-$\rho=0{,}924$; $n=65$), por lo que ambas variables contienen información
+proporción de ingresos obstétricos es alta (Pearson $r=0{,}927$; Spearman
+$\rho=0{,}926$; $n=65$), por lo que ambas variables contienen información
 redundante respecto de la orientación obstétrico-neonatal. La correlación con la
 proporción de egresos de mujeres fértiles también es alta, pero inferior al
-umbral de redundancia predefinido ($\rho=0{,}875$). Por transparencia, ambas
-variables se conservan en la matriz canónica; esta redundancia se considera al
-interpretar el peso del bloque demográfico-obstétrico y no permite atribuir el
-resultado a una medida independiente de partos.
+umbral de redundancia predefinido ($\rho=0{,}876$). El análisis de sensibilidad
+al retirar \texttt{tasa\_partos} modifica la solución ($ARI=0{,}635$;
+$NMI=0{,}696$), por
+lo que la redundancia no equivale a irrelevancia geométrica. Se conserva la
+variable por compatibilidad con el diseño obstétrico-neonatal, pero el resultado
+no se atribuye a una medida independiente de partos ni se interpreta como una
+frontera robusta frente a especificaciones alternativas del bloque.
 
 \begin{table}[htbp]
 \centering
@@ -161,10 +164,10 @@ cuadradas en la matriz preprocesada.}
 \toprule
 \textbf{Bloque} & \textbf{Variables} & \textbf{Fracción de distancia} \\
 \midrule
-Gestión, diversidad y CMA & 9 & 15,2\% \\
-Perfil operativo no demográfico & 11 & 27,1\% \\
-Demográfico-obstétrico & 7 & 37,1\% \\
-Componentes PCA de casuística & 8 & 20,6\% \\
+Gestión, diversidad y CMA & 9 & 15,1\% \\
+Perfil operativo no demográfico & 11 & 27,7\% \\
+Demográfico-obstétrico & 7 & 36,3\% \\
+Componentes PCA de casuística & 8 & 20,9\% \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -172,13 +175,14 @@ Componentes PCA de casuística & 8 & 20,6\% \\
 La Tabla~\ref{tab:sensibilidad-bloques} evalúa dos sensibilidades. La
 ponderación por $1/\sqrt{p_b}$ por bloque conserva exactamente la partición
 principal ($ARI=NMI=1{,}000$) y mejora marginalmente sus métricas internas.
-Al excluir las siete variables demográfico-obstétricas, la partición mantiene
-una concordancia alta con la original ($ARI=0{,}933$; $NMI=0{,}906$): los tres
-hospitales pediátricos y los tres de perfil monográfico permanecen agrupados,
-los 54 hospitales del núcleo continúan juntos y solo uno de los cinco miembros
-del grupo $C2$ se incorpora al núcleo. La menor cohesión de esta solución
-(Silhouette $=0{,}320$ frente a $0{,}401$) indica que el bloque excluido aporta
-separación, pero su remoción no elimina los perfiles principales.
+En cambio, al excluir las siete variables demográfico-obstétricas, la
+concordancia disminuye de forma importante ($ARI=0{,}571$; $NMI=0{,}599$): los
+clústeres pediátrico y monográfico permanecen separados, pero seis hospitales
+del núcleo y tres del grupo $C2$ cambian de agrupación. La menor cohesión de
+esta solución (Silhouette $=0{,}238$ frente a $0{,}398$) indica que el bloque
+excluido contribuye materialmente a la separación, por tanto, los perfiles no
+deben interpretarse como independientes de la composición
+demográfico-obstétrica.
 
 \begin{table}[htbp]
 \centering
@@ -192,9 +196,9 @@ partición base.}
 \textbf{Escenario} & \textbf{Variables} & \textbf{Silhouette} &
 \textbf{DB} & \textbf{ARI} & \textbf{NMI} \\
 \midrule
-Base & 35 & 0,401 & 0,990 & 1,000 & 1,000 \\
-Ponderación por bloque & 35 & 0,409 & 0,974 & 1,000 & 1,000 \\
-Sin demográfico-obstétrico & 28 & 0,320 & 1,036 & 0,933 & 0,906 \\
+Base & 35 & 0,398 & 0,994 & 1,000 & 1,000 \\
+Ponderación por bloque & 35 & 0,407 & 0,977 & 1,000 & 1,000 \\
+Sin demográfico-obstétrico & 28 & 0,238 & 1,343 & 0,571 & 0,599 \\
 \bottomrule
 \end{tabular}
 \par\smallskip
@@ -227,22 +231,22 @@ Tabla~\ref{tab:metricas-nivel1}.
 \textbf{$K$} & \textbf{Silhouette} & \textbf{Calinski-Harabasz} &
 \textbf{Davies-Bouldin} & \textbf{Tamaños de clústeres} \\
 \midrule
-2 & 0,605 & 26,1 & 0,485 & 62, 3 \\
-3 & 0,447 & 24,0 & 1,249 & 54, 8, 3 \\
-\bfseries 4 & \bfseries 0,401 & \bfseries 22,4 & \bfseries 0,990 &
+2 & 0,600 & 25,3 & 0,485 & 62, 3 \\
+3 & 0,448 & 23,4 & 1,260 & 54, 8, 3 \\
+\bfseries 4 & \bfseries 0,398 & \bfseries 22,1 & \bfseries 0,994 &
 \bfseries 54, 5, 3, 3 \\
-5 & 0,187 & 19,8 & 1,516 & 38, 16, 5, 3, 3 \\
-6 & 0,189 & 18,6 & 1,292 & 38, 16, 5, 3, 2, 1 \\
-7 & 0,197 & 17,4 & 1,167 & 38, 16, 3, 3, 2, 2, 1 \\
-8 & 0,124 & 16,5 & 1,312 & 22, 16, 16, 3, 3, 2, 2, 1 \\
-9 & 0,139 & 16,1 & 1,300 & 22, 16, 9, 7, 3, 3, 2, 2, 1 \\
-10 & 0,138 & 15,5 & 1,192 & 22, 15, 9, 7, 3, 3, 2, 2, 1, 1 \\
+5 & 0,207 & 19,7 & 1,468 & 40, 14, 5, 3, 3 \\
+6 & 0,210 & 18,7 & 1,241 & 40, 14, 5, 3, 2, 1 \\
+7 & 0,219 & 17,5 & 1,127 & 40, 14, 3, 3, 2, 2, 1 \\
+8 & 0,152 & 16,7 & 1,280 & 29, 14, 11, 3, 2, 2, 1 \\
+9 & 0,164 & 16,3 & 1,255 & 29, 11, 8, 6, 3, 2, 2, 1 \\
+10 & 0,158 & 15,8 & 1,133 & 29, 10, 8, 6, 3, 2, 2, 1, 1 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 Como muestra la Tabla~\ref{tab:metricas-nivel1}, la solución $K=2$ obtiene simultáneamente el mejor resultado en las tres
-métricas internas, con Silhouette $=0{,}605$, Calinski-Harabasz $=26{,}1$ y
+métricas internas, con Silhouette $=0{,}600$, Calinski-Harabasz $=25{,}3$ y
 Davies-Bouldin $=0{,}485$. La
 comparación entre $K=3$ y $K=4$ es mixta: $K=3$ presenta valores superiores de
 Silhouette y Calinski-Harabasz, mientras que $K=4$ obtiene un Davies-Bouldin
@@ -259,7 +263,7 @@ la partición $K=4$. Esta elección se declara explícitamente como un compromis
 pues identifica un núcleo de 54 hospitales generalistas, tres hospitales pediátricos, tres establecimientos de perfil monográfico y un grupo de cinco
 hospitales con una combinación particular de
 carga clínica, estancia y composición de pacientes. La solución presenta un
-Silhouette de $0{,}401$ y un Davies-Bouldin de $0{,}990$. En consecuencia, no se
+Silhouette de $0{,}398$ y un Davies-Bouldin de $0{,}994$. En consecuencia, no se
 interpreta como el número óptimo de grupos según un criterio estadístico formal,
 sino como una partición útil para describir la heterogeneidad funcional de la
 red.
@@ -427,20 +431,20 @@ $10$.
 \toprule
 \textbf{$K_{sub}$} & \textbf{Silhouette original} & \textbf{ARI mediano [P2,5; P97,5]} & \textbf{NMI mediano [P2,5; P97,5]} \\
 \midrule
-2 & 0,169 & 0,507 [$-0,071$; 0,906] & 0,486 [0,024; 0,851] \\
-3 & 0,080 & 0,354 [0,177; 0,795] & 0,459 [0,275; 0,814] \\
-10 & 0,103 & 0,476 [0,272; 0,761] & 0,748 [0,628; 0,865] \\
+2 & 0,193 & 0,526 [0,022; 1,000] & 0,456 [0,035; 1,000] \\
+3 & 0,113 & 0,475 [0,127; 0,835] & 0,538 [0,277; 0,814] \\
+10 & 0,109 & 0,541 [0,308; 0,793] & 0,772 [0,661; 0,880] \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-La solución con dos grupos tiene el mayor Silhouette del barrido y la mayor
-concordancia mediana, pero su ARI de 0,507 sigue lejos de la estabilidad del
-Nivel~1 (ARI mediano 0,958). La solución de diez grupos tampoco reproduce una
-tipología robusta: aunque su NMI es mayor, su ARI mediano es 0,476, y contiene
-dos subgrupos unitarios. En consecuencia, el Nivel~2 se limita en el cuerpo del
-texto a una separación exploratoria amplia en dos bloques de 38 y 16 hospitales;
-no se sostienen diez perfiles funcionales generalizables. La asignación de diez
+La solución con dos grupos tiene el mayor Silhouette del barrido, pero su ARI
+mediano de 0,526 sigue lejos de la estabilidad del Nivel~1 (ARI mediano
+0,958). La solución de diez grupos tampoco reproduce una tipología robusta:
+aunque su NMI es mayor, su ARI mediano es 0,541, y contiene dos subgrupos
+unitarios. En consecuencia, el Nivel~2 se limita en el cuerpo del texto a una
+separación exploratoria amplia en dos bloques de 40 y 14 hospitales; no se
+sostienen diez perfiles funcionales generalizables. La asignación de diez
 subgrupos y sus perfiles descriptivos se conserva en el Anexo como material
 suplementario.
 
@@ -872,9 +876,9 @@ las dependencias entre variables.
 La segunda nula simuló 500 matrices normales multivariadas con la media y
 covarianza observadas después de las transformaciones y el escalado robusto. Al
 preservar la dependencia lineal, esta referencia es más exigente: la mediana
-fue 22 variables significativas, el percentil 95 fue 26 y el máximo fue 28. En
-40 de 500 réplicas la nula igualó o superó las 26 variables observadas
-($p_{\mathrm{emp}}=0{,}0818$, con corrección de continuidad). Por tanto, el
+fue 23 variables significativas, el percentil 95 fue 26 y el máximo fue 28. En
+59 de 500 réplicas la nula igualó o superó las 26 variables observadas
+($p_{\mathrm{emp}}=0{,}1198$, con corrección de continuidad). Por tanto, el
 número de diferencias detectadas por Kruskal--Wallis no supera de forma
 concluyente lo esperable de una geometría correlacionada sin una estructura de
 grupos explícita. Estas pruebas mantienen utilidad descriptiva para ordenar los
@@ -890,7 +894,7 @@ independiente de los clústeres.
 \textbf{Nula} & \textbf{Mediana} & \textbf{P95} & \textbf{Máximo} & \textbf{$p_{\mathrm{emp}}$} \\
 \midrule
 Permutación independiente por columna & 1 & 5 & 10 & $<0{,}002$ \\
-Normal multivariada con covarianza preservada & 22 & 26 & 28 & 0,0818 \\
+Normal multivariada con covarianza preservada & 23 & 26 & 28 & 0,1198 \\
 \bottomrule
 \end{tabular}
 \par\smallskip
@@ -898,7 +902,7 @@ Normal multivariada con covarianza preservada & 22 & 26 & 28 & 0,0818 \\
 \footnotesize\raggedright
 \textit{Nota.} Ambas nulas usan 500 réplicas. El valor observado fue 26. En la
 segunda nula, la covarianza se preserva en esperanza; el error relativo mediano
-entre la covarianza muestral simulada y la observada fue 0,310.
+entre la covarianza muestral simulada y la observada fue 0,308.
 \end{minipage}
 \end{table}
 

@@ -137,20 +137,25 @@ del dfs
 # ---------------------------------------------------------------------------
 # 2. Filtrar por TIPO_ACTIVIDAD (mismo criterio que ETL original)
 # ---------------------------------------------------------------------------
-TIPOS_HOSP = [
+TIPOS_NOCTURNOS = [
     "HOSPITALIZACIÓN",
     "HOSPITALIZACIÓN EN URGENCIA",
-    "HOSPITALIZACIÓN DIURNA",
 ]
+TIPO_DIURNA = "HOSPITALIZACIÓN DIURNA"
 TIPO_CMA = "CIRUGÍA MAYOR AMBULATORIA (CMA)"
-is_hosp = grd_raw["TIPO_ACTIVIDAD"].isin(TIPOS_HOSP)
+is_nocturna = grd_raw["TIPO_ACTIVIDAD"].isin(TIPOS_NOCTURNOS)
+is_diurna = grd_raw["TIPO_ACTIVIDAD"] == TIPO_DIURNA
 is_cma = grd_raw["TIPO_ACTIVIDAD"] == TIPO_CMA
-mask = is_hosp | is_cma
+mask = is_nocturna | is_diurna | is_cma
 
 grd = grd_raw[mask].copy()
-grd["MODALIDAD"] = np.where(is_cma[mask], "CMA", "HOSPITALIZACION")
+grd["MODALIDAD"] = np.select(
+    [is_nocturna[mask], is_diurna[mask], is_cma[mask]],
+    ["HOSPITALIZACION", "HOSPITALIZACION_DIURNA", "CMA"],
+)
 print(f"\nFiltrado por TIPO_ACTIVIDAD: {len(grd):,} egresos "
-      f"(HOSP={(grd['MODALIDAD']=='HOSPITALIZACION').sum():,}, "
+      f"(HOSP_NOCTURNA={(grd['MODALIDAD']=='HOSPITALIZACION').sum():,}, "
+      f"DIURNA={(grd['MODALIDAD']=='HOSPITALIZACION_DIURNA').sum():,}, "
       f"CMA={(grd['MODALIDAD']=='CMA').sum():,})")
 del grd_raw
 

@@ -1,0 +1,3 @@
+escenario,n_variables,silhouette,davies_bouldin,tamanos,ARI_vs_canonica,NMI_vs_canonica
+canonica,35,0.39795163468699657,0.9941519555311455,"[3, 54, 5, 3]",1.0,1.0
+sin_tasa_partos,34,0.27397384243242934,1.4360238833143302,"[3, 3, 47, 12]",0.6344566337295253,0.6958062307924608

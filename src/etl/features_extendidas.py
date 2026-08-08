@@ -82,6 +82,8 @@ class Constructor_Features_Extendidas:
             mask = (self.df_grd["MODALIDAD"].to_numpy() == "HOSPITALIZACION") & (
                 self.df_grd["COD_HOSPITAL"].isin(self.hospitales_elegibles).to_numpy()
             )
+            if "TIPO_ACTIVIDAD" in self.df_grd.columns:
+                mask &= self.df_grd["TIPO_ACTIVIDAD"].to_numpy() != "HOSPITALIZACIÓN DIURNA"
             cols = [c for c in COLS_REQUERIDAS if c in self.df_grd.columns]
             self._cache = self.df_grd.loc[mask, cols]
         return self._cache

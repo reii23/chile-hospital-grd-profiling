@@ -565,15 +565,17 @@ ambulatoria (CMA) agrupa procedimientos quirúrgicos o de alto costo que se
 resuelven sin estadía nocturna, con alta el mismo día de la
 intervención~\citep{TableauGRD}.
 
-La distinción entre hospitalización convencional y CMA es relevante para el
-perfilamiento porque ambas modalidades responden a lógicas funcionales distintas.
-La CMA se asocia a procedimientos electivos de baja complejidad relativa y
-estancia nula o mínima, mientras que la hospitalización convencional concentra los
-episodios de mayor duración, severidad y consumo de recursos. Incorporar ambas en
-los mismos indicadores de estancia y peso GRD distorsionaría los perfiles, por lo
-que los indicadores se calculan por separado según modalidad. La distribución
-de los registros por tipo de actividad se presenta en la
-Tabla~\ref{tab:actividad}.
+La distinción entre hospitalización convencional, hospitalización diurna y CMA
+es relevante para el perfilamiento porque estas modalidades responden a lógicas
+funcionales distintas. La CMA se asocia a procedimientos ambulatorios, mientras
+que la actividad diurna requiere atención y eventualmente cama durante el día,
+sin pernoctación; ambas difieren de los episodios de hospitalización nocturna en
+la duración y el consumo de recursos. Por ello, los indicadores de estancia,
+peso GRD, severidad, mortalidad y casuística hospitalaria se calculan solo sobre
+hospitalización convencional y de urgencia, excluyendo tanto CMA como
+hospitalización diurna. Esta última se conserva como modalidad analítica
+separada y no se incorpora a la tasa de CMA. La distribución de los registros
+por tipo de actividad se presenta en la Tabla~\ref{tab:actividad}.
 
 
 \begin{table}[htbp]
@@ -593,6 +595,18 @@ Hospitalización diurna           &    55{,}328   &  1{,}0 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+La decisión de separar la hospitalización diurna se verificó empíricamente en
+los 65 establecimientos elegibles. Aunque representa el 1{,}13\,% de los
+episodios inicialmente agrupados como hospitalización y su mediana institucional
+es 0{,}21\,\%, su distribución es heterogénea: cuatro establecimientos superan
+5\,% y uno alcanza 12{,}92\,%. Al excluirla de los denominadores hospitalarios,
+el cambio máximo en la estancia media es 14{,}83\,% y en el peso medio GRD es
+6{,}71\,%. Por tanto, conservarla mezclada con hospitalización nocturna podría
+alterar de forma diferencial el perfil de un subconjunto de establecimientos,
+aun cuando su incidencia nacional sea reducida. El detalle reproducible por
+establecimiento se reporta en el archivo
+\texttt{hospitalizacion\_diurna\_por\_establecimiento.csv}.
 
 \subsection{Criterios de elegibilidad}
 \label{sec:elegibilidad}
@@ -956,22 +970,16 @@ ponderada, las 8 componentes explican el 72{,}3\,\% de la varianza acumulada
 de las 63 columnas de casuística. Incorporar componentes adicionales
 incrementa la varianza retenida, pero no mejora la calidad de la partición
 resultante. Por el contrario, al aumentar $K$ de 8 a 11 --el número mínimo
-que acumularía el 80\,\% de la varianza-- el coeficiente de Silhouette
-desciende de $0{,}401$ a $0{,}380$, el índice de Calinski-Harabasz cae de
-$22{,}4$ a $19{,}7$ y el índice de Davies-Bouldin empeora de $0{,}990$ a
-$1{,}076$. El valor $K=9$ obtiene el mejor Silhouette del barrido
-($0{,}422$), pero fragmenta los grupos especializados de forma menos
-interpretable que $K=8$: reintroduce un grupo de apenas dos establecimientos
-(tamaños $3$, $54$, $2$, $6$ frente a $3$, $54$, $5$, $3$), precisamente la
-situación en que las pruebas de significancia basadas en aproximaciones
-asintóticas pierden validez (Sección~\ref{sec:nivel2-metodo}). Se retienen,
-por tanto, las 8 componentes por ser el valor que ofrece el mejor balance
-entre las tres métricas de validación interna y la interpretabilidad de los
-grupos resultantes, y no un porcentaje de varianza explicada fijado de
-antemano: agregar componentes de casuística más allá de este punto introduce
-ruido de alta dimensionalidad relativa (Sección~\ref{sec:pca}) que degrada la
-cohesión y separación del clustering en mayor medida que lo que aporta en
-varianza retenida.
+que acumularía el 80\,\% de la varianza-- el coeficiente de Silhouette desciende
+de $0{,}398$ a $0{,}379$, el índice de Calinski-Harabasz cae de $22{,}1$ a
+$19{,}6$ y el índice de Davies-Bouldin empeora de $0{,}994$ a $1{,}076$. Las
+soluciones con 9, 10 y 11 componentes conservan la misma partición de cuatro
+perfiles, pero no mejoran sus métricas internas. Se retienen, por tanto, las 8
+componentes por ofrecer el mejor balance entre las tres métricas de validación
+interna y la parsimonia de la representación, y no un porcentaje de varianza
+explicada fijado de antemano: agregar componentes de casuística más allá de
+este punto introduce dimensiones que degradan la cohesión y separación del
+clustering sin alterar la partición.
 
 \begin{table}[htbp]
 \centering
@@ -981,10 +989,10 @@ varianza retenida.
 \toprule
 \textbf{$K$ (componentes)} & \textbf{Varianza acum.} & \textbf{Silhouette} & \textbf{CH} & \textbf{DB} & \textbf{Tamaños} \\
 \midrule
-\bfseries 8 & \bfseries 72{,}3\,\% & 0{,}401 & \bfseries 22{,}4 & \bfseries 0{,}990 & 3, 54, 5, 3 \\
-9 & 75{,}2\,\% & \bfseries 0{,}422 & 21{,}9 & 0{,}991 & 3, 54, 2, 6 \\
-10 & 77{,}7\,\% & 0{,}384 & 20{,}4 & 1{,}045 & 3, 54, 5, 3 \\
-11 & 80{,}0\,\% & 0{,}380 & 19{,}7 & 1{,}076 & 3, 54, 5, 3 \\
+\bfseries 8 & \bfseries 72{,}3\,\% & \bfseries 0{,}398 & \bfseries 22{,}1 & \bfseries 0{,}994 & 3, 54, 5, 3 \\
+9 & 75{,}2\,\% & 0{,}391 & 21{,}1 & 1{,}031 & 3, 54, 5, 3 \\
+10 & 77{,}7\,\% & 0{,}383 & 20{,}3 & 1{,}046 & 3, 54, 5, 3 \\
+11 & 80{,}0\,\% & 0{,}379 & 19{,}6 & 1{,}076 & 3, 54, 5, 3 \\
 \bottomrule
 \end{tabular}
 \par\smallskip

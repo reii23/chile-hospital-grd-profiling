@@ -34,15 +34,15 @@ registrada, pues pueden reflejar simultáneamente diferencias de casuística y
 diferencias en la exhaustividad de la codificación entre establecimientos.
 
 La descomposición de la geometría de distancia muestra que siete variables de
-demanda demográfica-obstétrica aportan el $37{,}1\,\%$ de la distancia total,
+demanda demográfica-obstétrica aportan el $36{,}3\,\%$ de la distancia total,
 por lo que constituyen el bloque individual de mayor influencia. Esta evidencia
 impide interpretar los perfiles como independientes de la composición de la
-demanda. Sin embargo, la ponderación por bloques conserva exactamente la
-partición principal ($ARI=1{,}000$) y la exclusión de esas siete variables
-mantiene alta concordancia con ella ($ARI=0{,}933$), preservando los grupos
-pediátrico, monográfico y el núcleo generalista. Por tanto, la demografía y la
-actividad obstétrica contribuyen de manera importante a la separación, pero no
-explican por sí solas la estructura encontrada.
+demanda. Aunque la ponderación por bloques conserva exactamente la partición
+principal ($ARI=1{,}000$), la exclusión de esas siete variables reduce la
+concordancia a $ARI=0{,}571$ y divide parte del núcleo generalista y del grupo
+de carga clínica. Por tanto, la demografía y la actividad obstétrica contribuyen
+de manera material a la separación y constituyen una dependencia explícita de
+la tipología, no un componente secundario.
 
 La comparación con MINSAL confirma que las dos clasificaciones describen
 dimensiones diferentes de la red. La concordancia entre Ward $K=4$ y las
@@ -58,9 +58,9 @@ La comparación interna original mostró menor dispersión para Ward que para
 MINSAL en la matriz completa, pero no se interpreta como una prueba confirmatoria:
 Ward fue construido optimizando esa misma geometría. Para evitar esa circularidad,
 se realizó una validación cruzada por bloques. Con Ward $K=4$, la evaluación en
-un bloque de variables no utilizado para agrupar mantuvo menor WSS/TSS que MINSAL
-en ambas direcciones: $0{,}616$ frente a $0{,}956$ al evaluar casuística, y
-$0{,}533$ frente a $0{,}940$ al evaluar variables directas. Sin embargo, al
+un bloque de variables no utilizado para agrupar mantuvo menor WSS/TSS que
+MINSAL en ambas direcciones: $0{,}651$ frente a $0{,}956$ al evaluar casuística,
+y $0{,}469$ frente a $0{,}938$ al evaluar variables directas. Sin embargo, al
 restringir Ward a $K=2$ para igualar el número de categorías de MINSAL, los
 intervalos bootstrap de ambas diferencias incluyeron cero. Por tanto, el estudio
 no establece una superioridad robusta de homogeneidad frente a MINSAL al controlar
@@ -77,9 +77,9 @@ administrativas no se reestiman al modificar la muestra. En 100 submuestras sin
 reposición del $80\,\%$ de los hospitales, la mediana del ARI respecto de la
 solución completa fue $0{,}958$ y la del NMI fue $0{,}917$.
 En contraste, la subdivisión exploratoria del núcleo generalista no alcanzó una
-estabilidad comparable: para $K_{sub}=10$, la mediana de ARI fue $0{,}476$ y la
-de NMI $0{,}748$; incluso la solución más compacta, $K_{sub}=2$, obtuvo ARI
-mediano de $0{,}507$. Por ello, la tesis no sostiene diez subtipos funcionales
+estabilidad comparable: para $K_{sub}=10$, la mediana de ARI fue $0{,}541$ y la
+de NMI $0{,}772$; incluso la solución más compacta, $K_{sub}=2$, obtuvo ARI
+mediano de $0{,}526$. Por ello, la tesis no sostiene diez subtipos funcionales
 generalizables: presenta solo una separación exploratoria amplia en dos bloques
 y conserva el detalle de diez grupos como material suplementario.
 La transformación composicional CLR conservó exactamente la partición principal
@@ -98,8 +98,8 @@ constituye una prueba independiente de la partición, porque las mismas variable
 participaron en su construcción. La permutación por columnas del flujo completo
 muestra que 26 diferencias no se obtienen cuando se destruye toda dependencia
 entre variables. Sin embargo, una nula normal multivariada que preserva la
-covarianza observada alcanzó o superó ese valor en 40 de 500 réplicas
-($p_{\mathrm{emp}}=0{,}0818$). Por ello, las pruebas por variable se mantienen
+covarianza observada alcanzó o superó ese valor en 59 de 500 réplicas
+($p_{\mathrm{emp}}=0{,}1198$). Por ello, las pruebas por variable se mantienen
 como caracterización descriptiva de los perfiles, no como evidencia de que la
 partición exceda una geometría correlacionada sin grupos explícitos. Esta
 limitación refuerza la necesidad de validación externa con nuevos años,
@@ -118,8 +118,8 @@ los datos, la heterogeneidad en las prácticas de codificación, la inclusión d
 los años afectados por la pandemia de COVID-19, la geometría composicional de
 los vectores de casuística y la ausencia de validación externa independiente.
 Aunque la ponderación de las componentes PCA por varianza explicada mejora las
-métricas internas, desplaza tres hospitales entre los perfiles pequeños, por
-ello, la asignación de esos casos no debe presentarse como una frontera funcional
+métricas internas, desplaza un hospital entre los perfiles pequeños, por ello,
+la asignación de esos casos no debe presentarse como una frontera funcional
 rígida.
 La prueba CLR indica que la clausura composicional no alteró la identidad de los
 cuatro grupos en este análisis, pero no excluye que otras transformaciones, como
