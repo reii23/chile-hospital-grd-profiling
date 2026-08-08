@@ -122,7 +122,7 @@ Proporción de egresos procedentes del servicio de urgencia propio. &
 Proporción & Procedencia \\
 
 \texttt{pct\_origen\_referencia} &
-Proporción de egresos derivados desde otro establecimiento de la red. &
+Proporción de egresos cuya procedencia normalizada es \texttt{OTROS\_HOSPITALES} o \texttt{RED\_NACIONAL}. &
 Proporción & Procedencia \\
 
 \texttt{pct\_uso\_pabellon} &
@@ -189,9 +189,10 @@ excluidos se presentan en la Tabla~\ref{tab:anexo-excluidos}.
 
 La partición final de Nivel~1 contiene tres hospitales pediátricos ($C0$), un
 núcleo generalista de 54 establecimientos ($C1$), un grupo de cinco hospitales
-con carga clínica y estancia prolongada ($C2$), y tres institutos monográficos
-($C3$). El núcleo generalista se subdividió de forma exploratoria mediante
-Ward con $K_{sub}=10$, cuyas etiquetas se presentan como $S0$ a $S9$.
+con carga clínica y estancia prolongada ($C2$), y tres establecimientos de
+especialización clínica heterogénea ($C3$). El núcleo generalista se subdividió
+de forma exploratoria mediante Ward con $K_{sub}=10$, cuyas etiquetas se
+presentan como $S0$ a $S9$.
 
 La Tabla~\ref{tab:anexo-hospitales} presenta la asignación final de los 65
 establecimientos. Las etiquetas de Nivel~2 solo se aplican a los miembros de
@@ -339,7 +340,7 @@ PCA sobre la representación de casuística diagnóstica, de procedimientos y GR
 
 Casuística &
 Componentes retenidas &
-8 componentes principales, con $72{,}5\,\%$ de varianza acumulada. \\
+8 componentes principales, con $72{,}3\,\%$ de varianza acumulada. \\
 
 Clustering Nivel 1 &
 Algoritmo &
@@ -404,7 +405,7 @@ Semilla aleatoria &
 
 Reproducibilidad &
 Implementación &
-Python 3.11 y dependencias declaradas en \texttt{requirements.txt} y \texttt{pyproject.toml}. \\
+Python 3.11, dependencias de ejecución en \texttt{requirements.txt}, herramientas de desarrollo y pruebas en \texttt{requirements-dev.txt}, y metadatos y configuración de pruebas en \texttt{pyproject.toml}. \\
 
 \bottomrule
 \end{longtable}
@@ -461,7 +462,8 @@ código: las tablas maestras de clasificación clínica (CIE-10, CIE-9-MC y la
 maestra de establecimientos de las bases GRD), la Base de Establecimientos del
 DEIS empleada para recuperar el Nivel de Complejidad asignado por el MINSAL, y
 los artefactos intermedios en formato Parquet, entre ellos la matriz
-institucional de 65 hospitales y 38 columnas sobre la que operan los análisis.
+institucional de 65 hospitales y 35 variables (27 directas y 8 componentes
+PCA) sobre la que operan los análisis.
 
 Se exceptúan dos artefactos que exceden el límite de tamaño por archivo de la
 plataforma de alojamiento: los seis archivos anuales de egresos GRD

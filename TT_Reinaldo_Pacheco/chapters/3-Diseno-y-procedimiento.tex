@@ -93,12 +93,15 @@ estadísticos y los análisis de sensibilidad. Los \textit{notebooks} Jupyter
 (\texttt{01\_etl.ipynb}, \texttt{02\_eda.ipynb}, \texttt{03\_clustering.ipynb},
 \texttt{04\_xai\_outliers.ipynb}, \texttt{05\_clustering\_alternativos.ipynb})
 conservan el registro exploratorio del análisis. Los archivos
-\texttt{requirements.txt} y \texttt{requirements-dev.txt} declaran las versiones
-exactas de todas las librerías empleadas, y las semillas aleatorias están
-fijadas en el código (\texttt{RANDOM\_STATE = 42}), de modo que cualquier
-ejecución posterior reproduzca los mismos resultados. La verificación del
-comportamiento de los módulos se automatiza con \texttt{pytest} y
-\texttt{hypothesis} en el directorio \texttt{tests/}.
+\texttt{requirements.txt} declaran las versiones exactas de las dependencias de
+ejecución, mientras que \texttt{requirements-dev.txt} incorpora las herramientas
+de desarrollo y pruebas junto con esas dependencias. El archivo
+\texttt{pyproject.toml} consolida los metadatos del paquete y la configuración
+de \texttt{pytest}. Las semillas aleatorias están fijadas en el código
+(\texttt{RANDOM\_STATE = 42}), de modo que cualquier ejecución posterior
+reproduzca los mismos resultados. La verificación del comportamiento de los
+módulos se automatiza con \texttt{pytest} y \texttt{hypothesis} en el directorio
+\texttt{tests/}.
 
 Los datos fuente corresponden a los seis archivos GRD públicos del MINSAL para el
 período 2019--2024, disponibles en la plataforma Tablero GRD del Ministerio de
@@ -801,11 +804,14 @@ promedio por egreso (diagnósticos secundarios 2 a 35, rango teórico $[0,34]$).
 Tasa de CMA, peso medio de los GRD de CMA. \\
 \addlinespace
 \raggedright Perfil funcional agregado &
-Distribución demográfica (\% pediátrico, \% geriátrico, \% femenino fértil), mezcla
-por tipo de ingreso (\% urgencia, \% programado, \% referencia), tipo de alta (\%
-domicilio, \% traslado, \% fallecido), uso de pabellón, actividad obstétrica (tasa
-de egresos neonatales, \% obstétrica, proporción de egresos neonatales con peso de nacimiento inferior a 2.500 gramos), dispersión de la estancia
-(coeficiente de variación). \\
+Distribución demográfica (\% pediátrico, \% geriátrico, \% femenino fértil, edad
+mediana), mezcla por tipo de ingreso (\% urgencia, \% programado, \% obstétrica),
+tipo de alta (\% domicilio, \% traslado, \% fallecido), procedencia (\% origen
+emergencia, \% origen referencia), actividad quirúrgica (\% uso de pabellón,
+promedio de usos de pabellón), actividad obstétrico-neonatal (proporción de
+egresos con condición de alta neonatal, proporción de esos egresos con peso de
+nacimiento inferior a 2.500 gramos) y estadía (\% estancia larga, coeficiente de
+variación). \\
 \bottomrule
 \end{longtable}
 }
@@ -871,8 +877,9 @@ Edad mediana & Mediana de la edad al ingreso de los egresos. \\
 ingreso. \\
 \% alta domicilio / fallecido / traslado & Proporción de egresos según tipo de
 alta. \\
-\% origen emergencia / referencia & Proporción según procedencia del paciente
-(servicio de urgencia propio vs.\ derivación de otro establecimiento). \\
+\% origen emergencia / referencia & Proporción de egresos según procedencia:
+servicio de urgencia propio o derivación con procedencia normalizada
+\texttt{OTROS\_HOSPITALES} o \texttt{RED\_NACIONAL}. \\
 \% uso de pabellón & Proporción de egresos con al menos un uso de pabellón
 quirúrgico. \\
 Tasa de partos & Proporción de egresos con condición de alta neonatal registrada.
