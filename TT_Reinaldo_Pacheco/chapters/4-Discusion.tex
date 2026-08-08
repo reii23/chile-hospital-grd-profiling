@@ -867,7 +867,13 @@ Ward $K=2$ & 0,707 & $-20{,}98$ & $<0{,}001$ \\
 MINSAL & 0,944 & $-4{,}68$ & 0,003 \\
 \bottomrule
 \end{tabular}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\footnotesize\raggedright
+\textit{Nota metodológica.} La distribución nula de WSS/TSS para MINSAL es marcadamente asimétrica (sesgo positivo): la mayor parte de las 2.000 permutaciones produce dispersiones intragrupo elevadas, con una cola derecha extendida. Esta asimetría es esperable en particiones muy desbalanceadas (grupos de 55 y 10 hospitales), donde la asignación aleatoria rara vez genera subconjuntos tan compactos como los observados. El $z$-score de $-4{,}68$ se calcula respecto de la media y desviación estándar de la distribución nula y no presupone normalidad; el $p$-valor empírico de $0{,}003$ indica que aproximadamente 6 de las 2.000 reasignaciones alcanzaron una dispersión igual o menor que la observada (WSS/TSS $= 0{,}944$). Este resultado confirma que la clasificación MINSAL presenta una compactación estadísticamente superior a la esperable por azar bajo sus propios tamaños de grupo, aunque notoriamente menor que la de las soluciones Ward.
+\end{minipage}
 \end{table}
+
 
 Ninguna de las 2.000 particiones aleatorias para Ward $K=4$ o Ward $K=2$
 alcanzó una dispersión intragrupo igual o menor que la observada. La

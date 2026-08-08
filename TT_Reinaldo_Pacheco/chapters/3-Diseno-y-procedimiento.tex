@@ -617,27 +617,20 @@ establecimiento se reporta en el archivo
 La base depurada abarca 72 establecimientos con datos GRD en el período. Para
 garantizar que los indicadores agregados sean comparables entre hospitales, se
 aplica un criterio de inclusión: presencia en al menos tres de los seis años
-del período. Este umbral responde a que los indicadores institucionales como
-la estancia media, la proporción de CMA o la diversidad diagnóstica son
-estimaciones estadísticas que requieren varios años de observación para no
-depender de las particularidades de un único año. Un establecimiento con
-datos en uno o dos años podría presentar valores atípicos debidos a factores
-circunstanciales como cierres temporales, cambios de gestión o
-incorporación reciente al sistema de información, que no reflejan su perfil
-funcional habitual.
+del período, umbral que responde a que estimaciones como la estancia media, la
+proporción de CMA o la diversidad diagnóstica requieren varios años de
+observación para no depender de particularidades circunstanciales de un único
+ejercicio.
 
-Una primera observación empírica reduce la relevancia práctica de elegir un
-punto de corte exacto: la distribución real de años presentes entre los 72
-establecimientos de la base depurada es marcadamente bimodal. Como muestra la
-Tabla~\ref{tab:distribucion-anios}, 4 hospitales reportan datos en un único
-año y 3 en dos años, todos ellos incorporados al sistema de información
-recién en 2023 o 2024, mientras que los 65 hospitales restantes reportan
-los seis años completos del período. Ningún establecimiento del
-universo real tiene exactamente 3, 4 o 5 años de datos. En consecuencia,
-cualquier umbral situado en ese rango (3, 4 o 5) produce exactamente el mismo
-universo final de 65 hospitales elegibles: la elección del valor específico
-``3'' no es, en los hechos, una decisión consecuente sobre qué establecimientos
-se incluyen o excluyen, sino que opera sobre un vacío natural de los datos.
+La distribución real de años presentes entre los 72 establecimientos es
+marcadamente bimodal (Tabla~\ref{tab:distribucion-anios}): 7 hospitales
+reportan datos en uno o dos años (todos incorporados al sistema recién en
+2023 o 2024) mientras que los 65 restantes tienen cobertura completa del
+período. Ningún establecimiento tiene exactamente 3, 4 o 5 años de datos. En
+consecuencia, cualquier umbral en ese rango produce el mismo universo final de
+65 hospitales elegibles: la elección del valor ``3'' opera sobre un vacío
+natural de los datos, sin consecuencias prácticas sobre qué establecimientos
+se incluyen.
 
 \begin{table}[htbp]
 \centering
@@ -655,88 +648,24 @@ se incluyen o excluyen, sino que opera sobre un vacío natural de los datos.
 \end{tabular}
 \end{table}
 
-Para cuantificar el segundo aspecto de la observación, se realizó
+Para cuantificar la ganancia de precisión que justifica el umbral, se realizó
 una simulación de error por submuestreo sobre los 65 hospitales con cobertura
-completa. Tomando el valor de cada indicador calculado con los seis años como
-referencia (``verdad''), se recalculó el mismo indicador usando todas las
-combinaciones posibles de $k \in \{1, 2, 3, 4, 5\}$ años (o una muestra
-aleatoria de 200 combinaciones cuando el total de combinaciones superaba ese
-valor) y se midió el error relativo absoluto resultante, con un intervalo de
-confianza del 95\,\% obtenido por bootstrap sobre la mediana. La
-Tabla~\ref{tab:simulacion-anios} resume el error relativo mediano para las
-seis variables tradicionales del pipeline.
-
-\begin{table}[htbp]
-\centering
-\caption{Error relativo mediano (\%) al estimar cada indicador institucional con $k$ años en lugar de los 6 años completos, con intervalo de confianza 95\,\% (\textit{bootstrap}).}
-\label{tab:simulacion-anios}
-\begin{tabular}{c c c c c c c}
-\toprule
-\textbf{$k$ años} & \textbf{Egresos/año} & \textbf{Estancia} & \textbf{Peso GRD} & \textbf{Severidad} & \textbf{Mortalidad} & \textbf{Tasa CMA} \\
-\midrule
-1 & 9{,}3\,\% & 5{,}8\,\% & 4{,}2\,\% & 4{,}6\,\% & 3{,}8\,\% & 21{,}3\,\% \\
-2 & 6{,}0\,\% & 4{,}5\,\% & 4{,}9\,\% & 3{,}8\,\% & 3{,}2\,\% & 10{,}9\,\% \\
-\textbf{3} & \textbf{4{,}5\,\%} & \textbf{3{,}3\,\%} & \textbf{3{,}6\,\%} & \textbf{2{,}8\,\%} & \textbf{2{,}4\,\%} & \textbf{8{,}0\,\%} \\
-4 & 3{,}0\,\% & 2{,}2\,\% & 2{,}4\,\% & 1{,}9\,\% & 1{,}6\,\% & 5{,}3\,\% \\
-5 & 1{,}9\,\% & 1{,}1\,\% & 0{,}8\,\% & 0{,}9\,\% & 0{,}7\,\% & 4{,}2\,\% \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-El error decrece de forma monótona con $k$ para las seis variables, pero el patrón de la reducción marginal es lo que sustenta el
-umbral adoptado: el error promedio (sobre las seis variables) cae de
-$8{,}2\,\%$ con un año a $4{,}1\,\%$ con tres años (una reducción de
-$4{,}1$ puntos porcentuales) mientras que agregar un cuarto y un quinto año
-reduce el error en $1{,}4$ y $1{,}2$ puntos porcentuales adicionales,
-respectivamente. Es decir, el mayor beneficio marginal de sumar años se
-obtiene entre $k=1$ y $k=3$. A partir de tres años, cada año adicional
-reduce el error a una tasa aproximadamente constante y sustancialmente menor
-que en el tramo inicial. Este patrón de rendimientos decrecientes, y no una
-referencia externa, es lo que justifica fijar el umbral en tres años: es el
-primer punto en el que la reducción del error empieza a estabilizarse. La
-única excepción es la tasa de CMA, cuyo error relativo permanece
-comparativamente alto incluso con tres años ($8{,}0\,\%$), lo esperable dado
-que es una proporción calculada sobre un subconjunto minoritario de egresos
-(los de modalidad CMA) y por tanto más sensible a la variación año a año que
-los indicadores calculados sobre la totalidad de los egresos de
-hospitalización.
-
-Con esta evidencia, el umbral de tres años se sostiene como un punto de
-compromiso cuantificado no arbitrario, aunque tampoco derivado de una regla
-de decisión formal única entre la reducción de error que ofrece cada año
-adicional de datos y el tamaño del universo de análisis disponible. El
-detalle completo de la simulación (código, valores por hospital y por
-combinación de años) se encuentra en
-los artefactos de análisis reproducibles y la documentación de resultados del repositorio del
-proyecto.
+completa. El error relativo mediano decrece de forma monótona pero con
+rendimientos decrecientes: la mayor reducción se produce entre $k=1$ y $k=3$
+años ($8{,}2\,\%$ a $4{,}1\,\%$ de error promedio en seis variables), mientras
+que agregar un cuarto o quinto año reduce el error en apenas $1{,}4$ y
+$1{,}2$ puntos adicionales. Tres años constituye así el primer punto en que la
+reducción del error empieza a estabilizarse. Los resultados completos de la
+simulación se presentan en la
+Tabla~\ref{tab:simulacion-anios} del Anexo~\ref{anexo:hospitales}.
 
 La aplicación de este criterio reduce el conjunto a 65 establecimientos, que
 constituyen la población de análisis sobre la cual se construye la matriz
-institucional descrita en la sección siguiente. El efecto de este criterio sobre
-la partición final, y no solo sobre el error de los indicadores, se evalúa
-mediante el análisis de sensibilidad definido en la
-Sección~\ref{sec:sensibilidad-elegibilidad}.
+institucional descrita en la sección siguiente. El efecto sobre la partición
+final se evalúa en la Sección~\ref{sec:sensibilidad-elegibilidad}. El detalle
+de los siete establecimientos excluidos se presenta en la
+Tabla~\ref{tab:anexo-excluidos} del Anexo~\ref{anexo:hospitales}.
 
-La Tabla~\ref{tab:descartados} detalla los siete establecimientos excluidos, los
-años en que reportaron datos y el total de egresos registrados en el período.
-\begin{table}[htbp]
-\centering
-\caption{Establecimientos excluidos por no cumplir el criterio de presencia temporal.}
-\label{tab:descartados}
-\begin{tabular}{p{6.2cm} p{3.8cm} p{1.8cm} r}
-\toprule
-\textbf{Establecimiento} & \textbf{Servicio de Salud} & \textbf{Años con datos} & \textbf{Egresos} \\
-\midrule
-Instituto Traumatológico Dr. T. Gebauer & Metropolitano Suroriente & 2023, 2024 & 6{,}206 \\
-Hospital de Constitución                & Del Maule               & 2024       & 2{,}796 \\
-Hospital San Juan de Dios (Cauquenes)   & Del Maule               & 2024       & 4{,}461 \\
-Hospital de Lota                        & Concepción              & 2023, 2024 & 7{,}706 \\
-Hospital de Tomé                        & Talcahuano              & 2023, 2024 & 6{,}365 \\
-Hospital Penco-Lirquén                  & Concepción              & 2024       & 2{,}751 \\
-Complejo Asistencial Padre Las Casas    & Araucanía Sur           & 2024       & 6{,}389 \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \subsection{Construcción de variables e ingeniería de características}
 \label{sec:variables}
@@ -1205,7 +1134,7 @@ partición particular, haciendo visible cómo se fusionan los hospitales y a qu�
 costo de cohesión.
 
 El criterio de enlace de Ward minimiza, en cada fusión, el incremento de la suma
-de cuadrados intra-grupo. Para dos clusters $A$ y $B$, el criterio es:
+de cuadrados intra-grupo. Para dos clústeres $A$ y $B$, el criterio es:
 
 \begin{equation}
   \Delta(A, B) = \frac{|A|\,|B|}{|A| + |B|}
@@ -1213,7 +1142,7 @@ de cuadrados intra-grupo. Para dos clusters $A$ y $B$, el criterio es:
   \label{eq:ward}
 \end{equation}
 
-donde $|A|$ y $|B|$ son los tamaños de los clusters y $\mathbf{c}_A$,
+donde $|A|$ y $|B|$ son los tamaños de los clústeres y $\mathbf{c}_A$,
 $\mathbf{c}_B$ sus centroides. Este criterio produce grupos compactos y
 relativamente equilibrados, propiedad deseable cuando el objetivo es maximizar
 la homogeneidad funcional dentro de cada perfil.
@@ -1883,7 +1812,7 @@ La inclusión del algoritmo \textbf{MST-kNN}~\citep{inostroza2008}, utilizado pr
 razones: es el algoritmo de referencia desarrollado en el Departamento de
 Ingeniería Informática de la USACH, lo que sitúa este trabajo en continuidad con
 la línea de investigación local, y no requiere especificar el número de grupos,
-descubriendo automáticamente tanto los clusters como los hospitales de perfil
+descubriendo automáticamente tanto los clústeres como los hospitales de perfil
 único. Adicionalmente, se exploran
 particiones con $k \in \{5, \ldots, 20\}$ para verificar el comportamiento de las
 métricas en rangos de alta granularidad y una gran cantidad de grupos.
