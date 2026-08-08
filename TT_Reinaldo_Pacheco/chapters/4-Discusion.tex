@@ -422,12 +422,34 @@ Tabla~\ref{tab:metricas-nivel2}. Además de las métricas internas, se reportan
 los tamaños de grupo, la cantidad de grupos unitarios y el número de
 subclústeres con al menos cuatro hospitales.
 
+\begin{table}[htbp]
+\centering
+\caption{Búsqueda de subclústeres Ward en el núcleo generalista (Nivel~2, $n=54$). La solución suplementaria reportada es $K_{sub}=9$: conserva siete grupos con al menos cuatro hospitales y no introduce pares, aunque mantiene dos grupos unitarios.}
+\label{tab:metricas-nivel2}
+\small
+\begin{tabular}{c c c c c c l}
+\toprule
+\textbf{$K_{sub}$} & \textbf{Silhouette} & \textbf{Davies--Bouldin} & \textbf{Unitarios} & \textbf{Pares} & \textbf{$n\geq4$} & \textbf{Tamaños} \\
+\midrule
+2 & 0,193 & 2,303 & 0 & 0 & 2 & 40, 14 \\
+3 & 0,113 & 2,282 & 0 & 0 & 3 & 29, 14, 11 \\
+4 & 0,129 & 1,957 & 0 & 0 & 4 & 29, 11, 8, 6 \\
+5 & 0,122 & 1,583 & 1 & 0 & 4 & 29, 10, 8, 6, 1 \\
+6 & 0,132 & 1,486 & 1 & 0 & 5 & 29, 10, 6, 4, 4, 1 \\
+7 & 0,136 & 1,285 & 2 & 0 & 5 & 29, 10, 5, 4, 4, 1, 1 \\
+8 & 0,111 & 1,423 & 2 & 0 & 6 & 15, 14, 10, 5, 4, 4, 1, 1 \\
+\textbf{9} & \textbf{0,101} & \textbf{1,368} & \textbf{2} & \textbf{0} & \textbf{7} & \textbf{15, 10, 9, 5, 5, 4, 4, 1, 1} \\
+10 & 0,109 & 1,294 & 2 & 1 & 6 & 15, 10, 9, 5, 4, 4, 3, 2, 1, 1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 Para evaluar si estas divisiones se reproducen al perturbar la muestra, se
 aplicó al Nivel~2 el mismo protocolo de 100 submuestras sin reposición empleado
 para el Nivel~1. En cada réplica se seleccionaron 43 de los 54 hospitales,
 se ajustó nuevamente el preprocesamiento y se aplicó Ward. La Tabla~\ref{tab:estabilidad-nivel2}
 resume la concordancia con la partición de referencia para $K_{sub}=2$, $3$ y
-$10$.
+$9$.
 
 \begin{table}[htbp]
 \centering
@@ -439,273 +461,25 @@ $10$.
 \midrule
 2 & 0,193 & 0,526 [0,022; 1,000] & 0,456 [0,035; 1,000] \\
 3 & 0,113 & 0,475 [0,127; 0,835] & 0,538 [0,277; 0,814] \\
-10 & 0,109 & 0,541 [0,308; 0,793] & 0,772 [0,661; 0,880] \\
+9 & 0,101 & 0,559 [0,353; 0,840] & 0,774 [0,664; 0,919] \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 La solución con dos grupos tiene el mayor Silhouette del barrido, pero su ARI
 mediano de 0,526 sigue lejos de la estabilidad del Nivel~1 (ARI mediano
-0,958). La solución de diez grupos tampoco reproduce una tipología robusta:
-aunque su NMI es mayor, su ARI mediano es 0,541, y contiene dos subgrupos
+0,958). La solución de nueve grupos tampoco reproduce una tipología robusta:
+aunque su NMI es mayor, su ARI mediano es 0,559, y contiene dos subgrupos
 unitarios. En consecuencia, el Nivel~2 se limita en el cuerpo del texto a una
 separación exploratoria amplia en dos bloques de 40 y 14 hospitales; no se
-sostienen diez perfiles funcionales generalizables. La asignación de diez
+sostienen nueve perfiles funcionales generalizables. La asignación de nueve
 subgrupos y sus perfiles descriptivos se conserva en el Anexo como material
 suplementario.
 
-Los casos $S4$ (Hospital Clínico San Borja--Arriarán) y $S9$ (Hospital Dr. Gustavo
+Los casos $S1$ (Hospital Clínico San Borja--Arriarán) y $S8$ (Hospital Dr. Gustavo
 Fricke) de la solución suplementaria son observaciones unitarias alejadas del
 centroide del núcleo, no subtipos funcionales. Por tanto, no se usan para
 inferencias ni para etiquetar categorías hospitalarias.
-
-\iffalse
-
-\begin{table}[htbp]
-\centering
-\small
-\setlength{\tabcolsep}{3pt}
-\caption{Búsqueda del número de subclústeres $K_{sub}$ para el Núcleo
-Generalista (Nivel 2, $n=54$).}
-\label{tab:metricas-nivel2}
-\begin{tabular}{c c c c c l}
-\toprule
-\textbf{$K_{sub}$} & \textbf{Silhouette} & \textbf{Davies-Bouldin} &
-\textbf{Unitarios} & \textbf{$n\geq4$} & \textbf{Tamaños} \\
-\midrule
-2 & 0,169 & 2,424 & 0 & 2 & 38, 16 \\
-3 & 0,080 & 2,376 & 0 & 3 & 22, $2\times16$ \\
-4 & 0,100 & 2,052 & 0 & 4 & 22, 16, 9, 7 \\
-5 & 0,100 & 1,692 & 1 & 4 & 22, 15, 9, 7, 1 \\
-6 & 0,105 & 1,476 & 2 & 4 & 22, 15, 8, 7, $2\times1$ \\
-7 & 0,121 & 1,367 & 2 & 4 & 22, 15, 8, 4, 3, $2\times1$ \\
-8 & 0,120 & 1,350 & 2 & 5 & 22, 9, 8, 6, 4, 3, $2\times1$ \\
-9 & 0,123 & 1,290 & 2 & 5 & 22, 9, 6, 5, 4, $2\times3$, $2\times1$ \\
-\bfseries 10 & \bfseries 0,103 & \bfseries 1,316 & \bfseries 2 &
-\bfseries 6 & \bfseries 17, 9, 6, $2\times5$, 4, $2\times3$, $2\times1$ \\
-\bottomrule
-\multicolumn{6}{l}{\footnotesize $a\times b$: $a$ grupos de tamaño $b$.}
-\end{tabular}
-\end{table}
-
-La Figura~\ref{fig:metricas-nivel2} muestra que ninguna partición del barrido
-alcanza un Silhouette comparable al del Nivel~1. El mayor valor corresponde a
-$K_{sub}=2$ ($0{,}169$), mientras que el menor Davies--Bouldin corresponde a
-$K_{sub}=9$ ($1{,}290$). Por tanto, $K_{sub}=10$ no se interpreta como una
-solución óptima según estas métricas internas.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{img/metricas_nivel2.png}
-\caption{Métricas internas del subclustering del Nivel 2 sobre los 54 hospitales
-del núcleo generalista. El mayor Silhouette corresponde a $K_{sub}=2$, mientras
-que el menor Davies--Bouldin corresponde a $K_{sub}=9$.}
-\label{fig:metricas-nivel2}
-\end{figure}
-
-La solución $K_{sub}=10$ se reporta como una representación descriptiva. Dentro
-del barrido evaluado, es la configuración con el mayor número de subclústeres
-que reúnen al menos cuatro hospitales, pues seis de sus diez grupos cumplen ese
-umbral. Sin embargo, mantiene dos grupos unitarios y dos grupos de tres
-hospitales. Por ello, esta elección no identifica una tipología funcional validada, sino que describe con mayor detalle la heterogeneidad interna del
-núcleo generalista.
-
-La Figura~\ref{fig:balance-nivel2} muestra el criterio de balance utilizado
-para reportar esta solución. Aunque $K_{sub}=10$ aumenta el número de grupos
-con al menos cuatro hospitales, la presencia de dos grupos unitarios limita el
-alcance de la interpretación de los subgrupos.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{img/seleccion_nivel2.png}
-\caption{Balance de tamaños para las soluciones del Nivel 2. Se muestran los
-subclústeres con $n\geq4$, los grupos unitarios y los pares. En el panel, la
-línea vertical identifica la solución descriptiva reportada,
-$K_{sub}=10$.}
-\label{fig:balance-nivel2}
-\end{figure}
-
-El alcance de estos resultados se limita a una descripción exploratoria. El
-Silhouette global de la solución adoptada es bajo ($0{,}103$), lo que indica una
-separación débil entre los subgrupos. Además, $S4$ y $S9$ son grupos unitarios,
-por lo que no permiten estimar variabilidad interna ni sostener inferencia sobre
-un perfil colectivo. Los subgrupos $S0$ y $S2$, con tres hospitales cada uno,
-también requieren una interpretación limitada a sus integrantes. Cualquier
-contraste por variable aplicado sobre las mismas características utilizadas en
-el clustering se considera una caracterización descriptiva posterior al
-agrupamiento, y no una validación independiente de la partición.
-
-Para caracterizar descriptivamente los diez subclústeres, la
-Tabla~\ref{tab:perfiles-nivel2} presenta las medianas de variables
-clínico-operativas seleccionadas.
-
-\begin{table}[htbp]
-\centering
-\caption{Medianas de perfiles clínico-operativos de los subclústeres del Núcleo
-Generalista ($K_{sub}=10$).}
-\label{tab:perfiles-nivel2}
-\setlength{\tabcolsep}{4pt}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{l c c c c c c c c c c}
-\toprule
-\textbf{Variable} & \textbf{$S0$} & \textbf{$S1$} & \textbf{$S2$} &
-\textbf{$S3$} & \textbf{$S4$} & \textbf{$S5$} & \textbf{$S6$} &
-\textbf{$S7$} & \textbf{$S8$} & \textbf{$S9$} \\
-\midrule
-$n$ & 3 & 4 & 3 & 5 & 1 & 5 & 17 & 6 & 9 & 1 \\
-Egresos por año & 5.941 & 5.296 & 5.810 & 15.070 & 16.809 & 9.419 &
-9.148 & 19.801 & 20.589 & 20.564 \\
-Estancia media (días) & 4,7 & 4,8 & 5,4 & 7,0 & 6,1 & 7,0 &
-5,9 & 8,3 & 7,6 & 7,4 \\
-Peso medio GRD & 0,753 & 0,801 & 0,756 & 0,978 & 0,960 & 0,951 &
-0,928 & 1,085 & 1,120 & 1,225 \\
-Egresos geriátricos & 29,5\% & 23,0\% & 22,6\% & 21,7\% & 15,1\% &
-25,5\% & 26,9\% & 29,1\% & 24,8\% & 26,4\% \\
-Ingresos programados & 8,0\% & 15,0\% & 16,2\% & 12,3\% & 46,5\% &
-15,0\% & 21,3\% & 13,9\% & 29,8\% & 22,2\% \\
-Uso de pabellón & 23,7\% & 36,4\% & 46,3\% & 43,3\% & 42,1\% &
-44,9\% & 44,6\% & 42,6\% & 46,7\% & 43,2\% \\
-Proporción de egresos neonatales & 2,1\% & 3,1\% & 4,4\% & 4,3\% & 5,1\% &
-3,4\% & 2,6\% & 2,8\% & 2,3\% & 1,9\% \\
-\bottomrule
-\end{tabular}%
-}
-\end{table}
-
-A partir de las diferencias de la Tabla~\ref{tab:perfiles-nivel2}, se describen
-los siguientes subgrupos. Estas descripciones no constituyen etiquetas
-funcionales definitivas; se presentan para facilitar la lectura exploratoria de
-los patrones observados.
-
-\begin{itemize}
-    \item \textbf{Subclúster $S0$ ($n=3$): hospitales de bajo volumen y baja
-    actividad programada.} Registra una mediana de 5.941 egresos anuales,
-    estancia media de 4,7 días, peso medio GRD de 0,753 y el menor uso de
-    pabellón del conjunto ($23{,}7\%$). Está compuesto por:
-    \begin{itemize}
-        \item Hospital Claudio Vicuña (San Antonio);
-        \item Hospital San José (Coronel);
-        \item Hospital San José (Parral).
-    \end{itemize}
-
-    \item \textbf{Subclúster $S1$ ($n=4$): hospitales generales de bajo
-    volumen.} Presenta 5.296 egresos anuales, estancia de 4,8 días y peso medio
-    GRD de 0,801. Está compuesto por:
-    \begin{itemize}
-        \item Hospital Provincial Dr.\ Rafael Avaría (Curanilahue);
-        \item Hospital de Quilpué;
-        \item Hospital de Santa Cruz;
-        \item Hospital de Villarrica.
-    \end{itemize}
-
-    \item \textbf{Subclúster $S2$ ($n=3$): hospitales de menor volumen con
-    uso elevado de pabellón.} Mantiene volumen bajo (5.810 egresos), pero el uso
-    de pabellón alcanza $46{,}3\%$ y la proporción de egresos neonatales $4{,}4\%$. Está compuesto
-    por:
-    \begin{itemize}
-        \item Hospital Adalberto Steeger (Talagante);
-        \item Hospital San José (Melipilla);
-        \item Hospital San Luis (Buin).
-    \end{itemize}
-
-    \item \textbf{Subclúster $S3$ ($n=5$): hospitales metropolitanos de
-    volumen intermedio-alto.} Presenta una mediana de 15.070 egresos, estancia
-    de 7,0 días, peso medio GRD de 0,978 y proporción de egresos neonatales de $4{,}3\%$. Está
-    compuesto por:
-    \begin{itemize}
-        \item Complejo Hospitalario San José (Santiago, Independencia);
-        \item Hospital Dr.\ Félix Bulnes Cerda (Santiago, Quinta Normal);
-        \item Hospital Dr.\ Luis Tisné B. (Santiago, Peñalolén);
-        \item Hospital El Pino (Santiago, San Bernardo);
-        \item Hospital Padre Alberto Hurtado (San Ramón).
-    \end{itemize}
-
-    \item \textbf{Subclúster $S4$ ($n=1$): observación individual de alta
-    programación.} Corresponde al Hospital Clínico San Borja-Arriarán
-    (Santiago, Santiago). Registra 16.809 egresos anuales y la mayor proporción
-    de ingresos programados ($46{,}5\%$), por lo que se describe únicamente como
-    una observación singular y no como un perfil generalizable.
-
-    \item \textbf{Subclúster $S5$ ($n=5$): hospitales generales de volumen
-    intermedio y estancia prolongada.} Presenta 9.419 egresos, estancia de
-    7,0 días y peso medio GRD de 0,951. Está compuesto por:
-    \begin{itemize}
-        \item Hospital Dr.\ Antonio Tirado Lanas (Ovalle);
-        \item Hospital San Juan de Dios (Curicó);
-        \item Hospital San Juan de Dios (La Serena);
-        \item Hospital San Martín (Quillota);
-        \item Hospital de San Camilo (San Felipe).
-    \end{itemize}
-
-    \item \textbf{Subclúster $S6$ ($n=17$): bloque generalista heterogéneo de
-    volumen medio.} Es el grupo de mayor tamaño. Tiene una mediana de 9.148
-    egresos, estancia de 5,9 días y peso medio GRD de 0,928. Dada su amplitud y
-    el bajo Silhouette global del Nivel~2, debe interpretarse como un bloque
-    descriptivo amplio más que como un perfil homogéneo. Está compuesto por:
-    \begin{itemize}
-        \item Complejo Asistencial Dr.\ Víctor Ríos Ruiz (Los Ángeles);
-        \item Hospital Base San José de Osorno;
-        \item Hospital Dr.\ Carlos Cisternas (Calama);
-        \item Hospital Dr.\ Ernesto Torres Galdames (Iquique);
-        \item Hospital Dr.\ Juan Noé Crevanni (Arica);
-        \item Hospital Dr.\ Mauricio Heyermann (Angol);
-        \item Hospital Las Higueras (Talcahuano);
-        \item Hospital Presidente Carlos Ibáñez del Campo (Linares);
-        \item Hospital Provincial del Huasco Monseñor Fernando Ariztía Ruiz
-        (Vallenar);
-        \item Hospital Regional (Coihaique);
-        \item Hospital San José (Victoria);
-        \item Hospital San José del Carmen (Copiapó);
-        \item Hospital San Juan de Dios (Los Andes);
-        \item Hospital San Juan de Dios (San Fernando);
-        \item Hospital San Pablo (Coquimbo);
-        \item Hospital de Castro;
-        \item Hospital de San Carlos.
-    \end{itemize}
-
-    \item \textbf{Subclúster $S7$ ($n=6$): hospitales de alto volumen y mayor
-    estancia.} Registra 19.801 egresos anuales, una estancia media de 8,3 días,
-    peso medio GRD de 1,085 y $29{,}1\%$ de egresos geriátricos. Está compuesto
-    por:
-    \begin{itemize}
-        \item Hospital Barros Luco Trudeau (Santiago, San Miguel);
-        \item Hospital Clínico Herminda Martín (Chillán);
-        \item Hospital Clínico Metropolitano El Carmen Doctor Luis Valentín
-        Ferrada;
-        \item Hospital Clínico Metropolitano La Florida Dra.\ Eloisa Díaz
-        Inzunza;
-        \item Hospital Regional de Rancagua;
-        \item Hospital de Puerto Montt.
-    \end{itemize}
-
-    \item \textbf{Subclúster $S8$ ($n=9$): hospitales de alto volumen,
-    complejidad y actividad programada.} Presenta 20.589 egresos, estancia de
-    7,6 días, peso medio GRD de 1,120, uso de pabellón de $46{,}7\%$ y la mayor
-    proporción de ingresos programados entre los grupos no unitarios
-    ($29{,}8\%$). Está compuesto por:
-    \begin{itemize}
-        \item Complejo Hospitalario Dr.\ Sótero del Río (Santiago, Puente Alto);
-        \item Hospital Carlos Van Buren (Valparaíso);
-        \item Hospital Clínico Regional (Valdivia);
-        \item Hospital Clínico Regional Dr.\ Guillermo Grant Benavente
-        (Concepción);
-        \item Hospital Clínico de Magallanes Dr.\ Lautaro Navarro Avaria;
-        \item Hospital Dr.\ César Garavagno Burotto (Talca);
-        \item Hospital Dr.\ Hernán Henríquez Aravena (Temuco);
-        \item Hospital Dr.\ Leonardo Guzmán (Antofagasta);
-        \item Hospital San Juan de Dios (Santiago, Santiago).
-    \end{itemize}
-
-    \item \textbf{Subclúster $S9$ ($n=1$): observación individual de alta
-    complejidad.} Corresponde al Hospital Dr.\ Gustavo Fricke (Viña del Mar).
-    Presenta un peso medio GRD de 1,225, el mayor de los subgrupos del Nivel~2.
-    Al ser un grupo unitario, esta descripción no representa una categoría
-    funcional generalizable.
-\end{itemize}
-
-
-
-\fi
 
 \section{Estabilidad de la partición mediante submuestreo}
 \label{sec:res-estabilidad}
@@ -912,98 +686,40 @@ entre la covarianza muestral simulada y la observada fue 0,308.
 \end{minipage}
 \end{table}
 
-En el Nivel~2 (Tabla~\ref{tab:kruskal-nivel2}), el análisis se restringe a los 54 hospitales del núcleo generalista y compara los diez subclústeres exploratorios ($S0$ a $S9$). En ella, 24 de las 28 variables presentan diferencias estadísticamente detectables entre subgrupos. Las variables con mayor tamaño de efecto son \texttt{peso\_medio\_grd} ($\varepsilon^2=0{,}766$), \texttt{tasa\_prematurez} ($\varepsilon^2=0{,}662$), \texttt{pct\_estancia\_larga} ($\varepsilon^2=0{,}653$), \texttt{egresos\_por\_anio} ($\varepsilon^2=0{,}615$), \texttt{pct\_obstetrica\_ingreso} ($\varepsilon^2=0{,}603$) y \texttt{pct\_programada} ($\varepsilon^2=0{,}595$).
+En el Nivel~2 (Tabla~\ref{tab:kruskal-nivel2}), el análisis se restringe a los 54 hospitales del núcleo generalista y compara los nueve subclústeres exploratorios ($S0$ a $S8$). De las 28 variables evaluadas, 24 presentan diferencias estadísticamente detectables entre subgrupos después del ajuste BH. Las seis con mayor tamaño de efecto corresponden a \texttt{peso\_medio\_grd}, \texttt{pct\_femenino\_fertil}, \texttt{pct\_obstetrica\_ingreso}, \texttt{entropia\_grd}, \texttt{pct\_estancia\_larga} y \texttt{tasa\_prematurez}.
 
-En consecuencia, la subtipología exploratoria diferencia principalmente gradientes de complejidad clínica, composición de la casuística, intensidad de actividad, permanencia hospitalaria y modalidad de atención. Las variables \texttt{pct\_alta\_traslado}, \texttt{cv\_estancia}, \texttt{pct\_pediatrico} y \texttt{peso\_medio\_cma} no alcanzan significancia en BH. Este resultado no demuestra uniformidad entre subclústeres, sino que indica que no existe evidencia suficiente de diferencias para esas variables bajo este contraste y ajuste por multiplicidad.
+En consecuencia, la subtipología exploratoria diferencia principalmente gradientes de complejidad clínica, composición de la casuística, permanencia hospitalaria y orientación obstétrica. Por tratarse de un segundo nivel exploratorio construido sobre el mismo conjunto de variables, los $p_{\text{BH}}$ no constituyen evidencia independiente de categorías externas o definitivas; su utilidad es descriptiva para ordenar los atributos que distinguen los perfiles obtenidos.
 
 \begin{table}[htbp]
 \centering
-\caption{Resultados de la prueba de Kruskal-Wallis en el Nivel~2 con corrección Benjamini-Hochberg y tamaño de efecto $\varepsilon^2$ (ordenados de forma descendente por $\varepsilon^2$; $K=10$, $n=54$).}
+\caption{Seis variables con mayor tamaño de efecto en la prueba de Kruskal--Wallis del Nivel~2, con corrección Benjamini--Hochberg (seis primeras de 24 variables significativas de 28 evaluadas; $K_{sub}=9$, $n=54$).}
 \label{tab:kruskal-nivel2}
 \small
-\begin{tabular}{l c c c c c}
+\begin{tabular}{l c c c c}
 \toprule
-\textbf{Variable} & \textbf{$H$} & \textbf{$p$-valor} &
-\textbf{$p_{\text{BH}}$} & \textbf{$\varepsilon^2$} &
-\textbf{Discrimina} \\
+\textbf{Variable} & \textbf{$H$} & \textbf{$p$-valor} & \textbf{$p_{\text{BH}}$} & \textbf{$\varepsilon^2$} \\
 \midrule
-peso\_medio\_grd
-& 42,7 & $2{,}46 \times 10^{-6}$ & $6{,}88 \times 10^{-5}$ & 0,766 & Sí \\
-tasa\_prematurez
-& 38,1 & $1{,}67 \times 10^{-5}$ & $1{,}83 \times 10^{-4}$ & 0,662 & Sí \\
-pct\_estancia\_larga
-& 37,7 & $1{,}96 \times 10^{-5}$ & $1{,}83 \times 10^{-4}$ & 0,653 & Sí \\
-egresos\_por\_anio
-& 36,1 & $3{,}83 \times 10^{-5}$ & $2{,}56 \times 10^{-4}$ & 0,615 & Sí \\
-pct\_obstetrica\_ingreso
-& 35,5 & $4{,}76 \times 10^{-5}$ & $2{,}56 \times 10^{-4}$ & 0,603 & Sí \\
-pct\_programada
-& 35,2 & $5{,}49 \times 10^{-5}$ & $2{,}56 \times 10^{-4}$ & 0,595 & Sí \\
-pct\_femenino\_fertil
-& 34,3 & $7{,}80 \times 10^{-5}$ & $3{,}12 \times 10^{-4}$ & 0,576 & Sí \\
-mortalidad\_media
-& 33,4 & $1{,}15 \times 10^{-4}$ & $3{,}99 \times 10^{-4}$ & 0,554 & Sí \\
-tasa\_partos
-& 33,1 & $1{,}28 \times 10^{-4}$ & $3{,}99 \times 10^{-4}$ & 0,548 & Sí \\
-pct\_urgencia
-& 32,4 & $1{,}69 \times 10^{-4}$ & $4{,}72 \times 10^{-4}$ & 0,532 & Sí \\
-entropia\_grd
-& 31,7 & $2{,}21 \times 10^{-4}$ & $5{,}62 \times 10^{-4}$ & 0,517 & Sí \\
-estancia\_media
-& 31,4 & $2{,}52 \times 10^{-4}$ & $5{,}88 \times 10^{-4}$ & 0,509 & Sí \\
-pct\_alta\_fallecido
-& 30,6 & $3{,}41 \times 10^{-4}$ & $7{,}34 \times 10^{-4}$ & 0,492 & Sí \\
-pct\_origen\_emergencia
-& 27,3 & $0{,}001$ & $0{,}002$ & 0,417 & Sí \\
-edad\_mediana
-& 25,4 & $0{,}003$ & $0{,}005$ & 0,373 & Sí \\
-comorbilidades\_promedio
-& 25,3 & $0{,}003$ & $0{,}005$ & 0,370 & Sí \\
-pct\_alta\_domicilio
-& 24,4 & $0{,}004$ & $0{,}006$ & 0,350 & Sí \\
-severidad\_media
-& 24,3 & $0{,}004$ & $0{,}006$ & 0,347 & Sí \\
-pct\_geriatrico
-& 23,3 & $0{,}005$ & $0{,}008$ & 0,326 & Sí \\
-pct\_origen\_referencia
-& 22,6 & $0{,}007$ & $0{,}010$ & 0,308 & Sí \\
-estancia\_mediana
-& 21,9 & $0{,}009$ & $0{,}012$ & 0,294 & Sí \\
-pabellones\_promedio
-& 20,2 & $0{,}017$ & $0{,}021$ & 0,255 & Sí \\
-tasa\_cma
-& 18,4 & $0{,}030$ & $0{,}037$ & 0,214 & Sí \\
-pct\_uso\_pabellon
-& 17,6 & $0{,}040$ & $0{,}046$ & 0,196 & Sí \\
-pct\_alta\_traslado
-& 16,1 & $0{,}065$ & $0{,}073$ & 0,161 & No \\
-cv\_estancia
-& 15,4 & $0{,}081$ & $0{,}088$ & 0,145 & No \\
-pct\_pediatrico
-& 14,5 & $0{,}106$ & $0{,}110$ & 0,125 & No \\
-peso\_medio\_cma
-& 7,2 & $0{,}615$ & $0{,}615$ & 0,000 & No \\
+peso\_medio\_grd & 41,897 & $1{,}4158 \times 10^{-6}$ & $3{,}9642 \times 10^{-5}$ & 0,75327 \\
+pct\_femenino\_fertil & 37,218 & $1{,}0493 \times 10^{-5}$ & 0,00014691 & 0,64929 \\
+pct\_obstetrica\_ingreso & 35,751 & $1{,}9505 \times 10^{-5}$ & 0,00016808 & 0,61668 \\
+entropia\_grd & 35,256 & $2{,}4011 \times 10^{-5}$ & 0,00016808 & 0,60570 \\
+pct\_estancia\_larga & 34,309 & $3{,}5715 \times 10^{-5}$ & 0,00019920 & 0,58464 \\
+tasa\_prematurez & 33,881 & $4{,}2686 \times 10^{-5}$ & 0,00019920 & 0,57514 \\
 \bottomrule
 \end{tabular}
 \par\smallskip
 \begin{minipage}{\textwidth}
 \footnotesize\raggedright
-\textit{Nota.} Los tamaños de efecto $\varepsilon^2$ se calculan para la
-partición exploratoria del Nivel~2 ($n=54$, $K_{sub}=10$). No son directamente
-comparables con los de la Tabla~\ref{tab:kruskal-nivel1}, calculados para el
-Nivel~1 ($n=65$, $K=4$), porque el número y tamaño de los grupos, así como el
-tamaño muestral, son distintos.
+\textit{Nota.} Resultados ordenados de forma descendente por $\varepsilon^2$. La prueba caracteriza descriptivamente una partición exploratoria del Nivel~2 y no valida de forma independiente los subclústeres.
 \end{minipage}
 \end{table}
 
-La magnitud de los tamaños de efecto debe considerarse junto con la significancia. Por ejemplo, \texttt{peso\_medio\_grd}, \texttt{tasa\_prematurez} y \texttt{pct\_estancia\_larga} presentan los mayores valores de $\varepsilon^2$, por lo que ofrecen una caracterización particularmente informativa de las diferencias entre subgrupos. En contraste, variables significativas como \texttt{pct\_uso\_pabellon} ($\varepsilon^2=0{,}196$) o \texttt{tasa\_cma} ($\varepsilon^2=0{,}214$) muestran diferencias detectables, pero de menor magnitud relativa.
+La magnitud de los tamaños de efecto debe considerarse junto con la significancia. Las seis variables resumidas en la Tabla~\ref{tab:kruskal-nivel2} son las que muestran las diferencias relativas más intensas entre los subgrupos; este ordenamiento no implica que las fronteras entre ellos sean robustas o generalizables.
 
-Por tratarse de un segundo nivel exploratorio construido sobre el mismo conjunto de variables, no corresponde interpretar los $p_{\text{BH}}$ como evidencia independiente de que los diez subclústeres representen categorías externas o definitivas. Su utilidad en esta sección es descriptiva: permite identificar las variables que separan con mayor intensidad los perfiles obtenidos y distinguirlas de aquellas para las que no se detectan diferencias suficientes bajo el ajuste aplicado.
-
-Adicionalmente, se examinó la asociación entre la asignación de clústeres y la pertenencia a Servicios de Salud mediante una prueba de chi-cuadrado de independencia. En el Nivel~1 se obtuvo $\chi^2=65{,}329$ ($\text{gl}=84$, $p=0{,}935$), mientras que en el Nivel~2 se obtuvo $\chi^2=222{,}968$ ($\text{gl}=252$, $p=0{,}906$). En ambos niveles no se detectó una asociación estadísticamente significativa entre los clústeres y el Servicio de Salud.
+Adicionalmente, se examinó la asociación entre la asignación de clústeres y la pertenencia a Servicios de Salud mediante una prueba de chi-cuadrado de independencia. En el Nivel~1 se obtuvo $\chi^2=65{,}329$ ($\text{gl}=84$, $p=0{,}935$), mientras que en el Nivel~2 se obtuvo $\chi^2=206{,}944$ ($\text{gl}=224$, $p=0{,}787$). En ambos niveles no se detectó una asociación estadísticamente significativa entre los clústeres y el Servicio de Salud.
 
 Estas tablas de contingencia son dispersas, pues relacionan un número reducido de hospitales con numerosas categorías territoriales y administrativas. En consecuencia, el V de Cramér sin corrección puede sobreestimar la
-asociación. Sus valores alcanzan $0{,}579$ en el Nivel~1 y $0{,}677$
+asociación. Sus valores alcanzan $0{,}579$ en el Nivel~1 y $0{,}692$
 en el Nivel~2. Al aplicar la corrección de sesgo de \citet{Bergsma2013}, el V de Cramér es aproximadamente cero en ambos niveles. Por ello, bajo esta especificación no se observa una asociación apreciable entre los clústeres y los Servicios de Salud. Este resultado no permite descartar de forma concluyente toda influencia territorial o administrativa, pero no aporta evidencia de que la segmentación obtenida esté determinada por dicha pertenencia.
 
 \section{Comparación con la clasificación MINSAL}

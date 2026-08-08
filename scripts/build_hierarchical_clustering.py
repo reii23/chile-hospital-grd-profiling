@@ -36,6 +36,7 @@ PROCESSED = ROOT / "data" / "processed"
 TABLES = ROOT / "reports" / "tables"
 FIGURES = ROOT / "reports" / "figures"
 RANDOM_STATE = 42
+REPORTED_K_SUB = 9
 
 # ---------------------------------------------------------------------------
 # 1. Cargar matriz final y escalar
@@ -211,14 +212,17 @@ df_sub = pd.DataFrame(filas_sub)
 df_sub.to_csv(TABLES / "busqueda_subclustering.csv", index=False)
 
 
-# Encontrar mejor K_sub: maximizar n_clusters_n4plus + reasonable Silhouette
+# La solución suplementaria se fija explícitamente en K_sub=9: maximiza el
+# criterio de balance (más grupos con n>=4 y sin pares) dentro del barrido.
 df_sub["sub_score"] = (
     df_sub["sub_n_clusters_n4plus"] * 10
     - df_sub["sub_n_singletons"] * 3
     - df_sub["sub_n_pares"] * 1
 )
-mejor_K_sub = int(df_sub.loc[df_sub["sub_score"].idxmax(), "K_sub"])
-print(f"\n>>> Mejor K_sub: {mejor_K_sub}")
+mejor_K_sub = REPORTED_K_SUB
+if mejor_K_sub not in asignaciones_sub:
+    raise ValueError(f"K_sub reportado no disponible: {mejor_K_sub}")
+print(f"\n>>> K_sub suplementario reportado: {mejor_K_sub}")
 print(f"    Sil={df_sub.loc[df_sub['K_sub']==mejor_K_sub, 'silhouette_sub'].iloc[0]:.3f}")
 print(f"    Tamanos={df_sub.loc[df_sub['K_sub']==mejor_K_sub, 'sub_tamanos'].iloc[0]}")
 

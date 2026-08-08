@@ -15,9 +15,9 @@ La matriz final considera **65 hospitales y 35 variables de clustering**: 27 ind
 - Solución reportada de Nivel 1: **K=4**, con tamaños **[3, 54, 5, 3]**.
 - Métricas de la solución K=4: silhouette **0,4008**, Calinski--Harabasz **22,446** y Davies--Bouldin **0,990**.
 - K=2 obtiene un silhouette superior (0,6045), por lo que K=4 se interpreta como un compromiso de granularidad e interpretación, no como un óptimo estadístico absoluto.
-- Nivel 2: subdivisión exploratoria del clúster generalista con `K_sub=10`.
+- Nivel 2: subdivisión exploratoria suplementaria del clúster generalista con `K_sub=9` y etiquetas `S0`--`S8` la solución conserva siete subgrupos con al menos cuatro hospitales, dos observaciones unitarias y ningún par, por lo que no se interpreta como una tipología generalizable.
 
-Las cifras canónicas del barrido de K están en `reports/tables/clustering_ward_metricas.csv`, y la partición reportada en `reports/tables/asignacion_jerarquica_final.csv`. El resto de los resultados tabulares vive en `reports/tables/`.
+Las fuentes canónicas de Nivel 2 son `reports/tables/asignacion_jerarquica_final.csv` (asignaciones), `perfiles_subclustering.csv` (perfiles), `busqueda_subclustering.csv` (barrido), `estabilidad_nivel2_resumen.csv` (estabilidad) y `pruebas_kruskal_nivel2_mainstream.csv` (caracterización post-hoc). Las cifras canónicas del barrido de K de Nivel 1 están en `reports/tables/clustering_ward_metricas.csv`, y el resto de los resultados tabulares vive en `reports/tables/`.
 
 ## Estructura
 

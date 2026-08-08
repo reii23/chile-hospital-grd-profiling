@@ -3,8 +3,8 @@
 Aplica al núcleo generalista (C1, n=54) el mismo protocolo de submuestreo
 utilizado para Nivel 1: 100 réplicas sin reemplazo, con 80 % de hospitales,
 repreprocesamiento y clustering Ward. Evalúa K_sub=2 y K_sub=3, soluciones
-compactas respaldadas por las métricas internas, y K_sub=10, partición
-exploratoria originalmente reportada.
+compactas respaldadas por las métricas internas, y K_sub=9, partición
+exploratoria suplementaria reportada por su mejor balance de tamaños.
 
 Para cada K se reportan Silhouette, ARI/NMI frente a la partición de
 referencia, coasignación, estabilidad individual y Jaccard por subgrupo.
@@ -36,7 +36,7 @@ from src.utils.io import PROCESSED_DIR, TABLES_DIR
 RANDOM_STATE = 42
 N_ITERACIONES = int(os.environ.get("N_REP", "100"))
 FRAC_SUBMUESTRA = 0.80
-K_EVALUADOS = (2, 3, 10)
+K_EVALUADOS = (2, 3, 9)
 
 
 def preprocesar(matriz_sub: pd.DataFrame, columnas: list[str]) -> tuple[np.ndarray, list[str]]:
