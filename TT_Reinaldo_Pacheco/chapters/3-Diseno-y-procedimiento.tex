@@ -1787,19 +1787,14 @@ La descripción clínica de cada grupo se apoya en una interpretación
 \textit{post-hoc} basada en las medianas de las variables más discriminantes,
 realizada exclusivamente después del clustering para no sesgar la formación de
 los grupos. Complementariamente, se proyecta la matriz a dos dimensiones
-mediante cinco técnicas independientes: PCA, UMAP, MDS, t-SNE e Isomap. El
-propósito de estas proyecciones es exclusivamente ilustrativo y exploratorio:
-permiten inspeccionar de forma visual si la separación entre grupos observada
-bajo PCA se mantiene reconocible bajo otras técnicas de reducción con supuestos
-geométricos distintos, lo que descarta que esa separación sea un artefacto
-exclusivo de la proyección PCA en particular. La coincidencia visual entre
-proyecciones no constituye, sin embargo, evidencia cuantitativa de la validez
-del clustering ni sustituye a los índices de concordancia de partición (ARI,
-NMI) que se emplean para ese propósito en la Sección~\ref{sec:sensibilidad}: una
-proyección bidimensional descarta necesariamente información de las 35
-variables originales, y la similitud visual entre dos nubes de puntos es una
-apreciación cualitativa sujeta a la interpretación de quien observa la figura,
-no una medida estadística.
+mediante PCA. Esta proyección tiene un propósito exclusivamente ilustrativo y
+exploratorio: facilita inspeccionar la disposición relativa de los hospitales y
+no constituye evidencia cuantitativa de la validez del clustering ni sustituye
+los índices de concordancia de partición (ARI, NMI) que se emplean para ese
+propósito en la Sección~\ref{sec:sensibilidad}. Una proyección bidimensional
+omite necesariamente información de las 35 variables originales, por ello, su
+lectura es cualitativa y queda subordinada a los análisis de sensibilidad y
+estabilidad.
 
 % ============================================================================
 \section{Análisis de sensibilidad del diseño}
@@ -1864,8 +1859,7 @@ HDBSCAN & \texttt{min\_cluster\_size} $\in \{3,\ldots,8\}$ & Descubre $k$ por de
 MST-kNN & $k$ de vecindad $=6$ & Algoritmo del depto.\ USACH,
 descubre $k$ y observaciones aisladas. \\
 \addlinespace
-Proyecciones 2D & PCA, UMAP, MDS, t-SNE, Isomap & Inspección visual
-exploratoria de la separación, no constituye validación cuantitativa. \\
+Proyección 2D & PCA & Inspección visual exploratoria; no constituye validación cuantitativa. \\
 \bottomrule
 \end{tabular}
 \end{table}
