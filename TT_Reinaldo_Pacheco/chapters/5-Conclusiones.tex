@@ -12,6 +12,44 @@ registrados con fines administrativos en una representación institucional basad
 en producción, complejidad, diversidad, casuística, modalidad de ingreso y alta,
 composición demográfica y actividad quirúrgico-obstétrica.
 
+\section{Cumplimiento de los objetivos específicos}
+
+El objetivo de construir una matriz institucional comparable se cumplió mediante
+una representación de $65 \times 35$ variables, compuesta por 27 indicadores
+clínico-operativos y ocho componentes de casuística. Esta base permite comparar
+la actividad registrada entre establecimientos, pero su interpretación permanece
+condicionada por la cobertura y la heterogeneidad de la codificación administrativa.
+
+El objetivo de determinar una segmentación funcional se cumplió con la solución
+Ward de cuatro grupos, cuya estabilidad interna bajo submuestreo respalda la
+persistencia de la estructura global. No obstante, $K=4$ corresponde a un
+compromiso interpretativo para perfilar la red y no al óptimo formal de las
+métricas internas, las fronteras de los grupos pequeños son más sensibles a las
+perturbaciones metodológicas y temporales.
+
+El objetivo de caracterizar los perfiles se cumplió al distinguir un perfil
+pediátrico, un núcleo generalista, un grupo de carga clínica heterogénea y un
+perfil monográfico, a partir de sus indicadores clínicos y operativos. Las
+comparaciones descriptivas posteriores al agrupamiento permiten describir esas diferencias, pero no validan de
+forma independiente la partición, pues se realizaron sobre variables que también
+participaron en su construcción.
+
+El objetivo de identificar establecimientos atípicos se cumplió mediante la
+combinación de Isolation Forest, distancia al centroide y Silhouette individual:
+nueve hospitales fueron marcados por al menos un criterio y tres mostraron
+señales concordantes en dos o más. Estas marcas se conservaron como
+caracterización de singularidad, no como criterio de exclusión, porque retirar
+las observaciones influyentes elimina perfiles especializados y deteriora la
+solución de agrupamiento.
+
+Finalmente, el objetivo de contrastar la segmentación con la clasificación
+MINSAL se cumplió mediante medidas de concordancia y compactación en bloques de
+variables retenidos. La baja concordancia entre ambas clasificaciones muestra
+que describen dimensiones distintas de la red. La compactación de Ward $K=4$ se
+conserva al evaluar bloques no utilizados para agrupar, pero el contraste con
+$K=2$ no permite sostener una superioridad robusta frente a MINSAL. Las
+conclusiones detalladas y sus alcances se desarrollan a continuación.
+
 La respuesta a la pregunta de investigación es afirmativa: los datos GRD permiten
 identificar perfiles funcionales distinguibles que no coinciden de forma estrecha
 con la clasificación administrativa vigente. La solución Ward con $K=4$, aplicada
