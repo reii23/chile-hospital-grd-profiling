@@ -947,20 +947,28 @@ $1{,}0$ al diagnóstico principal y $0{,}5$ a cada secundario, con el propósito
 de reflejar las comorbilidades del episodio sin que estas lleguen a dominar
 sobre el motivo principal de ingreso. La ponderación es, por tanto, por posición
 del diagnóstico dentro del episodio y no por el peso relativo del GRD asignado.
-La comparación entre ambas variantes se resolvió mediante un criterio interno al
-propio PCA:
-para cada variante se ejecutó el PCA con el número de componentes fijado en
-$K=8$ (justificado más adelante en esta sección) y se comparó la varianza
-acumulada explicada, sin recurrir a ninguna métrica de clustering posterior.
-La variante ponderada explica el 72{,}3\,\% de la varianza acumulada frente al
-71{,}8\,\% de la variante basada solo en el diagnóstico principal, por lo que fue seleccionada
-para el pipeline definitivo. Este criterio de selección --varianza explicada
-por el propio PCA-- es deliberadamente independiente del clustering que se
-describe en las secciones siguientes, para evitar que la elección de una
-decisión de preprocesamiento quede determinada por la misma métrica con la
-que luego se evalúa la solución final. Esta misma comparación se repite bajo una
-representación composicional alternativa (CLR) como parte del análisis de
-sensibilidad definido en la Sección~\ref{sec:sensibilidad-composicional}.
+En el pipeline se utilizó la variante ponderada porque incorpora
+los diagnósticos secundarios disponibles para representar la carga clínica
+registrada, manteniendo el diagnóstico principal con el doble de peso para que
+el motivo de ingreso siga siendo dominante. La elección no se justifica por la
+diferencia aislada de varianza acumulada: con $K=8$, la variante ponderada
+retiene $72{,}3\,\%$ frente a $71{,}8\,\%$ de la variante principal, una
+diferencia pequeña que se reporta solo como antecedente descriptivo.
+
+La sensibilidad se evaluó reconstruyendo la matriz completa y aplicando Ward
+con $K=4$ bajo ambas variantes. La concordancia fue alta (ARI $=0{,}936$;
+NMI $=0{,}909$): los perfiles pediátrico y de especialización clínica se
+mantuvieron, y solo el Hospital San José de Parral pasó del grupo de carga
+clínica al núcleo generalista. La variante ponderada obtuvo un Silhouette de
+$0{,}399$, frente a $0{,}375$ con la variante principal. Estos resultados
+muestran que la decisión de incorporar diagnósticos secundarios tiene una
+influencia acotada, pero no nula, sobre la frontera entre esos dos grupos. No
+constituyen una prueba de superioridad, debido a que, ambas construcciones se evalúan en
+los mismos hospitales y período. Las asignaciones, la contingencia y las
+métricas de esta sensibilidad se conservan en los artefactos reproducibles del
+repositorio. La misma comparación de varianza se repite bajo una representación
+composicional alternativa (CLR) como parte del análisis definido en la
+Sección~\ref{sec:sensibilidad-composicional}.
 
 El número de componentes a retener se fija en $K=8$, decisión que se
 verificó empíricamente mediante un barrido de $K \in \{8, 9, 10, 11\}$
