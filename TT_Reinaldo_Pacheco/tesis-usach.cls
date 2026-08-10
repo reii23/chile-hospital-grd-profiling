@@ -80,7 +80,9 @@
 \RequirePackage{multirow}	% Multiples filas en Tablas
 \RequirePackage{array}
 \RequirePackage{caption}
-\captionsetup[table]{position=top,belowskip=4pt,aboveskip=4pt}
+\captionsetup{justification=centering, singlelinecheck=false}       
+\captionsetup[table]{position=top, belowskip=4pt, aboveskip=4pt,
+              justification=centering, singlelinecheck=false}
 \usepackage[table]{xcolor} % Agrega el paquete colortbl
 \RequirePackage{longtable}	% Para cortar tablas grandes
 \RequirePackage{lscape}
@@ -337,7 +339,12 @@
 \titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 \titlespacing*{\subsection} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 \titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-\titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
+\titleformat{\paragraph}
+  {\itshape\fontsize{10}{12}\selectfont}
+  {}
+  {0pt}
+  {}
+\titlespacing*{\paragraph}{0pt}{\parskip}{0pt}
 \titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
 
 % Se agrega la palabra 'Figura' al índice de figuras

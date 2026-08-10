@@ -455,9 +455,7 @@ está registrada. Sin embargo, esta limitación es coherente con el objetivo del
 estudio, que busca caracterizar el perfil funcional de los establecimientos a
 partir de su actividad clínica registrada y no evaluar su desempeño en resultados.
 
-
-\clearpage
-\begin{table}[tp]
+\begin{table}[htbp]
 \centering
 \caption{Principales variables del registro GRD y sus tipos de dato.}
 \label{tab:variables-grd}
@@ -700,10 +698,9 @@ pura. El análisis conserva los indicadores porque incorporan información
 relevante para el perfilamiento relativo, y declara esta limitación al
 interpretar los resultados.
 
-\clearpage
 La Tabla~\ref{tab:variables} sintetiza las variables construidas por grupo.
 
-{\small
+{
 \setstretch{1.0}
 \setlength{\LTleft}{0pt}
 \setlength{\LTright}{\fill}
@@ -714,7 +711,7 @@ La Tabla~\ref{tab:variables} sintetiza las variables construidas por grupo.
 \textbf{Grupo} & \textbf{Variables} \\
 \midrule
 \endfirsthead
-\multicolumn{2}{l}{\small\textit{Tabla~\thetable\ (continuación)}} \\
+\multicolumn{2}{l}{\textit{Tabla~\thetable\ (continuación)}} \\
 \toprule
 \textbf{Grupo} & \textbf{Variables} \\
 \midrule
@@ -833,7 +830,7 @@ con información sobre la variabilidad de la gestión clínica dentro de cada
 establecimiento.
 
 
-\subsubsection{Reducción dimensional de la casuística clínica}
+\paragraph{Reducción dimensional de la casuística clínica}
 \label{sec:pca}
 
 La casuística clínica de cada hospital se resume mediante tres vectores de
@@ -869,7 +866,7 @@ actividad clínica. La Sección~\ref{sec:sensibilidad-composicional} define el
 análisis que evalúa empíricamente la magnitud de este efecto sobre los
 resultados del trabajo.
 
-\subsubsection{Análisis de componentes principales}
+\paragraph{Análisis de componentes principales}
 \label{sec:pca-detalle}
 
 Sobre la matriz concatenada de casuística, previa estandarización de las
@@ -941,7 +938,7 @@ clustering sin alterar la partición.
 \end{tabular}
 \par\smallskip
 \begin{minipage}{\textwidth}
-\footnotesize\raggedright
+\normalsize\raggedright
 \textit{Nota.} CH corresponde al índice de Calinski--Harabasz (un valor mayor indica mejor separación entre grupos); DB corresponde al índice de Davies--Bouldin (un valor menor indica grupos más compactos y separados).
 \end{minipage}
 \end{table}
@@ -952,7 +949,7 @@ tres variables originales con mayor magnitud de carga y su signo, lo que
 permite sostener empíricamente su interpretación clínica en lugar de
 describirla solo en términos generales.
 
-{\footnotesize
+{
 \setstretch{1.0}
 \setlength{\LTleft}{0pt}
 \setlength{\LTright}{\fill}
@@ -963,7 +960,7 @@ describirla solo en términos generales.
 \textbf{Componente} & \textbf{Carga 1} & \textbf{Carga 2} & \textbf{Carga 3} \\
 \midrule
 \endfirsthead
-\multicolumn{4}{l}{\footnotesize\textit{Tabla~\thetable\ (continuación)}} \\
+\multicolumn{4}{l}{\textit{Tabla~\thetable\ (continuación)}} \\
 \toprule
 \textbf{Componente} & \textbf{Carga 1} & \textbf{Carga 2} & \textbf{Carga 3} \\
 \midrule
@@ -996,7 +993,7 @@ cargas completas de las 8 componentes sobre las 63 variables originales se
 reportan en el archivo \texttt{reports/tables/reduccion\_dimensional.csv} del
 repositorio del proyecto.
 
-\subsubsection{Matriz final de variables}
+\paragraph{Matriz final de variables}
 \label{sec:matriz-final}
 La integración de los cuatro grupos de
 variables institucionales directas junto con las 8 componentes principales de
@@ -1080,7 +1077,7 @@ configuraciones produjeron la misma partición de los 65 hospitales
 (ARI $= 1{,}00$), por lo que la corrección mejora la coherencia del
 preprocesamiento sin alterar los perfiles funcionales reportados.
 
-\subsubsection{Diagnóstico y sensibilidad de bloques de variables}
+\paragraph{Diagnóstico y sensibilidad de bloques de variables}
 \label{sec:bloques-variables}
 
 Dado que la distancia euclidiana acumula la contribución de cada variable, se
@@ -1374,7 +1371,7 @@ Secciones~\ref{sec:sensibilidad-analisis}, \ref{sec:bootstrap} y
 \ref{sec:permutacion-circularidad}, respectivamente.
 
 
-\subsubsection{Prueba de permutación sobre el flujo completo}
+\paragraph{Prueba de permutación sobre el flujo completo}
 \label{sec:permutacion-circularidad}
 
 Para cuantificar, en lugar de solo señalar, cuánta de la significancia
@@ -1478,7 +1475,7 @@ la partición empírica, y regresión logística con penalización LASSO, que op
 sobre la clasificación administrativa del MINSAL como referencia externa. Ambas
 se aplican después de obtenida la partición para no sesgar el agrupamiento.
 
-\subsubsection{Discriminación mediante Kruskal-Wallis}
+\paragraph{Discriminación mediante Kruskal-Wallis}
 \label{sec:kruskal-seleccion}
 
 La prueba de Kruskal-Wallis evalúa si las distribuciones de cada variable difieren
@@ -1491,7 +1488,7 @@ real de la diferencia entre grupos, con corrección de Benjamini-Hochberg sobre
 los $p$-valores, y permite construir la narrativa funcional de cada perfil.
 
 
-\subsubsection{Regresión logística con penalización LASSO}
+\paragraph{Regresión logística con penalización LASSO}
 \label{sec:lasso}
 
 La penalización $L_1$ se aplica sobre un modelo de regresión logística usando
@@ -1552,7 +1549,7 @@ concordancia entre particiones, no de homogeneidad interna relativa. Para
 evaluar directamente la hipótesis de trabajo, que sí formula una comparación
 de homogeneidad, se requiere una comparación distinta a la sola concordancia.
 
-\subsubsection{Comparación directa de homogeneidad interna}
+\paragraph{Comparación directa de homogeneidad interna}
 \label{sec:comparacion-homogeneidad}
 
 Para contrastar la hipótesis de que la segmentación funcional presenta
@@ -1620,7 +1617,7 @@ información descriptiva sobre la compactación de las particiones en el espacio
 completo, pero no constituye una prueba confirmatoria porque Ward se ajustó en
 ese mismo espacio.
 
-\subsubsection{Validación cruzada por bloques de variables}
+\paragraph{Validación cruzada por bloques de variables}
 \label{sec:comparacion-homogeneidad-cruzada}
 
 Para evitar esa reutilización, se añade una evaluación cruzada por bloques de
