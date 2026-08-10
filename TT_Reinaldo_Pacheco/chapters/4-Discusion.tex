@@ -190,7 +190,7 @@ demográfico-obstétrica.
 del bloque demográfico-obstétrico. La concordancia se calcula respecto de la
 partición base.}
 \label{tab:sensibilidad-bloques}
-\small
+
 \begin{tabular}{l c c c c c}
 \toprule
 \textbf{Escenario} & \textbf{Variables} & \textbf{Silhouette} &
@@ -203,7 +203,7 @@ Sin demográfico-obstétrico & 28 & 0,238 & 1,343 & 0,571 & 0,599 \\
 \end{tabular}
 \par\smallskip
 \begin{minipage}{\textwidth}
-\footnotesize\raggedright
+\normalsize\raggedright
 \textit{Nota.} DB: índice de Davies--Bouldin; un valor menor indica grupos más
 compactos y separados. La exclusión afecta solo las siete variables directas,
 mientras que las componentes PCA de casuística se conservan porque mezclan múltiples
@@ -427,7 +427,7 @@ subclústeres con al menos cuatro hospitales.
 \centering
 \caption{Búsqueda de subclústeres Ward en el núcleo generalista (Nivel~2, $n=54$). La solución suplementaria reportada es $K_{sub}=9$: conserva siete grupos con al menos cuatro hospitales y no introduce pares, aunque mantiene dos grupos unitarios.}
 \label{tab:metricas-nivel2}
-\small
+
 \begin{tabular}{c c c c c c l}
 \toprule
 \textbf{$K_{sub}$} & \textbf{Silhouette} & \textbf{Davies--Bouldin} & \textbf{Unitarios} & \textbf{Pares} & \textbf{$n\geq4$} & \textbf{Tamaños} \\
@@ -577,7 +577,7 @@ Solo \texttt{cv\_estancia} y \texttt{pabellones\_promedio} no alcanzan significa
 \centering
 \caption{Resultados de la prueba de Kruskal-Wallis en el Nivel~1 con corrección Benjamini-Hochberg y tamaño de efecto $\varepsilon^2$ (ordenados de forma descendente por $\varepsilon^2$; $K=4$, $n=65$).}
 \label{tab:kruskal-nivel1}
-\small
+
 \begin{tabular}{l c c c c c}
 \toprule
 \textbf{Variable} & \textbf{$H$} & \textbf{$p$-valor} &
@@ -681,7 +681,7 @@ Normal multivariada con covarianza preservada & 23 & 26 & 28 & 0,1198 \\
 \end{tabular}
 \par\smallskip
 \begin{minipage}{\textwidth}
-\footnotesize\raggedright
+\normalsize\raggedright
 \textit{Nota.} Ambas nulas usan 500 réplicas. El valor observado fue 26. En la
 segunda nula, la covarianza se preserva en esperanza, con un error relativo mediano
 entre la covarianza muestral simulada y la observada de 0,308.
@@ -696,7 +696,7 @@ En consecuencia, la subtipología exploratoria diferencia principalmente gradien
 \centering
 \caption{Seis variables con mayor tamaño de efecto en la prueba de Kruskal--Wallis del Nivel~2, con corrección Benjamini--Hochberg (seis primeras de 24 variables significativas de 28 evaluadas; $K_{sub}=9$, $n=54$).}
 \label{tab:kruskal-nivel2}
-\small
+
 \begin{tabular}{l c c c c}
 \toprule
 \textbf{Variable} & \textbf{$H$} & \textbf{$p$-valor} & \textbf{$p_{\text{BH}}$} & \textbf{$\varepsilon^2$} \\
@@ -711,7 +711,7 @@ tasa\_prematurez & 33,881 & $4{,}2686 \times 10^{-5}$ & 0,00019920 & 0,57514 \\
 \end{tabular}
 \par\smallskip
 \begin{minipage}{\textwidth}
-\footnotesize\raggedright
+\normalsize\raggedright
 \textit{Nota.} Resultados ordenados de forma descendente por $\varepsilon^2$. La prueba caracteriza descriptivamente una partición exploratoria del Nivel~2 y no valida de forma independiente los subclústeres.
 \end{minipage}
 \end{table}
@@ -870,7 +870,7 @@ MINSAL & 0,944 & $-4{,}68$ & 0,003 \\
 \end{tabular}
 \par\smallskip
 \begin{minipage}{\textwidth}
-\footnotesize\raggedright
+\normalsize\raggedright
 \textit{Nota metodológica.} La distribución nula de WSS/TSS para MINSAL es marcadamente asimétrica (sesgo positivo): la mayor parte de las 2.000 permutaciones produce dispersiones intragrupo elevadas, con una cola derecha extendida. Esta asimetría es esperable en particiones muy desbalanceadas (grupos de 55 y 10 hospitales), donde la asignación aleatoria rara vez genera subconjuntos tan compactos como los observados. El $z$-score de $-4{,}68$ se calcula respecto de la media y desviación estándar de la distribución nula y no presupone normalidad, mientras que el $p$-valor empírico de $0{,}003$ indica que aproximadamente 6 de las 2.000 reasignaciones alcanzaron una dispersión igual o menor que la observada (WSS/TSS $= 0{,}944$). Este resultado confirma que la clasificación MINSAL presenta una compactación estadísticamente superior a la esperable por azar bajo sus propios tamaños de grupo, aunque notoriamente menor que la de las soluciones Ward.
 \end{minipage}
 \end{table}
@@ -911,7 +911,7 @@ bloque retenido. La diferencia es $\mathrm{WSS/TSS}_{\mathrm{MINSAL}}-
 \mathrm{WSS/TSS}_{\mathrm{Ward}}$; valores positivos favorecen menor dispersión
 para Ward.}
 \label{tab:homogeneidad-cruzada}
-\small
+
 \begin{tabular}{l c c c c}
 \toprule
 \textbf{Bloque de agrupamiento} & \textbf{$K$ Ward} &
@@ -931,7 +931,7 @@ Casuística $\rightarrow$ directas & 2 & 0,740 & 0,940 &
 \end{tabular}
 \par\smallskip
 \begin{minipage}{\textwidth}
-\footnotesize\raggedright
+\normalsize\raggedright
 \textit{Nota.} Los intervalos se obtuvieron mediante 5.000 remuestreos de los
 65 hospitales. La evaluación cruzada por bloques no es independiente en sentido
 temporal: ambos bloques derivan de los mismos establecimientos y período.
@@ -1181,7 +1181,7 @@ La Tabla~\ref{tab:outliers} presenta los nueve hospitales marcados por al menos 
 \centering
 \caption{Hospitales marcados por al menos un criterio de detección. Los establecimientos en negrita cumplen dos o más criterios.}
 \label{tab:outliers}
-\footnotesize
+
 \renewcommand{\arraystretch}{1.15}
 \begin{tabular}{p{5.4cm} c c p{5.3cm}}
 \toprule
@@ -1266,7 +1266,7 @@ La Tabla~\ref{tab:mstknn-sensibilidad} presenta el comportamiento de la solució
 \centering
 \caption{Resultados del análisis de sensibilidad con MST-kNN en modo mutuo.}
 \label{tab:mstknn-sensibilidad}
-\small
+
 \begin{tabular}{c c c c c l}
 \toprule
 \textbf{$k$} & \textbf{$K$ total} & \textbf{Grupos $n\geq3$} & \textbf{Pares} & \textbf{Unitarios} & \textbf{Tamaños de grupos $n\geq3$} \\
