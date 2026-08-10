@@ -80,7 +80,9 @@
 \RequirePackage{multirow}	% Multiples filas en Tablas
 \RequirePackage{array}
 \RequirePackage{caption}
-\captionsetup[table]{position=top,belowskip=4pt,aboveskip=4pt}
+\captionsetup{justification=centering, singlelinecheck=false}       
+\captionsetup[table]{position=top, belowskip=4pt, aboveskip=4pt,
+              justification=centering, singlelinecheck=false}
 \usepackage[table]{xcolor} % Agrega el paquete colortbl
 \RequirePackage{longtable}	% Para cortar tablas grandes
 \RequirePackage{lscape}
