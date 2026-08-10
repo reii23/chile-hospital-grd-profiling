@@ -337,7 +337,12 @@
 \titlespacing*{\section} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 \titlespacing*{\subsection} {0pt}{6.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 \titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-\titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
+\titleformat{\paragraph}
+  {\itshape\fontsize{10}{12}\selectfont}
+  {}
+  {0pt}
+  {}
+\titlespacing*{\paragraph}{0pt}{\parskip}{0pt}
 \titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
 
 % Se agrega la palabra 'Figura' al índice de figuras
