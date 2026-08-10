@@ -425,7 +425,7 @@ subclústeres con al menos cuatro hospitales.
 
 \begin{table}[htbp]
 \centering
-\caption{Búsqueda de subclústeres Ward en el núcleo generalista (Nivel~2, $n=54$). La solución suplementaria reportada es $K_{sub}=9$: conserva siete grupos con al menos cuatro hospitales y no introduce pares, aunque mantiene dos grupos unitarios.}
+\caption{Búsqueda de subclústeres Ward en el núcleo generalista (Nivel~2, $n=54$).}
 \label{tab:metricas-nivel2}
 
 \begin{tabular}{c c c c c c l}
@@ -454,7 +454,7 @@ $9$.
 
 \begin{table}[htbp]
 \centering
-\caption{Estabilidad por submuestreo del Nivel~2 (100 réplicas del 80\,\% del núcleo generalista). Los intervalos corresponden a los percentiles 2,5 y 97,5.}
+\caption{Estabilidad de la partición Ward por submuestreo, Nivel~2 (100 réplicas).}
 \label{tab:estabilidad-nivel2}
 \begin{tabular}{c c c c}
 \toprule
@@ -489,7 +489,7 @@ Siguiendo el procedimiento descrito en la Sección~\ref{sec:bootstrap}, se ejecu
 
 \begin{table}[htbp]
 \centering
-\caption{Intervalos percentilares empíricos del 95\,\% (percentiles 2{,}5 y 97{,}5) sobre 100 submuestras del 80\,\% de los hospitales.}
+\caption{Estabilidad global de la partición Ward $K=4$ por submuestreo (100 réplicas del 80\,\%).}
 \label{tab:estabilidad-global}
 \begin{tabular}{l c c c}
 \toprule
@@ -575,7 +575,7 @@ Solo \texttt{cv\_estancia} y \texttt{pabellones\_promedio} no alcanzan significa
 
 \begin{table}[htbp]
 \centering
-\caption{Resultados de la prueba de Kruskal-Wallis en el Nivel~1 con corrección Benjamini-Hochberg y tamaño de efecto $\varepsilon^2$ (ordenados de forma descendente por $\varepsilon^2$; $K=4$, $n=65$).}
+\caption{Prueba de Kruskal-Wallis con corrección Benjamini-Hochberg, Nivel~1 ($K=4$, $n=65$).}
 \label{tab:kruskal-nivel1}
 
 \begin{tabular}{l c c c c c}
@@ -694,7 +694,7 @@ En consecuencia, la subtipología exploratoria diferencia principalmente gradien
 
 \begin{table}[htbp]
 \centering
-\caption{Seis variables con mayor tamaño de efecto en la prueba de Kruskal--Wallis del Nivel~2, con corrección Benjamini--Hochberg (seis primeras de 24 variables significativas de 28 evaluadas; $K_{sub}=9$, $n=54$).}
+\caption{Variables con mayor tamaño de efecto, Kruskal--Wallis con corrección BH, Nivel~2 ($K_{sub}=9$, $n=54$).}
 \label{tab:kruskal-nivel2}
 
 \begin{tabular}{l c c c c}
@@ -856,7 +856,7 @@ MINSAL. La Tabla~\ref{tab:permutacion-homogeneidad} resume los resultados.
 
 \begin{table}[htbp]
 \centering
-\caption{Prueba de permutación de la dispersión intragrupo normalizada, con 2.000 reasignaciones y tamaños de grupo preservados.}
+\caption{Prueba de permutación de la dispersión intragrupo normalizada (2.000 reasignaciones).}
 \label{tab:permutacion-homogeneidad}
 \begin{tabular}{l c c c}
 \toprule
@@ -1025,7 +1025,7 @@ muestra completa.
 
 \begin{table}[htbp]
 \centering
-\caption{Variables retenidas por LASSO, frecuencia de selección en validación cruzada de cinco pliegues y coeficiente del modelo final.}
+\caption{Variables retenidas por LASSO: frecuencia de selección y coeficiente del modelo final.}
 \label{tab:lasso-frecuencia}
 \begin{tabular}{l c c}
 \toprule
@@ -1071,7 +1071,7 @@ presenta los resultados por pliegue.
 
 \begin{table}[htbp]
 \centering
-\caption{Desempeño predictivo fuera de muestra del modelo LASSO mediante validación cruzada estratificada de cinco pliegues.}
+\caption{Desempeño fuera de muestra del modelo LASSO (validación cruzada estratificada, 5 pliegues).}
 \label{tab:lasso-desempeno}
 \begin{tabular}{c c c c}
 \toprule
@@ -1179,8 +1179,13 @@ La Tabla~\ref{tab:outliers} presenta los nueve hospitales marcados por al menos 
 
 \begin{table}[htbp]
 \centering
-\caption{Hospitales marcados por al menos un criterio de detección. Los establecimientos en negrita cumplen dos o más criterios.}
+\caption{Hospitales marcados por al menos un criterio de detección de atipicidad.}
 \label{tab:outliers}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\normalsize\raggedright
+\textit{Nota.} Los establecimientos en negrita cumplen dos o más criterios de detección.
+\end{minipage}
 
 \renewcommand{\arraystretch}{1.15}
 \begin{tabular}{p{5.4cm} c c p{5.3cm}}
@@ -1243,7 +1248,7 @@ La Figura~\ref{fig:outliers-pca} presenta una proyección bidimensional mediante
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{img/atipicos_pca.png}
-\caption{Proyección PCA de los establecimientos según la partición Ward $K=4$. PC1 y PC2 explican el 32{,}9\,\% y el 19{,}0\,\% de la varianza, respectivamente. Los círculos rojos corresponden a hospitales marcados por al menos un criterio de detección de atipicidad. La posición de San Borja--Arriarán y Gustavo Fricke en esta proyección bidimensional no resume todas las dimensiones empleadas en su criterio de distancia al centroide.}
+\caption{Proyección PCA de los establecimientos, partición Ward $K=4$. Los círculos rojos indican hospitales atípicos.}
 \label{fig:outliers-pca}
 \end{figure}
 
@@ -1344,7 +1349,7 @@ La solución sin pandemia presenta un Silhouette de $0{,}356$ y tamaños de grup
 
 \begin{table}[htbp]
 \centering
-\caption{Tabla de contingencia entre la partición Ward $K=4$ del período completo y la obtenida al excluir 2020--2021.}
+\caption{Contingencia entre la partición Ward $K=4$ (período completo) y la solución sin 2020--2021.}
 \label{tab:contingencia-temporal}
 \begin{tabular}{c c c c c}
 \toprule
@@ -1382,7 +1387,7 @@ La partición obtenida mediante CLR+PCA reproduce exactamente la asignación War
 
 \begin{table}[htbp]
 \centering
-\caption{Tabla de contingencia entre la partición Ward $K=4$ con PCA convencional y la partición obtenida con CLR+PCA.}
+\caption{Contingencia entre la partición Ward con PCA convencional y con CLR+PCA.}
 \label{tab:contingencia-clr}
 \begin{tabular}{c c c c c}
 \toprule
