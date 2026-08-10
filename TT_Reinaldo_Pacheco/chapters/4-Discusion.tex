@@ -157,8 +157,7 @@ frontera robusta frente a especificaciones alternativas del bloque.
 
 \begin{table}[htbp]
 \centering
-\caption{Contribución de los macro-bloques a la suma de distancias euclidianas
-cuadradas en la matriz preprocesada.}
+\caption{Contribución de los macro-bloques a la distancia euclidiana cuadrada en la matriz preprocesada.}
 \label{tab:contribucion-bloques}
 \begin{tabular}{l c c}
 \toprule
@@ -186,9 +185,7 @@ demográfico-obstétrica.
 
 \begin{table}[htbp]
 \centering
-\caption{Sensibilidad Ward $K=4$ a la ponderación por bloques y a la exclusión
-del bloque demográfico-obstétrico. La concordancia se calcula respecto de la
-partición base.}
+\caption{Sensibilidad de Ward $K=4$ a la ponderación por bloques y a la exclusión del bloque demográfico-obstétrico.}
 \label{tab:sensibilidad-bloques}
 
 \begin{tabular}{l c c c c c}
@@ -294,11 +291,7 @@ respecto del núcleo generalista, pero no equivale a una validación externa.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{img/dendrograma_ward_nivel1.png}
-\caption{Dendrograma de agrupamiento jerárquico global del Nivel 1 mediante
-Ward aglomerativo. Los colores de las ramas identifican los cuatro clústeres de
-la partición reportada ($K=4$). Las ramas grises corresponden a fusiones entre
-clústeres. Las líneas discontinuas se ubican entre las alturas de fusión que
-delimitan los cortes $K=2$, $K=3$ y $K=4$.}
+\caption{Dendrograma Ward del Nivel~1, partición en cuatro clústeres ($K=4$).}
 \label{fig:dendrograma-global}
 \end{figure}
 
@@ -398,9 +391,7 @@ adicional de validez del clustering.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{img/pca_particiones_nivel1.png}
-\caption{Proyecciones bidimensionales PCA de la matriz institucional para las
-soluciones Ward con $K=2$, $K=3$ y $K=4$. Los valores de Silhouette mostrados
-corresponden a cada partición.}
+\caption{Proyecciones PCA de la matriz institucional para las soluciones Ward con $K=2$, $K=3$ y $K=4$.}
 \label{fig:pca-nivel1}
 \end{figure}
 
@@ -669,7 +660,7 @@ independiente de los clústeres.
 
 \begin{table}[htbp]
 \centering
-\caption{Nulas del flujo Ward $K=4$ y Kruskal--Wallis/BH: número de variables significativas de 28 evaluadas.}
+\caption{Nulas del flujo Ward $K=4$ y Kruskal--Wallis/BH, variables significativas de 28 evaluadas.}
 \label{tab:nulas-circularidad}
 \begin{tabular}{l c c c c}
 \toprule
@@ -829,7 +820,7 @@ Ambas particiones se evalúan sobre la misma matriz y con las mismas métricas.
 
 \begin{table}[htbp]
 \centering
-\caption{Comparación de homogeneidad interna controlada por número de grupos: Ward $K=2$ y MINSAL ($K=2$).}
+\caption{Comparación de homogeneidad interna controlada por número de grupos entre Ward $K=2$ y MINSAL.}
 \label{tab:homogeneidad-controlada}
 \begin{tabular}{l c c c c c}
 \toprule
@@ -905,11 +896,7 @@ conserva menor dispersión en el bloque retenido.
 
 \begin{table}[htbp]
 \centering
-\caption{Validación cruzada de homogeneidad por bloques de variables. Ward se
-ajusta solo en el bloque de agrupamiento y ambas particiones se evalúan en el
-bloque retenido. La diferencia es $\mathrm{WSS/TSS}_{\mathrm{MINSAL}}-
-\mathrm{WSS/TSS}_{\mathrm{Ward}}$; valores positivos favorecen menor dispersión
-para Ward.}
+\caption{Validación cruzada de homogeneidad interna por bloques de variables (Ward $K=4$ y $K=2$ vs.~MINSAL).}
 \label{tab:homogeneidad-cruzada}
 
 \begin{tabular}{l c c c c}
@@ -932,7 +919,7 @@ Casuística $\rightarrow$ directas & 2 & 0,740 & 0,940 &
 \par\smallskip
 \begin{minipage}{\textwidth}
 \normalsize\raggedright
-\textit{Nota.} Los intervalos se obtuvieron mediante 5.000 remuestreos de los
+\textit{Nota.} Ward se ajusta solo en el bloque de agrupamiento, ambas particiones se evalúan en el bloque retenido. La diferencia reportada es $\mathrm{WSS/TSS}_{\mathrm{MINSAL}}-\mathrm{WSS/TSS}_{\mathrm{Ward}}$; valores positivos favorecen menor dispersión para Ward. Los intervalos se obtuvieron mediante 5.000 remuestreos de los
 65 hospitales. La evaluación cruzada por bloques no es independiente en sentido
 temporal: ambos bloques derivan de los mismos establecimientos y período.
 \end{minipage}
@@ -1025,7 +1012,7 @@ muestra completa.
 
 \begin{table}[htbp]
 \centering
-\caption{Variables retenidas por LASSO: frecuencia de selección y coeficiente del modelo final.}
+\caption{Variables retenidas por LASSO, frecuencia de selección y coeficiente del modelo final.}
 \label{tab:lasso-frecuencia}
 \begin{tabular}{l c c}
 \toprule
