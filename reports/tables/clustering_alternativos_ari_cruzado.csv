@@ -1,704 +1,704 @@
 metodo_1,metodo_2,ARI
-hdbscan_min_cluster_size=3,hdbscan_min_cluster_size=6,1.0
-hdbscan_min_cluster_size=3,hdbscan_min_cluster_size=5,1.0
-hdbscan_min_cluster_size=6,"leiden_k_nn=20, res=0.5",1.0
-hdbscan_min_cluster_size=8,"leiden_k_nn=15, res=0.5",1.0
-hdbscan_min_cluster_size=8,"leiden_k_nn=10, res=0.5",1.0
-hdbscan_min_cluster_size=8,"leiden_k_nn=20, res=0.5",1.0
-"leiden_k_nn=15, res=0.5","leiden_k_nn=20, res=0.5",1.0
-hdbscan_min_cluster_size=4,hdbscan_min_cluster_size=6,1.0
-hdbscan_min_cluster_size=4,hdbscan_min_cluster_size=8,1.0
-kmeans_K=3,gmm_K=3,1.0
-hdbscan_min_cluster_size=6,hdbscan_min_cluster_size=8,1.0
-hdbscan_min_cluster_size=5,hdbscan_min_cluster_size=6,1.0
-hdbscan_min_cluster_size=5,hdbscan_min_cluster_size=8,1.0
-hdbscan_min_cluster_size=5,"leiden_k_nn=10, res=0.5",1.0
-hdbscan_min_cluster_size=6,"leiden_k_nn=10, res=0.5",1.0
-hdbscan_min_cluster_size=6,"leiden_k_nn=15, res=0.5",1.0
-hdbscan_min_cluster_size=5,"leiden_k_nn=15, res=0.5",1.0
-hdbscan_min_cluster_size=5,"leiden_k_nn=20, res=0.5",1.0
-hdbscan_min_cluster_size=4,"leiden_k_nn=15, res=0.5",1.0
-hdbscan_min_cluster_size=3,hdbscan_min_cluster_size=4,1.0
-hdbscan_min_cluster_size=4,"leiden_k_nn=20, res=0.5",1.0
-hdbscan_min_cluster_size=4,hdbscan_min_cluster_size=5,1.0
-hdbscan_min_cluster_size=3,hdbscan_min_cluster_size=8,1.0
 kmeans_K=2,aggl_K=2,1.0
-hdbscan_min_cluster_size=3,"leiden_k_nn=20, res=0.5",1.0
-hdbscan_min_cluster_size=4,"leiden_k_nn=10, res=0.5",1.0
 "leiden_k_nn=10, res=0.5","leiden_k_nn=15, res=0.5",1.0
 "leiden_k_nn=10, res=0.5","leiden_k_nn=20, res=0.5",1.0
+"leiden_k_nn=15, res=0.5","leiden_k_nn=20, res=0.5",1.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=15, res=0.5",1.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=20, res=0.5",1.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=10, res=0.5",1.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=15, res=0.5",1.0
+hdbscan_min_cluster_size=6,hdbscan_min_cluster_size=8,1.0
+hdbscan_min_cluster_size=5,"leiden_k_nn=15, res=0.5",1.0
+hdbscan_min_cluster_size=5,"leiden_k_nn=20, res=0.5",1.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=20, res=0.5",1.0
+hdbscan_min_cluster_size=5,"leiden_k_nn=10, res=0.5",1.0
+hdbscan_min_cluster_size=5,hdbscan_min_cluster_size=8,1.0
+hdbscan_min_cluster_size=5,hdbscan_min_cluster_size=6,1.0
+hdbscan_min_cluster_size=3,hdbscan_min_cluster_size=6,1.0
+hdbscan_min_cluster_size=3,hdbscan_min_cluster_size=5,1.0
+hdbscan_min_cluster_size=3,hdbscan_min_cluster_size=4,1.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=10, res=0.5",1.0
+hdbscan_min_cluster_size=4,"leiden_k_nn=20, res=0.5",1.0
 hdbscan_min_cluster_size=3,"leiden_k_nn=10, res=0.5",1.0
 hdbscan_min_cluster_size=3,"leiden_k_nn=15, res=0.5",1.0
+hdbscan_min_cluster_size=4,"leiden_k_nn=15, res=0.5",1.0
+hdbscan_min_cluster_size=4,"leiden_k_nn=10, res=0.5",1.0
+hdbscan_min_cluster_size=3,"leiden_k_nn=20, res=0.5",1.0
+hdbscan_min_cluster_size=3,hdbscan_min_cluster_size=8,1.0
+hdbscan_min_cluster_size=4,hdbscan_min_cluster_size=8,1.0
+hdbscan_min_cluster_size=4,hdbscan_min_cluster_size=6,1.0
+hdbscan_min_cluster_size=4,hdbscan_min_cluster_size=5,1.0
 aggl_K=5,aggl_K=6,0.9980338127490228
 aggl_K=6,aggl_K=7,0.9940945161336115
 aggl_K=5,aggl_K=7,0.9921284202818064
-gmm_K=4,gmm_K=5,0.9843070388212172
+kmeans_K=3,kmeans_K=4,0.9845884991675038
 aggl_K=3,aggl_K=4,0.9828542412672034
-gmm_K=5,gmm_K=6,0.9614403951789086
-aggl_K=7,aggl_K=8,0.9553619970355788
-aggl_K=6,aggl_K=8,0.9494698333762039
-aggl_K=5,aggl_K=8,0.9475088612127434
-gmm_K=4,gmm_K=6,0.9457802431547557
 kmeans_K=4,gmm_K=3,0.9316684151682332
-kmeans_K=3,kmeans_K=4,0.9316684151682332
+kmeans_K=3,gmm_K=3,0.9312307995828754
+kmeans_K=3,aggl_K=3,0.9312307995828754
 kmeans_K=4,aggl_K=4,0.9264985399294754
 kmeans_K=4,aggl_K=3,0.9204665160154845
-kmeans_K=6,aggl_K=6,0.8818556613195625
-kmeans_K=6,aggl_K=5,0.8799236462782293
-kmeans_K=6,aggl_K=7,0.8758334857304211
+kmeans_K=3,aggl_K=4,0.9148423603232629
+aggl_K=5,gmm_K=5,0.8732104742320671
+aggl_K=6,gmm_K=5,0.873160459831446
+aggl_K=7,gmm_K=5,0.867057531768919
 aggl_K=3,gmm_K=3,0.8618729496765968
-kmeans_K=3,aggl_K=3,0.8618729496765968
+gmm_K=5,gmm_K=6,0.8606977626386862
 aggl_K=4,gmm_K=3,0.8571186772266955
-kmeans_K=3,aggl_K=4,0.8571186772266955
-kmeans_K=6,aggl_K=8,0.8501558173397123
-kmeans_K=5,kmeans_K=7,0.8253429879619365
-kmeans_K=6,gmm_K=4,0.8026259883335568
-kmeans_K=6,gmm_K=5,0.8021387641055638
+gmm_K=4,gmm_K=5,0.8531100081213217
+"leiden_k_nn=15, res=1.0","leiden_k_nn=20, res=1.0",0.8323942836571868
+gmm_K=4,gmm_K=6,0.8161706468026906
 gmm_K=2,gmm_K=3,0.7982642680613828
-kmeans_K=3,gmm_K=2,0.7982642680613828
-aggl_K=7,gmm_K=5,0.7943236506984253
-aggl_K=6,gmm_K=5,0.7886038970247605
-gmm_K=6,gmm_K=7,0.7869729738287867
-aggl_K=5,gmm_K=5,0.7866995325309677
-aggl_K=6,gmm_K=4,0.7851746352137784
-aggl_K=5,gmm_K=4,0.7832691803569307
-aggl_K=7,gmm_K=4,0.7791165037729544
-aggl_K=8,gmm_K=5,0.7741447561426302
-kmeans_K=6,gmm_K=6,0.7662790044384516
-aggl_K=8,gmm_K=4,0.7590517028557539
-aggl_K=7,gmm_K=6,0.7584450471049292
-aggl_K=6,gmm_K=6,0.7527776853335362
-aggl_K=5,gmm_K=6,0.750891337181616
-gmm_K=5,gmm_K=7,0.7503824658902869
-aggl_K=8,gmm_K=6,0.7374649898929012
-gmm_K=4,gmm_K=7,0.73566572501785
+"leiden_k_nn=10, res=1.0","leiden_k_nn=10, res=1.5",0.7809052629905319
+kmeans_K=7,kmeans_K=8,0.7578402544007877
+aggl_K=5,gmm_K=6,0.7425415258710704
+aggl_K=6,gmm_K=6,0.7424005859789125
+aggl_K=6,gmm_K=4,0.7400824549030374
+"leiden_k_nn=15, res=1.5","leiden_k_nn=15, res=2.0",0.7396615600280364
+aggl_K=5,gmm_K=4,0.7381941795902376
+aggl_K=7,gmm_K=6,0.7359529518977175
+kmeans_K=5,kmeans_K=6,0.7345259354944959
+aggl_K=7,gmm_K=4,0.7339288979937595
 kmeans_K=4,gmm_K=2,0.7333051213880277
-"leiden_k_nn=15, res=2.0","leiden_k_nn=20, res=1.5",0.6838599397324969
-"leiden_k_nn=10, res=1.5","leiden_k_nn=10, res=2.0",0.6827983363549109
-kmeans_K=6,gmm_K=7,0.675259588730012
-"leiden_k_nn=15, res=2.0","leiden_k_nn=20, res=2.0",0.6492323473335637
+kmeans_K=3,gmm_K=2,0.730773874200169
+kmeans_K=5,gmm_K=6,0.7218981961727703
+"leiden_k_nn=15, res=2.0","leiden_k_nn=20, res=2.0",0.701851214781798
+"leiden_k_nn=15, res=2.0","leiden_k_nn=20, res=1.5",0.6955466117482323
+kmeans_K=5,kmeans_K=7,0.6752058859486313
+kmeans_K=5,gmm_K=5,0.6702531689194312
+aggl_K=7,aggl_K=8,0.6696670383941373
+aggl_K=6,aggl_K=8,0.664416203335981
+aggl_K=5,aggl_K=8,0.6626725916521187
+"leiden_k_nn=10, res=1.0","leiden_k_nn=20, res=1.0",0.6526494386725865
 aggl_K=3,gmm_K=2,0.648830392551296
+"leiden_k_nn=10, res=1.5","leiden_k_nn=10, res=2.0",0.6469831070124467
 aggl_K=4,gmm_K=2,0.6463138336698613
-aggl_K=7,gmm_K=7,0.6388719345196175
-"leiden_k_nn=15, res=1.0","leiden_k_nn=15, res=1.5",0.6381698044895003
-aggl_K=5,gmm_K=7,0.6358515004447496
-aggl_K=6,gmm_K=7,0.6335597719996877
-"leiden_k_nn=15, res=1.5","leiden_k_nn=15, res=2.0",0.6329568788501027
-aggl_K=8,gmm_K=7,0.6215519709840603
-"leiden_k_nn=10, res=1.5","leiden_k_nn=15, res=2.0",0.61615284411637
-kmeans_K=5,gmm_K=4,0.5920499470883153
-kmeans_K=5,kmeans_K=6,0.591920380962371
-kmeans_K=5,gmm_K=5,0.5819749456160639
+"leiden_k_nn=15, res=1.5","leiden_k_nn=20, res=1.5",0.6287007852656376
+kmeans_K=5,gmm_K=4,0.6282839113716646
+"leiden_k_nn=20, res=1.5","leiden_k_nn=20, res=2.0",0.618323550533391
+kmeans_K=6,kmeans_K=7,0.6086558562630657
+"leiden_k_nn=10, res=2.0","leiden_k_nn=15, res=2.0",0.5812758560454683
+"leiden_k_nn=10, res=2.0","leiden_k_nn=15, res=1.5",0.5765098458217645
 kmeans_K=5,aggl_K=5,0.5750552143556357
 kmeans_K=5,aggl_K=6,0.574792545693234
-kmeans_K=6,kmeans_K=8,0.5707552752732096
+"leiden_k_nn=15, res=1.5","leiden_k_nn=20, res=2.0",0.5724899197814088
 kmeans_K=5,aggl_K=7,0.5679457524986872
-"leiden_k_nn=15, res=1.5","leiden_k_nn=20, res=1.5",0.5634781593085728
-kmeans_K=5,gmm_K=6,0.5554653623951382
-"leiden_k_nn=10, res=1.5","leiden_k_nn=15, res=1.0",0.5490184588338705
-"leiden_k_nn=10, res=1.5","leiden_k_nn=20, res=1.5",0.5338140713311246
-"leiden_k_nn=20, res=1.5","leiden_k_nn=20, res=2.0",0.5268966765587116
-kmeans_K=5,aggl_K=8,0.5260098081871392
-"leiden_k_nn=10, res=1.5","leiden_k_nn=15, res=1.5",0.5228323699421965
-kmeans_K=4,kmeans_K=6,0.5186404960162837
-"leiden_k_nn=10, res=1.0","leiden_k_nn=15, res=1.5",0.5145554857809276
+aggl_K=8,gmm_K=5,0.5669490144974751
+gmm_K=7,gmm_K=8,0.5587278283640755
+"leiden_k_nn=10, res=1.0","leiden_k_nn=15, res=1.0",0.5548778856699569
+"leiden_k_nn=10, res=2.0","leiden_k_nn=20, res=1.5",0.5475247348530543
+"leiden_k_nn=10, res=1.5","leiden_k_nn=15, res=1.5",0.5332502340050443
+kmeans_K=6,gmm_K=6,0.5210345458612066
+kmeans_K=7,"leiden_k_nn=10, res=1.0",0.5159345830048071
+"leiden_k_nn=10, res=1.5","leiden_k_nn=20, res=1.5",0.5125876085428264
+"leiden_k_nn=10, res=1.5","leiden_k_nn=20, res=1.0",0.5116437861355867
+aggl_K=8,gmm_K=6,0.511509817197021
+kmeans_K=6,"leiden_k_nn=20, res=1.0",0.5089789154429007
+kmeans_K=5,kmeans_K=8,0.5083504385666614
 kmeans_K=4,aggl_K=6,0.5009601314742962
 kmeans_K=4,aggl_K=5,0.5006415222765203
-"leiden_k_nn=10, res=2.0","leiden_k_nn=15, res=2.0",0.4994125255477335
-kmeans_K=8,aggl_K=7,0.4976906420227369
+kmeans_K=6,kmeans_K=8,0.4999574755200744
 kmeans_K=4,aggl_K=7,0.4964400465596473
-kmeans_K=6,kmeans_K=7,0.4956658171329995
-"leiden_k_nn=10, res=1.0","leiden_k_nn=10, res=1.5",0.4945963588888083
-"leiden_k_nn=15, res=1.0","leiden_k_nn=15, res=2.0",0.4938730689560508
-kmeans_K=8,aggl_K=6,0.4931401326157115
-kmeans_K=8,aggl_K=5,0.49163026521845393
-"leiden_k_nn=10, res=1.0","leiden_k_nn=15, res=1.0",0.4912393385812658
+kmeans_K=3,aggl_K=5,0.4924518182959252
+kmeans_K=3,aggl_K=6,0.4909629967500998
 aggl_K=4,aggl_K=5,0.49085167820497244
 aggl_K=4,aggl_K=6,0.48939664623892165
-kmeans_K=3,gmm_K=4,0.489049301829386
-gmm_K=3,gmm_K=4,0.489049301829386
+kmeans_K=4,gmm_K=5,0.48752572961449453
+kmeans_K=3,aggl_K=7,0.48650832489273804
+kmeans_K=6,gmm_K=5,0.4852428020610086
 aggl_K=4,aggl_K=7,0.4850439402088871
-kmeans_K=7,gmm_K=5,0.4840507077765932
-kmeans_K=7,aggl_K=6,0.4808399665258938
-"leiden_k_nn=10, res=2.0","leiden_k_nn=15, res=1.0",0.48076839846913855
-kmeans_K=7,aggl_K=7,0.4797829893951863
-kmeans_K=7,aggl_K=5,0.47916869255394046
-kmeans_K=7,gmm_K=4,0.4787804670387083
+kmeans_K=7,gmm_K=6,0.484364806680294
+"leiden_k_nn=10, res=1.5","leiden_k_nn=15, res=2.0",0.48231614265586836
 aggl_K=3,aggl_K=5,0.47826056609601053
-gmm_K=3,gmm_K=5,0.477545552543721
-kmeans_K=3,gmm_K=5,0.477545552543721
+"leiden_k_nn=15, res=1.0","leiden_k_nn=15, res=1.5",0.4777995639583423
+kmeans_K=7,gmm_K=7,0.4777521807780913
+"leiden_k_nn=10, res=1.0","leiden_k_nn=10, res=2.0",0.4771203508535345
 aggl_K=3,aggl_K=6,0.47683106511713064
-kmeans_K=6,aggl_K=4,0.4745374544510563
+kmeans_K=3,gmm_K=5,0.4762507987399527
 aggl_K=3,aggl_K=7,0.47255515674938364
-kmeans_K=4,aggl_K=8,0.4720757399397083
-kmeans_K=3,kmeans_K=6,0.47113403674940413
-kmeans_K=6,gmm_K=3,0.47113403674940413
-kmeans_K=7,"leiden_k_nn=20, res=1.0",0.4694407889257217
-kmeans_K=5,gmm_K=7,0.4639330932744802
-kmeans_K=6,aggl_K=3,0.4620935929331546
-kmeans_K=8,gmm_K=7,0.46178419960710154
-kmeans_K=7,gmm_K=6,0.461769889869839
-kmeans_K=8,gmm_K=5,0.4588926258924025
-kmeans_K=8,aggl_K=8,0.4573297620060292
-kmeans_K=4,gmm_K=4,0.4550470356827906
-kmeans_K=3,aggl_K=6,0.4532567283633098
+gmm_K=3,gmm_K=4,0.47113403674940413
+kmeans_K=6,"leiden_k_nn=15, res=1.0",0.46957591939756776
+kmeans_K=8,"leiden_k_nn=10, res=1.0",0.4691420252328964
+"leiden_k_nn=15, res=1.0","leiden_k_nn=20, res=1.5",0.46066291677496235
+aggl_K=8,gmm_K=4,0.4579014511242226
+kmeans_K=6,gmm_K=7,0.4547791775186953
 aggl_K=6,gmm_K=3,0.4532567283633098
-aggl_K=4,aggl_K=8,0.45298007108032834
 aggl_K=5,gmm_K=3,0.4510393782401502
-kmeans_K=3,aggl_K=5,0.4510393782401502
-kmeans_K=4,gmm_K=5,0.45051525184131547
-gmm_K=3,gmm_K=6,0.4500647437848546
-kmeans_K=3,gmm_K=6,0.4500647437848546
-kmeans_K=8,gmm_K=6,0.4496997623010983
+kmeans_K=6,gmm_K=4,0.45026405231307876
 aggl_K=7,gmm_K=3,0.4490327452150509
-kmeans_K=3,aggl_K=7,0.4490327452150509
-"leiden_k_nn=15, res=1.0","leiden_k_nn=20, res=1.5",0.4480676470935101
-kmeans_K=8,gmm_K=4,0.4472288647210516
-"leiden_k_nn=10, res=2.0","leiden_k_nn=15, res=1.5",0.44347908504991784
-aggl_K=3,aggl_K=8,0.44107649597957094
-"leiden_k_nn=15, res=1.5","leiden_k_nn=20, res=2.0",0.4410374126353296
-kmeans_K=7,aggl_K=8,0.43567360324463916
-"leiden_k_nn=10, res=2.0","leiden_k_nn=20, res=1.5",0.4308630065280307
-kmeans_K=3,aggl_K=8,0.4268364067051651
-aggl_K=8,gmm_K=3,0.4268364067051651
-kmeans_K=4,gmm_K=6,0.42385723551849985
-"leiden_k_nn=10, res=1.5","leiden_k_nn=20, res=2.0",0.42256061848424503
-kmeans_K=7,kmeans_K=8,0.4145603312749464
-kmeans_K=5,kmeans_K=8,0.4126194756579291
+kmeans_K=3,gmm_K=4,0.43953506886394395
+gmm_K=3,gmm_K=5,0.4386092181557187
+kmeans_K=4,gmm_K=4,0.4384139120189977
+"leiden_k_nn=15, res=1.5","leiden_k_nn=20, res=1.0",0.43654458466000967
+aggl_K=4,gmm_K=5,0.4326537999346399
+kmeans_K=8,gmm_K=7,0.432443063265354
+kmeans_K=4,gmm_K=6,0.4320211498009609
+"leiden_k_nn=10, res=1.0","leiden_k_nn=15, res=1.5",0.4298480639071401
+aggl_K=3,gmm_K=5,0.42971237533726736
+kmeans_K=6,aggl_K=6,0.4294857142857143
+kmeans_K=6,aggl_K=5,0.42784660021481025
+"leiden_k_nn=10, res=1.5","leiden_k_nn=15, res=1.0",0.4259735531480902
+kmeans_K=6,aggl_K=7,0.4222531930549532
+"leiden_k_nn=10, res=2.0","leiden_k_nn=20, res=2.0",0.4217458352441351
+kmeans_K=3,gmm_K=6,0.4216719891508815
+kmeans_K=7,aggl_K=8,0.4182178217821782
+kmeans_K=7,gmm_K=5,0.4117952283600212
+"leiden_k_nn=10, res=1.0","leiden_k_nn=20, res=1.5",0.4116207493226844
 kmeans_K=4,kmeans_K=5,0.40764842403981305
-aggl_K=4,gmm_K=5,0.40650785910416876
-aggl_K=3,gmm_K=4,0.4051074014156423
-aggl_K=3,gmm_K=5,0.401354278956347
-kmeans_K=8,gmm_K=8,0.39990791365550993
-aggl_K=4,gmm_K=4,0.3994547209180095
-kmeans_K=7,gmm_K=7,0.3892207530706759
-kmeans_K=4,kmeans_K=7,0.38612031882800574
-aggl_K=4,gmm_K=6,0.3814598272121474
-kmeans_K=2,aggl_K=3,0.37704863479808987
-aggl_K=2,gmm_K=3,0.37704863479808987
-aggl_K=2,aggl_K=3,0.37704863479808987
+gmm_K=6,gmm_K=7,0.4058244724428462
+kmeans_K=8,aggl_K=8,0.40344415687835955
+"leiden_k_nn=20, res=1.0","leiden_k_nn=20, res=1.5",0.400559497382404
+gmm_K=4,gmm_K=7,0.3979384930742791
+kmeans_K=3,kmeans_K=5,0.3977350163870591
+"leiden_k_nn=10, res=1.5","leiden_k_nn=20, res=2.0",0.3923447718611845
+aggl_K=3,gmm_K=4,0.3897700424031586
+"leiden_k_nn=10, res=1.0","leiden_k_nn=15, res=2.0",0.3886989264636555
+kmeans_K=4,kmeans_K=6,0.38815165287715386
+gmm_K=3,gmm_K=6,0.3871395183145671
+kmeans_K=5,aggl_K=8,0.3850594520075823
+aggl_K=4,gmm_K=4,0.3839404638391694
+"leiden_k_nn=15, res=1.0","leiden_k_nn=15, res=2.0",0.3829793625521944
+kmeans_K=7,gmm_K=4,0.38253648767561116
+kmeans_K=6,gmm_K=8,0.381085707160589
+aggl_K=4,gmm_K=6,0.38061524171642214
+kmeans_K=3,kmeans_K=6,0.3802907569336409
+aggl_K=3,gmm_K=6,0.37848329682183496
 kmeans_K=2,gmm_K=3,0.37704863479808987
-kmeans_K=3,aggl_K=2,0.37704863479808987
-kmeans_K=2,kmeans_K=3,0.37704863479808987
-aggl_K=3,gmm_K=6,0.37674004295616853
-"leiden_k_nn=10, res=1.0","leiden_k_nn=20, res=1.0",0.3745636930355404
-kmeans_K=2,aggl_K=4,0.3666674840808586
+aggl_K=2,aggl_K=3,0.37704863479808987
+aggl_K=2,gmm_K=3,0.37704863479808987
+kmeans_K=2,aggl_K=3,0.37704863479808987
+kmeans_K=5,gmm_K=7,0.3762531611023196
+kmeans_K=7,"leiden_k_nn=10, res=1.5",0.37334644633136177
+gmm_K=5,gmm_K=7,0.3702535367018566
+kmeans_K=8,"leiden_k_nn=10, res=2.0",0.3680011209226831
+kmeans_K=7,"leiden_k_nn=10, res=2.0",0.36673259308862693
 aggl_K=2,aggl_K=4,0.3666674840808586
-kmeans_K=3,kmeans_K=5,0.36465337628615924
+kmeans_K=2,aggl_K=4,0.3666674840808586
+"leiden_k_nn=15, res=2.0","leiden_k_nn=20, res=1.0",0.3660152600046969
 kmeans_K=5,gmm_K=3,0.36465337628615924
-"leiden_k_nn=10, res=1.0","leiden_k_nn=10, res=2.0",0.36421476702903366
-"leiden_k_nn=10, res=2.0","leiden_k_nn=20, res=2.0",0.3619268159594309
+aggl_K=8,gmm_K=8,0.36112216474333464
+kmeans_K=8,gmm_K=6,0.35932941109768807
 kmeans_K=5,aggl_K=4,0.35785140408095206
 kmeans_K=5,aggl_K=3,0.35610227771665937
-gmm_K=2,gmm_K=4,0.3539105414595867
-kmeans_K=4,gmm_K=7,0.35384271023976616
-kmeans_K=7,aggl_K=4,0.3512944354155699
-"leiden_k_nn=15, res=1.0","leiden_k_nn=20, res=1.0",0.3503364329186671
-kmeans_K=7,gmm_K=3,0.3481248005626575
-kmeans_K=3,kmeans_K=7,0.3481248005626575
-kmeans_K=4,gmm_K=8,0.3469021207297243
-gmm_K=2,gmm_K=5,0.34486008112426764
-kmeans_K=7,"leiden_k_nn=10, res=1.0",0.3445057559171006
-"leiden_k_nn=20, res=1.0","leiden_k_nn=20, res=1.5",0.34381327829242764
-kmeans_K=5,"leiden_k_nn=20, res=1.0",0.34316105288752796
-kmeans_K=7,aggl_K=3,0.34135207121785394
-kmeans_K=6,gmm_K=2,0.3398323577998491
-"leiden_k_nn=10, res=1.0","leiden_k_nn=20, res=1.5",0.33972205275801776
-kmeans_K=4,aggl_K=2,0.3382046091358453
+kmeans_K=6,"leiden_k_nn=10, res=1.0",0.3538083265957093
+kmeans_K=6,aggl_K=4,0.35149732204596507
+kmeans_K=8,gmm_K=5,0.3511807159263299
+"leiden_k_nn=20, res=1.0",gmm_K=8,0.3501393405611023
+kmeans_K=6,gmm_K=3,0.34999470334667004
+kmeans_K=2,kmeans_K=3,0.3469555395831194
+kmeans_K=3,aggl_K=2,0.3469555395831194
+kmeans_K=6,aggl_K=3,0.3415200580187257
+kmeans_K=6,aggl_K=8,0.34034934497816594
+gmm_K=2,gmm_K=4,0.3398323577998491
+"leiden_k_nn=15, res=1.0",gmm_K=8,0.3397820586596516
 kmeans_K=2,kmeans_K=4,0.3382046091358453
-"leiden_k_nn=15, res=1.5","leiden_k_nn=20, res=1.0",0.32623164014687883
-aggl_K=4,gmm_K=7,0.3234885201595613
-gmm_K=2,gmm_K=6,0.32339288226192153
+kmeans_K=4,aggl_K=2,0.3382046091358453
+"leiden_k_nn=10, res=1.0",gmm_K=8,0.33786416703741773
+kmeans_K=7,aggl_K=6,0.33720614145482003
+aggl_K=5,gmm_K=7,0.3366403851507098
+kmeans_K=7,aggl_K=5,0.3358742545681272
+aggl_K=8,gmm_K=7,0.33404752629528633
+aggl_K=6,gmm_K=7,0.333834541244399
+kmeans_K=7,gmm_K=8,0.33076288988752095
+"leiden_k_nn=15, res=1.0",gmm_K=7,0.330578586797022
+kmeans_K=7,aggl_K=7,0.3286119838760191
+aggl_K=7,gmm_K=7,0.3253803032771553
+kmeans_K=8,gmm_K=4,0.32367864200894836
+"leiden_k_nn=10, res=2.0","leiden_k_nn=20, res=1.0",0.3222418155332362
+kmeans_K=6,"leiden_k_nn=15, res=1.5",0.32139036484960964
 aggl_K=6,gmm_K=2,0.32122990820052555
-"leiden_k_nn=15, res=1.0","leiden_k_nn=20, res=2.0",0.3208936360513575
 aggl_K=5,gmm_K=2,0.31877651688540604
 aggl_K=7,gmm_K=2,0.3179451933611427
-aggl_K=4,gmm_K=8,0.31625521447601884
-gmm_K=3,gmm_K=7,0.3155770574082219
-kmeans_K=3,gmm_K=7,0.3155770574082219
-aggl_K=3,gmm_K=7,0.31389542855664504
-"leiden_k_nn=10, res=1.5","leiden_k_nn=20, res=1.0",0.3130879844016573
-gmm_K=3,gmm_K=8,0.3121177257183525
-kmeans_K=3,gmm_K=8,0.3121177257183525
-"leiden_k_nn=10, res=1.0","leiden_k_nn=15, res=2.0",0.3120717409136605
-aggl_K=3,gmm_K=8,0.3071390844087145
-aggl_K=8,gmm_K=2,0.302573250442631
-gmm_K=7,gmm_K=8,0.30021119868129603
-kmeans_K=8,"leiden_k_nn=10, res=1.0",0.2906980753978137
-"leiden_k_nn=10, res=1.0",gmm_K=8,0.2841117988256542
-kmeans_K=7,gmm_K=8,0.2708656927286577
-kmeans_K=5,"leiden_k_nn=10, res=1.0",0.270106027462851
+kmeans_K=5,"leiden_k_nn=10, res=1.0",0.31563864777739703
+kmeans_K=7,"leiden_k_nn=20, res=1.0",0.3144052192493919
+gmm_K=2,gmm_K=5,0.3141553179740671
+kmeans_K=7,"leiden_k_nn=15, res=1.5",0.31346689970965924
+kmeans_K=8,"leiden_k_nn=15, res=1.0",0.3121913107840763
+"leiden_k_nn=10, res=2.0","leiden_k_nn=15, res=1.0",0.30806171046827996
+"leiden_k_nn=10, res=1.0","leiden_k_nn=20, res=2.0",0.303593999441721
+kmeans_K=7,"leiden_k_nn=15, res=1.0",0.3016797924158966
+kmeans_K=5,"leiden_k_nn=20, res=1.0",0.2967706369738426
+kmeans_K=8,aggl_K=7,0.2950087061568363
+"leiden_k_nn=15, res=1.0","leiden_k_nn=20, res=2.0",0.2941734019482092
+kmeans_K=5,gmm_K=8,0.2940846037417885
+kmeans_K=8,"leiden_k_nn=10, res=1.5",0.2914215826574762
+kmeans_K=8,aggl_K=6,0.29118671580019256
+kmeans_K=8,aggl_K=5,0.2899186616892226
+gmm_K=6,gmm_K=8,0.2858450833180736
+"leiden_k_nn=20, res=1.0","leiden_k_nn=20, res=2.0",0.28503691748626997
+gmm_K=4,gmm_K=8,0.28481870312117047
+kmeans_K=8,"leiden_k_nn=15, res=1.5",0.2845806194918552
+aggl_K=5,gmm_K=8,0.2826979578439052
+"leiden_k_nn=10, res=1.5",gmm_K=8,0.28189018555354994
+aggl_K=6,gmm_K=8,0.2818620780032459
+aggl_K=7,gmm_K=8,0.279342708756937
+kmeans_K=4,aggl_K=8,0.2786979233023315
+aggl_K=4,aggl_K=8,0.27759679238190704
+gmm_K=2,gmm_K=6,0.27468383654413464
+kmeans_K=3,aggl_K=8,0.2726523887973641
+kmeans_K=7,"leiden_k_nn=20, res=1.5",0.27210625028590596
+kmeans_K=8,"leiden_k_nn=20, res=1.0",0.2703910640016244
+gmm_K=5,gmm_K=8,0.2702353750803053
+aggl_K=3,aggl_K=8,0.2694991278345378
+kmeans_K=8,gmm_K=8,0.26901563449710686
+kmeans_K=5,"leiden_k_nn=15, res=1.0",0.26837431665764494
+kmeans_K=5,"leiden_k_nn=15, res=1.5",0.2630970808928325
+"leiden_k_nn=20, res=1.0",gmm_K=7,0.26126069423152143
+kmeans_K=4,gmm_K=7,0.26048190396027365
 kmeans_K=5,gmm_K=2,0.25766782133550387
-"leiden_k_nn=15, res=2.0","leiden_k_nn=20, res=1.0",0.25551007239216794
-"leiden_k_nn=20, res=1.0","leiden_k_nn=20, res=2.0",0.2525546544338104
-"leiden_k_nn=20, res=1.0",gmm_K=8,0.24873718567945155
-"leiden_k_nn=10, res=2.0","leiden_k_nn=20, res=1.0",0.24734473537660356
-kmeans_K=7,gmm_K=2,0.24559786804811834
-kmeans_K=4,kmeans_K=8,0.2447355169981837
-kmeans_K=7,"leiden_k_nn=15, res=1.5",0.23672735618115054
-kmeans_K=8,"leiden_k_nn=15, res=1.0",0.23119250014141943
-kmeans_K=5,"leiden_k_nn=15, res=1.0",0.22789102218245144
-kmeans_K=5,gmm_K=8,0.2219944587278189
-kmeans_K=8,aggl_K=4,0.22118543649643035
-kmeans_K=3,kmeans_K=8,0.21915191877583054
-kmeans_K=8,gmm_K=3,0.21915191877583054
-gmm_K=2,gmm_K=8,0.21879074167278106
-kmeans_K=6,gmm_K=8,0.21738196854201736
-gmm_K=2,gmm_K=7,0.21709941751406853
-aggl_K=7,gmm_K=8,0.21596184526111806
-kmeans_K=8,aggl_K=3,0.21443380348142468
-kmeans_K=7,"leiden_k_nn=15, res=1.0",0.21344303842652912
-kmeans_K=8,"leiden_k_nn=10, res=2.0",0.21208662755063057
-aggl_K=6,gmm_K=8,0.21171509501578278
-kmeans_K=7,"leiden_k_nn=20, res=1.5",0.21155859019632778
-aggl_K=5,gmm_K=8,0.21030403333957928
-kmeans_K=5,"leiden_k_nn=20, res=1.5",0.20866684607488944
-gmm_K=6,gmm_K=8,0.2057815719870116
-"leiden_k_nn=10, res=1.0","leiden_k_nn=20, res=2.0",0.20463472427326443
-kmeans_K=7,"leiden_k_nn=10, res=1.5",0.2040945649524738
-kmeans_K=8,"leiden_k_nn=15, res=1.5",0.1996656935681326
-kmeans_K=5,"leiden_k_nn=10, res=1.5",0.1987178726182703
-aggl_K=8,gmm_K=8,0.19844290900198244
-kmeans_K=8,"leiden_k_nn=10, res=1.5",0.19614295553684855
-kmeans_K=5,"leiden_k_nn=15, res=1.5",0.1954484355163916
-kmeans_K=8,"leiden_k_nn=20, res=1.5",0.19368909741638948
-gmm_K=5,gmm_K=8,0.19263692412176792
-"leiden_k_nn=15, res=1.0",gmm_K=8,0.18851060484859133
-gmm_K=4,gmm_K=8,0.18153679320170776
-kmeans_K=8,"leiden_k_nn=20, res=1.0",0.17661503332230896
-"leiden_k_nn=15, res=1.5",gmm_K=8,0.16676728648474604
-"leiden_k_nn=15, res=1.0",gmm_K=7,0.16642583628350552
-kmeans_K=7,"leiden_k_nn=10, res=2.0",0.16386130914454572
-kmeans_K=8,gmm_K=2,0.15113380030867862
-"leiden_k_nn=10, res=1.0",gmm_K=7,0.14964639830127224
-"leiden_k_nn=10, res=1.5",gmm_K=8,0.14935274038771174
-kmeans_K=5,"leiden_k_nn=10, res=2.0",0.14618801744750462
-"leiden_k_nn=20, res=1.0",gmm_K=7,0.14272769984562722
-"leiden_k_nn=20, res=1.5",gmm_K=8,0.14038913767277977
-aggl_K=2,gmm_K=4,0.13987387573658638
-kmeans_K=2,gmm_K=4,0.13987387573658638
+kmeans_K=3,gmm_K=7,0.2567581228896662
+"leiden_k_nn=10, res=1.0",gmm_K=7,0.2545864113360405
+"leiden_k_nn=15, res=1.5",gmm_K=7,0.2500569288768565
+aggl_K=8,gmm_K=3,0.2484425616745577
+kmeans_K=6,gmm_K=2,0.24699940767528136
+"leiden_k_nn=10, res=2.0",gmm_K=8,0.24611847877703386
+kmeans_K=4,kmeans_K=7,0.24532987714491933
+"leiden_k_nn=15, res=1.5",gmm_K=8,0.24440833631807765
+kmeans_K=8,"leiden_k_nn=20, res=1.5",0.2437377423981685
+kmeans_K=7,"leiden_k_nn=15, res=2.0",0.24275857683380497
+kmeans_K=3,kmeans_K=7,0.24034894214378824
+kmeans_K=4,kmeans_K=8,0.2399926612720307
+kmeans_K=5,"leiden_k_nn=10, res=1.5",0.2391779723302333
+kmeans_K=3,kmeans_K=8,0.23513116180456242
+kmeans_K=4,gmm_K=8,0.23414180115749095
+aggl_K=4,gmm_K=7,0.2340926160003809
+gmm_K=3,gmm_K=7,0.23170147230761245
+kmeans_K=3,gmm_K=8,0.2277065284808227
+aggl_K=3,gmm_K=7,0.22693929135084148
+kmeans_K=5,"leiden_k_nn=10, res=2.0",0.2258969354431455
+kmeans_K=7,gmm_K=3,0.21968929160300724
+kmeans_K=7,aggl_K=4,0.21856895987332425
+kmeans_K=6,"leiden_k_nn=10, res=2.0",0.21707198950472348
+kmeans_K=8,aggl_K=4,0.21679434398707007
+kmeans_K=8,gmm_K=3,0.21486525010973365
+aggl_K=8,"leiden_k_nn=10, res=1.0",0.2134076066077603
+kmeans_K=7,aggl_K=3,0.21182325623610207
+kmeans_K=8,aggl_K=3,0.21015914771278899
+kmeans_K=8,"leiden_k_nn=15, res=2.0",0.20897159231612836
+aggl_K=4,gmm_K=8,0.2078648528377654
+gmm_K=3,gmm_K=8,0.20598468822707533
+kmeans_K=6,"leiden_k_nn=10, res=1.5",0.20546819384075796
+"leiden_k_nn=10, res=1.5",gmm_K=7,0.20270200838834068
+kmeans_K=6,"leiden_k_nn=20, res=1.5",0.2022187562584584
+aggl_K=3,gmm_K=8,0.20127708756439003
+kmeans_K=6,"leiden_k_nn=15, res=2.0",0.19779117708965296
+"leiden_k_nn=10, res=1.0",gmm_K=6,0.18757651248598162
+"leiden_k_nn=10, res=2.0",gmm_K=7,0.18676305298334533
+"leiden_k_nn=15, res=2.0",gmm_K=8,0.18492679887195101
+"leiden_k_nn=20, res=1.5",gmm_K=8,0.17578950932084195
+kmeans_K=5,"leiden_k_nn=20, res=1.5",0.16879617980166178
+aggl_K=8,gmm_K=2,0.16764567669172933
+"leiden_k_nn=20, res=1.5",gmm_K=7,0.1655115955349728
+"leiden_k_nn=15, res=1.0",gmm_K=4,0.16175901646391266
+kmeans_K=5,"leiden_k_nn=15, res=2.0",0.16002868477413154
+gmm_K=2,gmm_K=7,0.15944748978634288
+"leiden_k_nn=10, res=1.0",gmm_K=4,0.15833472059817522
+aggl_K=8,"leiden_k_nn=10, res=2.0",0.15369912300427255
+"leiden_k_nn=15, res=2.0",gmm_K=7,0.1536302383716288
+kmeans_K=7,gmm_K=2,0.15151857926587864
+kmeans_K=7,"leiden_k_nn=20, res=2.0",0.14956753384700983
+kmeans_K=8,gmm_K=2,0.14806696456242568
+"leiden_k_nn=20, res=1.0",gmm_K=6,0.14558071644663345
+"leiden_k_nn=15, res=1.5",gmm_K=4,0.14465133967726543
+aggl_K=8,"leiden_k_nn=20, res=1.0",0.13987363987363988
+gmm_K=2,gmm_K=8,0.13965523072933694
+kmeans_K=8,"leiden_k_nn=20, res=2.0",0.13658594082306538
 aggl_K=2,aggl_K=5,0.13609434264210213
 kmeans_K=2,aggl_K=5,0.13609434264210213
-aggl_K=2,gmm_K=5,0.13584521183464732
-kmeans_K=2,gmm_K=5,0.13584521183464732
+"leiden_k_nn=20, res=1.0",gmm_K=4,0.13561702435203507
 kmeans_K=2,aggl_K=6,0.13559643154278936
 aggl_K=2,aggl_K=6,0.13559643154278936
-kmeans_K=7,"leiden_k_nn=20, res=2.0",0.13488883974718308
-aggl_K=2,aggl_K=7,0.13411106936790765
 kmeans_K=2,aggl_K=7,0.13411106936790765
-kmeans_K=8,"leiden_k_nn=15, res=2.0",0.13391983075235048
-kmeans_K=2,kmeans_K=6,0.13361871949751064
-kmeans_K=6,aggl_K=2,0.13361871949751064
-kmeans_K=5,"leiden_k_nn=15, res=2.0",0.13361746270190392
-"leiden_k_nn=15, res=1.5",gmm_K=7,0.12756769374416432
-kmeans_K=2,gmm_K=6,0.12639539417629023
-aggl_K=2,gmm_K=6,0.12639539417629023
-kmeans_K=7,"leiden_k_nn=15, res=2.0",0.12443790203867637
-aggl_K=2,aggl_K=8,0.12335669140310643
-kmeans_K=2,aggl_K=8,0.12335669140310643
-"leiden_k_nn=20, res=1.5",gmm_K=7,0.1215165650041861
-kmeans_K=5,"leiden_k_nn=20, res=2.0",0.11942653150926458
-"leiden_k_nn=15, res=1.0",gmm_K=4,0.1149234663513803
-"leiden_k_nn=15, res=1.5",gmm_K=4,0.1125991418541152
-"leiden_k_nn=20, res=1.0",gmm_K=4,0.11251809252536824
-"leiden_k_nn=10, res=1.5",gmm_K=7,0.10923535253227408
-"leiden_k_nn=10, res=2.0",gmm_K=8,0.10866782096996186
-kmeans_K=6,"leiden_k_nn=20, res=1.0",0.10599916477700717
-kmeans_K=8,"leiden_k_nn=20, res=2.0",0.10467367612331659
-"leiden_k_nn=15, res=1.0",gmm_K=5,0.09906449315375443
-kmeans_K=2,kmeans_K=5,0.09904241129786281
+aggl_K=2,aggl_K=7,0.13411106936790765
+kmeans_K=2,gmm_K=4,0.13361871949751064
+aggl_K=2,gmm_K=4,0.13361871949751064
+"leiden_k_nn=10, res=1.0",gmm_K=5,0.13224285541280864
+"leiden_k_nn=15, res=1.5",gmm_K=6,0.13179845610999202
+aggl_K=8,"leiden_k_nn=10, res=1.5",0.1305732484076433
+"leiden_k_nn=15, res=1.5",gmm_K=5,0.1283732832457119
+"leiden_k_nn=15, res=1.0",gmm_K=6,0.1259933747817431
+"leiden_k_nn=15, res=1.0",gmm_K=5,0.1239676637153391
+aggl_K=2,gmm_K=5,0.12312516588815126
+kmeans_K=2,gmm_K=5,0.12312516588815126
+aggl_K=8,"leiden_k_nn=15, res=1.0",0.11384399156711174
+kmeans_K=6,"leiden_k_nn=20, res=2.0",0.11341268679979896
+kmeans_K=5,"leiden_k_nn=20, res=2.0",0.10954607487840518
+"leiden_k_nn=10, res=1.5",gmm_K=6,0.10912725676975518
+"leiden_k_nn=10, res=2.0",gmm_K=6,0.10905642704454718
+"leiden_k_nn=20, res=1.0",gmm_K=5,0.10782468298817242
+kmeans_K=2,gmm_K=6,0.10619452986702273
+aggl_K=2,gmm_K=6,0.10619452986702273
+"leiden_k_nn=10, res=1.5",gmm_K=4,0.10317988203284403
+"leiden_k_nn=20, res=2.0",gmm_K=8,0.10059462280854374
+kmeans_K=4,"leiden_k_nn=20, res=1.0",0.10017502656800832
+"leiden_k_nn=10, res=2.0",gmm_K=4,0.0991780753132823
 kmeans_K=5,aggl_K=2,0.09904241129786281
-"leiden_k_nn=10, res=2.0",gmm_K=7,0.09842447089676085
-"leiden_k_nn=10, res=1.0",gmm_K=5,0.09511736582695508
-"leiden_k_nn=15, res=1.5",gmm_K=5,0.09377877153755097
-kmeans_K=2,kmeans_K=7,0.09335128141155447
-kmeans_K=7,aggl_K=2,0.09335128141155447
-"leiden_k_nn=20, res=1.0",gmm_K=6,0.09269781435201432
-"leiden_k_nn=10, res=1.0",gmm_K=4,0.09231583097720883
-"leiden_k_nn=20, res=1.0",gmm_K=5,0.09152457957525623
-"leiden_k_nn=10, res=1.0",gmm_K=6,0.0900831174075445
-aggl_K=2,gmm_K=7,0.08954402695949198
-kmeans_K=2,gmm_K=7,0.08954402695949198
-"leiden_k_nn=15, res=1.0",gmm_K=6,0.08953095439482534
-kmeans_K=4,"leiden_k_nn=20, res=1.0",0.08822078210218523
-kmeans_K=3,"leiden_k_nn=20, res=1.0",0.08737472078772052
-"leiden_k_nn=20, res=1.0",gmm_K=3,0.08737472078772052
-"leiden_k_nn=15, res=2.0",gmm_K=7,0.08703352829722383
-"leiden_k_nn=10, res=1.5",gmm_K=4,0.08557407218075862
-"leiden_k_nn=20, res=2.0",gmm_K=7,0.08493087266682098
-aggl_K=2,gmm_K=8,0.08238162076382367
-kmeans_K=2,gmm_K=8,0.08238162076382367
-"leiden_k_nn=15, res=2.0",gmm_K=8,0.08235787076083395
-"leiden_k_nn=15, res=1.5",gmm_K=6,0.08176558164715436
-aggl_K=3,"leiden_k_nn=20, res=1.0",0.07721562677051519
-"leiden_k_nn=20, res=1.5",gmm_K=4,0.07602487625333164
-"leiden_k_nn=20, res=2.0",gmm_K=8,0.07210490589834075
-"leiden_k_nn=10, res=1.5",gmm_K=5,0.07206293344374289
-kmeans_K=6,"leiden_k_nn=15, res=1.5",0.0717051697888396
-aggl_K=4,"leiden_k_nn=20, res=1.0",0.06902674545222671
-aggl_K=6,"leiden_k_nn=20, res=1.0",0.0679407586166631
-"leiden_k_nn=10, res=2.0",gmm_K=4,0.06718659364568862
-"leiden_k_nn=15, res=2.0",gmm_K=4,0.06679788615331178
-aggl_K=5,"leiden_k_nn=20, res=1.0",0.06654893830541174
-kmeans_K=6,"leiden_k_nn=15, res=1.0",0.06441353966894633
-"leiden_k_nn=20, res=1.0",gmm_K=2,0.06428233418843865
-"leiden_k_nn=10, res=1.5",gmm_K=6,0.06418316699578375
-kmeans_K=6,"leiden_k_nn=20, res=1.5",0.06317650718232737
-kmeans_K=6,"leiden_k_nn=10, res=1.0",0.060572027327718846
-aggl_K=7,"leiden_k_nn=20, res=1.0",0.0599587352228805
-kmeans_K=6,"leiden_k_nn=10, res=2.0",0.05915993711706411
-kmeans_K=6,"leiden_k_nn=10, res=1.5",0.05794548392140512
-"leiden_k_nn=20, res=1.5",gmm_K=5,0.05578794197755548
-kmeans_K=2,kmeans_K=8,0.055590179667277154
-kmeans_K=8,aggl_K=2,0.055590179667277154
-aggl_K=6,"leiden_k_nn=10, res=2.0",0.05253072102118926
-"leiden_k_nn=10, res=2.0",gmm_K=5,0.05225250109334555
-aggl_K=5,"leiden_k_nn=10, res=2.0",0.05197475640263057
-aggl_K=5,"leiden_k_nn=10, res=1.5",0.0501939287376532
-"leiden_k_nn=20, res=1.5",gmm_K=6,0.04929509700568584
-aggl_K=6,"leiden_k_nn=10, res=1.5",0.04871808152483555
-aggl_K=5,"leiden_k_nn=15, res=1.5",0.04637904974699349
-"leiden_k_nn=15, res=2.0",gmm_K=5,0.045119527758445764
-aggl_K=6,"leiden_k_nn=15, res=1.5",0.04499835472194801
-aggl_K=8,"leiden_k_nn=10, res=2.0",0.044605375244443767
-"leiden_k_nn=10, res=1.0",gmm_K=2,0.044001868738428526
-"leiden_k_nn=15, res=1.0",gmm_K=2,0.04387597968236457
-"leiden_k_nn=10, res=2.0",gmm_K=6,0.04320616850611363
-"leiden_k_nn=20, res=2.0",gmm_K=4,0.04237321641491334
-aggl_K=5,"leiden_k_nn=15, res=1.0",0.04235535950666064
-aggl_K=6,"leiden_k_nn=15, res=1.0",0.04133554857177173
-aggl_K=7,"leiden_k_nn=10, res=2.0",0.04107411824268496
-aggl_K=5,"leiden_k_nn=20, res=1.5",0.040373809321621414
-kmeans_K=4,"leiden_k_nn=10, res=1.0",0.03970981140415384
-aggl_K=8,"leiden_k_nn=15, res=1.0",0.03918486267602736
-aggl_K=6,"leiden_k_nn=20, res=1.5",0.03886485981890033
-aggl_K=7,"leiden_k_nn=10, res=1.5",0.037768642347921114
-"leiden_k_nn=15, res=2.0",gmm_K=6,0.03761786772778359
-aggl_K=5,"leiden_k_nn=10, res=1.0",0.03640344615163427
-aggl_K=6,"leiden_k_nn=10, res=1.0",0.03539606310623816
-aggl_K=8,"leiden_k_nn=10, res=1.5",0.0352712760220041
-kmeans_K=4,"leiden_k_nn=15, res=1.0",0.03482814995653934
-kmeans_K=3,"leiden_k_nn=10, res=1.0",0.0345126260648419
-"leiden_k_nn=10, res=1.0",gmm_K=3,0.0345126260648419
-aggl_K=7,"leiden_k_nn=10, res=1.0",0.03444666466813114
-"leiden_k_nn=15, res=1.5",gmm_K=3,0.034444341286788596
-kmeans_K=3,"leiden_k_nn=15, res=1.5",0.034444341286788596
-aggl_K=7,"leiden_k_nn=15, res=1.5",0.03438759997356071
-kmeans_K=6,"leiden_k_nn=15, res=2.0",0.03430674514808226
-aggl_K=8,"leiden_k_nn=15, res=1.5",0.03392783927839278
-kmeans_K=3,"leiden_k_nn=15, res=1.0",0.0333388459111985
-"leiden_k_nn=15, res=1.0",gmm_K=3,0.0333388459111985
-aggl_K=4,"leiden_k_nn=10, res=1.0",0.03267846617240689
-kmeans_K=6,"leiden_k_nn=20, res=2.0",0.03230167965327408
-aggl_K=7,"leiden_k_nn=15, res=1.0",0.031997654496017866
-"leiden_k_nn=20, res=2.0",gmm_K=6,0.03188111850585526
-kmeans_K=4,"leiden_k_nn=15, res=1.5",0.0316732877040157
-aggl_K=3,"leiden_k_nn=10, res=1.0",0.03131829232146669
-"leiden_k_nn=10, res=1.5",gmm_K=3,0.029997854230741722
-kmeans_K=3,"leiden_k_nn=10, res=1.5",0.029997854230741722
-kmeans_K=2,"leiden_k_nn=20, res=1.0",0.029991470794724657
-aggl_K=2,"leiden_k_nn=20, res=1.0",0.029991470794724657
-kmeans_K=4,"leiden_k_nn=10, res=1.5",0.029789119917272962
-"leiden_k_nn=20, res=2.0",gmm_K=5,0.02825083037888082
-aggl_K=7,"leiden_k_nn=20, res=1.5",0.027806436686738323
-aggl_K=3,"leiden_k_nn=10, res=1.5",0.027022387525928046
-kmeans_K=4,"leiden_k_nn=20, res=1.5",0.025733478581968432
-kmeans_K=3,"leiden_k_nn=20, res=1.5",0.02491373380635844
-"leiden_k_nn=20, res=1.5",gmm_K=3,0.02491373380635844
-"leiden_k_nn=15, res=1.5",gmm_K=2,0.02321642942891442
-aggl_K=4,"leiden_k_nn=10, res=1.5",0.02287918664599632
-aggl_K=8,"leiden_k_nn=20, res=1.5",0.02006803162130505
-aggl_K=8,"leiden_k_nn=20, res=1.0",0.019637354541781858
-kmeans_K=4,"leiden_k_nn=10, res=2.0",0.018989660934673563
-aggl_K=3,"leiden_k_nn=10, res=2.0",0.01787329269882934
-aggl_K=2,"leiden_k_nn=10, res=1.5",0.01682829104000929
-kmeans_K=2,"leiden_k_nn=10, res=1.5",0.01682829104000929
-aggl_K=3,"leiden_k_nn=15, res=1.5",0.016340172685915887
-aggl_K=3,"leiden_k_nn=15, res=1.0",0.01582109847301593
-aggl_K=4,"leiden_k_nn=15, res=1.0",0.013776804064942949
-"leiden_k_nn=20, res=1.5",gmm_K=2,0.013404431754962368
-"leiden_k_nn=10, res=1.5",gmm_K=2,0.013108712819162937
-aggl_K=3,"leiden_k_nn=20, res=1.5",0.013040537262143626
-aggl_K=4,"leiden_k_nn=10, res=2.0",0.013039213814396102
-aggl_K=4,"leiden_k_nn=15, res=1.5",0.012548533470552462
-kmeans_K=2,"leiden_k_nn=20, res=1.5",0.012291981408175683
-aggl_K=2,"leiden_k_nn=20, res=1.5",0.012291981408175683
-"leiden_k_nn=10, res=2.0",gmm_K=3,0.012040320420871385
-kmeans_K=3,"leiden_k_nn=10, res=2.0",0.012040320420871385
-kmeans_K=2,"leiden_k_nn=15, res=1.5",0.01118125808169164
-aggl_K=2,"leiden_k_nn=15, res=1.5",0.01118125808169164
-"leiden_k_nn=15, res=2.0",gmm_K=3,0.010157817941937757
-kmeans_K=3,"leiden_k_nn=15, res=2.0",0.010157817941937757
-aggl_K=5,"leiden_k_nn=15, res=2.0",0.01000716293370307
-aggl_K=2,"leiden_k_nn=10, res=2.0",0.009283332153105853
-kmeans_K=2,"leiden_k_nn=10, res=2.0",0.009283332153105853
-kmeans_K=4,"leiden_k_nn=15, res=2.0",0.009032213253998802
-aggl_K=4,"leiden_k_nn=20, res=1.5",0.008708688402179402
-aggl_K=6,"leiden_k_nn=20, res=2.0",0.00867074929857284
-aggl_K=5,"leiden_k_nn=20, res=2.0",0.008302471121724922
-aggl_K=6,"leiden_k_nn=15, res=2.0",0.008287350775234459
-aggl_K=2,"leiden_k_nn=15, res=2.0",0.008090737916444905
-kmeans_K=2,"leiden_k_nn=15, res=2.0",0.008090737916444905
-aggl_K=8,"leiden_k_nn=10, res=1.0",0.007908718072991861
-kmeans_K=3,"leiden_k_nn=20, res=2.0",0.005190323350386136
-"leiden_k_nn=20, res=2.0",gmm_K=3,0.005190323350386136
-kmeans_K=4,"leiden_k_nn=20, res=2.0",0.00499035036850223
-"leiden_k_nn=10, res=2.0",gmm_K=2,0.003854424890038544
-"leiden_k_nn=20, res=2.0",gmm_K=2,0.0034132781042482494
-aggl_K=2,"leiden_k_nn=20, res=2.0",0.00333964191069988
-kmeans_K=2,"leiden_k_nn=20, res=2.0",0.00333964191069988
-"leiden_k_nn=15, res=2.0",gmm_K=2,0.003291693075177363
-kmeans_K=6,hdbscan_min_cluster_size=6,0.0
-kmeans_K=6,hdbscan_min_cluster_size=5,0.0
-kmeans_K=6,hdbscan_min_cluster_size=4,0.0
-"leiden_k_nn=10, res=0.5","leiden_k_nn=15, res=2.0",0.0
-"leiden_k_nn=10, res=0.5","leiden_k_nn=15, res=1.5",0.0
-"leiden_k_nn=10, res=0.5","leiden_k_nn=15, res=1.0",0.0
+kmeans_K=2,kmeans_K=5,0.09904241129786281
+kmeans_K=2,kmeans_K=6,0.09393052033453711
+kmeans_K=6,aggl_K=2,0.09393052033453711
+kmeans_K=4,"leiden_k_nn=15, res=1.0",0.09384322133284001
+"leiden_k_nn=10, res=2.0",gmm_K=5,0.09310490312938244
+kmeans_K=3,"leiden_k_nn=20, res=1.0",0.09186228147133717
+"leiden_k_nn=20, res=2.0",gmm_K=7,0.09163093536604733
+"leiden_k_nn=20, res=1.0",gmm_K=3,0.0892518854773564
+kmeans_K=4,"leiden_k_nn=10, res=1.0",0.08666592104496257
+"leiden_k_nn=15, res=1.0",gmm_K=3,0.08649880827905104
+kmeans_K=3,"leiden_k_nn=15, res=1.0",0.08558231042299302
+aggl_K=8,"leiden_k_nn=15, res=1.5",0.08522606665251539
+"leiden_k_nn=15, res=1.0",gmm_K=2,0.08380276447378217
+"leiden_k_nn=10, res=1.5",gmm_K=5,0.08137159129027544
+"leiden_k_nn=20, res=1.5",gmm_K=4,0.0811792394349469
+kmeans_K=3,"leiden_k_nn=10, res=1.0",0.08045040825884221
+"leiden_k_nn=10, res=1.0",gmm_K=3,0.07693916917141723
+"leiden_k_nn=20, res=1.0",gmm_K=2,0.07651420126426646
+aggl_K=4,"leiden_k_nn=20, res=1.0",0.07597264534404631
+aggl_K=3,"leiden_k_nn=20, res=1.0",0.07573428823026707
+"leiden_k_nn=20, res=1.5",gmm_K=6,0.0753716133840626
+aggl_K=5,"leiden_k_nn=15, res=1.5",0.0739954211488884
+aggl_K=6,"leiden_k_nn=15, res=1.5",0.07269904226044982
+aggl_K=5,"leiden_k_nn=10, res=1.0",0.0713785459312453
+aggl_K=6,"leiden_k_nn=10, res=1.0",0.07041775274390548
+kmeans_K=2,aggl_K=8,0.06983479939927054
+aggl_K=2,aggl_K=8,0.06983479939927054
+aggl_K=5,"leiden_k_nn=15, res=1.0",0.06948668720281327
+"leiden_k_nn=15, res=2.0",gmm_K=6,0.06945885079382878
+aggl_K=6,"leiden_k_nn=15, res=1.0",0.06884121509713373
+"leiden_k_nn=20, res=1.5",gmm_K=5,0.06879503242280503
+aggl_K=4,"leiden_k_nn=15, res=1.0",0.06810643689481873
+aggl_K=3,"leiden_k_nn=15, res=1.0",0.06792484689470642
+"leiden_k_nn=15, res=2.0",gmm_K=4,0.06614099464595906
+"leiden_k_nn=10, res=1.0",gmm_K=2,0.06527795438519426
+aggl_K=3,"leiden_k_nn=10, res=1.0",0.06414109872665352
+aggl_K=4,"leiden_k_nn=10, res=1.0",0.06253820334781256
+aggl_K=7,"leiden_k_nn=15, res=1.5",0.06236588355527836
+aggl_K=7,"leiden_k_nn=10, res=1.0",0.06127216735690772
+aggl_K=7,"leiden_k_nn=15, res=1.0",0.06080735421035572
+aggl_K=2,gmm_K=7,0.0599740493166579
+kmeans_K=2,gmm_K=7,0.0599740493166579
+"leiden_k_nn=15, res=2.0",gmm_K=5,0.057784096236325855
+aggl_K=5,"leiden_k_nn=20, res=1.0",0.057617101956517085
+aggl_K=6,"leiden_k_nn=20, res=1.0",0.056967265006379476
+kmeans_K=2,kmeans_K=7,0.05573904283400707
+kmeans_K=7,aggl_K=2,0.05573904283400707
+aggl_K=7,"leiden_k_nn=10, res=2.0",0.05500856946804544
+aggl_K=5,"leiden_k_nn=10, res=2.0",0.05458175640827407
+kmeans_K=2,gmm_K=8,0.05455265703917949
+aggl_K=2,gmm_K=8,0.05455265703917949
+kmeans_K=2,kmeans_K=8,0.0544050820206768
+kmeans_K=8,aggl_K=2,0.0544050820206768
+aggl_K=6,"leiden_k_nn=10, res=2.0",0.05306648511841346
+aggl_K=8,"leiden_k_nn=15, res=2.0",0.052763819095477386
+"leiden_k_nn=15, res=1.5",gmm_K=3,0.05173357784127327
+aggl_K=8,"leiden_k_nn=20, res=1.5",0.04923655676034521
+aggl_K=7,"leiden_k_nn=20, res=1.0",0.04892221985816987
+kmeans_K=4,"leiden_k_nn=15, res=1.5",0.04880600573586586
+"leiden_k_nn=20, res=2.0",gmm_K=6,0.04835530868085878
+kmeans_K=3,"leiden_k_nn=15, res=1.5",0.044725115768831245
+"leiden_k_nn=20, res=2.0",gmm_K=4,0.043814211351627386
+kmeans_K=4,"leiden_k_nn=10, res=2.0",0.03751304653122023
+kmeans_K=3,"leiden_k_nn=10, res=2.0",0.0344736119137165
+"leiden_k_nn=10, res=2.0",gmm_K=3,0.033890041095637265
+aggl_K=5,"leiden_k_nn=10, res=1.5",0.03290875553394372
+aggl_K=3,"leiden_k_nn=15, res=1.5",0.03199384447367768
+aggl_K=6,"leiden_k_nn=10, res=1.5",0.03166818290395865
+"leiden_k_nn=15, res=1.5",gmm_K=2,0.02987695815928974
+"leiden_k_nn=20, res=2.0",gmm_K=5,0.029242391901800596
+aggl_K=4,"leiden_k_nn=15, res=1.5",0.02852422915589435
+aggl_K=3,"leiden_k_nn=10, res=2.0",0.02649822809713411
+aggl_K=4,"leiden_k_nn=10, res=2.0",0.02513764899881539
+aggl_K=7,"leiden_k_nn=10, res=1.5",0.0215600060815768
+kmeans_K=4,"leiden_k_nn=15, res=2.0",0.021361899575273284
+kmeans_K=2,"leiden_k_nn=15, res=1.5",0.021143840824755147
+aggl_K=2,"leiden_k_nn=15, res=1.5",0.021143840824755147
+"leiden_k_nn=15, res=2.0",gmm_K=3,0.020687980528959503
+"leiden_k_nn=10, res=2.0",gmm_K=2,0.01897296365734817
+kmeans_K=3,"leiden_k_nn=15, res=2.0",0.018695987799597087
+aggl_K=5,"leiden_k_nn=15, res=2.0",0.017537427691179625
+kmeans_K=4,"leiden_k_nn=20, res=1.5",0.01747610997064522
+"leiden_k_nn=10, res=1.5",gmm_K=2,0.01673259297264196
+aggl_K=6,"leiden_k_nn=15, res=2.0",0.015909778515017788
+aggl_K=2,"leiden_k_nn=20, res=1.0",0.0155471863899254
+kmeans_K=2,"leiden_k_nn=20, res=1.0",0.0155471863899254
+aggl_K=5,"leiden_k_nn=20, res=1.5",0.01516475087071453
+kmeans_K=4,"leiden_k_nn=10, res=1.5",0.014475990212512389
+kmeans_K=2,"leiden_k_nn=10, res=2.0",0.014410063251637613
+aggl_K=2,"leiden_k_nn=10, res=2.0",0.014410063251637613
+kmeans_K=3,"leiden_k_nn=20, res=1.5",0.014332986849508407
+aggl_K=6,"leiden_k_nn=20, res=1.5",0.013641328825913866
+"leiden_k_nn=20, res=1.5",gmm_K=3,0.013483348773010967
+"leiden_k_nn=15, res=2.0",gmm_K=2,0.013367018357647984
+"leiden_k_nn=10, res=1.5",gmm_K=3,0.011604873423637974
+kmeans_K=2,"leiden_k_nn=10, res=1.0",0.010480507515886119
+aggl_K=2,"leiden_k_nn=10, res=1.0",0.010480507515886119
+kmeans_K=3,"leiden_k_nn=10, res=1.5",0.010039507778401758
+"leiden_k_nn=20, res=1.5",gmm_K=2,0.009914036188076803
+aggl_K=3,"leiden_k_nn=15, res=2.0",0.008942109230956018
+aggl_K=2,"leiden_k_nn=15, res=2.0",0.008271977341283281
+kmeans_K=2,"leiden_k_nn=15, res=2.0",0.008271977341283281
+aggl_K=2,"leiden_k_nn=20, res=1.5",0.006291224735946516
+kmeans_K=2,"leiden_k_nn=20, res=1.5",0.006291224735946516
+kmeans_K=2,"leiden_k_nn=15, res=1.0",0.006252778531549684
+aggl_K=2,"leiden_k_nn=15, res=1.0",0.006252778531549684
+aggl_K=3,"leiden_k_nn=20, res=1.5",0.006037940084505388
+aggl_K=8,"leiden_k_nn=20, res=2.0",0.0053712103127238
+aggl_K=7,"leiden_k_nn=15, res=2.0",0.004451825709870136
+aggl_K=4,"leiden_k_nn=15, res=2.0",0.004241299924969283
+aggl_K=7,"leiden_k_nn=20, res=1.5",0.0025516652398284464
+aggl_K=4,"leiden_k_nn=20, res=1.5",0.001752994488423669
+aggl_K=2,"leiden_k_nn=20, res=2.0",0.001564948678726734
+kmeans_K=2,"leiden_k_nn=20, res=2.0",0.001564948678726734
+aggl_K=3,"leiden_k_nn=10, res=1.5",0.0008027408927487717
+aggl_K=3,hdbscan_min_cluster_size=8,0.0
+hdbscan_min_cluster_size=6,gmm_K=5,0.0
+hdbscan_min_cluster_size=8,gmm_K=4,0.0
 "leiden_k_nn=10, res=0.5","leiden_k_nn=10, res=2.0",0.0
+"leiden_k_nn=10, res=0.5","leiden_k_nn=15, res=1.0",0.0
+"leiden_k_nn=10, res=0.5","leiden_k_nn=15, res=1.5",0.0
+"leiden_k_nn=10, res=0.5","leiden_k_nn=15, res=2.0",0.0
+"leiden_k_nn=10, res=0.5","leiden_k_nn=20, res=1.0",0.0
+hdbscan_min_cluster_size=8,gmm_K=3,0.0
+aggl_K=2,"leiden_k_nn=20, res=0.5",0.0
+hdbscan_min_cluster_size=8,gmm_K=2,0.0
+aggl_K=3,hdbscan_min_cluster_size=3,0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=20, res=2.0",0.0
+aggl_K=3,hdbscan_min_cluster_size=4,0.0
+kmeans_K=6,hdbscan_min_cluster_size=5,0.0
+kmeans_K=6,hdbscan_min_cluster_size=6,0.0
 kmeans_K=6,hdbscan_min_cluster_size=8,0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=20, res=1.5",0.0
+kmeans_K=6,"leiden_k_nn=10, res=0.5",0.0
+kmeans_K=6,"leiden_k_nn=15, res=0.5",0.0
+aggl_K=3,hdbscan_min_cluster_size=6,0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=15, res=1.0",0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=10, res=2.0",0.0
+"leiden_k_nn=10, res=0.5",gmm_K=8,0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=10, res=1.5",0.0
+"leiden_k_nn=10, res=1.0","leiden_k_nn=15, res=0.5",0.0
+"leiden_k_nn=10, res=1.0","leiden_k_nn=20, res=0.5",0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=10, res=1.0",0.0
+kmeans_K=8,hdbscan_min_cluster_size=3,0.0
+hdbscan_min_cluster_size=6,gmm_K=8,0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=15, res=2.0",0.0
+kmeans_K=8,hdbscan_min_cluster_size=4,0.0
+kmeans_K=8,hdbscan_min_cluster_size=5,0.0
+aggl_K=3,hdbscan_min_cluster_size=5,0.0
+kmeans_K=8,hdbscan_min_cluster_size=6,0.0
+kmeans_K=8,hdbscan_min_cluster_size=8,0.0
+hdbscan_min_cluster_size=6,gmm_K=7,0.0
+hdbscan_min_cluster_size=6,gmm_K=6,0.0
+"leiden_k_nn=10, res=0.5","leiden_k_nn=20, res=1.5",0.0
+"leiden_k_nn=10, res=0.5","leiden_k_nn=20, res=2.0",0.0
 "leiden_k_nn=10, res=0.5",gmm_K=2,0.0
 "leiden_k_nn=10, res=0.5",gmm_K=3,0.0
 "leiden_k_nn=10, res=0.5",gmm_K=4,0.0
 "leiden_k_nn=10, res=0.5",gmm_K=5,0.0
-"leiden_k_nn=10, res=1.0","leiden_k_nn=15, res=0.5",0.0
-hdbscan_min_cluster_size=6,gmm_K=8,0.0
-hdbscan_min_cluster_size=8,"leiden_k_nn=10, res=1.0",0.0
-hdbscan_min_cluster_size=8,"leiden_k_nn=10, res=1.5",0.0
-kmeans_K=6,"leiden_k_nn=10, res=0.5",0.0
-kmeans_K=6,"leiden_k_nn=15, res=0.5",0.0
-"leiden_k_nn=10, res=1.0","leiden_k_nn=20, res=0.5",0.0
-kmeans_K=6,hdbscan_min_cluster_size=3,0.0
-aggl_K=8,hdbscan_min_cluster_size=3,0.0
-aggl_K=7,hdbscan_min_cluster_size=6,0.0
-hdbscan_min_cluster_size=6,gmm_K=7,0.0
-aggl_K=8,hdbscan_min_cluster_size=8,0.0
-aggl_K=8,"leiden_k_nn=10, res=0.5",0.0
-aggl_K=8,"leiden_k_nn=15, res=0.5",0.0
-aggl_K=7,"leiden_k_nn=20, res=0.5",0.0
-hdbscan_min_cluster_size=6,gmm_K=3,0.0
-aggl_K=6,"leiden_k_nn=20, res=0.5",0.0
-aggl_K=6,hdbscan_min_cluster_size=4,0.0
-aggl_K=6,hdbscan_min_cluster_size=5,0.0
-aggl_K=6,hdbscan_min_cluster_size=6,0.0
-aggl_K=6,hdbscan_min_cluster_size=8,0.0
-hdbscan_min_cluster_size=8,"leiden_k_nn=10, res=2.0",0.0
-hdbscan_min_cluster_size=8,"leiden_k_nn=15, res=1.0",0.0
-hdbscan_min_cluster_size=8,"leiden_k_nn=15, res=1.5",0.0
-hdbscan_min_cluster_size=8,"leiden_k_nn=15, res=2.0",0.0
-aggl_K=8,hdbscan_min_cluster_size=4,0.0
-hdbscan_min_cluster_size=8,"leiden_k_nn=20, res=1.5",0.0
-hdbscan_min_cluster_size=8,"leiden_k_nn=20, res=2.0",0.0
-hdbscan_min_cluster_size=8,gmm_K=2,0.0
-hdbscan_min_cluster_size=8,gmm_K=3,0.0
-hdbscan_min_cluster_size=8,gmm_K=4,0.0
-hdbscan_min_cluster_size=8,gmm_K=5,0.0
-hdbscan_min_cluster_size=8,gmm_K=6,0.0
-hdbscan_min_cluster_size=8,gmm_K=7,0.0
-hdbscan_min_cluster_size=8,gmm_K=8,0.0
-"leiden_k_nn=10, res=0.5","leiden_k_nn=10, res=1.0",0.0
-"leiden_k_nn=10, res=0.5","leiden_k_nn=10, res=1.5",0.0
 "leiden_k_nn=10, res=0.5",gmm_K=6,0.0
 "leiden_k_nn=10, res=0.5",gmm_K=7,0.0
-"leiden_k_nn=10, res=0.5",gmm_K=8,0.0
-hdbscan_min_cluster_size=8,"leiden_k_nn=20, res=1.0",0.0
-kmeans_K=4,hdbscan_min_cluster_size=8,0.0
-kmeans_K=4,"leiden_k_nn=10, res=0.5",0.0
-"leiden_k_nn=20, res=0.5","leiden_k_nn=20, res=1.0",0.0
-"leiden_k_nn=20, res=0.5","leiden_k_nn=20, res=1.5",0.0
-kmeans_K=2,hdbscan_min_cluster_size=3,0.0
-aggl_K=4,"leiden_k_nn=15, res=0.5",0.0
-kmeans_K=2,"leiden_k_nn=15, res=0.5",0.0
-"leiden_k_nn=20, res=0.5","leiden_k_nn=20, res=2.0",0.0
-"leiden_k_nn=20, res=0.5",gmm_K=2,0.0
-"leiden_k_nn=20, res=0.5",gmm_K=3,0.0
-"leiden_k_nn=20, res=0.5",gmm_K=4,0.0
-"leiden_k_nn=20, res=0.5",gmm_K=5,0.0
-"leiden_k_nn=20, res=0.5",gmm_K=6,0.0
-"leiden_k_nn=20, res=0.5",gmm_K=7,0.0
-"leiden_k_nn=15, res=0.5",gmm_K=5,0.0
-kmeans_K=5,hdbscan_min_cluster_size=5,0.0
-kmeans_K=5,hdbscan_min_cluster_size=6,0.0
-kmeans_K=5,hdbscan_min_cluster_size=8,0.0
-kmeans_K=2,"leiden_k_nn=10, res=0.5",0.0
-kmeans_K=2,hdbscan_min_cluster_size=8,0.0
-kmeans_K=2,hdbscan_min_cluster_size=6,0.0
-kmeans_K=2,hdbscan_min_cluster_size=5,0.0
-aggl_K=4,hdbscan_min_cluster_size=4,0.0
-aggl_K=4,hdbscan_min_cluster_size=5,0.0
-aggl_K=4,hdbscan_min_cluster_size=6,0.0
-aggl_K=3,"leiden_k_nn=10, res=0.5",0.0
-aggl_K=3,"leiden_k_nn=15, res=0.5",0.0
-aggl_K=6,"leiden_k_nn=15, res=0.5",0.0
-kmeans_K=5,hdbscan_min_cluster_size=3,0.0
-"leiden_k_nn=20, res=0.5",gmm_K=8,0.0
-aggl_K=7,hdbscan_min_cluster_size=8,0.0
-aggl_K=7,"leiden_k_nn=10, res=0.5",0.0
-hdbscan_min_cluster_size=6,gmm_K=4,0.0
-hdbscan_min_cluster_size=6,gmm_K=5,0.0
-hdbscan_min_cluster_size=6,gmm_K=6,0.0
-aggl_K=8,hdbscan_min_cluster_size=6,0.0
-kmeans_K=4,"leiden_k_nn=20, res=0.5",0.0
-"leiden_k_nn=15, res=0.5","leiden_k_nn=15, res=1.0",0.0
-"leiden_k_nn=15, res=0.5","leiden_k_nn=15, res=1.5",0.0
-aggl_K=3,"leiden_k_nn=20, res=0.5",0.0
-aggl_K=4,hdbscan_min_cluster_size=3,0.0
 kmeans_K=6,"leiden_k_nn=20, res=0.5",0.0
-"leiden_k_nn=15, res=0.5","leiden_k_nn=15, res=2.0",0.0
-"leiden_k_nn=15, res=0.5","leiden_k_nn=20, res=1.0",0.0
-kmeans_K=4,hdbscan_min_cluster_size=6,0.0
-"leiden_k_nn=15, res=0.5","leiden_k_nn=20, res=2.0",0.0
-"leiden_k_nn=15, res=0.5",gmm_K=2,0.0
-"leiden_k_nn=15, res=0.5",gmm_K=3,0.0
-"leiden_k_nn=15, res=0.5",gmm_K=4,0.0
-"leiden_k_nn=10, res=2.0","leiden_k_nn=15, res=0.5",0.0
-"leiden_k_nn=10, res=2.0","leiden_k_nn=20, res=0.5",0.0
-kmeans_K=5,"leiden_k_nn=10, res=0.5",0.0
-kmeans_K=5,"leiden_k_nn=15, res=0.5",0.0
-kmeans_K=5,"leiden_k_nn=20, res=0.5",0.0
-"leiden_k_nn=10, res=1.5","leiden_k_nn=15, res=0.5",0.0
-"leiden_k_nn=10, res=1.5","leiden_k_nn=20, res=0.5",0.0
-"leiden_k_nn=10, res=0.5","leiden_k_nn=20, res=1.0",0.0
-"leiden_k_nn=10, res=0.5","leiden_k_nn=20, res=1.5",0.0
-"leiden_k_nn=10, res=0.5","leiden_k_nn=20, res=2.0",0.0
-kmeans_K=4,hdbscan_min_cluster_size=5,0.0
-"leiden_k_nn=15, res=0.5","leiden_k_nn=20, res=1.5",0.0
-hdbscan_min_cluster_size=3,"leiden_k_nn=15, res=2.0",0.0
-hdbscan_min_cluster_size=3,"leiden_k_nn=20, res=1.0",0.0
-hdbscan_min_cluster_size=3,"leiden_k_nn=20, res=1.5",0.0
-hdbscan_min_cluster_size=3,"leiden_k_nn=20, res=2.0",0.0
-aggl_K=8,"leiden_k_nn=20, res=0.5",0.0
-hdbscan_min_cluster_size=3,"leiden_k_nn=10, res=1.0",0.0
-aggl_K=3,hdbscan_min_cluster_size=6,0.0
-hdbscan_min_cluster_size=3,gmm_K=5,0.0
-hdbscan_min_cluster_size=3,gmm_K=6,0.0
-hdbscan_min_cluster_size=3,gmm_K=7,0.0
-hdbscan_min_cluster_size=3,gmm_K=8,0.0
-hdbscan_min_cluster_size=4,"leiden_k_nn=10, res=1.0",0.0
-hdbscan_min_cluster_size=3,"leiden_k_nn=10, res=1.5",0.0
-hdbscan_min_cluster_size=3,"leiden_k_nn=10, res=2.0",0.0
-kmeans_K=8,hdbscan_min_cluster_size=8,0.0
-hdbscan_min_cluster_size=4,"leiden_k_nn=15, res=1.5",0.0
-hdbscan_min_cluster_size=4,"leiden_k_nn=15, res=2.0",0.0
-hdbscan_min_cluster_size=4,"leiden_k_nn=20, res=1.0",0.0
-hdbscan_min_cluster_size=4,"leiden_k_nn=20, res=1.5",0.0
-hdbscan_min_cluster_size=4,"leiden_k_nn=20, res=2.0",0.0
-hdbscan_min_cluster_size=3,gmm_K=2,0.0
-hdbscan_min_cluster_size=3,gmm_K=3,0.0
-hdbscan_min_cluster_size=3,gmm_K=4,0.0
-aggl_K=4,hdbscan_min_cluster_size=8,0.0
-aggl_K=4,"leiden_k_nn=10, res=0.5",0.0
+"leiden_k_nn=15, res=1.5","leiden_k_nn=20, res=0.5",0.0
+aggl_K=4,"leiden_k_nn=20, res=0.5",0.0
+aggl_K=7,"leiden_k_nn=10, res=0.5",0.0
+"leiden_k_nn=15, res=1.0","leiden_k_nn=20, res=0.5",0.0
+aggl_K=7,"leiden_k_nn=15, res=0.5",0.0
+"leiden_k_nn=15, res=0.5",gmm_K=8,0.0
+aggl_K=7,"leiden_k_nn=20, res=0.5",0.0
+"leiden_k_nn=15, res=0.5",gmm_K=7,0.0
+aggl_K=6,"leiden_k_nn=20, res=0.5",0.0
 aggl_K=7,hdbscan_min_cluster_size=3,0.0
 aggl_K=7,hdbscan_min_cluster_size=4,0.0
 aggl_K=7,hdbscan_min_cluster_size=5,0.0
-hdbscan_min_cluster_size=4,"leiden_k_nn=10, res=1.5",0.0
-hdbscan_min_cluster_size=4,"leiden_k_nn=10, res=2.0",0.0
-hdbscan_min_cluster_size=3,"leiden_k_nn=15, res=1.0",0.0
-kmeans_K=4,"leiden_k_nn=15, res=0.5",0.0
-aggl_K=7,"leiden_k_nn=15, res=0.5",0.0
-kmeans_K=5,hdbscan_min_cluster_size=4,0.0
-aggl_K=5,"leiden_k_nn=10, res=0.5",0.0
-aggl_K=5,"leiden_k_nn=15, res=0.5",0.0
-aggl_K=4,"leiden_k_nn=20, res=0.5",0.0
-aggl_K=5,hdbscan_min_cluster_size=3,0.0
-aggl_K=5,hdbscan_min_cluster_size=4,0.0
-kmeans_K=2,"leiden_k_nn=20, res=0.5",0.0
-"leiden_k_nn=15, res=2.0","leiden_k_nn=20, res=0.5",0.0
-aggl_K=5,"leiden_k_nn=20, res=0.5",0.0
-aggl_K=6,hdbscan_min_cluster_size=3,0.0
-aggl_K=5,hdbscan_min_cluster_size=5,0.0
-aggl_K=5,hdbscan_min_cluster_size=6,0.0
-aggl_K=5,hdbscan_min_cluster_size=8,0.0
-hdbscan_min_cluster_size=3,"leiden_k_nn=15, res=1.5",0.0
-"leiden_k_nn=15, res=0.5",gmm_K=7,0.0
-"leiden_k_nn=15, res=0.5",gmm_K=8,0.0
-"leiden_k_nn=15, res=1.0","leiden_k_nn=20, res=0.5",0.0
-"leiden_k_nn=15, res=1.5","leiden_k_nn=20, res=0.5",0.0
-kmeans_K=3,"leiden_k_nn=10, res=0.5",0.0
-kmeans_K=4,hdbscan_min_cluster_size=3,0.0
-kmeans_K=4,hdbscan_min_cluster_size=4,0.0
-kmeans_K=2,hdbscan_min_cluster_size=4,0.0
-kmeans_K=3,hdbscan_min_cluster_size=3,0.0
-kmeans_K=3,hdbscan_min_cluster_size=4,0.0
-kmeans_K=3,hdbscan_min_cluster_size=5,0.0
-kmeans_K=3,hdbscan_min_cluster_size=6,0.0
-kmeans_K=3,hdbscan_min_cluster_size=8,0.0
-kmeans_K=3,"leiden_k_nn=15, res=0.5",0.0
-kmeans_K=3,"leiden_k_nn=20, res=0.5",0.0
+aggl_K=7,hdbscan_min_cluster_size=6,0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=20, res=1.0",0.0
+aggl_K=6,hdbscan_min_cluster_size=5,0.0
+aggl_K=6,hdbscan_min_cluster_size=6,0.0
+aggl_K=6,hdbscan_min_cluster_size=8,0.0
+aggl_K=6,"leiden_k_nn=10, res=0.5",0.0
 "leiden_k_nn=15, res=0.5",gmm_K=6,0.0
+kmeans_K=4,"leiden_k_nn=20, res=0.5",0.0
+aggl_K=6,"leiden_k_nn=15, res=0.5",0.0
+kmeans_K=2,hdbscan_min_cluster_size=4,0.0
+kmeans_K=2,hdbscan_min_cluster_size=5,0.0
+kmeans_K=4,"leiden_k_nn=15, res=0.5",0.0
+kmeans_K=4,"leiden_k_nn=10, res=0.5",0.0
+aggl_K=6,hdbscan_min_cluster_size=3,0.0
+kmeans_K=2,hdbscan_min_cluster_size=6,0.0
+aggl_K=7,hdbscan_min_cluster_size=8,0.0
+kmeans_K=5,hdbscan_min_cluster_size=3,0.0
+kmeans_K=5,hdbscan_min_cluster_size=4,0.0
+kmeans_K=2,"leiden_k_nn=20, res=0.5",0.0
+"leiden_k_nn=10, res=2.0","leiden_k_nn=15, res=0.5",0.0
+"leiden_k_nn=10, res=2.0","leiden_k_nn=20, res=0.5",0.0
+"leiden_k_nn=15, res=0.5","leiden_k_nn=20, res=2.0",0.0
+"leiden_k_nn=15, res=0.5","leiden_k_nn=20, res=1.5",0.0
+"leiden_k_nn=15, res=0.5","leiden_k_nn=20, res=1.0",0.0
+kmeans_K=6,hdbscan_min_cluster_size=3,0.0
+"leiden_k_nn=15, res=0.5","leiden_k_nn=15, res=2.0",0.0
+kmeans_K=6,hdbscan_min_cluster_size=4,0.0
 kmeans_K=7,hdbscan_min_cluster_size=6,0.0
 kmeans_K=7,hdbscan_min_cluster_size=8,0.0
-kmeans_K=7,"leiden_k_nn=10, res=0.5",0.0
+aggl_K=4,"leiden_k_nn=15, res=0.5",0.0
 kmeans_K=7,"leiden_k_nn=15, res=0.5",0.0
 kmeans_K=7,"leiden_k_nn=20, res=0.5",0.0
-hdbscan_min_cluster_size=5,"leiden_k_nn=15, res=1.5",0.0
-hdbscan_min_cluster_size=5,"leiden_k_nn=15, res=2.0",0.0
-hdbscan_min_cluster_size=5,"leiden_k_nn=20, res=1.0",0.0
-hdbscan_min_cluster_size=5,"leiden_k_nn=20, res=1.5",0.0
-hdbscan_min_cluster_size=5,"leiden_k_nn=20, res=2.0",0.0
-hdbscan_min_cluster_size=5,gmm_K=2,0.0
-hdbscan_min_cluster_size=5,gmm_K=3,0.0
-hdbscan_min_cluster_size=5,gmm_K=4,0.0
-hdbscan_min_cluster_size=5,gmm_K=5,0.0
-hdbscan_min_cluster_size=4,"leiden_k_nn=15, res=1.0",0.0
-hdbscan_min_cluster_size=5,gmm_K=7,0.0
-hdbscan_min_cluster_size=5,gmm_K=8,0.0
-hdbscan_min_cluster_size=6,"leiden_k_nn=10, res=1.0",0.0
-hdbscan_min_cluster_size=6,"leiden_k_nn=10, res=1.5",0.0
-hdbscan_min_cluster_size=6,"leiden_k_nn=10, res=2.0",0.0
-hdbscan_min_cluster_size=6,"leiden_k_nn=15, res=1.0",0.0
-hdbscan_min_cluster_size=6,"leiden_k_nn=15, res=1.5",0.0
-hdbscan_min_cluster_size=6,"leiden_k_nn=15, res=2.0",0.0
-kmeans_K=8,hdbscan_min_cluster_size=3,0.0
-kmeans_K=8,hdbscan_min_cluster_size=4,0.0
-kmeans_K=8,hdbscan_min_cluster_size=5,0.0
-kmeans_K=8,hdbscan_min_cluster_size=6,0.0
+kmeans_K=4,hdbscan_min_cluster_size=8,0.0
+"leiden_k_nn=10, res=1.5","leiden_k_nn=15, res=0.5",0.0
+"leiden_k_nn=10, res=1.5","leiden_k_nn=20, res=0.5",0.0
 kmeans_K=8,"leiden_k_nn=10, res=0.5",0.0
-aggl_K=6,"leiden_k_nn=10, res=0.5",0.0
-aggl_K=8,hdbscan_min_cluster_size=5,0.0
-hdbscan_min_cluster_size=5,gmm_K=6,0.0
 kmeans_K=8,"leiden_k_nn=15, res=0.5",0.0
 kmeans_K=8,"leiden_k_nn=20, res=0.5",0.0
-aggl_K=2,hdbscan_min_cluster_size=3,0.0
-aggl_K=2,hdbscan_min_cluster_size=4,0.0
-hdbscan_min_cluster_size=6,"leiden_k_nn=20, res=1.0",0.0
-hdbscan_min_cluster_size=6,"leiden_k_nn=20, res=1.5",0.0
-hdbscan_min_cluster_size=6,"leiden_k_nn=20, res=2.0",0.0
-hdbscan_min_cluster_size=6,gmm_K=2,0.0
-hdbscan_min_cluster_size=4,gmm_K=2,0.0
-hdbscan_min_cluster_size=4,gmm_K=3,0.0
-hdbscan_min_cluster_size=4,gmm_K=4,0.0
-hdbscan_min_cluster_size=4,gmm_K=5,0.0
-hdbscan_min_cluster_size=4,gmm_K=6,0.0
-aggl_K=2,hdbscan_min_cluster_size=5,0.0
-aggl_K=2,hdbscan_min_cluster_size=6,0.0
+kmeans_K=4,hdbscan_min_cluster_size=6,0.0
+kmeans_K=3,"leiden_k_nn=20, res=0.5",0.0
+kmeans_K=4,hdbscan_min_cluster_size=5,0.0
+aggl_K=8,hdbscan_min_cluster_size=3,0.0
+aggl_K=8,hdbscan_min_cluster_size=4,0.0
+aggl_K=8,hdbscan_min_cluster_size=5,0.0
+kmeans_K=7,"leiden_k_nn=10, res=0.5",0.0
+aggl_K=8,"leiden_k_nn=20, res=0.5",0.0
+hdbscan_min_cluster_size=3,gmm_K=5,0.0
+hdbscan_min_cluster_size=3,gmm_K=4,0.0
+hdbscan_min_cluster_size=3,gmm_K=3,0.0
+hdbscan_min_cluster_size=3,gmm_K=2,0.0
+hdbscan_min_cluster_size=3,"leiden_k_nn=20, res=2.0",0.0
+hdbscan_min_cluster_size=3,"leiden_k_nn=20, res=1.5",0.0
+"leiden_k_nn=15, res=0.5",gmm_K=2,0.0
+hdbscan_min_cluster_size=3,"leiden_k_nn=15, res=2.0",0.0
+"leiden_k_nn=15, res=0.5","leiden_k_nn=15, res=1.5",0.0
+"leiden_k_nn=15, res=0.5","leiden_k_nn=15, res=1.0",0.0
+kmeans_K=5,"leiden_k_nn=20, res=0.5",0.0
+kmeans_K=5,"leiden_k_nn=15, res=0.5",0.0
+kmeans_K=5,"leiden_k_nn=10, res=0.5",0.0
+kmeans_K=5,hdbscan_min_cluster_size=8,0.0
+kmeans_K=5,hdbscan_min_cluster_size=6,0.0
+hdbscan_min_cluster_size=3,"leiden_k_nn=20, res=1.0",0.0
+aggl_K=5,"leiden_k_nn=10, res=0.5",0.0
+aggl_K=5,hdbscan_min_cluster_size=8,0.0
+aggl_K=5,hdbscan_min_cluster_size=6,0.0
+aggl_K=5,hdbscan_min_cluster_size=5,0.0
+aggl_K=5,hdbscan_min_cluster_size=4,0.0
+aggl_K=5,hdbscan_min_cluster_size=3,0.0
+aggl_K=8,"leiden_k_nn=15, res=0.5",0.0
+hdbscan_min_cluster_size=3,"leiden_k_nn=10, res=1.0",0.0
+aggl_K=8,hdbscan_min_cluster_size=8,0.0
+aggl_K=8,hdbscan_min_cluster_size=6,0.0
+aggl_K=5,"leiden_k_nn=20, res=0.5",0.0
+aggl_K=5,"leiden_k_nn=15, res=0.5",0.0
+hdbscan_min_cluster_size=3,"leiden_k_nn=15, res=1.5",0.0
+hdbscan_min_cluster_size=3,"leiden_k_nn=15, res=1.0",0.0
+hdbscan_min_cluster_size=3,"leiden_k_nn=10, res=2.0",0.0
+hdbscan_min_cluster_size=3,"leiden_k_nn=10, res=1.5",0.0
+aggl_K=8,"leiden_k_nn=10, res=0.5",0.0
+kmeans_K=2,"leiden_k_nn=10, res=0.5",0.0
+"leiden_k_nn=20, res=0.5",gmm_K=7,0.0
+"leiden_k_nn=20, res=0.5",gmm_K=6,0.0
 kmeans_K=7,hdbscan_min_cluster_size=5,0.0
-aggl_K=3,hdbscan_min_cluster_size=3,0.0
-aggl_K=3,hdbscan_min_cluster_size=4,0.0
-aggl_K=3,hdbscan_min_cluster_size=5,0.0
-aggl_K=2,"leiden_k_nn=10, res=0.5",0.0
-aggl_K=2,"leiden_k_nn=15, res=0.5",0.0
-aggl_K=3,hdbscan_min_cluster_size=8,0.0
-hdbscan_min_cluster_size=4,gmm_K=7,0.0
-hdbscan_min_cluster_size=4,gmm_K=8,0.0
-hdbscan_min_cluster_size=5,"leiden_k_nn=10, res=1.0",0.0
-hdbscan_min_cluster_size=5,"leiden_k_nn=10, res=1.5",0.0
-hdbscan_min_cluster_size=5,"leiden_k_nn=10, res=2.0",0.0
-hdbscan_min_cluster_size=5,"leiden_k_nn=15, res=1.0",0.0
-aggl_K=2,"leiden_k_nn=20, res=0.5",0.0
-kmeans_K=7,hdbscan_min_cluster_size=3,0.0
 kmeans_K=7,hdbscan_min_cluster_size=4,0.0
+kmeans_K=7,hdbscan_min_cluster_size=3,0.0
+aggl_K=2,hdbscan_min_cluster_size=4,0.0
+kmeans_K=5,hdbscan_min_cluster_size=5,0.0
+"leiden_k_nn=15, res=0.5",gmm_K=3,0.0
+"leiden_k_nn=20, res=0.5",gmm_K=8,0.0
+kmeans_K=3,hdbscan_min_cluster_size=8,0.0
+kmeans_K=3,hdbscan_min_cluster_size=6,0.0
+kmeans_K=3,hdbscan_min_cluster_size=5,0.0
+kmeans_K=3,hdbscan_min_cluster_size=4,0.0
+kmeans_K=3,hdbscan_min_cluster_size=3,0.0
+kmeans_K=2,hdbscan_min_cluster_size=3,0.0
+aggl_K=2,hdbscan_min_cluster_size=3,0.0
+"leiden_k_nn=15, res=0.5",gmm_K=5,0.0
+"leiden_k_nn=15, res=0.5",gmm_K=4,0.0
+kmeans_K=2,"leiden_k_nn=15, res=0.5",0.0
+kmeans_K=3,"leiden_k_nn=15, res=0.5",0.0
+kmeans_K=3,"leiden_k_nn=10, res=0.5",0.0
+"leiden_k_nn=15, res=2.0","leiden_k_nn=20, res=0.5",0.0
+kmeans_K=4,hdbscan_min_cluster_size=4,0.0
+kmeans_K=2,hdbscan_min_cluster_size=8,0.0
+"leiden_k_nn=20, res=0.5",gmm_K=5,0.0
+"leiden_k_nn=20, res=0.5",gmm_K=4,0.0
+"leiden_k_nn=20, res=0.5",gmm_K=3,0.0
+"leiden_k_nn=20, res=0.5",gmm_K=2,0.0
+"leiden_k_nn=20, res=0.5","leiden_k_nn=20, res=2.0",0.0
+"leiden_k_nn=20, res=0.5","leiden_k_nn=20, res=1.5",0.0
+"leiden_k_nn=20, res=0.5","leiden_k_nn=20, res=1.0",0.0
+aggl_K=6,hdbscan_min_cluster_size=4,0.0
+kmeans_K=4,hdbscan_min_cluster_size=3,0.0
+hdbscan_min_cluster_size=4,gmm_K=7,0.0
+hdbscan_min_cluster_size=5,gmm_K=4,0.0
+hdbscan_min_cluster_size=5,gmm_K=3,0.0
+hdbscan_min_cluster_size=5,gmm_K=2,0.0
+hdbscan_min_cluster_size=5,"leiden_k_nn=20, res=2.0",0.0
+hdbscan_min_cluster_size=5,"leiden_k_nn=20, res=1.5",0.0
+hdbscan_min_cluster_size=5,"leiden_k_nn=20, res=1.0",0.0
+aggl_K=4,hdbscan_min_cluster_size=3,0.0
+hdbscan_min_cluster_size=5,"leiden_k_nn=15, res=1.5",0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=15, res=1.0",0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=10, res=2.0",0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=10, res=1.5",0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=10, res=1.0",0.0
+hdbscan_min_cluster_size=5,gmm_K=8,0.0
+hdbscan_min_cluster_size=5,gmm_K=7,0.0
+hdbscan_min_cluster_size=5,gmm_K=6,0.0
+hdbscan_min_cluster_size=5,"leiden_k_nn=15, res=2.0",0.0
+hdbscan_min_cluster_size=8,"leiden_k_nn=15, res=1.5",0.0
+aggl_K=2,hdbscan_min_cluster_size=6,0.0
+aggl_K=2,hdbscan_min_cluster_size=5,0.0
+"leiden_k_nn=10, res=0.5","leiden_k_nn=10, res=1.5",0.0
+"leiden_k_nn=10, res=0.5","leiden_k_nn=10, res=1.0",0.0
+hdbscan_min_cluster_size=8,gmm_K=8,0.0
+hdbscan_min_cluster_size=8,gmm_K=7,0.0
+hdbscan_min_cluster_size=4,gmm_K=8,0.0
+hdbscan_min_cluster_size=8,gmm_K=5,0.0
+aggl_K=2,"leiden_k_nn=15, res=0.5",0.0
+aggl_K=2,"leiden_k_nn=10, res=0.5",0.0
 aggl_K=2,hdbscan_min_cluster_size=8,0.0
-aggl_K=4,"leiden_k_nn=20, res=2.0",-0.00025680087354053245
-aggl_K=3,"leiden_k_nn=15, res=2.0",-0.0014702840499337534
-aggl_K=3,"leiden_k_nn=20, res=2.0",-0.0019820607638864943
-aggl_K=7,"leiden_k_nn=20, res=2.0",-0.0034780409480079104
-aggl_K=7,"leiden_k_nn=15, res=2.0",-0.0034883769978023647
-kmeans_K=2,"leiden_k_nn=10, res=1.0",-0.005128768872992628
-aggl_K=2,"leiden_k_nn=10, res=1.0",-0.005128768872992628
-aggl_K=4,"leiden_k_nn=15, res=2.0",-0.006572695820374511
-kmeans_K=2,"leiden_k_nn=15, res=1.0",-0.007547228776348891
-aggl_K=2,"leiden_k_nn=15, res=1.0",-0.007547228776348891
-aggl_K=8,"leiden_k_nn=15, res=2.0",-0.011424406607012707
-aggl_K=8,"leiden_k_nn=20, res=2.0",-0.013748638776085042
+hdbscan_min_cluster_size=5,"leiden_k_nn=15, res=1.0",0.0
+hdbscan_min_cluster_size=5,"leiden_k_nn=10, res=2.0",0.0
+hdbscan_min_cluster_size=5,"leiden_k_nn=10, res=1.5",0.0
+hdbscan_min_cluster_size=5,"leiden_k_nn=10, res=1.0",0.0
+hdbscan_min_cluster_size=8,gmm_K=6,0.0
+hdbscan_min_cluster_size=4,gmm_K=4,0.0
+hdbscan_min_cluster_size=4,gmm_K=3,0.0
+hdbscan_min_cluster_size=4,gmm_K=2,0.0
+hdbscan_min_cluster_size=4,"leiden_k_nn=20, res=2.0",0.0
+hdbscan_min_cluster_size=4,"leiden_k_nn=20, res=1.5",0.0
+hdbscan_min_cluster_size=4,"leiden_k_nn=20, res=1.0",0.0
+hdbscan_min_cluster_size=4,"leiden_k_nn=15, res=2.0",0.0
+hdbscan_min_cluster_size=5,gmm_K=5,0.0
+aggl_K=3,"leiden_k_nn=15, res=0.5",0.0
+aggl_K=3,"leiden_k_nn=10, res=0.5",0.0
+hdbscan_min_cluster_size=4,gmm_K=6,0.0
+aggl_K=4,"leiden_k_nn=10, res=0.5",0.0
+aggl_K=4,hdbscan_min_cluster_size=8,0.0
+aggl_K=4,hdbscan_min_cluster_size=6,0.0
+aggl_K=4,hdbscan_min_cluster_size=5,0.0
+aggl_K=4,hdbscan_min_cluster_size=4,0.0
+aggl_K=3,"leiden_k_nn=20, res=0.5",0.0
+hdbscan_min_cluster_size=6,gmm_K=4,0.0
+hdbscan_min_cluster_size=6,gmm_K=3,0.0
+hdbscan_min_cluster_size=6,gmm_K=2,0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=20, res=2.0",0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=20, res=1.5",0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=20, res=1.0",0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=15, res=2.0",0.0
+hdbscan_min_cluster_size=4,gmm_K=5,0.0
+hdbscan_min_cluster_size=4,"leiden_k_nn=15, res=1.5",0.0
+hdbscan_min_cluster_size=4,"leiden_k_nn=15, res=1.0",0.0
+hdbscan_min_cluster_size=4,"leiden_k_nn=10, res=2.0",0.0
+hdbscan_min_cluster_size=4,"leiden_k_nn=10, res=1.5",0.0
+hdbscan_min_cluster_size=4,"leiden_k_nn=10, res=1.0",0.0
+hdbscan_min_cluster_size=3,gmm_K=8,0.0
+hdbscan_min_cluster_size=3,gmm_K=7,0.0
+hdbscan_min_cluster_size=3,gmm_K=6,0.0
+hdbscan_min_cluster_size=6,"leiden_k_nn=15, res=1.5",0.0
+kmeans_K=4,"leiden_k_nn=20, res=2.0",-0.0006526932392038147
+"leiden_k_nn=20, res=2.0",gmm_K=2,-0.0011579634002659776
+"leiden_k_nn=20, res=2.0",gmm_K=3,-0.0023460873830940363
+aggl_K=4,"leiden_k_nn=10, res=1.5",-0.0023781825843515137
+kmeans_K=3,"leiden_k_nn=20, res=2.0",-0.002471009597142143
+kmeans_K=2,"leiden_k_nn=10, res=1.5",-0.003113903709655323
+aggl_K=2,"leiden_k_nn=10, res=1.5",-0.003113903709655323
+aggl_K=3,"leiden_k_nn=20, res=2.0",-0.009552026185273002
+aggl_K=5,"leiden_k_nn=20, res=2.0",-0.013215441898242886
+aggl_K=4,"leiden_k_nn=20, res=2.0",-0.01498952390207208
+aggl_K=6,"leiden_k_nn=20, res=2.0",-0.015045875427529472
+aggl_K=7,"leiden_k_nn=20, res=2.0",-0.027189884095661084
 aggl_K=2,gmm_K=2,-0.05986988388371901
 kmeans_K=2,gmm_K=2,-0.05986988388371901

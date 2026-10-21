@@ -1,0 +1,11 @@
+{
+  "metodo": "Aglomerativo (Ward)",
+  "config": "K=3",
+  "n_clusters_efectivos": 3,
+  "n_outliers": NaN,
+  "silhouette": 0.44753296486200966,
+  "calinski_harabasz": 23.40282157051709,
+  "davies_bouldin": 1.259790333645097,
+  "bic": NaN,
+  "aic": NaN
+}
