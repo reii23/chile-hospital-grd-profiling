@@ -233,22 +233,63 @@ cols_comunes = [
 orig_idx = matriz_original.set_index("COD_HOSPITAL")[cols_comunes].reindex(universo_65)
 sp_idx = matriz_sp.set_index("COD_HOSPITAL")[cols_comunes].reindex(universo_65)
 
+# Las componentes PCA se re-estiman en cada matriz, por lo que su signo y su
+# orden son arbitrarios entre corridas: comparar dim_k con dim_k por nombre
+# confunde una inversión de eje o un intercambio de posición con un cambio real
+# de casuística. Antes de comparar, cada componente original se empareja con la
+# componente sin pandemia de mayor |correlación| (asignación uno a uno) y se
+# alinea su signo.
+from scipy.optimize import linear_sum_assignment
+
+dims_orig = [c for c in cols_comunes if c.startswith("dim_")]
+dims_sp = [c for c in sp_idx.columns if c.startswith("dim_")]
+corr_dims = np.array([
+    [orig_idx[a].astype(float).corr(sp_idx[b].astype(float)) for b in dims_sp]
+    for a in dims_orig
+])
+filas_asig, cols_asig = linear_sum_assignment(-np.abs(np.nan_to_num(corr_dims)))
+pareja_pca = {
+    dims_orig[i]: (dims_sp[j], float(np.sign(corr_dims[i, j]) or 1.0))
+    for i, j in zip(filas_asig, cols_asig)
+}
+
 filas_sens = []
 for col in cols_comunes:
     orig_vals = orig_idx[col].astype(float)
-    sp_vals = sp_idx[col].astype(float)
+    es_pca = col in pareja_pca
+    if es_pca:
+        col_sp, signo = pareja_pca[col]
+        sp_vals = sp_idx[col_sp].astype(float) * signo
+    else:
+        col_sp, signo = col, 1.0
+        sp_vals = sp_idx[col].astype(float)
     delta_abs = (sp_vals - orig_vals).abs()
-    denom = orig_vals.abs().replace(0, np.nan)
-    delta_rel = (delta_abs / denom).replace([np.inf, -np.inf], np.nan)
+    # Las puntuaciones PCA están centradas en cero: dividir por el valor
+    # original no es interpretable. Para ellas el cambio se expresa en
+    # desviaciones estándar de la componente original.
+    if es_pca:
+        delta_rel = pd.Series(np.nan, index=delta_abs.index)
+        delta_sd = delta_abs / orig_vals.std()
+    else:
+        denom = orig_vals.abs().replace(0, np.nan)
+        delta_rel = (delta_abs / denom).replace([np.inf, -np.inf], np.nan)
+        delta_sd = pd.Series(np.nan, index=delta_abs.index)
     filas_sens.append({
         "variable": col,
+        "tipo": "componente_pca" if es_pca else "variable_directa",
+        "componente_sin_pandemia_emparejada": col_sp,
+        "signo_alineacion": signo,
         "delta_abs_mediana": float(delta_abs.median()),
         "delta_abs_max": float(delta_abs.max()),
         "delta_rel_mediana_pct": float(delta_rel.median() * 100) if delta_rel.notna().any() else np.nan,
         "delta_rel_max_pct": float(delta_rel.max() * 100) if delta_rel.notna().any() else np.nan,
+        "delta_sd_mediana": float(delta_sd.median()) if delta_sd.notna().any() else np.nan,
         "correlacion_orig_vs_sp": float(orig_vals.corr(sp_vals)) if orig_vals.std() > 0 and sp_vals.std() > 0 else np.nan,
     })
-df_sens = pd.DataFrame(filas_sens).sort_values("delta_rel_mediana_pct", ascending=False)
+df_sens = pd.DataFrame(filas_sens).sort_values(
+    ["tipo", "delta_rel_mediana_pct", "correlacion_orig_vs_sp"],
+    ascending=[False, False, True],
+)
 df_sens.to_csv(TABLES_DIR / "temporal_sensibilidad_por_variable.csv", index=False)
 print(f"  Top 10 variables mas sensibles a excluir 2020-2021 (delta relativo mediano):")
 print(df_sens.head(10).to_string(index=False, float_format="%.2f"))

@@ -37,5 +37,5 @@ desc = desc.loc[[c for c in ORDEN if c in desc.index] + sorted(resto)]
 
 desc.to_csv(TABLES_DIR / "estadisticas_descriptivas.csv")
 print(f"n hospitales: {len(matriz)} | variables descritas: {len(desc)}")
-print(desc.to_string(float_format="%.3f"))
+print(desc.to_string(float_format=lambda v: f"{v:.3f}"))
 print(f"\n>>> Persistido: {(TABLES_DIR / 'estadisticas_descriptivas.csv').name}")
