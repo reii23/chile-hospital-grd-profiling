@@ -177,7 +177,7 @@ ponderación por $1/\sqrt{p_b}$ por bloque conserva exactamente la partición
 principal ($ARI=NMI=1{,}000$) y mejora marginalmente sus métricas internas.
 En cambio, al excluir las siete variables demográfico-obstétricas, la
 concordancia disminuye de forma importante ($ARI=0{,}571$; $NMI=0{,}599$): los
-clústeres pediátrico y monográfico permanecen separados, pero seis hospitales
+clústeres pediátrico ($C0$) y de especialización clínica ($C3$) permanecen separados, pero seis hospitales
 del núcleo y tres del grupo $C2$ cambian de agrupación. La menor cohesión de
 esta solución (Silhouette $=0{,}238$ frente a $0{,}398$) indica que el bloque
 excluido contribuye materialmente a la separación, por tanto, los perfiles no
@@ -461,7 +461,7 @@ $9$.
 
 La solución con dos grupos tiene el mayor Silhouette del barrido, pero su ARI
 mediano de 0,526 sigue lejos de la estabilidad del Nivel~1 (ARI mediano
-0,958). La solución de nueve grupos tampoco reproduce una tipología robusta:
+0,917). La solución de nueve grupos tampoco reproduce una tipología robusta:
 aunque su NMI es mayor, su ARI mediano es 0,559, y contiene dos subgrupos
 unitarios. En consecuencia, el Nivel~2 se limita en el cuerpo del texto a una
 separación exploratoria amplia en dos bloques de 40 y 14 hospitales, por lo que no se
@@ -488,17 +488,17 @@ Siguiendo el procedimiento descrito en la Sección~\ref{sec:bootstrap}, se ejecu
 \textbf{Métrica} & \textbf{Mediana} & \textbf{Percentil 2,5} &
 \textbf{Percentil 97,5} \\
 \midrule
-Silhouette & 0,395 & 0,225 & 0,460 \\
-ARI vs. partición original & 0,958 & 0,514 & 1,000 \\
-NMI vs. partición original & 0,917 & 0,656 & 1,000 \\
+Silhouette & 0,392 & 0,247 & 0,508 \\
+ARI vs. partición original & 0,917 & 0,588 & 1,000 \\
+NMI vs. partición original & 0,890 & 0,655 & 1,000 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-La mediana del Silhouette en las submuestras ($0{,}395$) es cercana al valor obtenido para la partición completa de 65 hospitales ($0{,}398$). Por tanto, la estructura de cohesión y separación observada en la solución principal se reproduce habitualmente al retirar una fracción de los establecimientos. No obstante, el intervalo percentilar $[0{,}225;\,0{,}460]$ muestra que la calidad interna de la partición varía entre réplicas. Algunas submuestras
-producen agrupamientos menos compactos que la solución calculada sobre el conjunto completo.
+La mediana del Silhouette en las submuestras ($0{,}392$) es cercana al valor obtenido para la partición completa de 65 hospitales ($0{,}398$). Por tanto, la estructura de cohesión y separación observada en la solución principal se reproduce habitualmente al retirar una fracción de los establecimientos. No obstante, el intervalo percentilar $[0{,}247;\,0{,}508]$ muestra que la calidad interna de la partición varía entre réplicas: algunas submuestras
+producen agrupamientos menos compactos que la solución calculada sobre el conjunto completo y otras, más compactos.
 
-La concordancia con la partición original es alta en la réplica típica, pues las medianas de ARI y NMI alcanzan $0{,}958$ y $0{,}917$, respectivamente. Sin embargo, los percentiles inferiores de ambas métricas (ARI $=0{,}514$ y NMI $=0{,}656$) indican que existen submuestras en las que la composición de los grupos se modifica en mayor medida. En consecuencia, los resultados respaldan una estructura global generalmente reproducible, pero no implican que la pertenencia de todos los hospitales a su clúster se conserve con la misma consistencia en cada submuestra.
+La concordancia con la partición original es alta en la réplica típica, pues las medianas de ARI y NMI alcanzan $0{,}917$ y $0{,}890$, respectivamente. Sin embargo, los percentiles inferiores de ambas métricas (ARI $=0{,}588$ y NMI $=0{,}655$) indican que existen submuestras en las que la composición de los grupos se modifica en mayor medida. En consecuencia, los resultados respaldan una estructura global generalmente reproducible, pero no implican que la pertenencia de todos los hospitales a su clúster se conserve con la misma consistencia en cada submuestra.
 
 Para localizar esta variabilidad, la Tabla~\ref{tab:estabilidad-grupo} desagrega la estabilidad por clúster mediante dos indicadores. La estabilidad individual promedio corresponde a la coasignación media de cada hospital con los demás integrantes de su clúster original, condicionada a las réplicas en que ambos hospitales fueron seleccionados. El índice de Jaccard promedio cuantifica el solapamiento entre los integrantes originales de cada clúster presentes en una submuestra y el grupo de dicha réplica con el que presentan mayor coincidencia.
 
@@ -513,18 +513,18 @@ Para localizar esta variabilidad, la Tabla~\ref{tab:estabilidad-grupo} desagrega
 \textbf{Jaccard promedio} \\
 \midrule
 $C0$ (pediátricos) & 3 & 1,000 & 1,000 \\
-$C1$ (núcleo generalista) & 54 & 0,946 & 0,967 \\
-$C2$ (perfil de carga clínica) & 5 & 0,967 & 0,791 \\
-$C3$ (perfil monográfico) & 3 & 0,911 & 0,904 \\
+$C1$ (núcleo generalista) & 54 & 0,943 & 0,966 \\
+$C2$ (carga clínica heterogénea) & 5 & 0,959 & 0,750 \\
+$C3$ (especialización clínica heterogénea) & 3 & 0,885 & 0,890 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-El clúster pediátrico $C0$ presenta coasignación y solapamiento perfectos en las 100 réplicas, lo que es consistente con su perfil clínico claramente diferenciado respecto del resto de la red. El núcleo generalista $C1$, que reúne 54 hospitales, también muestra una elevada estabilidad conjunta: su Jaccard promedio es $0{,}967$ y su estabilidad individual media alcanza $0{,}946$. Así, la mayor parte de los hospitales generalistas conserva su relación de proximidad con los demás integrantes del núcleo al modificar la muestra de análisis.
+El clúster pediátrico $C0$ presenta coasignación y solapamiento perfectos en las 100 réplicas, lo que es consistente con su perfil clínico claramente diferenciado respecto del resto de la red. El núcleo generalista $C1$, que reúne 54 hospitales, también muestra una elevada estabilidad conjunta: su Jaccard promedio es $0{,}966$ y su estabilidad individual media alcanza $0{,}943$. Así, la mayor parte de los hospitales generalistas conserva su relación de proximidad con los demás integrantes del núcleo al modificar la muestra de análisis.
 
-El clúster $C2$ registra la mayor estabilidad individual promedio entre los grupos no pediátricos ($0{,}967$), aunque su Jaccard promedio es el menor de la partición ($0{,}791$). Esto señala que sus hospitales tienden a mantener una alta coasignación con sus pares originales cuando son seleccionados, pero que la composición completa del grupo es más sensible a la omisión de algunos establecimientos en las submuestras. Esta sensibilidad es coherente con el tamaño reducido del clúster ($n=5$), pues la exclusión de uno o más de sus integrantes altera proporcionalmente su composición en mayor medida que en el núcleo generalista.
+El clúster $C2$ registra la mayor estabilidad individual promedio entre los grupos no pediátricos ($0{,}959$), aunque su Jaccard promedio es el menor de la partición ($0{,}750$). Esto señala que sus hospitales tienden a mantener una alta coasignación con sus pares originales cuando son seleccionados, pero que la composición completa del grupo es más sensible a la omisión de algunos establecimientos en las submuestras. Esta sensibilidad es coherente con el tamaño reducido del clúster ($n=5$), pues la exclusión de uno o más de sus integrantes altera proporcionalmente su composición en mayor medida que en el núcleo generalista.
 
-Por su parte, el clúster monográfico $C3$ presenta estabilidad individual media de $0{,}911$ y un Jaccard promedio de $0{,}904$. Ambos valores son inferiores a los observados en $C0$ y $C1$, pero no permiten caracterizar a $C3$ como un grupo inestable, pues en la mayoría de
+Por su parte, el clúster de especialización clínica heterogénea $C3$ presenta estabilidad individual media de $0{,}885$ y un Jaccard promedio de $0{,}890$. Ambos valores son inferiores a los observados en $C0$ y $C1$, pero no permiten caracterizar a $C3$ como un grupo inestable, pues en la mayoría de
 las réplicas sus tres hospitales conservan una asociación reconocible. En conjunto, el submuestreo muestra que la partición de Nivel~1 es predominantemente reproducible, aunque la estabilidad de los grupos pequeños y la asignación de algunos establecimientos específicos dependen en mayor medida de la composición de la muestra analizada. Estos resultados constituyen evidencia de sensibilidad interna del procedimiento y deben interpretarse junto con los análisis descriptivos, de sensibilidad temporal y de detección de observaciones atípicas presentados en las secciones precedentes.
 
 
@@ -557,7 +557,7 @@ En el Nivel~1 (Tabla~\ref{tab:kruskal-nivel1}), 26 de las 28 variables
 discriminan significativamente entre los cuatro clústeres después del ajuste
 BH. Los mayores tamaños de efecto corresponden a \texttt{tasa\_partos}
 ($\varepsilon^2=0{,}395$), \texttt{edad\_mediana}
-($\varepsilon^2=0{,}377$) y \texttt{pct\_obstetrica\_ingreso}
+($\varepsilon^2=0{,}374$) y \texttt{pct\_obstetrica\_ingreso}
 ($\varepsilon^2=0{,}345$). Estos resultados son consistentes con la separación
 entre el perfil pediátrico, los establecimientos de mayor especialización y los
 hospitales generalistas, particularmente respecto de la composición etaria de
@@ -577,61 +577,61 @@ Solo \texttt{cv\_estancia} y \texttt{pabellones\_promedio} no alcanzan significa
 \textbf{Discrimina} \\
 \midrule
 tasa\_partos
-& 27,1 & $5{,}62 \times 10^{-6}$ & $1{,}34 \times 10^{-4}$ & 0,395 & Sí \\
+& 27,1 & $5{,}62 \times 10^{-6}$ & $1{,}45 \times 10^{-4}$ & 0,395 & Sí \\
 edad\_mediana
-& 26,0 & $9{,}58 \times 10^{-6}$ & $1{,}34 \times 10^{-4}$ & 0,377 & Sí \\
+& 25,8 & $1{,}04 \times 10^{-5}$ & $1{,}45 \times 10^{-4}$ & 0,374 & Sí \\
 pct\_obstetrica\_ingreso
 & 24,0 & $2{,}45 \times 10^{-5}$ & $2{,}29 \times 10^{-4}$ & 0,345 & Sí \\
 pct\_pediatrico
-& 22,9 & $4{,}16 \times 10^{-5}$ & $2{,}92 \times 10^{-4}$ & 0,327 & Sí \\
+& 23,0 & $4{,}08 \times 10^{-5}$ & $2{,}86 \times 10^{-4}$ & 0,328 & Sí \\
 pct\_femenino\_fertil
-& 22,1 & $6{,}31 \times 10^{-5}$ & $3{,}53 \times 10^{-4}$ & 0,313 & Sí \\
+& 22,3 & $5{,}59 \times 10^{-5}$ & $3{,}13 \times 10^{-4}$ & 0,317 & Sí \\
 tasa\_prematurez
 & 20,5 & $1{,}31 \times 10^{-4}$ & $6{,}13 \times 10^{-4}$ & 0,287 & Sí \\
 pct\_geriatrico
 & 20,2 & $1{,}56 \times 10^{-4}$ & $6{,}22 \times 10^{-4}$ & 0,282 & Sí \\
 severidad\_media
-& 19,4 & $2{,}31 \times 10^{-4}$ & $7{,}24 \times 10^{-4}$ & 0,268 & Sí \\
+& 19,3 & $2{,}41 \times 10^{-4}$ & $8{,}45 \times 10^{-4}$ & 0,267 & Sí \\
 mortalidad\_media
-& 19,3 & $2{,}33 \times 10^{-4}$ & $7{,}24 \times 10^{-4}$ & 0,268 & Sí \\
+& 18,9 & $2{,}81 \times 10^{-4}$ & $8{,}73 \times 10^{-4}$ & 0,261 & Sí \\
 pct\_alta\_domicilio
-& 17,1 & $6{,}64 \times 10^{-4}$ & $1{,}86 \times 10^{-3}$ & 0,232 & Sí \\
+& 17,7 & $5{,}08 \times 10^{-4}$ & $0{,}001$ & 0,241 & Sí \\
 pct\_urgencia
-& 16,8 & $7{,}83 \times 10^{-4}$ & $1{,}99 \times 10^{-3}$ & 0,226 & Sí \\
+& 17,7 & $5{,}09 \times 10^{-4}$ & $0{,}001$ & 0,241 & Sí \\
 estancia\_mediana
-& 16,3 & $9{,}79 \times 10^{-4}$ & $2{,}28 \times 10^{-3}$ & 0,218 & Sí \\
+& 14,8 & $0{,}002$ & $0{,}005$ & 0,193 & Sí \\
 egresos\_por\_anio
-& 14,1 & $0{,}003$ & $0{,}006$ & 0,182 & Sí \\
+& 14,3 & $0{,}003$ & $0{,}006$ & 0,185 & Sí \\
 peso\_medio\_grd
 & 13,6 & $0{,}004$ & $0{,}007$ & 0,173 & Sí \\
 pct\_programada
-& 13,4 & $0{,}004$ & $0{,}007$ & 0,170 & Sí \\
+& 13,1 & $0{,}004$ & $0{,}008$ & 0,166 & Sí \\
 pct\_alta\_fallecido
-& 13,3 & $0{,}004$ & $0{,}007$ & 0,169 & Sí \\
-estancia\_media
-& 13,1 & $0{,}004$ & $0{,}007$ & 0,166 & Sí \\
+& 13,0 & $0{,}005$ & $0{,}008$ & 0,163 & Sí \\
 comorbilidades\_promedio
-& 12,9 & $0{,}005$ & $0{,}007$ & 0,163 & Sí \\
-pct\_uso\_pabellon
-& 12,6 & $0{,}006$ & $0{,}008$ & 0,157 & Sí \\
-pct\_alta\_traslado
-& 12,4 & $0{,}006$ & $0{,}008$ & 0,154 & Sí \\
+& 12,9 & $0{,}005$ & $0{,}008$ & 0,163 & Sí \\
 peso\_medio\_cma
-& 12,4 & $0{,}006$ & $0{,}008$ & 0,153 & Sí \\
+& 12,4 & $0{,}006$ & $0{,}009$ & 0,153 & Sí \\
+estancia\_media
+& 12,3 & $0{,}007$ & $0{,}009$ & 0,152 & Sí \\
+pct\_alta\_traslado
+& 12,2 & $0{,}007$ & $0{,}009$ & 0,151 & Sí \\
+pct\_uso\_pabellon
+& 12,2 & $0{,}007$ & $0{,}009$ & 0,151 & Sí \\
 pct\_estancia\_larga
-& 11,8 & $0{,}008$ & $0{,}010$ & 0,144 & Sí \\
+& 11,7 & $0{,}008$ & $0{,}011$ & 0,143 & Sí \\
 pct\_origen\_referencia
-& 11,3 & $0{,}010$ & $0{,}012$ & 0,137 & Sí \\
+& 11,0 & $0{,}012$ & $0{,}015$ & 0,130 & Sí \\
 tasa\_cma
 & 10,7 & $0{,}014$ & $0{,}016$ & 0,126 & Sí \\
-entropia\_grd
-& 9,5 & $0{,}024$ & $0{,}026$ & 0,106 & Sí \\
 pct\_origen\_emergencia
-& 9,4 & $0{,}024$ & $0{,}026$ & 0,105 & Sí \\
+& 9,2 & $0{,}027$ & $0{,}031$ & 0,101 & Sí \\
+entropia\_grd
+& 8,9 & $0{,}031$ & $0{,}033$ & 0,097 & Sí \\
 cv\_estancia
-& 5,5 & $0{,}139$ & $0{,}144$ & 0,041 & No \\
+& 5,7 & $0{,}127$ & $0{,}132$ & 0,044 & No \\
 pabellones\_promedio
-& 4,8 & $0{,}188$ & $0{,}188$ & 0,029 & No \\
+& 4,6 & $0{,}204$ & $0{,}204$ & 0,026 & No \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -971,10 +971,10 @@ vez, que los ejes de organización funcional dependen de la información incluid
 y del contexto de red. Ese trabajo identificó tres grupos principalmente
 asociados con tamaño, diversidad y movilidad de pacientes. En esta tesis, la
 solución de cuatro grupos distingue un núcleo generalista y perfiles pediátrico,
-monográfico y de carga clínica heterogénea. La composición
+de especialización clínica heterogénea y de carga clínica heterogénea. La composición
 demográfico-obstétrica aporta el $36{,}3\,\%$ de la distancia total y, al
 excluir ese bloque, la partición se conserva solo parcialmente ($ARI=0{,}571$):
-los grupos pediátrico y monográfico permanecen separados, pero seis hospitales
+los grupos pediátrico y de especialización clínica permanecen separados, pero seis hospitales
 del núcleo y tres del grupo $C2$ cambian de agrupación
 (Sección~\ref{sec:res-bloques}). Por tanto, la composición de la demanda
 participa de forma importante en la estructura chilena estudiada, y lo hace más
