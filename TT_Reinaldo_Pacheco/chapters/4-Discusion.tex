@@ -886,12 +886,12 @@ en bloques de variables no usados para construir las etiquetas Ward.
 La Tabla~\ref{tab:homogeneidad-cruzada} evalúa cada partición en un bloque de
 variables distinto del que se utilizó para construir Ward. Al agrupar con las 27
 variables directas y evaluar sobre las 8 componentes de casuística, Ward $K=4$
-obtuvo WSS/TSS $=0{,}616$, frente a $0{,}956$ para MINSAL, con una diferencia
-MINSAL--Ward de $0{,}340$ (IC bootstrap 95\,\% $[0{,}176;0{,}540]$). En el
+obtuvo WSS/TSS $=0{,}651$, frente a $0{,}956$ para MINSAL, con una diferencia
+MINSAL--Ward de $0{,}304$ (IC bootstrap 95\,\% $[0{,}173;0{,}499]$). En el
 sentido inverso, al agrupar con componentes de casuística y evaluar sobre las
-variables directas, Ward $K=4$ obtuvo WSS/TSS $=0{,}533$, frente a $0{,}940$
-para MINSAL, con una diferencia de $0{,}407$ (IC 95\,\%
-$[0{,}198;0{,}616]$). En ambas direcciones, la partición de cuatro grupos
+variables directas, Ward $K=4$ obtuvo WSS/TSS $=0{,}469$, frente a $0{,}938$
+para MINSAL, con una diferencia de $0{,}470$ (IC 95\,\%
+$[0{,}233;0{,}637]$). En ambas direcciones, la partición de cuatro grupos
 conserva menor dispersión en el bloque retenido.
 
 \begin{table}[htbp]
@@ -905,15 +905,15 @@ conserva menor dispersión en el bloque retenido.
 \textbf{WSS/TSS Ward} & \textbf{WSS/TSS MINSAL} &
 \textbf{Diferencia (IC 95\,\%)} \\
 \midrule
-Directas $\rightarrow$ casuística & 4 & 0,616 & 0,956 &
-0,340 $[0,176;0,540]$ \\
-Casuística $\rightarrow$ directas & 4 & 0,533 & 0,940 &
-0,407 $[0,198;0,616]$ \\
+Directas $\rightarrow$ casuística & 4 & 0,651 & 0,956 &
+0,304 $[0,173;0,499]$ \\
+Casuística $\rightarrow$ directas & 4 & 0,469 & 0,938 &
+0,470 $[0,233;0,637]$ \\
 \addlinespace
-Directas $\rightarrow$ casuística & 2 & 0,850 & 0,956 &
-0,106 $[-0,057;0,262]$ \\
-Casuística $\rightarrow$ directas & 2 & 0,740 & 0,940 &
-0,200 $[-0,073;0,449]$ \\
+Directas $\rightarrow$ casuística & 2 & 0,846 & 0,956 &
+0,110 $[-0,055;0,268]$ \\
+Casuística $\rightarrow$ directas & 2 & 0,678 & 0,938 &
+0,260 $[-0,078;0,475]$ \\
 \bottomrule
 \end{tabular}
 \par\smallskip
@@ -971,11 +971,13 @@ y del contexto de red. Ese trabajo identificó tres grupos principalmente
 asociados con tamaño, diversidad y movilidad de pacientes. En esta tesis, la
 solución de cuatro grupos distingue un núcleo generalista y perfiles pediátrico,
 monográfico y de carga clínica heterogénea. La composición
-demográfico-obstétrica aporta el $37{,}1\,\%$ de la distancia total, aunque la
-partición se conserva en gran medida al excluir ese bloque ($ARI=0{,}933$).
-Por tanto, la estructura chilena estudiada no se explica solo por la composición
-de la demanda, pero esta dimensión participa más explícitamente que en el diseño
-francés. La diferencia no contradice el antecedente internacional, ilustra que
+demográfico-obstétrica aporta el $36{,}3\,\%$ de la distancia total y, al
+excluir ese bloque, la partición se conserva solo parcialmente ($ARI=0{,}571$):
+los grupos pediátrico y monográfico permanecen separados, pero seis hospitales
+del núcleo y tres del grupo $C2$ cambian de agrupación
+(Sección~\ref{sec:res-bloques}). Por tanto, la composición de la demanda
+participa de forma importante en la estructura chilena estudiada, y lo hace más
+explícitamente que en el diseño francés. La diferencia no contradice el antecedente internacional, ilustra que
 las tipologías obtenidas son sensibles a las variables disponibles y que no
 corresponde trasladar un número de grupos ni etiquetas funcionales entre redes
 sin una evaluación contextual.
