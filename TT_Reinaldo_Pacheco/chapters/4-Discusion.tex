@@ -47,7 +47,8 @@ institucional utilizada como entrada al procedimiento de clustering.
 \midrule
 Hospitales (filas) & 65 \\
 Período cubierto & 2019--2024 (6 años) \\
-Registros de egreso procesados & 5{,}808{,}515 \\
+Registros de egreso procesados (72 establecimientos) & 5.808.515 \\
+Egresos del universo analizado (65 hospitales) & 5.756.850 \\
 \addlinespace
 \multicolumn{2}{l}{\textit{Variables originales antes de la reducción PCA}} \\
 \addlinespace
@@ -1334,7 +1335,7 @@ En conjunto, los resultados describen una sensibilidad algorítmica asimétrica.
 
 Siguiendo el procedimiento descrito en la Sección~\ref{sec:sensibilidad-temporal}, se reconstruyó la matriz institucional excluyendo los años 2020 y 2021, manteniendo el mismo universo de 65 hospitales. Posteriormente, se aplicó nuevamente Ward con $K=4$ y se comparó la partición obtenida con la solución construida sobre el período completo 2019--2024.
 
-La solución sin pandemia presenta un Silhouette de $0{,}356$ y tamaños de grupo $[3,51,2,9]$, frente al Silhouette de $0{,}400$ y los tamaños $[3,54,5,3]$ de la partición principal. La concordancia entre ambas soluciones alcanza $\text{ARI}=0{,}809$ y $\text{NMI}=0{,}750$, lo que indica una estabilidad importante, aunque no completa. La distribución de las reasignaciones se detalla en la Tabla~\ref{tab:contingencia-temporal}.
+La solución sin pandemia presenta un Silhouette de $0{,}333$ y tamaños de grupo $[3,51,8,3]$, frente al Silhouette de $0{,}398$ y los tamaños $[3,54,5,3]$ de la partición principal. La concordancia entre ambas soluciones alcanza $\text{ARI}=0{,}820$ y $\text{NMI}=0{,}810$, lo que indica una estabilidad importante, aunque no completa. La distribución de las reasignaciones se detalla en la Tabla~\ref{tab:contingencia-temporal}.
 
 \begin{table}[htbp]
 \centering
@@ -1342,19 +1343,26 @@ La solución sin pandemia presenta un Silhouette de $0{,}356$ y tamaños de grup
 \label{tab:contingencia-temporal}
 \begin{tabular}{c c c c c}
 \toprule
-\textbf{Original $\backslash$ Sin pandemia} & \textbf{0} & \textbf{1} & \textbf{2} & \textbf{3} \\
+\textbf{Original $\backslash$ Sin pandemia} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{D} \\
 \midrule
 \textbf{0} ($C0$) & 3 & 0 & 0 & 0 \\
-\textbf{1} ($C1$) & 0 & 51 & 0 & 3 \\
-\textbf{2} ($C2$) & 0 & 0 & 0 & 5 \\
-\textbf{3} ($C3$) & 0 & 0 & 2 & 1 \\
+\textbf{1} ($C1$) & 0 & 51 & 3 & 0 \\
+\textbf{2} ($C2$) & 0 & 0 & 5 & 0 \\
+\textbf{3} ($C3$) & 0 & 0 & 0 & 3 \\
 \bottomrule
 \end{tabular}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\normalsize\raggedright
+\textit{Nota.} Las columnas A--D corresponden a los grupos de la solución sin
+pandemia, ordenados según su correspondencia con la partición principal; la
+numeración original de esos grupos es arbitraria.
+\end{minipage}
 \end{table}
 
-Los tres hospitales de $C0$ permanecen agrupados al excluir los años de pandemia. En el núcleo generalista, 51 de los 54 hospitales permanecen en el bloque principal de la solución temporal alternativa, mientras que tres se reasignan a otro grupo. Los cambios restantes se concentran en los grupos pequeños $C2$ y $C3$. Por tanto, la estructura global se conserva en términos generales, pero los límites entre los perfiles de menor tamaño son más sensibles a la ventana temporal considerada.
+Los tres hospitales de $C0$ y los tres de $C3$ permanecen agrupados al excluir los años de pandemia, y los cinco de $C2$ también se mantienen juntos. El único cambio es que tres hospitales del núcleo generalista se incorporan al grupo que contiene a $C2$, que pasa de cinco a ocho establecimientos. Por tanto, la estructura global se conserva, pero la frontera entre el núcleo generalista y el grupo de carga clínica heterogénea es sensible a la ventana temporal considerada.
 
-La sensibilidad temporal por variable se concentra especialmente en algunas componentes de casuística. Las componentes \texttt{dim\_07} y \texttt{dim\_08} presentan cambios relativos medianos de $124{,}7\%$ y $104{,}7\%$, respectivamente, mientras que \texttt{tasa\_partos} presenta un cambio relativo mediano de $41{,}0\%$. Estos resultados indican que las interpretaciones clínicas finas asociadas a componentes específicas del PCA son más sensibles a la exclusión de 2020--2021 que los perfiles funcionales globales.
+En el nivel de las variables, las 27 variables directas mantienen correlaciones de al menos $0{,}87$ entre ambos períodos; la de mayor cambio relativo mediano es \texttt{tasa\_partos} ($41{,}4\%$), aunque conserva el orden de los hospitales (correlación $0{,}999$). Las componentes de casuística se compararon después de alinear su signo y su orden (Sección~\ref{sec:sensibilidad-temporal}): las ocho conservan una correlación de al menos $0{,}78$ con su par del período completo, y las cuatro primeras superan $0{,}93$. Las componentes menores muestran mayor variación: \texttt{dim\_07} y \texttt{dim\_08} intercambian su posición en el PCA sin pandemia y presentan las correlaciones más bajas ($0{,}893$ y $0{,}777$). En consecuencia, la casuística resumida por el PCA se conserva en términos generales, pero la interpretación clínica individual de las componentes de menor varianza es menos estable frente a la exclusión de 2020--2021.
 
 Como contraste adicional, se ponderaron las ocho componentes por la raíz de su
 varianza explicada: \texttt{dim\_01} explica $22{,}8\%$ y \texttt{dim\_08}
@@ -1402,8 +1410,8 @@ La disminución de cohesión respecto de la solución principal ($0{,}400$) y la
 
 \subsection*{Síntesis de los análisis de sensibilidad}
 
-Los resultados de sensibilidad muestran patrones diferenciados según el tipo de perturbación aplicada. La transformación CLR conserva exactamente la partición principal, mientras que la exclusión de 2020--2021 reduce la concordancia a $\text{ARI}=0{,}809$ y reorganiza principalmente los grupos de menor tamaño. La ampliación del universo a 72 hospitales mantiene una concordancia alta con la solución principal, aunque reduce la cohesión interna y concentra los establecimientos con cobertura incompleta.
+Los resultados de sensibilidad muestran patrones diferenciados según el tipo de perturbación aplicada. La transformación CLR conserva exactamente la partición principal, mientras que la exclusión de 2020--2021 reduce la concordancia a $\text{ARI}=0{,}820$ y desplaza tres hospitales del núcleo generalista hacia el grupo $C2$. La ampliación del universo a 72 hospitales mantiene una concordancia alta con la solución principal, aunque reduce la cohesión interna y concentra los establecimientos con cobertura incompleta.
 
 Frente al cambio de algoritmo, la evidencia es asimétrica. K-means presenta una concordancia elevada con Ward, mientras que GMM y MST-kNN reorganizan de forma más importante la partición completa. Sin embargo, ambos métodos tienden a conservar, en distinta magnitud, la separación entre el bloque generalista y los establecimientos especializados. En consecuencia, los perfiles especializados muestran mayor persistencia frente a cambios metodológicos que la composición detallada del núcleo generalista.
 
-Finalmente, la sensibilidad temporal afecta especialmente algunas componentes de casuística y la proporción de egresos neonatales. Por ello, la interpretación de los perfiles funcionales globales cuenta con mayor respaldo que una lectura exhaustiva de las componentes específicas del PCA o de diferencias clínicas finas entre los grupos.
+Finalmente, la sensibilidad temporal afecta sobre todo a las componentes de casuística de menor varianza, que cambian de posición en el PCA y presentan las correlaciones más bajas entre períodos. Por ello, la interpretación de los perfiles funcionales globales cuenta con mayor respaldo que una lectura exhaustiva de las componentes específicas del PCA o de diferencias clínicas finas entre los grupos.

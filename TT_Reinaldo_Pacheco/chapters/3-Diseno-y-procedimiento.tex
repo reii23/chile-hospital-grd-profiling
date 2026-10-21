@@ -1149,24 +1149,30 @@ la homogeneidad funcional dentro de cada perfil.
 \label{sec:motivacion-jerarquico}
 
 La organización del procedimiento en dos niveles surge de la evidencia acumulada durante la exploración
-algorítmica. Para establecer cuántos grupos existen en la red, se ejecutaron
-ocho técnicas que determinan $k$ automáticamente sin que el analista lo fije:
-HDBSCAN, Mean Shift, Affinity Propagation, clustering aglomerativo con criterio
-\textit{largest gap}, estadístico Gap, MST-kNN~\citep{Villalobos2016},
-KNN-graph con Leiden y GMM con criterio BIC. Las ocho convergen en la misma
-lectura: la red presenta un núcleo numeroso de hospitales con perfiles similares
-entre sí más un conjunto reducido de establecimientos que se distancian
-marcadamente del resto.
+algorítmica. Para examinar cuántos grupos sostiene la red, se contrastaron
+técnicas que fijan $k$ (K-means++, Ward y GMM, este último con criterio BIC)
+con técnicas que no lo fijan de antemano (HDBSCAN, KNN-graph con Leiden y
+MST-kNN~\citep{Villalobos2016}). Las primeras producen su corte más marcado en
+$k = 2$, que separa tres hospitales del resto, y el BIC de GMM alcanza su
+mínimo en ese mismo valor. Las segundas no identifican subgrupos densos
+dentro del núcleo: HDBSCAN clasifica a los 65 hospitales como ruido en todas
+las configuraciones exploradas, Leiden con resolución $0{,}5$ entrega una
+única comunidad y, con resoluciones mayores, particiones con Silhouette cercano
+a cero o negativo, y MST-kNN fragmenta el núcleo en un bloque principal,
+grupos pequeños y hospitales unitarios. Esta evidencia es compatible con un
+núcleo numeroso de hospitales sin fronteras internas nítidas más un conjunto
+reducido de establecimientos que se distancian del resto, pero no constituye
+una convergencia de métodos hacia una misma partición.
 
 Ante esta estructura, un agrupamiento global único resulta insatisfactorio en
 ambos extremos del rango. Con $k$ bajo, el corte más fuerte se produce en
-$k = 2$ (Silhouette $= 0{,}605$), que aísla un grupo pequeño del resto pero
+$k = 2$ (Silhouette $= 0{,}600$), que aísla un grupo pequeño del resto pero
 deja al 95\,\% de la red como un bloque indiferenciado, sin valor para el
-perfilamiento. Con $k$ alto, al explorar $k \in \{5, \ldots, 20\}$ con
-K-means++, clustering aglomerativo Ward y GMM, el coeficiente de Silhouette
-decrece de forma consistente en las tres técnicas a medida que $k$ crece, lo
-que indica que el sistema no soporta una segmentación más granular sobre los
-65 hospitales en conjunto.
+perfilamiento. Con $k$ alto, el coeficiente de Silhouette de Ward cae de
+$0{,}398$ en $k=4$ a valores entre $0{,}15$ y $0{,}22$ para $k \in \{5,\ldots,10\}$
+(Tabla~\ref{tab:metricas-nivel1}), y ni K-means++ ni GMM superan un
+Silhouette de $0{,}21$ en $k \in \{5,\ldots,8\}$, lo que indica que el sistema no sostiene
+una segmentación más granular sobre los 65 hospitales en conjunto.
 
 Para resolver esta dualidad, el procedimiento se organiza en dos niveles
 independientes:
@@ -1845,9 +1851,17 @@ preprocesamiento de la Sección~\ref{sec:preprocesamiento} y el clustering
 aglomerativo Ward con $K=4$.
 
 Esta prueba incorpora un segundo nivel de análisis, además de la comparación
-entre particiones. Para cada variable de la matriz institucional se calcula el
-cambio relativo mediano entre hospitales al pasar del período completo al período
-reducido, junto con la correlación entre ambas versiones de la variable. El
+entre particiones. Para cada variable directa de la matriz institucional se
+calcula el cambio relativo mediano entre hospitales al pasar del período completo
+al período reducido, junto con la correlación entre ambas versiones de la
+variable. Las componentes PCA requieren un tratamiento distinto, porque al
+re-estimar el PCA sobre el período reducido su signo y su orden son arbitrarios:
+una componente puede aparecer invertida o intercambiar su posición con otra sin
+que la casuística subyacente cambie. Por ello, cada componente original se
+empareja con la componente del período reducido de mayor correlación absoluta,
+mediante una asignación uno a uno, y se alinea su signo antes de comparar. Como
+las puntuaciones PCA están centradas en cero, su cambio se expresa en
+desviaciones estándar de la componente original y no como cambio relativo. El
 propósito es distinguir si una eventual estabilidad de la partición se sostiene
 sobre indicadores igualmente estables o si, por el contrario, coexiste con
 variables individualmente sensibles al cambio de período.
