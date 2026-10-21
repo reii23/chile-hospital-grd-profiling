@@ -248,26 +248,116 @@ métricas internas, con Silhouette $=0{,}600$, Calinski-Harabasz $=25{,}3$ y
 Davies-Bouldin $=0{,}485$. La
 comparación entre $K=3$ y $K=4$ es mixta: $K=3$ presenta valores superiores de
 Silhouette y Calinski-Harabasz, mientras que $K=4$ obtiene un Davies-Bouldin
-menor. Por tanto, la selección de $K=4$ no responde a la optimización conjunta
-de las métricas internas, sino al criterio interpretativo definido para el
-perfilamiento funcional de la red.
+menor. Un mínimo local de Davies-Bouldin no basta, por sí solo, para preferir
+$K=4$, porque ese índice resume la relación entre dispersión y separación de los
+grupos y no la existencia de cuatro perfiles clínicos. Por tanto, la selección de
+$K=4$ no responde a la optimización de las métricas internas.
 
-Sin embargo, estas soluciones tienen una utilidad limitada para el objetivo de
-perfilamiento funcional. La solución $K=2$ agrupa a 62 de los 65 hospitales en
-un bloque amplio frente a tres establecimientos singulares. La solución $K=3$, aunque separa tres grupos, todavía reúne en un mismo clúster a ocho establecimientos que, al pasar a $K=4$, se distinguen en dos grupos de cinco y tres hospitales con perfiles clínico-operativos diferentes.
+Las métricas no fijan el número de grupos; describen el costo de cada
+alternativa. La solución $K=2$ es la más compacta y separada, pero
+reduce la red a los tres hospitales pediátricos frente a un bloque de 62
+establecimientos, lo que no alcanza para el perfilamiento funcional que persigue
+el estudio. La solución $K=3$ separa además un grupo de ocho hospitales. La
+decisión relevante es, entonces, si conviene dividir ese grupo de ocho en los
+dos grupos de cinco y tres hospitales que produce $K=4$.
 
-Siguiendo el criterio declarado en la Sección~\ref{sec:seleccion-k}, se adoptó
-la partición $K=4$. Esta elección se declara explícitamente como un compromiso interpretativo,
-pues identifica un núcleo de 54 hospitales generalistas, tres hospitales pediátricos,
-tres establecimientos de especialización clínica heterogénea y un grupo de cinco
-hospitales con una combinación particular de
-carga clínica, estancia y composición de pacientes. La solución presenta un
-Silhouette de $0{,}398$ y un Davies-Bouldin de $0{,}994$. En consecuencia, no se
-interpreta como el número óptimo de grupos según un criterio estadístico formal,
-sino como una partición útil para describir la heterogeneidad funcional de la
-red.
+Siguiendo el criterio de la Sección~\ref{sec:seleccion-k}, la división se
+adoptó porque los dos grupos resultantes difieren en variables
+clínico-operativas interpretables. La Tabla~\ref{tab:c2-c3} compara ambos
+grupos en la escala original de las variables. En cuatro de ellas los rangos
+no se solapan: los cinco hospitales de $C2$ reciben la mayor parte de sus
+pacientes por urgencia y desde emergencia, y trasladan una proporción mayor de
+sus egresos, mientras que los tres de $C3$ concentran su actividad en ingresos
+programados. $C3$ registra además un peso medio GRD cercano al doble del de $C2$
+y actividad obstétrica y de CMA prácticamente nula. La solución $K=5$, en
+cambio, no divide un grupo pequeño, sino el núcleo generalista, en bloques de 40
+y 14 hospitales, y su Silhouette desciende a $0{,}207$; la exploración de la
+estructura interna de ese núcleo se reserva para el Nivel~2. Desde $K=6$
+aparecen además grupos de uno o dos hospitales.
 
-Las soluciones $K=4$ y $K=5$ no presentan grupos de uno o dos establecimientos. A partir de $K=6$ aparecen grupos unitarios, por lo que las particiones posteriores son menos apropiadas para la caracterización comparativa de perfiles institucionales. Entre las soluciones sin grupos unitarios o binarios, se privilegia $K=4$ porque identifica los cuatro perfiles globales de la red sin subdividir el núcleo generalista. La heterogeneidad interna de ese núcleo se examina de manera separada y explícitamente exploratoria mediante el clustering de Nivel~2.
+\begin{table}[htbp]
+\centering
+\caption{Grupos $C2$ y $C3$, en que $K=4$ divide el grupo de ocho hospitales de $K=3$: variables cuyos rangos no se solapan y variables de casuística seleccionadas (escala original).}
+\label{tab:c2-c3}
+\begin{tabular}{l c c}
+\toprule
+\textbf{Variable} & \textbf{$C2$ ($n=5$): mediana [mín; máx]} &
+\textbf{$C3$ ($n=3$): mediana [mín; máx]} \\
+\midrule
+\% Origen emergencia & 51,2 [35,1; 86,2] & 0,7 [0,0; 15,1] \\
+\% Ingreso por urgencia & 74,7 [67,1; 99,0] & 34,6 [17,2; 54,7] \\
+\% Ingreso programado & 14,8 [1,0; 20,1] & 65,4 [45,3; 82,8] \\
+\% Alta por traslado & 9,7 [7,6; 12,7] & 3,7 [3,2; 3,7] \\
+\addlinespace
+Peso medio GRD & 0,945 [0,835; 1,521] & 1,874 [1,315; 2,237] \\
+Tasa de CMA (\%) & 34,9 [0,1; 41,8] & 0,0 [0,0; 10,0] \\
+\% Ingresos obstétricos & 10,5 [0,0; 19,1] & 0,0 [0,0; 0,1] \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\normalsize\raggedright
+\textit{Nota.} $C2$: HUAP Dr.\ Alejandro del Río, Hospital Del Salvador,
+Hospital Dr.\ Abraham Godoy (Lautaro), Hospital Intercultural de Nueva Imperial
+y Hospital de Pitrufquén. $C3$: INER, Instituto de Neurocirugía Dr.\ Alfonso
+Asenjo y Hospital Dr.\ Eduardo Pereira Ramírez. Las cuatro primeras filas son
+las únicas variables directas con rangos sin solape entre ambos grupos. Fuente:
+\texttt{comparacion\_c2\_c3\_escala\_original.csv}.
+\end{minipage}
+\end{table}
+
+La partición $K=4$ identifica así un núcleo de 54 hospitales generalistas, tres
+hospitales pediátricos, tres establecimientos de especialización clínica
+heterogénea y cinco hospitales de carga clínica heterogénea. Presenta un
+Silhouette de $0{,}398$ y un Davies-Bouldin de $0{,}994$. No se interpreta como
+el número óptimo de grupos según un criterio estadístico formal, sino como una
+partición descriptiva útil para caracterizar la heterogeneidad funcional de la
+red. La distinción entre $C2$ y $C3$ debe leerse con cautela: el Hospital
+Dr.\ Eduardo Pereira Ramírez tiene un Silhouette individual negativo y su
+asignación a $C3$ es ambigua (Sección~\ref{sec:res-outliers-combinados}).
+
+Como evaluación posterior a la elección, y no como criterio para realizarla, la
+Tabla~\ref{tab:estabilidad-por-k} compara la estabilidad bajo submuestreo de
+las alternativas $K \in \{2,\ldots,5\}$ con el esquema de la
+Sección~\ref{sec:bootstrap}. El grupo de ocho hospitales de $K=3$ es el menos
+estable de todas las soluciones vecinas (Jaccard medio $0{,}634$). Al dividirlo,
+los dos grupos resultantes son más estables que el grupo original ($0{,}750$
+para $C2$ y $0{,}890$ para $C3$) y el ARI mediano sube de $0{,}773$ a $0{,}917$.
+$K=5$ es la menos estable (ARI mediano $0{,}555$), con un grupo de 14
+hospitales que rara vez se reproduce (Jaccard $0{,}413$). $K=2$ coincide con la
+solución completa en 94 de las 100 submuestras; su percentil inferior de ARI es
+negativo porque, en las seis réplicas que conservan un solo hospital pediátrico,
+el primer corte del árbol deja de separar a ese hospital y aísla en su lugar a
+otro conjunto de establecimientos. La separación de $K=2$ depende, por tanto,
+de que los tres hospitales pediátricos estén presentes. Esta evaluación es coherente con la elección de
+$K=4$, pero no la demuestra: los percentiles describen la sensibilidad de cada
+solución a la composición de la muestra y no constituyen intervalos de
+confianza poblacionales. Además, $C2$ es el grupo más sensible de la solución
+adoptada.
+
+\begin{table}[htbp]
+\centering
+\caption{Estabilidad bajo submuestreo de las alternativas de $K$ (100 submuestras de 52 hospitales).}
+\label{tab:estabilidad-por-k}
+\begin{tabular}{c l c c c}
+\toprule
+\textbf{$K$} & \textbf{Tamaños} & \textbf{ARI mediano} &
+\textbf{ARI P2,5} & \textbf{Jaccard mínimo por grupo} \\
+\midrule
+2 & 62, 3 & 1,000 & $-0{,}029$ & 0,941 \\
+3 & 54, 8, 3 & 0,773 & 0,547 & 0,634 \\
+\bfseries 4 & \bfseries 54, 5, 3, 3 & \bfseries 0,917 & \bfseries 0,588 & \bfseries 0,750 \\
+5 & 40, 14, 5, 3, 3 & 0,555 & 0,305 & 0,413 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\normalsize\raggedright
+\textit{Nota.} Mismo esquema y semilla que la Sección~\ref{sec:res-estabilidad}.
+El Jaccard mínimo corresponde al grupo menos reproducible de cada solución.
+Fuente: \texttt{estabilidad\_por\_k.csv}.
+\end{minipage}
+\end{table}
 
 El dendrograma de la Figura~\ref{fig:dendrograma-global} ilustra el proceso de
 fusión jerárquica de Ward y los cortes correspondientes a $K=2$, $K=3$ y $K=4$.
@@ -275,9 +365,9 @@ La figura es una representación descriptiva de la estructura del agrupamiento
 y, por sí sola, no constituye una validación independiente de la partición.
 
 Los tres hospitales pediátricos del clúster $C0$ se separan claramente del
-núcleo generalista, pues concentran más del $95\,\%$ de sus egresos en población
-pediátrica y sus coeficientes Silhouette individuales son positivos
-($0{,}627$ a $0{,}736$). Los tres establecimientos del clúster $C3$ presentan
+núcleo generalista, pues entre el $92{,}5\,\%$ y el $96{,}6\,\%$ de sus egresos
+corresponden a población pediátrica y sus coeficientes Silhouette individuales
+son positivos ($0{,}640$ a $0{,}742$). Los tres establecimientos del clúster $C3$ presentan
 un perfil de mayor complejidad y especialización, aunque sus valores individuales
 de Silhouette son más heterogéneos. Por ello, la caracterización de los grupos
 pequeños se limita a describir sus perfiles clínico-operativos. En particular,

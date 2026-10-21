@@ -128,6 +128,7 @@ El orden importa: los análisis leen la partición reportada
 .venv/bin/python scripts/analyze_compositional_sensitivity.py
 .venv/bin/python scripts/analyze_pca_component_sensitivity.py
 .venv/bin/python scripts/analyze_resampling_stability.py
+.venv/bin/python scripts/analyze_k_selection_stability.py
 .venv/bin/python scripts/analyze_outlier_sensitivity.py
 .venv/bin/python scripts/analyze_temporal_sensitivity.py
 .venv/bin/python scripts/analyze_eligibility_sensitivity.py

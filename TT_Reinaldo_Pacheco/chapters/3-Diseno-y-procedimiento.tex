@@ -1193,25 +1193,29 @@ presentan en el Capítulo~\ref{cap:resultados}.
 \subsection{Selección del número de grupos}
 \label{sec:seleccion-k}
 
-El número de grupos se examina reportando conjuntamente tres métricas internas
-para $k \in \{2, 3, \ldots, 8\}$: el coeficiente de Silhouette, el índice de
-Calinski-Harabasz y el índice de Davies-Bouldin, definidos y justificados en la
-Sección~\ref{sec:validacion}. Estas métricas no se emplean como una regla de
-decisión que determine automáticamente un valor de $k$, porque los valores más
-bajos de $k$ tienden a optimizar simultáneamente las tres métricas al concentrar
-la mayor parte de la red en un único bloque y aislar solo a los establecimientos
-más extremos, produciendo particiones con escasa utilidad para el perfilamiento
-buscado. En sentido contrario, valores más altos de $k$ subdividen mecánicamente
-grupos que en realidad son homogéneos, generando perfiles que se distinguen por
-diferencias marginales en lugar de reflejar patrones funcionales genuinamente
-distintos. Por este motivo, el valor de $k$ finalmente adoptado no corresponde
-al óptimo matemático de ninguna métrica individual ni a un punto de convergencia
-de las tres, sino a un compromiso interpretativo: se selecciona la partición de
-menor $k$ que separa perfiles funcionalmente distinguibles según el conocimiento
-de dominio, aun cuando particiones con $k$ menor obtengan mejores valores en las
-tres métricas internas. Esta decisión se declara explícitamente como tal en el
-Capítulo~\ref{cap:resultados}, evitando calificar al $k$ elegido como
-``número óptimo de grupos''.
+El número de grupos se examina para $k \in \{2, 3, \ldots, 10\}$ con tres
+métricas internas: el coeficiente de Silhouette, el índice de Calinski-Harabasz
+y el índice de Davies-Bouldin, definidos en la Sección~\ref{sec:validacion}.
+Estas métricas describen el costo de cada alternativa en términos de cohesión y
+separación, pero no fijan $k$ por sí solas. En esta red, sus mejores valores
+tienden a obtenerse con $k$ bajo, porque una partición que aísla a los pocos
+establecimientos más extremos y concentra al resto en un único bloque es muy
+compacta y separada, aunque no permite perfilar la red.
+
+Por ello, la elección de $k$ sigue un criterio descriptivo explícito:
+se adopta el menor $k$ cuyos grupos difieran en variables clínico-operativas
+interpretables, examinadas en su escala original, sin subdividir el núcleo
+generalista. La subdivisión de ese núcleo se reserva para el análisis
+exploratorio de Nivel~2 (Sección~\ref{sec:nivel2-metodo}). Las tres métricas se
+reportan para todas las alternativas, de modo que el costo de la elección quede
+visible, y el $k$ adoptado no se califica como ``número óptimo de grupos''.
+
+La estabilidad bajo submuestreo no interviene en esta elección: se evalúa
+después, sobre la solución adoptada (Sección~\ref{sec:bootstrap}). Como
+evaluación posterior, se calcula además la estabilidad de las alternativas
+$k \in \{2, \ldots, 5\}$ con el mismo esquema de submuestreo, lo que permite
+juzgar la solución elegida frente a las vecinas sin convertir la estabilidad
+en un criterio de selección.
 
 Para interpretar el coeficiente de Silhouette se toman como referencia los
 umbrales propuestos por \citet{Rousseeuw1987}: valores superiores a
@@ -1421,7 +1425,13 @@ nulas se reportan en el Capítulo~\ref{cap:resultados}.
 La robustez de la partición se evalúa mediante submuestreo repetido. En cada
 una de las 100 iteraciones se selecciona aleatoriamente, sin reposición, el
 80\,\% de los hospitales ($n_{\text{sub}} = 52$ de 65) y sobre ese subconjunto
-se re-ejecuta el clustering aglomerativo Ward con $K=4$. El uso de submuestreo
+se re-ejecuta el clustering aglomerativo Ward con $K=4$. En cada réplica se
+re-ajustan la transformación logarítmica y el escalado robusto sobre los 52
+hospitales seleccionados; en cambio, las componentes PCA de casuística se
+conservan tal como fueron estimadas con los 65 hospitales, y $K$ se mantiene
+fijo en 4. Por tanto, el procedimiento mide la sensibilidad de la partición
+a la composición de la muestra, no la incertidumbre de la reducción
+dimensional ni de la elección de $K$. El uso de submuestreo
 sin reposición, en lugar del \textit{bootstrap} clásico con reposición, evita
 que un mismo hospital aparezca múltiples veces en una réplica, lo que
 distorsionaría las distancias euclidianas entre observaciones y produciría
@@ -1436,7 +1446,8 @@ estabilidad de la \emph{pertenencia} de cada hospital a su grupo: dos
 submuestras podrían producir un Silhouette similar con asignaciones de
 hospitales completamente distintas entre sí, sin que la sola cohesión interna
 lo revele. Por ello, además del Silhouette de cada submuestra y su intervalo
-de confianza empírico (percentiles 2{,}5 y 97{,}5), el procedimiento evalúa
+percentilar empírico (percentiles 2{,}5 y 97{,}5), que describe la variación
+entre submuestras y no constituye un intervalo de confianza poblacional, el procedimiento evalúa
 explícitamente la estabilidad de la partición mediante cuatro métricas
 adicionales:
 
