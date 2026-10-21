@@ -1548,9 +1548,13 @@ ambas fuentes. Los resultados se presentan en el Capítulo~\ref{cap:resultados}.
 Para cuantificar la relación entre la segmentación empírica y la clasificación
 administrativa vigente, se construye la tabla de contingencia entre ambas
 particiones y se calculan dos índices de concordancia: el Índice de Rand
-Ajustado (ARI) y la Información Mutua Normalizada (NMI). Ambos
-corrigen por el acuerdo esperado al azar y toman valor 0 cuando la concordancia
-es equivalente al azar y 1 cuando las particiones son idénticas.
+Ajustado (ARI) y la Información Mutua Normalizada (NMI). Ambos toman valor 1
+cuando las particiones son idénticas, pero solo el ARI corrige por el acuerdo
+esperado al azar: su valor esperado es 0 bajo asignaciones aleatorias y puede
+ser negativo. La NMI no incorpora esa corrección; vale 0 cuando las particiones
+son independientes, pero su valor bajo asignaciones aleatorias tiende a ser
+positivo, sobre todo con grupos pequeños, por lo que se interpreta junto con el
+ARI y no de forma aislada.
 
 El propósito del contraste no es validar el clustering mediante la etiqueta
 MINSAL ni demostrar que uno supera al otro, sino cuantificar en qué medida ambas
@@ -1563,16 +1567,16 @@ clasificaciones no son equivalentes: existen hospitales que la etiqueta oficial
 trata como iguales pero que la casuística distingue, y viceversa. Lo que ARI y
 NMI \textbf{no} permiten afirmar, sin embargo, es que la segmentación empírica
 sea más homogénea, más precisa o mejor que MINSAL: ambos índices son medidas de
-concordancia entre particiones, no de homogeneidad interna relativa. Para
-evaluar directamente la hipótesis de trabajo, que sí formula una comparación
-de homogeneidad, se requiere una comparación distinta a la sola concordancia.
+concordancia entre particiones, no de homogeneidad interna relativa.
 
-\paragraph{Comparación directa de homogeneidad interna}
+\paragraph{Comparación descriptiva de homogeneidad interna}
 \label{sec:comparacion-homogeneidad}
 
-Para contrastar la hipótesis de que la segmentación funcional presenta
-``mayor homogeneidad interna... que la clasificación administrativa vigente''
-(Sección~\ref{sec:hipotesis}) se compara, sobre la misma matriz preprocesada
+La hipótesis de trabajo (Sección~\ref{sec:hipotesis}) no compara la
+segmentación con la clasificación del MINSAL, por lo que el contraste que sigue
+es descriptivo y no se interpreta como una prueba de superioridad entre
+clasificaciones. Para describir cuán dispersos quedan los hospitales dentro de
+cada clasificación se compara, sobre la misma matriz preprocesada
 $X$ usada para el clustering y las mismas 27 variables directas, la dispersión
 intragrupo de la partición Ward y la de la clasificación MINSAL, mediante tres
 medidas complementarias:
@@ -1583,8 +1587,10 @@ medidas complementarias:
     Un valor menor indica mayor homogeneidad interna respecto de la variación
     total de la red. A diferencia del coeficiente de Silhouette, que
     considera también la separación entre grupos, esta medida aísla
-    exclusivamente la cohesión interna, que es la dimensión que la hipótesis
-    contrasta.
+    exclusivamente la cohesión interna. Su valor esperado bajo una
+    asignación aleatoria con los mismos tamaños de grupo es $(n-K)/(n-1)$,
+    referencia que emplea la hipótesis de trabajo para la evaluación en
+    bloques de variables no utilizados.
   \item \textbf{MAD e IQR agregados por variable}: para cada una de las 27
     variables directas, se calcula la mediana de la desviación absoluta
     respecto a la mediana (MAD) y el rango intercuartílico (IQR) dentro de

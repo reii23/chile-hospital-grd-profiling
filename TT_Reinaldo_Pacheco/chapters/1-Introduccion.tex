@@ -137,23 +137,21 @@ administrativa vigente.
 \label{sec:pregunta}
 
 \begin{quote}
-\textbf{¿Qué perfiles asistenciales y funcionales emergen al agrupar los hospitales 
-públicos de alta y mediana complejidad según sus datos de producción GRD del 
-período 2019--2024, y qué grado de concordancia y compactación en bloques de
-variables retenidos presenta esa segmentación respecto de la clasificación
-administrativa vigente?}
+\textbf{¿Qué perfiles funcionales emergen al agrupar los hospitales públicos de
+alta y mediana complejidad según sus indicadores GRD del período 2019--2024, qué
+estabilidad y cohesión presentan esos grupos, y en qué coinciden y en qué
+difieren de la clasificación administrativa del MINSAL?}
 \end{quote}
 
 De esta interrogante principal se desprenden las siguientes preguntas
 secundarias:
 
 \begin{enumerate}
-  \item ¿Cuáles son los atributos dominantes de casuística y complejidad que
-        definen la identidad de cada grupo, permitiendo una interpretación
-        clínica y operativa de los perfiles funcionales generados?
-  \item ¿Qué establecimientos presentan un comportamiento divergente respecto de
-        los perfiles consolidados y cuál es la relevancia de su detección para
-        garantizar un análisis comparativo equitativo?
+  \item ¿Qué atributos de producción, casuística y complejidad distinguen a
+        cada grupo y permiten interpretar los perfiles funcionales
+        identificados?
+  \item ¿Qué establecimientos se apartan de la red o de su grupo asignado
+        según criterios multivariados de atipicidad?
   \item ¿Qué grado de concordancia o discrepancia presentan los grupos funcionales 
         emergentes al ser contrastados con la clasificación administrativa oficial 
         del Ministerio de Salud?
@@ -176,29 +174,41 @@ de este pipeline se desarrolla en el Capítulo~\ref{cap:metodologia}.
 \subsection{Hipótesis de trabajo}
 \label{sec:hipotesis}
 
-Se plantea como hipótesis de trabajo que una segmentación funcional basada en
-indicadores GRD de producción, complejidad y casuística permite identificar
-perfiles funcionales con cohesión y estabilidad interna evaluables en los
-hospitales públicos chilenos de alta y mediana complejidad. La estabilidad se
-evalúa exclusivamente como propiedad de la solución Ward bajo submuestreo. Su
-relación con la clasificación administrativa vigente se examina mediante medidas
-de concordancia y de compactación evaluadas en variables no utilizadas para
-construir cada partición, sin interpretar el contraste como una prueba de
-superioridad entre clasificaciones.
+Se plantea como hipótesis de trabajo que el agrupamiento jerárquico de Ward,
+aplicado a indicadores GRD de producción, casuística y complejidad de los 65
+hospitales públicos de alta y mediana complejidad, produce grupos que se
+reproducen al retirar una fracción de los hospitales y que son más compactos
+que lo esperable por azar en variables que no participaron en su construcción.
 
-Esta hipótesis se sustenta en cuatro antecedentes desarrollados en el
-Capítulo~\ref{cap:marco}: en primer lugar, la evidencia nacional que reporta baja coherencia
-interna de la clasificación administrativa del MINSAL respecto de la
-casuística real de los hospitales~\citep{Carlier2020, Giglio2021,
-Villalobos2016}; en segundo lugar, la evidencia internacional de tipologías hospitalarias
-construidas a partir de datos de producción~\citep{Chrusciel2021, Liu2025}; en tercer lugar, la
-disponibilidad, en los registros GRD chilenos, de variables capaces de
-representar casuística y complejidad clínica de forma estandarizada, y finalmente, la
-escasez de estudios que integren, para el caso chileno, dimensiones clínicas
-junto con criterios explícitos de estabilidad y detección de atipicidad. Los
-criterios operacionales concretos para evaluar homogeneidad y estabilidad, así
-como las pruebas estadísticas empleadas para contrastar la hipótesis, se
-definen en el Capítulo~\ref{cap:metodologia}.
+La hipótesis se evalúa con dos criterios. La reproducción de los grupos se mide
+con el índice de Jaccard medio de cada grupo de la solución adoptada en 100
+submuestras sin reposición del 80\,\% de los hospitales, interpretado según
+\citet{Hennig2007}: un valor de 0,75 o más indica un grupo estable, uno entre
+0,60 y 0,75 un patrón cuya composición exacta es dudosa, y uno inferior a 0,60
+un grupo no confiable. La compactación se mide con la razón WSS/TSS (dispersión
+dentro de los grupos sobre dispersión total) al agrupar con un bloque de
+variables y evaluar en el otro, frente a su valor esperado bajo una asignación
+aleatoria con los mismos tamaños de grupo, $(n-K)/(n-1)$, que vale 0,953 para
+$n=65$ y $K=4$. La hipótesis se contradice si algún grupo de la solución
+adoptada obtiene un Jaccard medio inferior a 0,60, o si en alguno de los dos
+sentidos de evaluación la razón WSS/TSS no es inferior a 0,953.
+
+Ambas referencias se fijaron durante la revisión de este trabajo, con los
+resultados ya conocidos; por ello operan como criterios de interpretación y no
+confieren carácter confirmatorio al contraste. Además, los umbrales de
+\citet{Hennig2007} se calibraron para remuestreo con reposición, de modo que con
+submuestreo deben leerse como orientativos. La relación con la clasificación
+administrativa del MINSAL no forma parte de la hipótesis: se describe en el
+objetivo específico~6, porque una concordancia baja muestra que las
+asignaciones difieren, pero no indica cuál de las dos clasificaciones es más
+útil.
+
+La hipótesis se apoya en la evidencia nacional que reporta baja coherencia
+interna de la clasificación del MINSAL respecto de la casuística de los
+hospitales~\citep{Carlier2020, Giglio2021, Villalobos2016} y en la evidencia
+internacional de tipologías hospitalarias construidas con datos de
+producción~\citep{Chrusciel2021, Liu2025}, ambas desarrolladas en el
+Capítulo~\ref{cap:marco}.
 
 \section{Objetivos y alcances del proyecto}
 \label{sec:objetivos}
@@ -207,29 +217,37 @@ definen en el Capítulo~\ref{cap:metodologia}.
 \label{sec:objetivo-general}
 
 Caracterizar los perfiles funcionales de los hospitales públicos chilenos de
-alta y mediana complejidad, con fines de comparabilidad institucional e
-identificación de casos atípicos, mediante aprendizaje no supervisado sobre
-datos GRD del período 2019--2024.
+alta y mediana complejidad, mediante aprendizaje no supervisado sobre datos GRD
+del período 2019--2024, para describir qué establecimientos comparten una
+actividad asistencial similar y cuáles se apartan de ella.
 
 \subsection{Objetivos específicos}
 \label{sec:objetivos-especificos}
 
 \begin{enumerate}
-  \item Construir una matriz institucional comparable de producción,
-        complejidad y casuística clínica, mediante la depuración, integración
-        y agregación de los registros GRD del período 2019--2024.
-  \item Determinar una segmentación funcional de los hospitales, mediante
-        agrupamiento jerárquico y criterios predefinidos de cohesión,
-        separación y estabilidad interna bajo submuestreo.
-  \item Caracterizar los perfiles obtenidos en términos de sus diferencias
-        clínicas y operativas, mediante indicadores descriptivos y análisis
-        post-hoc.
-  \item Identificar los establecimientos atípicos respecto de los perfiles
-        funcionales, mediante criterios multivariados de singularidad.
+  \item Construir una matriz institucional de producción, casuística y
+        complejidad, mediante la depuración, integración y agregación de los
+        registros GRD del período 2019--2024, para representar a cada hospital
+        como una fila de indicadores agregados de su actividad asistencial.
+  \item Determinar una segmentación funcional de los hospitales públicos de
+        alta y mediana complejidad, mediante agrupamiento jerárquico de Ward,
+        con criterios explícitos de cohesión, separación e interpretación
+        clínica, para caracterizar de forma diferenciada su actividad
+        asistencial.
+  \item Evaluar la estabilidad de la segmentación adoptada, mediante
+        submuestreo repetido y análisis de sensibilidad a decisiones
+        metodológicas, para determinar qué grupos se reproducen al perturbar
+        la muestra y el diseño.
+  \item Caracterizar los perfiles obtenidos, mediante medianas, rangos y
+        tamaños de efecto de los indicadores clínico-operativos, para
+        interpretar las diferencias que distinguen a cada grupo.
+  \item Identificar los establecimientos atípicos respecto de la red y de su
+        grupo asignado, mediante criterios multivariados de singularidad, para
+        señalar los casos cuya asignación debe interpretarse con cautela.
   \item Contrastar la segmentación funcional con la clasificación
-        administrativa del MINSAL, mediante medidas de concordancia y de
-        compactación evaluada en bloques de variables retenidos, sin establecer
-        superioridad entre clasificaciones.
+        administrativa del MINSAL, mediante índices de concordancia y medidas
+        de dispersión en las variables que no participaron en cada
+        agrupamiento, para describir en qué coinciden y en qué difieren.
 \end{enumerate}
 
 \subsection{Alcances}
