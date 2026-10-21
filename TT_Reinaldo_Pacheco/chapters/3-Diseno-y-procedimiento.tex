@@ -1152,9 +1152,10 @@ La organización del procedimiento en dos niveles surge de la evidencia acumulad
 algorítmica. Para examinar cuántos grupos sostiene la red, se contrastaron
 técnicas que fijan $k$ (K-means++, Ward y GMM, este último con criterio BIC)
 con técnicas que no lo fijan de antemano (HDBSCAN, KNN-graph con Leiden y
-MST-kNN~\citep{Villalobos2016}). Las primeras producen su corte más marcado en
-$k = 2$, que separa tres hospitales del resto, y el BIC de GMM alcanza su
-mínimo en ese mismo valor. Las segundas no identifican subgrupos densos
+MST-kNN~\citep{Villalobos2016}). En K-means++ y Ward, el Silhouette más alto
+se obtiene en $k = 2$, que separa tres hospitales del resto; en GMM, el BIC
+alcanza su mínimo en $k = 4$, aunque esa solución tiene un Silhouette de
+$0{,}146$. Las segundas no identifican subgrupos densos
 dentro del núcleo: HDBSCAN clasifica a los 65 hospitales como ruido en todas
 las configuraciones exploradas, Leiden con resolución $0{,}5$ entrega una
 única comunidad y, con resoluciones mayores, particiones con Silhouette cercano
@@ -1784,7 +1785,7 @@ se restringe a los 65 hospitales presentes en ambas soluciones.
 
 Para evaluar si la estructura identificada es una propiedad genuina de los datos
 y no un artefacto del algoritmo aglomerativo Ward, se contrasta el resultado con
-cinco familias adicionales de técnicas de clustering, resumidas en la
+cinco técnicas de clustering adicionales y una proyección exploratoria, resumidas en la
 Tabla~\ref{tab:sensibilidad}.
 
 \begin{table}[htbp]
@@ -1795,11 +1796,13 @@ Tabla~\ref{tab:sensibilidad}.
 \toprule
 \textbf{Técnica} & \textbf{Parámetros explorados} & \textbf{Propósito} \\
 \midrule
-K-means++ & $k \in \{2, \ldots, 8\}$ y $\{5,\ldots,20\}$ & Contraste particional. \\
+K-means++ & $k \in \{2, \ldots, 8\}$ & Contraste particional. \\
+\addlinespace
+KNN-graph + Leiden & $k_{nn} \in \{10, 15, 20\}$, resolución $\in \{0{,}5; 1{,}0; 1{,}5; 2{,}0\}$ & Descubre comunidades en un grafo de vecindad. \\
 \addlinespace
 Mezclas gaussianas (GMM) & $k \in \{2, \ldots, 8\}$, BIC & Contraste probabilístico. \\
 \addlinespace
-HDBSCAN & \texttt{min\_cluster\_size} $\in \{3,\ldots,8\}$ & Descubre $k$ por densidad. \\
+HDBSCAN & \texttt{min\_cluster\_size} $\in \{3, 4, 5, 6, 8\}$ & Descubre $k$ por densidad. \\
 \addlinespace
 MST-kNN & $k$ de vecindad $=6$ & Algoritmo del depto.\ USACH,
 descubre $k$ y observaciones aisladas. \\
@@ -1814,9 +1817,9 @@ razones: es el algoritmo de referencia desarrollado en el Departamento de
 Ingeniería Informática de la USACH, lo que sitúa este trabajo en continuidad con
 la línea de investigación local, y no requiere especificar el número de grupos,
 descubriendo automáticamente tanto los clústeres como los hospitales de perfil
-único. Adicionalmente, se exploran
-particiones con $k \in \{5, \ldots, 20\}$ para verificar el comportamiento de las
-métricas en rangos de alta granularidad y una gran cantidad de grupos.
+único. Adicionalmente, el comportamiento de las métricas en rangos de mayor
+granularidad se examina con Ward para $k \in \{2, \ldots, 10\}$ y con K-means++
+y GMM para $k \in \{2, \ldots, 8\}$.
 
 \subsection{Sensibilidad al criterio de elegibilidad}
 \label{sec:sensibilidad-elegibilidad}
@@ -1845,8 +1848,9 @@ fijo el universo de 65 hospitales elegibles definido en la
 Sección~\ref{sec:elegibilidad}. La elegibilidad no se re-deriva sobre el período
 reducido, de modo que cualquier diferencia observada sea atribuible al cambio de
 período y no a un cambio en la composición del universo de análisis. Sobre esta
-matriz alternativa, construida con 4{,}158{,}029 egresos de los años 2019 y
-2022--2024 (un 71{,}6\,\% del total del período), se repiten el
+matriz alternativa, construida con 4.158.029 egresos de los años 2019 y
+2022--2024 (un 72{,}2\,\% de los 5.756.850 egresos del universo analizado en el
+período completo), se repiten el
 preprocesamiento de la Sección~\ref{sec:preprocesamiento} y el clustering
 aglomerativo Ward con $K=4$.
 
