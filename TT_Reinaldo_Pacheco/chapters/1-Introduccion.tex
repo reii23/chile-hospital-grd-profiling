@@ -20,10 +20,11 @@ Se trata de \emph{grupos administrativos predefinidos}: categorías
 institucionales fijadas por infraestructura y no por la actividad clínica que
 cada establecimiento efectivamente resuelve. Esta lógica estructural no captura
 la heterogeneidad funcional real de la red, dado que hospitales con la misma
-etiqueta pueden resolver cargas de enfermedad radicalmente
+etiqueta pueden atender casuísticas radicalmente
 distintas~\citep{Havranek2023, Cid2024}.
 
-Para cuantificar esa carga de enfermedad, el sistema ha adoptado de forma
+Para clasificar los casos atendidos según su consumo esperado de recursos, el
+sistema ha adoptado de forma
 progresiva los Grupos Relacionados por el Diagnóstico (GRD), un estándar
 internacional que clasifica los egresos hospitalarios en categorías
 clínicamente coherentes y con consumo de recursos similar a partir del
@@ -51,6 +52,22 @@ asistencial, infraestructura o capacidad instalada: el perfil funcional describe
 \emph{qué} atiende un hospital, no \emph{qué tan bien} lo hace ni con \emph{qué
 recursos} cuenta para hacerlo.
 
+En este trabajo se distinguen cuatro dimensiones de la actividad asistencial de
+un hospital. La \textbf{producción asistencial} es el volumen de actividad
+realizada (egresos por año, cirugía mayor ambulatoria, uso de pabellón). La
+\textbf{casuística} (\textit{case-mix}) es la composición de los casos
+atendidos: qué diagnósticos, procedimientos y GRD concentra el hospital y qué
+tipo de pacientes atiende (edad, actividad obstétrica o pediátrica). La
+\textbf{severidad clínica} es la gravedad de los pacientes dentro de su GRD,
+registrada por los índices de severidad y de riesgo de mortalidad que asigna el
+agrupador. El \textbf{consumo esperado de recursos} es lo que mide el peso
+relativo GRD: la intensidad de recursos que el sistema asocia a cada tipo de
+caso. Cuando el texto se refiere conjuntamente a la severidad y al consumo
+esperado de recursos usa el término \textbf{complejidad clínica}, que no debe
+confundirse con el \emph{nivel de complejidad} administrativo del MINSAL,
+basado en infraestructura. El perfil funcional integra estas cuatro dimensiones
+junto con las modalidades de ingreso y egreso.
+
 \subsection{Motivación y brecha de investigación}
 \label{sec:motivacion}
 
@@ -74,46 +91,21 @@ caso chileno permanece escasamente explorada, en particular en lo relativo a
 controlar el ruido de codificación y severidad propio de los registros
 administrativos.
 
-Esta investigación surge de esa brecha: sin una caracterización funcional,
-reproducible y estadísticamente rigurosa, no es posible determinar si las
-diferencias observadas entre hospitales responden a ineficiencias de gestión o a
-cargas de enfermedad estructuralmente distintas. Disponer de esa
-caracterización permitiría comparar a los establecimientos sobre bases más
-equivalentes y generar insumos analíticos que apoyen la comprensión de la
-estructura funcional de la red asistencial pública.
-
-\subsection{Contribución esperada}
-\label{sec:impacto}
-
-Esta investigación tiene como propósito generar una caracterización funcional de
-los hospitales públicos chilenos de alta y mediana complejidad a partir de los
-registros GRD del período 2019--2024. Su principal resultado es un conjunto de
-perfiles asistenciales emergentes (grupos de establecimientos con casuística
-similar, junto a la interpretación de los atributos que los definen) y un
-listado de hospitales con comportamiento atípico respecto de esos perfiles.
-
-Los resultados de este trabajo constituyen un insumo exploratorio para análisis
-posteriores de gestión hospitalaria, no una herramienta validada para auditoría
-o asignación de recursos. En particular, dado que el estudio no incorpora
-variables de costos, infraestructura, dotación de personal ni resultados
-clínicos, cualquier uso de estos perfiles para decisiones de financiamiento o
-gestión operativa requeriría complementarlos con esa información adicional. Su
-aporte principal es más modesto y más acotado: proveer evidencia estructurada y
-reproducible sobre la configuración funcional de la red, basada en datos
-hospitalarios estandarizados, un enfoque que actualmente no existe a nivel
-nacional. La comparación de los perfiles obtenidos con la clasificación
-administrativa vigente y con la evidencia nacional e internacional permite,
-además, identificar convergencias y divergencias que pueden motivar futuras
-líneas de investigación.
+Esta investigación surge de esa brecha: sin una caracterización funcional
+reproducible, las comparaciones entre hospitales no pueden separar las
+diferencias que se deben a atender casuísticas distintas de las que podrían
+deberse a otros factores, como la gestión. Esta investigación aborda la primera
+parte de ese problema: describir qué hospitales atienden una casuística similar,
+como insumo analítico para comprender la estructura funcional de la red
+asistencial pública.
 
 \section{Descripción del problema}
 \label{sec:problema}
 
 Como se estableció en la Sección~\ref{sec:antecedentes}, no existe hoy una
 caracterización funcional de los hospitales públicos chilenos que permita
-distinguir, con base en su producción clínica real, si la posición relativa de
-un establecimiento responde a ineficiencias de gestión o a cargas de enfermedad
-estructuralmente distintas. Esta sección describe las dos dificultades
+describir, con base en su actividad clínica registrada, qué establecimientos
+atienden una casuística similar. Esta sección describe las dos dificultades
 concretas que deben resolverse para construir esa caracterización a partir de
 los datos disponibles: la calidad heterogénea de la fuente y su escala técnica.
 
@@ -163,8 +155,8 @@ secundarias:
 Frente a este problema, la solución propuesta consiste en un pipeline
 reproducible de aprendizaje no supervisado que, a partir de los datos GRD
 agregados por hospital del período 2019--2024, construye indicadores
-institucionales de producción, complejidad, severidad, diversidad diagnóstica y
-casuística clínica, y aplica un algoritmo de agrupamiento (\textit{clustering}
+institucionales de producción asistencial, casuística, severidad clínica,
+consumo esperado de recursos y diversidad diagnóstica, y aplica un algoritmo de agrupamiento (\textit{clustering}
 jerárquico) sobre dichos indicadores para obtener una segmentación funcional de
 la red. La solución se complementa con la validación estadística de los grupos
 obtenidos, la detección de hospitales atípicos y el contraste con la
@@ -188,10 +180,11 @@ submuestras sin reposición del 80\,\% de los hospitales, interpretado según
 un grupo no confiable. La compactación se mide con la razón WSS/TSS (dispersión
 dentro de los grupos sobre dispersión total) al agrupar con un bloque de
 variables y evaluar en el otro, frente a su valor esperado bajo una asignación
-aleatoria con los mismos tamaños de grupo, $(n-K)/(n-1)$, que vale 0,953 para
-$n=65$ y $K=4$. La hipótesis se contradice si algún grupo de la solución
-adoptada obtiene un Jaccard medio inferior a 0,60, o si en alguno de los dos
-sentidos de evaluación la razón WSS/TSS no es inferior a 0,953.
+aleatoria con los mismos tamaños de grupo, $(n-K)/(n-1)$, donde $n$ es el
+número de hospitales y $K$ el número de grupos de la solución adoptada. La
+hipótesis se contradice si algún grupo de la solución adoptada obtiene un
+Jaccard medio inferior a 0,60, o si en alguno de los dos sentidos de evaluación
+la razón WSS/TSS no es inferior a esa referencia.
 
 Ambas referencias se fijaron durante la revisión de este trabajo, con los
 resultados ya conocidos; por ello operan como criterios de interpretación y no
@@ -209,6 +202,31 @@ hospitales~\citep{Carlier2020, Giglio2021, Villalobos2016} y en la evidencia
 internacional de tipologías hospitalarias construidas con datos de
 producción~\citep{Chrusciel2021, Liu2025}, ambas desarrolladas en el
 Capítulo~\ref{cap:marco}.
+
+\subsection{Contribución esperada}
+\label{sec:impacto}
+
+Esta investigación tiene como propósito generar una caracterización funcional de
+los hospitales públicos chilenos de alta y mediana complejidad a partir de los
+registros GRD del período 2019--2024. Su principal resultado es un conjunto de
+perfiles funcionales emergentes (grupos de establecimientos con casuística
+similar, junto a la interpretación de los atributos que los definen) y un
+listado de hospitales con comportamiento atípico respecto de esos perfiles.
+
+Los resultados de este trabajo constituyen un insumo exploratorio para análisis
+posteriores de gestión hospitalaria, no una herramienta validada para auditoría
+o asignación de recursos. En particular, dado que el estudio no incorpora
+variables de costos, infraestructura, dotación de personal ni resultados
+clínicos, cualquier uso de estos perfiles para decisiones de financiamiento o
+gestión operativa requeriría complementarlos con esa información adicional. Su
+aporte principal es más modesto y más acotado: proveer evidencia estructurada y
+reproducible sobre la configuración funcional de la red, basada en datos
+hospitalarios estandarizados, con un enfoque que, a diferencia de los estudios
+nacionales previos, integra la casuística CIE-10 y CIE-9-MC con criterios
+explícitos de estabilidad y de atipicidad. La comparación de los perfiles
+obtenidos con la clasificación administrativa vigente y con la evidencia
+nacional e internacional permite, además, identificar convergencias y
+divergencias que pueden motivar futuras líneas de investigación.
 
 \section{Objetivos y alcances del proyecto}
 \label{sec:objetivos}

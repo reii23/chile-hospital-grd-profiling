@@ -21,8 +21,8 @@ asistencial.
 El rasgo central de esta clasificación es que describe infraestructura disponible,
 no producción clínica efectiva. Un hospital de alta complejidad puede concentrar
 su actividad en egresos obstétricos y quirúrgicos electivos, mientras otro del
-mismo nivel resuelve principalmente urgencias de alta severidad con elevado índice
-de casuística. Ambos comparten etiqueta administrativa, pero su operación, medida
+mismo nivel resuelve principalmente urgencias de alta severidad con elevado peso
+medio GRD. Ambos comparten etiqueta administrativa, pero su operación, medida
 por el perfil de egresos, la distribución diagnóstica y la complejidad de los
 casos atendidos puede ser radicalmente distinta. La literatura ha documentado
 esta brecha, mostrando que los criterios estructurales no capturan la
@@ -30,7 +30,7 @@ heterogeneidad funcional real de la red~\citep{Havranek2023, Cid2024}.
 
 Esta limitación adquiere relevancia directa en el contexto de los Grupos
 Relacionados por el Diagnóstico (GRD), sistema que cuantifica la complejidad de
-los casos atendidos y habilita comparaciones ajustadas por la carga de enfermedad
+los casos atendidos y habilita comparaciones ajustadas por la casuística
 de cada establecimiento. Para que esas comparaciones sean válidas, los
 hospitales contrastados deben presentar perfiles de producción suficientemente
 homogéneos. Cuando los grupos administrativos predefinidos se definen por
@@ -69,13 +69,24 @@ tanto en sistemas de salud públicos como privados~\citep{Cid2024}.
 El sistema asigna a cada egreso un código GRD mediante un algoritmo denominado
 grouper, que analiza la combinación de variables clínicas y
 demográficas y determina el grupo al que pertenece el caso. Cada GRD posee un
-peso relativo que refleja la intensidad esperada de recursos requeridos para
-atender ese tipo de hospitalización, calculado a partir de promedios históricos
-de duración de estancia y costos. Este peso permite cuantificar la complejidad
-agregada de la producción de un hospital, concepto conocido como casuística.
+peso relativo que expresa el consumo esperado de recursos de ese tipo de
+hospitalización respecto del caso promedio, calculado a partir de promedios
+históricos de duración de estancia y costos. El peso corresponde a la categoría
+GRD, no a una patología ni a un paciente individual. En este trabajo se utiliza
+el peso asignado por el agrupador IR-GRD 29301, que es constante para cada GRD
+en todo el período 2019--2024 (Sección~\ref{sec:limitaciones-fuente}).
 
-La agregación de los GRD de un establecimiento permite cuantificar su carga de
-enfermedad y vincular la actividad clínica con los costos, habilitando
+El \textbf{peso medio GRD} de un hospital es el promedio del peso de sus
+egresos de hospitalización, lo que equivale a ponderar el peso de cada GRD por
+el número de egresos que el hospital tuvo en él. El denominador es el total de
+egresos de hospitalización del hospital en el período, sin cirugía mayor
+ambulatoria ni hospitalización diurna. Este índice corresponde a lo que en la
+literatura internacional se denomina \textit{Case Mix Index} (CMI): resume el consumo esperado de recursos de la casuística, pero no la casuística
+misma, que es la composición de los casos atendidos, ni toda la severidad
+clínica, ni el desempeño del hospital.
+
+La agregación de los GRD de un establecimiento permite resumir el consumo
+esperado de recursos de su casuística y vincular la actividad clínica con los costos, habilitando
 mecanismos de pago por actividad que incentivan la eficiencia. Dado que el
 sistema fue diseñado para capturar la intensidad de atención del paciente
 hospitalizado, su uso se concentra en establecimientos de alta y mediana
@@ -317,7 +328,7 @@ hospitalario. \citet{Liu2025} evaluaron el desempeño de 306 hospitales generale
 de la provincia de Sichuan, correspondientes a 173 hospitales secundarios y 133
 terciarios. Para ello, combinaron análisis factorial exploratorio y agrupamiento
 jerárquico a partir de seis indicadores DRG. Estos fueron el índice de
-casuística, el número de GRD, el peso total, el índice de eficiencia de costos,
+\textit{case-mix} (CMI, equivalente al peso medio de los casos), el número de GRD, el peso total, el índice de eficiencia de costos,
 el índice de eficiencia temporal y la mortalidad de casos de riesgo bajo y medio.
 Los indicadores se organizaron según el marco de calidad de Donabedian, que
 considera estructura, proceso y resultado.
@@ -334,7 +345,7 @@ indicadores DRG en cada conglomerado.
 El resultado más relevante para este trabajo es que los hospitales de una misma
 categoría administrativa presentaban perfiles de desempeño marcadamente
 distintos. Entre los hospitales secundarios, el grupo ``inferior'' presentó el
-mayor índice de casuística y, a la vez, la mayor mortalidad de casos de riesgo
+mayor CMI y, a la vez, la mayor mortalidad de casos de riesgo
 bajo y medio. Además, registró menores valores en el número de GRD y en el peso
 total de la actividad. Por tanto, una mayor complejidad promedio de los casos
 atendidos no se tradujo necesariamente en un mejor desempeño global. El estudio
@@ -449,7 +460,7 @@ China
 
   & Análisis factorial exploratorio y agrupamiento jerárquico
 
-  & Casuística, número de GRD, peso total, eficiencia de costos, eficiencia temporal y mortalidad
+  & CMI, número de GRD, peso total, eficiencia de costos, eficiencia temporal y mortalidad
 
   & Muestra diferencias de desempeño y producción entre hospitales de una misma categoría administrativa \\[5pt]
 

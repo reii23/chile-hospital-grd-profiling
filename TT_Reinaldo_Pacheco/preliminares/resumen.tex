@@ -1,40 +1,34 @@
 \resumenCastellano{
-El sistema público de salud chileno clasifica sus hospitales por nivel de
-complejidad administrativo, clasificación que puede no reflejar la heterogeneidad
-de su actividad clínica real. Este estudio identifica perfiles funcionales
-empíricos en 65 hospitales públicos de alta y mediana complejidad a partir de su
-casuística de Grupos Relacionados por el Diagnóstico (GRD) del período 2019--2024.
+El sistema público de salud chileno clasifica sus hospitales según un nivel de
+complejidad basado en infraestructura, que puede no reflejar la actividad
+clínica que realizan. Este estudio identifica perfiles funcionales en 65
+hospitales públicos de alta y mediana complejidad con registros de Grupos
+Relacionados por el Diagnóstico (GRD) completos en 2019--2024.
 
-Se procesaron 5{.}808{.}515 egresos GRD de 72 establecimientos; tras aplicar
-el criterio de elegibilidad, el universo analizado reunió 5{.}756{.}850 egresos
-de 65 hospitales. Se construyó una matriz de
-$65 \times 35$ variables: 27 indicadores clínico-operativos y ocho componentes
-principales que resumen la casuística de capítulos CIE-10, secciones CIE-9-MC y
-GRD frecuentes ($72{,}3\,\%$ de varianza acumulada). Se aplicó agrupamiento
-jerárquico aglomerativo de Ward en dos niveles: un primer nivel con validación
-estadística y un segundo exploratorio sobre el núcleo generalista. El pipeline
-incluyó análisis de sensibilidad por bloques de variables, comparación con la
-clasificación MINSAL y detección multivariada de hospitales atípicos.
+A partir de 5.808.515 egresos de 72 establecimientos, de los cuales 5.756.850
+corresponden a los 65 hospitales analizados, se construyó una matriz de 35
+indicadores de producción asistencial, casuística, severidad clínica y consumo
+esperado de recursos. Se aplicó agrupamiento jerárquico de Ward, se evaluó su
+estabilidad mediante submuestreo, se identificaron hospitales atípicos y se
+contrastó la segmentación con la clasificación del Ministerio de Salud (MINSAL).
 
-La solución de cuatro grupos obtuvo Silhouette $= 0{,}398$ y mediana de
-ARI $= 0{,}917$ bajo submuestreo repetido. Se distinguieron tres hospitales
-pediátricos, un núcleo generalista de 54 establecimientos, cinco hospitales con
-carga heterogénea y estancia prolongada, y tres de especialización heterogénea.
-La concordancia con la clasificación MINSAL fue baja (ARI $= 0{,}112$;
-NMI $= 0{,}107$), evidenciando que ambas describen dimensiones distintas de la
-red. La evaluación en bloques retenidos mostró menor dispersión intragrupo para
-Ward $K=4$, aunque sin superioridad robusta al controlar el número de grupos.
-El bloque demográfico-obstétrico concentra el $36{,}3\,\%$ de la distancia total;
-su exclusión conserva parcialmente los perfiles (ARI $= 0{,}571$). Nueve
-hospitales fueron marcados por al menos uno de tres criterios de atipicidad
-(Isolation Forest, distancia al centroide y Silhouette individual); tres de
-ellos fueron señalados por dos o más criterios. La subdivisión exploratoria no alcanzó
-estabilidad comparable (ARI mediano $= 0{,}559$, $K_{sub} = 9$) y se incluye
-como material suplementario.
+Se obtuvieron cuatro perfiles: tres hospitales pediátricos, un núcleo
+generalista de 54 establecimientos, cinco hospitales de carga clínica
+heterogénea, con ingreso predominante por urgencia, y tres de especialización
+clínica heterogénea, con actividad programada y el mayor peso medio GRD. El
+número de grupos es una decisión descriptiva: dos grupos obtienen mejores
+métricas internas, pero no distinguen perfiles dentro de la red. Los grupos se
+reprodujeron en la mayoría de 100 submuestras (ARI mediano $= 0{,}917$); el de
+carga clínica heterogénea fue el menos estable (Jaccard $= 0{,}750$) y se
+disuelve al excluir las variables demográfico-obstétricas, mientras los perfiles
+pediátrico y de especialización se mantienen. Nueve hospitales fueron marcados
+por al menos un criterio de atipicidad y tres por dos o más. La concordancia
+con MINSAL fue baja (ARI $= 0{,}112$): ambas clasificaciones asignan de forma
+distinta a los hospitales, y la menor dispersión de la segmentación no se
+sostiene al igualar el número de grupos.
 
-Los datos GRD permiten describir una heterogeneidad funcional que complementa la
-clasificación administrativa, sin establecer jerarquía entre ambas ni justificar
-su uso directo en decisiones de financiamiento o evaluación de desempeño.
+Los perfiles describen qué atienden los hospitales, no su desempeño, y no
+justifican por sí solos decisiones de financiamiento.
 
 \vspace*{0.5cm}
 \KeywordsES{aprendizaje no supervisado; clustering jerárquico; grupos relacionados por el diagnóstico (GRD); perfilamiento hospitalario; sistema público de salud; reducción de dimensionalidad.}
