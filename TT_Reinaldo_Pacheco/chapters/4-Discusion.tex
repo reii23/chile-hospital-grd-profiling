@@ -16,6 +16,33 @@ agrupamiento, el contraste con la clasificación administrativa del MINSAL, la
 detección de hospitales atípicos y los análisis de sensibilidad algorítmica, de
 elegibilidad, temporal y composicional.
 
+La Tabla~\ref{tab:hoja-ruta} indica qué secciones responden a cada objetivo
+específico. Las secciones de contribución de bloques
+(Sección~\ref{sec:res-bloques}), de subtipología del Nivel~2
+(Sección~\ref{sec:nivel2}) y de regresión LASSO
+(Sección~\ref{sec:res-lasso}) son análisis complementarios: matizan la
+interpretación de los resultados principales, pero no responden por sí solas a
+un objetivo. La Sección~\ref{sec:sintesis-objetivos} resume, para cada objetivo,
+el resultado central, su evidencia y su límite.
+
+\begin{table}[htbp]
+\centering
+\caption{Correspondencia entre objetivos específicos y secciones de resultados.}
+\label{tab:hoja-ruta}
+\begin{tabular}{p{7.5cm} p{6cm}}
+\toprule
+\textbf{Objetivo específico} & \textbf{Secciones} \\
+\midrule
+1. Construir la matriz institucional & \ref{sec:universo} \\
+2. Determinar la segmentación funcional & \ref{sec:nivel1} \\
+3. Evaluar la estabilidad de la segmentación & \ref{sec:res-estabilidad} y \ref{sec:sensibilidad-analisis} \\
+4. Caracterizar los perfiles & \ref{sec:nivel1} (perfiles) y \ref{sec:res-validacion} \\
+5. Identificar establecimientos atípicos & \ref{sec:res-outliers} \\
+6. Contrastar con la clasificación MINSAL & \ref{sec:res-minsal} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \section{Universo de análisis y variables}
 \label{sec:universo}
 
@@ -302,7 +329,7 @@ Hospital Dr.\ Abraham Godoy (Lautaro), Hospital Intercultural de Nueva Imperial
 y Hospital de Pitrufquén. $C3$: INER, Instituto de Neurocirugía Dr.\ Alfonso
 Asenjo y Hospital Dr.\ Eduardo Pereira Ramírez. Las cuatro primeras filas son
 las únicas variables directas con rangos sin solape entre ambos grupos. Fuente:
-\texttt{comparacion\_c2\_c3\_escala\_original.csv}.
+elaboración propia.
 \end{minipage}
 \end{table}
 
@@ -355,7 +382,7 @@ adoptada.
 \normalsize\raggedright
 \textit{Nota.} Mismo esquema y semilla que la Sección~\ref{sec:res-estabilidad}.
 El Jaccard mínimo corresponde al grupo menos reproducible de cada solución.
-Fuente: \texttt{estabilidad\_por\_k.csv}.
+Fuente: elaboración propia.
 \end{minipage}
 \end{table}
 
@@ -620,7 +647,7 @@ las réplicas sus tres hospitales conservan una asociación reconocible.
 Respecto del primer criterio de la hipótesis de trabajo (Sección~\ref{sec:hipotesis}), los cuatro grupos superan el umbral de 0,60 bajo el cual \citet{Hennig2007} considera que un grupo no es confiable, de modo que el criterio no se contradice. Tres grupos superan además el valor de 0,75 que ese autor asocia a un grupo estable ($C0$, $C1$ y $C3$), mientras que $C2$ queda exactamente en ese límite ($0{,}750$). Por ello, $C2$ se interpreta como un patrón presente en los datos cuya composición exacta es la menos segura de la partición. En conjunto, el submuestreo muestra que la partición de Nivel~1 es predominantemente reproducible, aunque la estabilidad de los grupos pequeños y la asignación de algunos establecimientos específicos dependen en mayor medida de la composición de la muestra analizada. Estos resultados constituyen evidencia de sensibilidad interna del procedimiento y deben interpretarse junto con los análisis descriptivos, de sensibilidad temporal y de detección de observaciones atípicas presentados en las secciones precedentes.
 
 
-\section{Validación estadística por variable}
+\section{Caracterización descriptiva por variable}
 \label{sec:res-validacion}
 
 Siguiendo el procedimiento descrito en la Sección~\ref{sec:validacion-grupos},
@@ -646,8 +673,11 @@ presentan mayores diferencias entre los perfiles resultantes y ordenar su
 contribución descriptiva mediante $\varepsilon^2$.
 
 En el Nivel~1 (Tabla~\ref{tab:kruskal-nivel1}), 26 de las 28 variables
-discriminan significativamente entre los cuatro clústeres después del ajuste
-BH. Los mayores tamaños de efecto corresponden a \texttt{tasa\_partos}
+presentan $p_{\text{BH}}<0{,}05$ entre los cuatro clústeres. Este conteo se usa
+como criterio descriptivo para ordenar variables y no como evidencia
+inferencial: dos grupos tienen solo tres hospitales, lo que vuelve aproximada
+la distribución asintótica en que se basa la prueba, y las variables
+participaron en la construcción de los grupos. Los mayores tamaños de efecto corresponden a \texttt{tasa\_partos}
 ($\varepsilon^2=0{,}395$), \texttt{edad\_mediana}
 ($\varepsilon^2=0{,}374$) y \texttt{pct\_obstetrica\_ingreso}
 ($\varepsilon^2=0{,}345$). Estos resultados son consistentes con la separación
@@ -655,7 +685,7 @@ entre el perfil pediátrico, los establecimientos de mayor especialización y lo
 hospitales generalistas, particularmente respecto de la composición etaria de
 los egresos y de la actividad gineco-obstétrica.
 
-Solo \texttt{cv\_estancia} y \texttt{pabellones\_promedio} no alcanzan significancia tras el ajuste BH. Esto indica que, bajo esta comparación y nivel de corrección, no se observa evidencia suficiente de diferencias sistemáticas entre los cuatro clústeres en la variabilidad relativa de la estancia ni en el número promedio de pabellones. No implica que estas variables sean idénticas entre grupos ni que carezcan de relevancia clínica individual.
+Solo \texttt{cv\_estancia} y \texttt{pabellones\_promedio} quedan sobre ese umbral, lo que indica que son las variables en que los cuatro clústeres difieren menos. No implica que estas variables sean idénticas entre grupos ni que carezcan de relevancia clínica individual.
 
 \begin{table}[htbp]
 \centering
@@ -726,6 +756,15 @@ pabellones\_promedio
 & 4,6 & $0{,}204$ & $0{,}204$ & 0,026 & No \\
 \bottomrule
 \end{tabular}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\normalsize\raggedright
+\textit{Nota.} Los valores $p$ se basan en la aproximación asintótica de
+Kruskal--Wallis, poco confiable con grupos de tres hospitales, y en variables
+que participaron en la construcción de los grupos. Se reportan como criterio
+descriptivo para ordenar variables y no como evidencia inferencial de
+diferencias entre grupos. La columna «Discrimina» indica $p_{\text{BH}}<0{,}05$.
+\end{minipage}
 \end{table}
 
 La circularidad asociada a esta caracterización se examinó mediante dos
@@ -772,39 +811,11 @@ entre la covarianza muestral simulada y la observada de 0,308.
 \end{minipage}
 \end{table}
 
-En el Nivel~2 (Tabla~\ref{tab:kruskal-nivel2}), el análisis se restringe a los 54 hospitales del núcleo generalista y compara los nueve subclústeres exploratorios ($S0$ a $S8$). De las 28 variables evaluadas, 24 presentan diferencias estadísticamente detectables entre subgrupos después del ajuste BH. Las seis con mayor tamaño de efecto corresponden a \texttt{peso\_medio\_grd}, \texttt{pct\_femenino\_fertil}, \texttt{pct\_obstetrica\_ingreso}, \texttt{entropia\_grd}, \texttt{pct\_estancia\_larga} y \texttt{tasa\_prematurez}.
+En el Nivel~2 no se aplicaron pruebas de hipótesis entre los nueve subgrupos exploratorios. Dos de ellos contienen un solo hospital, lo que impide la aproximación en que se basa Kruskal--Wallis, y todos se formaron con las mismas variables que se contrastarían. Además, la partición no es estable bajo submuestreo (ARI mediano $0{,}559$; Sección~\ref{sec:nivel2}). La asignación de los subgrupos se conserva en el Anexo como material descriptivo (Sección~\ref{anexo:nivel2-exploratorio}).
 
-En consecuencia, la subtipología exploratoria diferencia principalmente gradientes de complejidad clínica, composición de la casuística, permanencia hospitalaria y orientación obstétrica. Por tratarse de un segundo nivel exploratorio construido sobre el mismo conjunto de variables, los $p_{\text{BH}}$ no constituyen evidencia independiente de categorías externas o definitivas, de modo que su utilidad es descriptiva para ordenar los atributos que distinguen los perfiles obtenidos.
+Adicionalmente, se examinó la asociación entre la asignación de clústeres y la pertenencia a Servicios de Salud mediante una prueba de chi-cuadrado de independencia. En el Nivel~1 se obtuvo $\chi^2=65{,}329$ ($\text{gl}=84$, $p=0{,}935$), mientras que en el Nivel~2 se obtuvo $\chi^2=206{,}944$ ($\text{gl}=224$, $p=0{,}787$). En ambos niveles no se detectó una asociación entre los clústeres y el Servicio de Salud.
 
-\begin{table}[htbp]
-\centering
-\caption{Variables con mayor tamaño de efecto, Kruskal--Wallis con corrección BH, Nivel~2 ($K_{sub}=9$, $n=54$).}
-\label{tab:kruskal-nivel2}
-
-\begin{tabular}{l c c c c}
-\toprule
-\textbf{Variable} & \textbf{$H$} & \textbf{$p$-valor} & \textbf{$p_{\text{BH}}$} & \textbf{$\varepsilon^2$} \\
-\midrule
-peso\_medio\_grd & 41,897 & $1{,}4158 \times 10^{-6}$ & $3{,}9642 \times 10^{-5}$ & 0,75327 \\
-pct\_femenino\_fertil & 37,218 & $1{,}0493 \times 10^{-5}$ & 0,00014691 & 0,64929 \\
-pct\_obstetrica\_ingreso & 35,751 & $1{,}9505 \times 10^{-5}$ & 0,00016808 & 0,61668 \\
-entropia\_grd & 35,256 & $2{,}4011 \times 10^{-5}$ & 0,00016808 & 0,60570 \\
-pct\_estancia\_larga & 34,309 & $3{,}5715 \times 10^{-5}$ & 0,00019920 & 0,58464 \\
-tasa\_prematurez & 33,881 & $4{,}2686 \times 10^{-5}$ & 0,00019920 & 0,57514 \\
-\bottomrule
-\end{tabular}
-\par\smallskip
-\begin{minipage}{\textwidth}
-\normalsize\raggedright
-\textit{Nota.} Resultados ordenados de forma descendente por $\varepsilon^2$. La prueba caracteriza descriptivamente una partición exploratoria del Nivel~2 y no valida de forma independiente los subclústeres.
-\end{minipage}
-\end{table}
-
-La magnitud de los tamaños de efecto debe considerarse junto con la significancia. Las seis variables resumidas en la Tabla~\ref{tab:kruskal-nivel2} son las que muestran las diferencias relativas más intensas entre los subgrupos. Este ordenamiento, sin embargo, no implica que las fronteras entre ellos sean robustas o generalizables.
-
-Adicionalmente, se examinó la asociación entre la asignación de clústeres y la pertenencia a Servicios de Salud mediante una prueba de chi-cuadrado de independencia. En el Nivel~1 se obtuvo $\chi^2=65{,}329$ ($\text{gl}=84$, $p=0{,}935$), mientras que en el Nivel~2 se obtuvo $\chi^2=206{,}944$ ($\text{gl}=224$, $p=0{,}787$). En ambos niveles no se detectó una asociación estadísticamente significativa entre los clústeres y el Servicio de Salud.
-
-Estas tablas de contingencia son dispersas, pues relacionan un número reducido de hospitales con numerosas categorías territoriales y administrativas. En consecuencia, el V de Cramér sin corrección puede sobreestimar la
+Estas tablas de contingencia son dispersas, pues relacionan un número reducido de hospitales con numerosas categorías territoriales y administrativas, de modo que la mayoría de sus recuentos esperados es inferior a cinco y los valores $p$ del chi-cuadrado son solo aproximados. Por la misma razón, el V de Cramér sin corrección puede sobreestimar la
 asociación. Sus valores alcanzan $0{,}579$ en el Nivel~1 y $0{,}692$
 en el Nivel~2. Al aplicar la corrección de sesgo de \citet{Bergsma2013}, el V de Cramér es aproximadamente cero en ambos niveles. Por ello, bajo esta especificación no se observa una asociación apreciable entre los clústeres y los Servicios de Salud. Este resultado no permite descartar de forma concluyente toda influencia territorial o administrativa, pero no aporta evidencia de que la segmentación obtenida esté determinada por dicha pertenencia.
 
@@ -1522,3 +1533,70 @@ Los resultados de sensibilidad muestran patrones diferenciados según el tipo de
 Frente al cambio de algoritmo, la evidencia es asimétrica. K-means presenta una concordancia elevada con Ward, mientras que GMM y MST-kNN reorganizan de forma más importante la partición completa. Sin embargo, ambos métodos tienden a conservar, en distinta magnitud, la separación entre el bloque generalista y los establecimientos especializados. En consecuencia, los perfiles especializados muestran mayor persistencia frente a cambios metodológicos que la composición detallada del núcleo generalista.
 
 Finalmente, la sensibilidad temporal afecta sobre todo a las componentes de casuística de menor varianza, que cambian de posición en el PCA y presentan las correlaciones más bajas entre períodos. Por ello, la interpretación de los perfiles funcionales globales cuenta con mayor respaldo que una lectura exhaustiva de las componentes específicas del PCA o de diferencias clínicas finas entre los grupos.
+
+\section{Síntesis de resultados por objetivo}
+\label{sec:sintesis-objetivos}
+
+La Tabla~\ref{tab:sintesis-objetivos} resume, para cada objetivo específico, el
+resultado central, la evidencia que lo respalda y el límite que condiciona su
+interpretación. Se incluyen las sensibilidades que modifican conclusiones
+principales, de modo que su efecto quede visible junto al resultado que matizan.
+
+\begin{longtable}{p{2.6cm} p{4.4cm} p{3.6cm} p{3.6cm}}
+\caption{Síntesis de resultados por objetivo específico.}
+\label{tab:sintesis-objetivos} \\
+\toprule
+\textbf{Objetivo} & \textbf{Resultado central} & \textbf{Evidencia} &
+\textbf{Límite} \\
+\midrule
+\endfirsthead
+\multicolumn{4}{c}{\tablename\ \thetable{} -- continuación} \\
+\toprule
+\textbf{Objetivo} & \textbf{Resultado central} & \textbf{Evidencia} &
+\textbf{Límite} \\
+\midrule
+\endhead
+1. Matriz institucional &
+Matriz de $65 \times 35$: 27 indicadores directos y 8 componentes de casuística. &
+5.756.850 egresos de los 65 hospitales elegibles; 72,3\,\% de varianza de
+casuística retenida. &
+Depende de la calidad de la codificación administrativa. \\
+\addlinespace
+2. Segmentación funcional &
+Cuatro perfiles: pediátrico ($n=3$), núcleo generalista ($n=54$), carga clínica
+heterogénea ($n=5$) y especialización clínica heterogénea ($n=3$). &
+$C2$ y $C3$ difieren en ingreso por urgencia frente a programado y en peso
+medio GRD (Tabla~\ref{tab:c2-c3}). &
+Decisión descriptiva: $K=2$ obtiene mejores métricas internas. \\
+\addlinespace
+3. Estabilidad &
+La estructura global se reproduce bajo submuestreo. &
+ARI mediano $0{,}917$; Jaccard $\geq 0{,}750$ en los cuatro grupos. &
+$C2$ queda en el límite de estabilidad ($0{,}750$), se disuelve al excluir
+el bloque demográfico-obstétrico y recibe tres hospitales del núcleo al
+excluir 2020--2021. \\
+\addlinespace
+4. Caracterización &
+Los perfiles se distinguen sobre todo por composición etaria y actividad
+gineco-obstétrica. &
+Mayores $\varepsilon^2$ en \texttt{tasa\_partos}, \texttt{edad\_mediana} e
+ingresos obstétricos. &
+Las pruebas por variable son descriptivas: no superan una nula que preserva
+la covarianza ($p_{\mathrm{emp}}=0{,}1198$). \\
+\addlinespace
+5. Atípicos &
+Nueve hospitales marcados por al menos un criterio; tres por dos o más. &
+Isolation Forest, distancia al centroide y Silhouette individual
+(Tabla~\ref{tab:outliers}). &
+Las marcas dependen del parámetro de contaminación y no indican errores ni
+desempeño. \\
+\addlinespace
+6. Contraste con MINSAL &
+Baja concordancia: ambas clasificaciones asignan de forma distinta a los
+hospitales. &
+ARI $=0{,}112$; menor dispersión de Ward $K=4$ en bloques no utilizados para
+agrupar. &
+Con $K=2$ los intervalos de las diferencias incluyen el cero: no hay
+superioridad entre clasificaciones. \\
+\bottomrule
+\end{longtable}
