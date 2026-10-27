@@ -152,16 +152,44 @@ secundarias:
 \section{Solución propuesta}
 \label{sec:solucion}
 
-Frente a este problema, la solución propuesta consiste en un pipeline
-reproducible de aprendizaje no supervisado que, a partir de los datos GRD
-agregados por hospital del período 2019--2024, construye indicadores
-institucionales de producción asistencial, casuística, severidad clínica,
-consumo esperado de recursos y diversidad diagnóstica, y aplica un algoritmo de agrupamiento (\textit{clustering}
-jerárquico) sobre dichos indicadores para obtener una segmentación funcional de
-la red. La solución se complementa con la validación estadística de los grupos
-obtenidos, la detección de hospitales atípicos y el contraste con la
-clasificación administrativa del Ministerio de Salud. El detalle metodológico
-de este pipeline se desarrolla en el Capítulo~\ref{cap:metodologia}.
+La solución consiste en un flujo reproducible de procesamiento y aprendizaje
+no supervisado que transforma registros GRD en una caracterización funcional
+hospitalaria. Sus entradas, procesos y salidas se organizan de la siguiente
+forma:
+
+\begin{description}
+  \item[Entradas.] Registros de egresos GRD del período 2019--2024 y la
+    información de establecimientos necesaria para delimitar los 65 hospitales
+    públicos de alta y mediana complejidad elegibles. La clasificación del
+    MINSAL se reserva para el contraste posterior.
+  \item[Procesamiento.] Se estandarizan y depuran los registros, se clasifica
+    la actividad asistencial y se construyen indicadores de producción,
+    casuística, severidad, consumo esperado de recursos y diversidad
+    diagnóstica. Las 63 variables de casuística se reducen mediante PCA a ocho
+    componentes, que se integran con 27 indicadores directos en una matriz de
+    $65\times35$. Cada fila representa un hospital y cada columna una
+    característica institucional. Sobre esta matriz, tras el preprocesamiento,
+    se aplica agrupamiento jerárquico de Ward; posteriormente se caracteriza
+    la partición y se explora el grupo mayoritario.
+  \item[Salidas.] Asignaciones de los hospitales a perfiles funcionales,
+    descripción de los atributos de cada perfil, marcas de atipicidad y un
+    contraste descriptivo con la clasificación administrativa del MINSAL.
+    Estas salidas se acompañan de medidas de cohesión, separación,
+    estabilidad y sensibilidad para delimitar su interpretación.
+\end{description}
+
+La cohesión y separación de las alternativas se describen mediante Silhouette,
+Calinski--Harabasz y Davies--Bouldin. La estabilidad de la solución adoptada se
+evalúa con 100 submuestras sin reposición de 52 de los 65 hospitales, mediante
+ARI, NMI y Jaccard. Este procedimiento es distinto de los 5.000 remuestreos
+bootstrap de hospitales, con reposición, utilizados para obtener intervalos de
+las diferencias de dispersión WSS/TSS en la comparación por bloques de
+variables. La concordancia con el MINSAL se describe mediante ARI y NMI, y la
+atipicidad combina Isolation Forest, distancia al centroide y Silhouette
+individual. Los grupos se construyen a partir de indicadores hospitalarios;
+los egresos individuales se utilizan para elaborar esos indicadores.
+El procedimiento y el alcance de cada evaluación se desarrollan en el
+Capítulo~\ref{cap:metodologia}.
 
 \subsection{Hipótesis de trabajo}
 \label{sec:hipotesis}
@@ -303,17 +331,28 @@ concretas de política pública o administrativa.
 \section{Metodologías y herramientas utilizadas}
 \label{sec:metodologias}
 
-Para abordar el problema se empleó un flujo de análisis basado en el marco
-CRISP-DM (\textit{Cross-Industry Standard Process for Data Mining})
-~\citep{Chapman2000}, que integra la comprensión de los datos, la
-preparación y reducción de dimensionalidad, el modelado mediante
-aprendizaje no supervisado, la validación estadística de los grupos y la
-detección de anomalías. El trabajo se implementa íntegramente en Python,
-con un pipeline documentado y reproducible. La justificación conceptual de
-este marco frente a alternativas, el detalle de las herramientas de
-desarrollo empleadas y los parámetros de reproducibilidad del pipeline se
-presentan en la Sección~\ref{sec:crisp-dm} y en el
-Capítulo~\ref{cap:metodologia}.
+El trabajo se organiza mediante CRISP-DM
+(\textit{Cross-Industry Standard Process for Data Mining})~\citep{Chapman2000}
+y se implementa en Python. Su aporte informático se concreta en la integración
+de archivos GRD heterogéneos, la aplicación de reglas documentadas de limpieza
+y clasificación de actividad, la construcción de indicadores hospitalarios y
+la transformación de la casuística en una matriz institucional. Los scripts
+permiten generar las asignaciones, tablas y análisis a partir de ese flujo,
+con parámetros y semillas documentados. El procedimiento y sus artefactos se
+detallan en el Capítulo~\ref{cap:metodologia} y en las
+Secciones~\ref{anexo:parametros} y~\ref{anexo:repositorio}.
+
+PCA reduce la dimensionalidad de la casuística, Ward construye los grupos e
+Isolation Forest aporta uno de los criterios de atipicidad. LASSO selecciona
+variables en el análisis complementario de la etiqueta administrativa del
+MINSAL, mientras que los algoritmos alternativos permiten examinar la
+sensibilidad de la partición. La evaluación integra caracterización
+descriptiva, estabilidad bajo submuestreo y sensibilidad interna. En
+particular, agrupar con un bloque de variables y evaluar en otro reduce su
+reutilización directa, pero ambos bloques proceden de los mismos hospitales y
+período; por ello, esta evaluación interna no acredita independencia
+estadística ni constituye una validación externa. La justificación del marco
+se presenta en la Sección~\ref{sec:crisp-dm}.
 
 Asimismo, en cumplimiento de las directrices académicas e institucionales sobre integridad científica de la Universidad de Santiago de Chile, se deja constancia de que el desarrollo conceptual, diseño metodológico, procesamiento de datos, análisis estadístico, interpretación de resultados y conclusiones presentadas en este trabajo de titulación son de autoría y responsabilidad intelectual exclusiva del estudiante. Se utilizaron herramientas de inteligencia artificial generativa (GPT 5.6 Terra) de manera complementaria y acotada como apoyo en la asistencia de redacción, estilo \LaTeX{} y depuración de scripts computacionales.
 
