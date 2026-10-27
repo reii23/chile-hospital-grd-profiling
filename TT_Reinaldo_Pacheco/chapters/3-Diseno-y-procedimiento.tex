@@ -1381,15 +1381,12 @@ se aplican después de obtenida la partición para no sesgar el agrupamiento.
 \paragraph{Discriminación mediante Kruskal-Wallis}
 \label{sec:kruskal-seleccion}
 
-La prueba de Kruskal-Wallis evalúa si las distribuciones de cada variable difieren
-significativamente entre los grupos obtenidos, sin asumir normalidad. Una variable
-con $p \leq 0{,}05$ discrimina entre los perfiles y es relevante para
-caracterizarlos, mientras que una con $p > 0{,}05$ es homogénea entre grupos y no aporta a la
-diferenciación. Las variables discriminantes se ordenan por su $\varepsilon^2$
-(Ecuación~\ref{eq:epsilon2}), que jerarquiza los atributos según la magnitud
-real de la diferencia entre grupos, con corrección de Benjamini-Hochberg sobre
-los $p$-valores, y permite construir la narrativa funcional de cada perfil.
-
+Los estadísticos de Kruskal--Wallis y los valores $p$ ajustados mediante
+Benjamini--Hochberg se utilizan para describir los contrastes entre los perfiles
+del Nivel~1, con las limitaciones de tamaños pequeños y reutilización de datos
+señaladas en la Sección~\ref{sec:validacion-grupos}. Las variables se ordenan
+por su $\varepsilon^2$ (Ecuación~\ref{eq:epsilon2}) y se interpretan junto con
+medianas y dispersión. Un valor $p$ alto no demuestra homogeneidad entre grupos.
 
 \paragraph{Regresión logística con penalización LASSO}
 \label{sec:lasso}
@@ -1398,7 +1395,7 @@ La penalización $L_1$ se aplica sobre un modelo de regresión logística usando
 como variable objetivo la clasificación administrativa del MINSAL. El propósito no es predecir esa etiqueta sino
 identificar qué variables de actividad clínica permiten reconstruirla y, por
 contraste, cuáles aportan información que la etiqueta administrativa no captura.
-La penalización $L_1$ induce la dispersión de coeficientes, forzando a cero los coeficientes
+La penalización $L_1$ induce una solución con pocos coeficientes no nulos, forzando a cero los coeficientes
 de los predictores poco informativos, como se describió en la
 Sección~\ref{sec:reduccion}.
 
@@ -1423,7 +1420,7 @@ de la penalización sin descartar variables informativas ni perder el efecto de
 selección.
 
 La combinación de ambas técnicas permite distinguir variables que discriminan
-la partición empírica (Kruskal-Wallis significativo) de las que reproducen la
+la partición empírica (contrastes descriptivos de Kruskal--Wallis) de las que reproducen la
 etiqueta administrativa (alta frecuencia LASSO), y de aquellas que aparecen en
 ambas fuentes. Los resultados se presentan en el Capítulo~\ref{cap:resultados}.
 

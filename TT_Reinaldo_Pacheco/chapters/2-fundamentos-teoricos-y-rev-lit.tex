@@ -402,88 +402,16 @@ hospitalaria~\citep{Havranek2023}.
 
 \label{sec:sintesis-internacional}
 
-Los tres estudios muestran que los datos de producción hospitalaria contienen
-información relevante que no queda plenamente representada por las tipologías
-convencionales. El caso chino muestra directamente que hospitales de una misma
-categoría administrativa pueden presentar perfiles de desempeño y producción
-distintos. El estudio suizo evidencia que un conjunto reducido de variables
-estructurales permite explicar parte importante de las diferencias de costos
-hospitalarios. El caso francés identifica una organización funcional de red a
-partir de variables de producción, diversidad clínica y movilidad de pacientes,
-sin realizar una comparación explícita con una clasificación administrativa
-previa.
-
-En conjunto, estas experiencias respaldan el uso de indicadores derivados de
-datos hospitalarios para caracterizar la heterogeneidad entre establecimientos.
-También muestran que la selección de variables, la validación de los resultados
-y la interpretación contextual de los grupos son decisiones metodológicas
-centrales. La Tabla~\ref{tab:comparativa-internacional} sintetiza las
-características metodológicas de los tres estudios y su aporte al presente
-trabajo.
-
-\begin{table}[H]
-
-\centering
-
-\caption{Síntesis comparativa de experiencias internacionales en perfilamiento hospitalario}
-
-\label{tab:comparativa-internacional}
-
-
-
-\setlength{\tabcolsep}{3pt}
-
-\renewcommand{\arraystretch}{1.15}
-
-\begin{tabular}{@{}
->{\raggedright\arraybackslash}p{1.1cm}
->{\raggedright\arraybackslash}p{2.4cm}
->{\raggedright\arraybackslash}p{2.4cm}
->{\raggedright\arraybackslash}p{3.1cm}
->{\raggedright\arraybackslash}p{3.8cm}@{}}
-
-\hline
-
-\textbf{País} & \textbf{Datos} & \textbf{Método} &
-\textbf{Variables} & \textbf{Aporte al presente trabajo} \\
-
-\hline
-
-Francia
-
-  & 427 hospitales públicos y 8{,}8\,M de hospitalizaciones durante 2016
-
-  & \textit{k}-means y validación mediante 30 criterios
-
-  & Número de estancias, diversidad clínica y movilidad de pacientes
-
-  & Muestra que pocas variables de producción y red permiten identificar una estructura funcional relevante para la planificación \\[5pt]
-
-China
-
-  & 306 hospitales de Sichuan, secundarios y terciarios
-
-  & Análisis factorial exploratorio y agrupamiento jerárquico
-
-  & CMI, número de GRD, peso total, eficiencia de costos, eficiencia temporal y mortalidad
-
-  & Muestra diferencias de desempeño y producción entre hospitales de una misma categoría administrativa \\[5pt]
-
-Suiza
-
-  & 116 hospitales y más de 1\,M de casos correspondientes a 2019
-
-  & Regresión ponderada, selección de variables y validación temporal
-
-  & Altas, ingresos de urgencia, tasa de GRD por paciente, pérdida esperada y ubicación geográfica
-
-  & Ilustra la selección de atributos estructurales asociados a diferencias de costos hospitalarios \\
-
-\hline
-
-\end{tabular}
-
-\end{table}
+Los antecedentes internacionales ilustran usos distintos de los datos
+hospitalarios: describir la función en una red, evaluar desempeño y explicar
+costos. El estudio francés apoya la caracterización mediante producción y
+diversidad. El chino apoya la combinación de síntesis de indicadores y
+agrupamiento. El suizo destaca la necesidad de distinguir la mezcla de casos
+de los atributos estructurales. Estos aportes orientan la representación de hospitales, pero no
+justifican trasladar al presente trabajo conclusiones sobre costos, eficiencia
+o calidad asistencial. La Tabla~\ref{tab:comparativa-internacional}, ubicada
+tras los antecedentes nacionales, reúne ambos contextos y delimita su relación
+con las decisiones de esta investigación.
 
 \section{Antecedentes nacionales en caracterización hospitalaria}
 \label{sec:nacional}
@@ -545,30 +473,69 @@ métodos de agrupamiento basados en datos de producción generan particiones con
 mayor coherencia interna. No obstante, estos trabajos también evidenciaron
 limitaciones metodológicas que motivan la presente investigación.
 
+\subsection{Síntesis de antecedentes y relación con el presente trabajo}
+
+La tabla distingue el objetivo de cada antecedente, su representación de los
+hospitales y la decisión que orienta en este estudio. Los límites de traslado
+se refieren a las diferencias de propósito y de datos respecto de esta tesis.
+No constituyen necesariamente limitaciones declaradas por los autores.
+
+{
+\setstretch{1.0}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{\fill}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{2.1cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{3.3cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{3.5cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{3.3cm}@{}}
+\caption{Antecedentes de caracterización hospitalaria y relación con el presente trabajo.}
+\label{tab:comparativa-internacional} \\
+\toprule
+\textbf{Estudio} & \textbf{Objetivo, datos y método} & \textbf{Decisión que orienta} & \textbf{Límite de traslado} \\
+\midrule
+\endfirsthead
+\multicolumn{4}{l}{\textit{Tabla~\thetable\ (continuación)}} \\
+\toprule
+\textbf{Estudio} & \textbf{Objetivo, datos y método} & \textbf{Decisión que orienta} & \textbf{Límite de traslado} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Francia: \citet{Chrusciel2021} & Identificar perfiles y funciones de red. 427 hospitales, datos de 2016. K-means sobre producción, diversidad y movilidad. & Incorporar producción y diversidad a la representación institucional e interpretar los grupos según su actividad. & La movilidad interhospitalaria no se mide aquí. Sus tres categorías no determinan el número de perfiles chilenos. \\
+\addlinespace
+China: \citet{Liu2025} & Evaluar desempeño de 306 hospitales de Sichuan. Seis indicadores GRD, análisis factorial y agrupamiento jerárquico. & Reducir indicadores correlacionados antes de agrupar. Distinguir heterogeneidad dentro de categorías administrativas. & Incluye costos, eficiencia y mortalidad. Sus etiquetas de desempeño no equivalen a perfiles funcionales. Los autores advierten diferencias regionales de agrupadores. \\
+\addlinespace
+Suiza: \citet{Havranek2023} & Explicar costos ajustados por casuística. 116 hospitales y datos de 2019. Regresión y selección de atributos organizacionales y regionales. & Delimitar el alcance de indicadores de casuística frente a factores estructurales y seleccionar atributos según el objetivo analítico. & Explica costos, no construye clústeres. Esta tesis no incorpora los costos ni todos los atributos estructurales de ese modelo. \\
+\addlinespace
+Chile: \citet{Villalobos2016} & Agrupar perfiles de producción y evaluar eficiencia. 193 hospitales, datos de 2014. Agrupamiento por grafos seguido de DEA. & Incluir MST-kNN como contraste algorítmico y distinguir perfilamiento de evaluación de eficiencia. & Usa producción como aproximación a la casuística ante una implementación GRD parcial. Aquí no se realiza DEA. \\
+\addlinespace
+Chile: \citet{Carlier2020} & Examinar la categorización MINSAL con indicadores DEIS de 2014--2018. Algoritmo genético de selección y agrupamiento. & Contrastar las asignaciones con MINSAL sin usar su etiqueta para construir los perfiles funcionales. & Reconstruir categorías administrativas es un objetivo distinto de descubrir perfiles. Sus variables y períodos no equivalen a la matriz GRD actual. \\
+\addlinespace
+Chile: \citet{Giglio2021} & Examinar la clasificación y particiones alternativas. 187 hospitales, datos de 2014--2018. CRISP-DM y comparación de técnicas de agrupamiento. & Organizar el flujo reproducible y comparar métricas internas y alternativas algorítmicas. & Su representación se aproxima a la casuística mediante indicadores DEIS. Sus recomendaciones de granularidad no fijan el corte de este estudio. \\
+\addlinespace
+Presente trabajo & Caracterizar 65 hospitales con GRD de 2019--2024. 27 indicadores y ocho componentes de casuística. Ward y análisis complementarios. & Integrar producción, severidad, consumo esperado de recursos y composición clínica. Documentar estabilidad, sensibilidad y atipicidad. & Evaluación interna sobre una red y período agregados. No incluye validación clínica experta formal ni evaluación de eficiencia, y no demuestra superioridad frente a MINSAL. \\
+\bottomrule
+\end{longtable}
+}
+
 \subsection{Brechas identificadas en la evidencia nacional}
 \label{sec:brechas-nacionales}
 
 El análisis de los antecedentes nacionales permite identificar tres brechas
 principales que la presente investigación busca abordar.
 
-\textbf{Ausencia de un pipeline aplicado a datos GRD recientes con validación
-estadística y detección de atípicos.} Si bien trabajos previos de la misma línea
+\textbf{Integración de datos GRD recientes, evaluación interna y detección de atípicos.} Si bien trabajos previos de la misma línea
 como \citet{Giglio2021} emplearon marcos estructurados
-como CRISP-DM, ninguno aplicó un flujo de extremo a extremo sobre datos GRD del
-período más reciente que integre validación estadística de la solución de
-agrupamiento y detección formal de establecimientos atípicos. Esta ausencia
-limita tanto la reproducibilidad de los análisis como la posibilidad de
-actualizar los perfiles de forma sistemática a medida que se incorporan nuevos
-años de datos.
+como CRISP-DM, los antecedentes aquí revisados no reúnen, sobre los registros GRD
+2019--2024, la representación clínica y los análisis de estabilidad, sensibilidad
+y atipicidad considerados en esta investigación. Esta diferencia delimita el
+alcance del flujo propuesto, sin implicar que los trabajos anteriores carezcan
+de reproducibilidad.
 
 \textbf{No integración de dimensiones clínicas con indicadores de gestión.} Los
 estudios nacionales previos se focalizaron en variables agregadas de producción y
 complejidad (número de egresos, peso GRD medio, severidad media), pero no
 incorporaron la dimensión de casuística clínica mediante las clasificaciones
-CIE-10 y CIE-9-MC. Esta omisión impide distinguir perfiles funcionales
-específicos como hospitales obstétricos, cardiovasculares o quirúrgicos
-que son fundamentales para interpretar clínicamente los grupos y orientar la
-gestión.
+CIE-10 y CIE-9-MC. La incorporación de esas composiciones permite describir explícitamente
+diferencias diagnósticas y de procedimientos que los indicadores agregados
+pueden ocultar, sin garantizar de antemano perfiles específicos.
 
 \textbf{Detección de atípicos limitada a un único criterio ad-hoc.} De los
 trabajos revisados en esta línea, solo \citet{Villalobos2016} abordó la
@@ -577,8 +544,7 @@ mediante el método de rango intercuartílico sobre las distancias entre
 perfiles, sin evaluar la sensibilidad del resultado a la elección del
 criterio ni combinarlo con otras señales de atipicidad. \citet{Carlier2020} y
 \citet{Giglio2021} no incorporaron un mecanismo equivalente. La identificación de
-establecimientos atípicos es crucial para garantizar comparaciones
-equitativas entre establecimientos: un hospital puede no pertenecer
+establecimientos atípicos permite advertir límites de las comparaciones: un hospital puede no pertenecer
 claramente a ningún grupo consolidado, ya sea por su perfil híbrido, por
 problemas en la calidad de sus datos o por características únicas de su
 territorio. Sin mecanismos que combinen múltiples criterios y evalúen su
@@ -588,8 +554,8 @@ generar comparaciones injustas.
 Estas tres brechas definen el espacio de contribución de la presente
 investigación. Respecto a los trabajos previos, este estudio incorpora tres
 elementos diferenciadores: (i) una cobertura temporal extendida con datos GRD
-del período 2019--2024, lo que permite observar tendencias y estabilidad de los
-perfiles (ii) la integración de la casuística clínica mediante los capítulos
+del período 2019--2024, agregados para caracterizar la actividad del período y evaluar la sensibilidad
+a la exclusión de 2020--2021, sin estimar tendencias anuales, (ii) la integración de la casuística clínica mediante los capítulos
 CIE-10 y las secciones CIE-9-MC como dimensión central de la representación
 hospitalaria, habilitando la distinción de perfiles funcionales específicos y
 (iii) la combinación de múltiples criterios de detección de atípicos
@@ -609,348 +575,169 @@ frecuentes como errores que deban eliminarse.
 \subsection{Aprendizaje no supervisado para segmentación}
 \label{sec:clustering}
 
-El problema central del perfilamiento hospitalario consiste en descubrir patrones
-de similitud funcional entre establecimientos cuando no existe una clasificación
-de referencia válida. Las etiquetas administrativas actuales (alta, mediana y
-baja complejidad) se han mostrado insuficientes para capturar la heterogeneidad
-real de la red, como se documentó en la Sección~\ref{sec:sistema-hospitalario}.
-Esta situación plantea un desafío metodológico, ya que no es posible entrenar un
-modelo supervisado que aprenda de etiquetas que precisamente se busca mejorar.
+El aprendizaje no supervisado permite agrupar hospitales mediante similitudes
+en sus indicadores sin utilizar etiquetas funcionales previas. La clasificación
+administrativa se conserva como referencia de contraste, no como una verdad
+objetivo que el agrupamiento deba reproducir. Los antecedentes de
+\citet{Chrusciel2021} y \citet{Liu2025} ilustran el uso de agrupamientos en
+representaciones hospitalarias, con propósitos distintos.
 
-El aprendizaje no supervisado resuelve este problema al descubrir estructura en
-los datos sin requerir etiquetas previas. A diferencia de los métodos
-supervisados, que aprenden una función que mapea características a categorías
-conocidas, los algoritmos de clustering infieren agrupamientos directamente de
-las similitudes y diferencias observadas en los atributos medidos. Esta capacidad
-de encontrar patrones sin supervisión es fundamental cuando el objetivo es
-precisamente cuestionar y redefinir la taxonomía existente.
+Ward construye una jerarquía aglomerativa minimizando en cada fusión el
+incremento de la suma de cuadrados intragrupo. El dendrograma permite examinar
+distintos cortes, aunque adoptar una partición requiere decidir el número de
+grupos. En esta tesis, Ward opera sobre la matriz institucional preprocesada y
+produce las asignaciones globales y la exploración del núcleo generalista.
+Su preferencia por grupos compactos no garantiza tamaños equilibrados ni una
+única tipología clínicamente válida.
 
-En el contexto hospitalario, el aprendizaje no supervisado permite que los propios
-datos clínicos, reflejados en variables como casuística, complejidad clínica,
-estancia media y perfiles de procedimientos, revelen qué
-hospitales funcionan de manera similar, independientemente de su etiqueta
-administrativa. Esta aproximación ha sido validada internacionalmente en sistemas
-de salud complejos, donde ha demostrado revelar estructuras funcionales de la red
-que las clasificaciones administrativas no hacen
-explícitas~\citep{Chrusciel2021, Liu2025}.
+K-means minimiza distancias cuadradas a centroides y K-means++ utiliza una
+inicialización que favorece centroides separados. Se emplea como sensibilidad
+particional, su coincidencia con Ward debe interpretarse considerando la
+preferencia compartida por grupos compactos. Las mezclas gaussianas (GMM)
+representan los datos mediante componentes probabilísticas y permiten examinar
+otra geometría de agrupamiento. El BIC orienta la comparación entre modelos.
 
-Para datos tabulares con tamaño muestral moderado, las técnicas de clustering
-más utilizadas en la literatura de caracterización hospitalaria son el clustering
-jerárquico y el particional (K-means y variantes). Estas técnicas han demostrado
-eficacia en contextos similares: \citet{Chrusciel2021} aplicaron
-K-means sobre 427 hospitales en Francia, y \citet{Liu2025} emplearon
-clustering jerárquico aglomerativo sobre 306 hospitales en China. El clustering
-basado en densidad (DBSCAN) puede producir resultados inestables por su
-sensibilidad a los hiperparámetros en muestras de este orden, y el clustering
-espectral requiere definir una función de kernel y un número de vectores propios
-a retener, decisiones adicionales que introducen una complejidad de
-interpretación no justificada cuando no hay evidencia previa de que la red
-hospitalaria presente una geometría no convexa que este método esté
-especialmente capacitado para capturar.
+Los métodos restantes exploran estructuras locales. HDBSCAN identifica grupos
+por densidad y puede marcar observaciones como ruido. KNN-graph con Leiden
+busca comunidades en un grafo de vecinos. MST-kNN construye grupos mediante
+relaciones de vecindad y un árbol de expansión mínima, en continuidad con los
+antecedentes nacionales~\citep{inostroza2008, Villalobos2016}. Sus salidas no
+son necesariamente particiones con el mismo número de grupos ni el mismo
+tratamiento de observaciones aisladas. En el trabajo reciben la misma matriz institucional preprocesada y producen
+asignaciones, comunidades o marcas de ruido para examinar la sensibilidad
+interna, con parámetros y comparaciones definidos en la
+Sección~\ref{sec:sensibilidad}.
 
-El clustering jerárquico aglomerativo construye una jerarquía de grupos uniendo
-iterativamente los pares de observaciones o clústeres más cercanos según una
-medida de distancia. Esta aproximación presenta dos ventajas específicas para el
-problema hospitalario. Primero, no requiere especificar a priori el
-número de grupos, permitiendo explorar distintos niveles de granularidad mediante
-un dendrograma, propiedad valiosa cuando no existe consenso institucional sobre
-cuántos perfiles funcionales deberían existir. Segundo, el método de Ward, que
-minimiza el incremento de varianza intra-grupo en cada fusión, produce grupos
-compactos y equilibrados, propiedades deseables cuando se busca maximizar la
-homogeneidad funcional dentro de cada perfil.
-
-El algoritmo K-means y su variante K-means++ constituyen enfoques particionales
-complementarios. K-means asigna cada observación al centroide más cercano
-mediante un proceso iterativo de reasignación y recalculo, minimizando la suma de
-distancias cuadradas intra-grupo. K-means++ mejora la inicialización de
-centroides mediante un muestreo probabilístico que favorece puntos distantes,
-reduciendo la sensibilidad a condiciones iniciales aleatorias. Su eficacia en
-caracterización hospitalaria está respaldada por el trabajo de \citet{Chrusciel2021}, donde K-means sobre tres variables de producción y red
-produjo una segmentación interpretable y estable de 427 hospitales públicos
-franceses.
-
-La ausencia de una clasificación funcional validada plantea el desafío de evaluar
-si una solución de clustering es buena cuando no existe una verdad absoluta con
-la cual compararla. La literatura ha desarrollado métricas internas de calidad
-que evalúan propiedades deseables de los grupos sin requerir etiquetas de
-referencia.
-
-El coeficiente de Silhouette~\citep{Rousseeuw1987} cuantifica, para cada
-observación, qué tan bien asignada está a su grupo comparando la distancia media
-intra-grupo con la distancia media al grupo vecino más cercano. El coeficiente
-toma valores en el rango $[-1, 1]$ donde valores cercanos a 1 indican que la
-observación está más cerca de los miembros de su propio grupo que de
-los de otros grupos, mientras que valores negativos sugieren asignaciones
-ambiguas. El promedio del coeficiente sobre todas las observaciones proporciona
-una medida global de la calidad de la partición.
-
-El índice de Calinski-Harabasz cuantifica la relación entre la dispersión
-inter-grupos y la dispersión intra-grupos. Una partición óptima maximiza la
-separación entre grupos mientras minimiza la heterogeneidad dentro de cada grupo.
-Valores altos de este índice favorecen soluciones con grupos compactos y bien
-separados~\citep{CalinskiHarabasz1974}.
-
-El índice de Davies-Bouldin mide la peor relación de similitud entre cada grupo
-y su vecino más cercano a diferencia del anterior, valores bajos indican mejor
-separación. Esta métrica penaliza soluciones donde existen pares de grupos con
-alta similitud interna pero baja separación mutua, situación indeseable desde la
-perspectiva de interpretabilidad~\citep{DaviesBouldin1979, Arbelaitz2013}.
-
-Más allá de las métricas puntuales, la estabilidad de las soluciones constituye
-un criterio de validación complementario. Técnicas de remuestreo como el
-bootstrapping evalúan la robustez de las asignaciones frente a
-variaciones en los datos de entrada: se generan múltiples réplicas del conjunto
-de datos mediante muestreo con reemplazo y se aplica el algoritmo en cada
-réplica, midiendo luego la consistencia de las asignaciones. Soluciones que se
-fragmentan ante pequeñas perturbaciones revelan una estructura frágil sin valor
-interpretativo.
+Para describir las alternativas se utilizan tres métricas. Silhouette compara
+la distancia media de cada hospital a su grupo con la distancia media al grupo
+vecino más cercano. Toma valores entre $-1$ y $1$, y valores mayores indican
+mejor separación relativa~\citep{Rousseeuw1987}. Calinski--Harabasz relaciona
+la dispersión entre grupos con la dispersión interna, favoreciendo valores
+mayores~\citep{CalinskiHarabasz1974}. Davies--Bouldin promedia, para cada
+grupo, la mayor razón entre dispersión interna y distancia entre centroides.
+Valores menores son preferibles~\citep{DaviesBouldin1979, Arbelaitz2013}.
+Estas medidas describen propiedades geométricas. Ninguna determina por sí sola
+el número de categorías funcionales.
 
 \subsection{Reducción de dimensionalidad y selección de variables}
 \label{sec:reduccion}
 
-Los registros hospitalarios se caracterizan por su alta dimensionalidad: cada
-egreso contiene decenas de variables clínicas, demográficas y administrativas.
-Al agregar esta información a nivel de hospital, construyendo por ejemplo
-vectores de casuística mediante los capítulos CIE-10 y las secciones
-principales CIE-9-MC más indicadores de gestión como estancia media, índice de
-severidad y peso GRD medio, la dimensionalidad puede alcanzar o superar las 60
-variables.
+La reducción por transformación y la selección de variables cumplen funciones
+diferentes. PCA construye componentes ortogonales como combinaciones lineales
+de variables, ordenadas por varianza explicada. Retener un subconjunto reduce
+la dimensionalidad, pero exige interpretar sus cargas y no garantiza conservar
+toda la información clínica relevante. Aquí transforma 63 proporciones de
+casuística en ocho componentes que se integran con 27 indicadores directos
+antes del agrupamiento (Sección~\ref{sec:pca-detalle}).
 
-Cuando el número de características es del mismo orden que el número de
-observaciones, se presentan tres problemas fundamentales. Primero, la
-\textit{maldición de la dimensionalidad}, ya que en espacios de alta dimensión
-las distancias euclidianas entre puntos tienden a concentrarse, lo que dificulta
-la discriminación entre observaciones cercanas y lejanas y degrada el desempeño
-de algoritmos de clustering basados en distancias. Segundo, el riesgo de capturar
-ruido en lugar de patrones generalizables, lo que se manifiesta en soluciones
-inestables donde pequeñas perturbaciones producen asignaciones radicalmente
-distintas. Tercero, la pérdida de interpretabilidad, pues caracterizar un perfil
-hospitalario mediante decenas de variables dificulta la comunicación de los
-resultados y limita la utilidad práctica para la toma de decisiones.
+La selección conserva variables originales. La penalización $L_1$ de
+LASSO~\citep{Tibshirani1996} puede llevar coeficientes a cero y obtener una
+representación parsimoniosa. Con predictores correlacionados, la selección
+puede variar entre muestras. En esta tesis se aplica a una regresión logística
+cuya respuesta es la clasificación MINSAL. Sus salidas son coeficientes y
+frecuencias de selección entre pliegues. No selecciona las variables de entrada
+de Ward ni explica directamente la pertenencia a los perfiles funcionales
+(Sección~\ref{sec:lasso}). El antecedente de \citet{Bollmann2023} subraya
+la importancia de atender a la estructura de los datos al interpretar una
+selección. Su modelo de pacientes anidados no equivale al análisis
+institucional aquí realizado.
 
-Existen dos paradigmas para enfrentar la alta dimensionalidad: la reducción
-mediante transformación y la selección de variables.
-
-El análisis de componentes principales (PCA) transforma el conjunto original de
-variables en un nuevo conjunto de componentes ortogonales, combinaciones lineales
-de las variables originales, ordenados por la cantidad de varianza que explican.
-Al retener únicamente los primeros componentes se condensa la información en un
-espacio de menor dimensión preservando la mayor parte de la variabilidad de los
-datos. Su limitación principal es que los componentes resultantes son
-combinaciones de todas las variables originales, lo que dificulta la
-interpretación clínica directa de cada dimensión.
-
-Las técnicas de selección de variables, por el contrario, identifican el
-subconjunto de atributos más relevantes sin transformarlos, preservando su
-significado original. Métodos como LASSO (\textit{Least Absolute Shrinkage and
-Selection Operator})~\citep{Tibshirani1996} y Elastic Net~\citep{Zou2005} aplican
-penalizaciones que fuerzan a cero los coeficientes de las variables irrelevantes,
-efectuando selección automática. LASSO induce escasez, de modo que solo un subconjunto
-pequeño de variables recibe coeficientes no nulos, facilitando la interpretación.
-Elastic Net combina las penalizaciones $L_1$ (LASSO) y $L_2$ (Ridge), permitiendo
-retener grupos de variables correlacionadas cuando esto es apropiado.
-
-\citet{Bollmann2023} demostraron, en el contexto de datos de
-pacientes anidados en hospitales suizos, que incorporar la estructura
-jerárquica del dato al aplicar LASSO produce una selección de variables
-menos sesgada que ignorar las diferencias estructurales entre
-establecimientos: variables que aparentaban ser altamente relevantes al
-ignorar el hospital perdían por completo su importancia al considerar los
-efectos de cada establecimiento, revelando que su aparente relevancia
-reflejaba diferencias entre hospitales y no características de los
-pacientes. En el contexto de este trabajo, la selección de variables
-permite identificar qué capítulos CIE-10, qué secciones CIE-9-MC y qué
-indicadores de gestión son verdaderamente discriminantes para caracterizar los
-perfiles hospitalarios, descartando atributos que aportan ruido sin valor
-informativo.
+Las distancias también dependen de las escalas. La transformación logarítmica
+atenúa asimetrías de variables no negativas y RobustScaler centra mediante la
+mediana y escala por el rango intercuartílico, reduciendo la influencia de
+valores extremos sobre el escalado. Su aplicación y el tratamiento de los
+vectores composicionales se documentan en el Capítulo~\ref{cap:metodologia}.
 
 \subsection{Detección de anomalías}
 \label{sec:anomalias}
 
-La identificación de hospitales con comportamiento divergente es un componente
-esencial del perfilamiento funcional, no una complicación técnica a ignorar. Un
-establecimiento puede presentar un patrón atípico por razones legítimas que no
-deben forzarse dentro de un grupo convencional.
+Un hospital puede resultar atípico por su especialización, por una combinación
+poco frecuente de actividad o por problemas de registro. Una marca estadística
+no distingue automáticamente estas causas ni implica un error que deba
+eliminarse (Sección~\ref{sec:grd-limitaciones}). Por ello se combinan señales
+con alcances distintos.
 
-Una primera causa son los perfiles híbridos o de transición. Un hospital que
-actúa como centro de referencia regional para especialidades complejas y a la
-vez como prestador principal de atención general para su zona de influencia
-directa puede exhibir una mezcla de casuística que no se ajusta a los perfiles
-típicos de alta ni de mediana complejidad. \citet{Miyata2010}
-documentaron este fenómeno al aplicar un modelo de predicción de mortalidad
-ajustado por casuística sobre datos de 469 hospitales japoneses: el modelo
-discriminaba bien en la generalidad de los establecimientos, pero su ajuste
-era significativamente peor en el subconjunto de hospitales especializados
-y en aquellos con salas de convalecencia de larga estancia, precisamente los
-que combinan un perfil funcional mixto que no encaja en el patrón de
-hospital agudo general usado para construir el modelo.
+Isolation Forest aísla observaciones mediante particiones aleatorias del
+espacio. Una trayectoria corta indica mayor facilidad de aislamiento y aporta
+una señal global de atipicidad~\citep{Liu2008}. En este trabajo se utiliza
+para examinar la influencia de sus marcas antes del agrupamiento y como uno
+de los criterios posteriores de detección concordante. Su parámetro de
+contaminación condiciona cuántos hospitales se marcan y se examina mediante
+sensibilidad.
 
-Una segunda causa son los problemas de codificación clínica. Como se documentó
-en la Sección~\ref{sec:grd-limitaciones}, la heterogeneidad en los procesos de
-registro puede generar datos anómalos que no reflejan diferencias funcionales
-reales sino artefactos del sistema~\citep{Aguila2019}. Un hospital con baja
-calidad de codificación puede aparecer como atípico simplemente porque sus datos
-no son comparables con los del resto de la red.
+La distancia normalizada al centroide describe el alejamiento respecto del
+grupo asignado, mientras que Silhouette individual detecta hospitales cuya
+asignación es ambigua respecto de grupos vecinos. Ambas requieren una
+partición previa. La coincidencia de señales refuerza la descripción de casos
+para revisar, pero no constituye un diagnóstico clínico ni una prueba de mala
+calidad de datos. Sus reglas se definen en la
+Sección~\ref{sec:outliers-metodo}.
 
-Una tercera causa son las características singulares del contexto territorial o
-histórico. Establecimientos ubicados en zonas con perfiles epidemiológicos
-excepcionales, o con funciones históricas que transitaron desde la
-especialización hacia la atención general, pueden presentar patrones que no se
-replican en ningún otro establecimiento. La evidencia internacional respalda esta
-idea, pues \citet{Havranek2023} mostraron que factores regionales como
-la ubicación geográfica explican variaciones sistemáticas entre hospitales que
-persisten aun después de ajustar por casuística.
-
-Identificar y caracterizar estos casos es fundamental por dos motivos. Incluir un
-hospital atípico en un grupo convencional distorsiona el centroide del grupo y
-genera comparaciones injustas tanto para el establecimiento divergente como para
-los miembros típicos. Además, los hospitales atípicos no son errores del sistema
-sino parte de la complejidad que una clasificación funcional debe reconocer de
-manera explícita.
-
-El algoritmo LOF (\textit{Local Outlier Factor})~\citep{Breunig2000} detecta
-atípicos basándose en la densidad local de las observaciones. A diferencia de
-métodos globales que definen un outlier como un punto lejano al centroide
-general, LOF considera la estructura local, de modo que un punto es considerado
-anómalo si su vecindad es significativamente menos densa que la de sus vecinos. Esta
-aproximación resulta robusta para identificar atípicos en contextos donde existen
-múltiples grupos de densidades heterogéneas, como ocurre en datos hospitalarios
-cuando coexisten perfiles de distintas escalas y complejidades.
-
-La ventaja de LOF radica en su capacidad de detectar anomalías contextuales, ya
-que un hospital puede no ser atípico en el espacio global, pero sí dentro de su
-grupo asignado. Por ejemplo, un establecimiento clasificado en un clúster de hospitales
-generales de mediana complejidad pero con un perfil inusualmente especializado en
-cirugía cardiovascular puede no ser un outlier global, porque existen hospitales
-cardiovasculares en otros grupos, pero sí puede ser un outlier local dentro de su grupo.
-
-La distancia de Mahalanobis constituye una alternativa complementaria, midiendo la
-distancia de cada observación al centroide del conjunto considerando la estructura
-de covarianza de los datos. A diferencia de la distancia euclidiana, que trata
-todas las direcciones por igual, la distancia de Mahalanobis es invariante ante
-transformaciones lineales y penaliza desviaciones en direcciones de baja
-varianza. Esta propiedad la hace apropiada para detectar atípicos multivariados
-en datos correlacionados, como los vectores de casuística hospitalaria, donde
-muchas variables están naturalmente correlacionadas.
-
-Ambas técnicas capturan formas distintas de atipicidad. LOF identifica hospitales
-con vecindades locales anómalas dentro de su grupo asignado, siendo sensible a
-la estructura local de los datos. Mahalanobis detecta establecimientos alejados
-del centroide considerando la correlación entre variables, siendo más adecuado
-cuando las variables presentan alta covarianza. Sin embargo, ambas presentan
-limitaciones operativas que deben considerarse según el contexto, ya que LOF es
-sensible a la elección del parámetro de vecindad y puede producir resultados
-inestables en muestras pequeñas, mientras que Mahalanobis requiere estimar la
-matriz de covarianza, operación mal condicionada cuando el número de variables
-es del mismo orden que el número de observaciones.
-
-Una alternativa que sortea ambas limitaciones es el algoritmo Isolation
-Forest~\citep{Liu2008}, que detecta atípicos basándose en la facilidad de aislar
-una observación mediante particiones aleatorias del espacio de características.
-Los puntos que se aíslan con pocas particiones son considerados atípicos. A
-diferencia de LOF, no requiere definir un radio de vecindad y a diferencia de
-Mahalanobis, no requiere estimar la matriz de covarianza. Estas propiedades lo
-hacen especialmente adecuado para conjuntos de datos con tamaño muestral
-moderado y alta dimensionalidad relativa.
-
-La elección entre estas técnicas depende de las características del problema:
-el tamaño muestral, la dimensionalidad de los datos y el tipo de atipicidad
-que se busca detectar. En cualquier caso, la combinación de múltiples criterios
-complementarios siendo cada uno sensible a una faceta distinta de la anomalía
-produce una caracterización más robusta que la aplicación de un único detector.
+Como alternativas, LOF compara densidades locales~\citep{Breunig2000},
+aunque su interpretación depende de la vecindad elegida. La distancia de
+Mahalanobis incorpora la covarianza, cuya estimación resulta problemática con
+pocos hospitales y numerosas variables correlacionadas. Estas consideraciones
+motivan el uso de Isolation Forest y criterios geométricos complementarios.
+No demuestran que las alternativas sean inferiores en cualquier contexto.
 
 \subsection{Validación y evaluación de resultados}
 \label{sec:validacion}
 
-La validación de las soluciones de clustering en ausencia de una verdad absoluta
-constituye uno de los desafíos centrales del perfilamiento hospitalario. A
-diferencia del aprendizaje supervisado, donde se dispone de etiquetas correctas
-para medir el desempeño, en clustering no existe una partición de referencia que
-defina qué es una buena solución. El problema es especialmente relevante, ya que el objetivo es precisamente superar unas clasificaciones
-administrativas que han demostrado no ser representativas de la realidad
-funcional. La literatura aborda este desafío mediante cuatro estrategias
-complementarias:
+La evaluación de un agrupamiento debe distinguir propiedades internas,
+sensibilidad a perturbaciones y concordancia con una referencia. Estas evidencias
+no son intercambiables~\citep{Halkidi2001}.
 
 \begin{itemize}
-
-  \item \textbf{Validación interna.} Las métricas internas evalúan propiedades
-        geométricas deseables de los grupos sin requerir etiquetas de referencia.
-        Una partición de calidad debe combinar alta cohesión interna con alta
-        separación entre grupos distintos, aunque ambos objetivos pueden entrar en
-        tensión según la estructura de los datos. Los tres índices descritos en la
-        Sección~\ref{sec:clustering} cumplen funciones complementarias: el
-        coeficiente de Silhouette permite diagnosticar grupos mal cohesionados y
-        orientar decisiones de refinamiento, el índice de Calinski-Harabasz es
-        útil para comparar soluciones con distinto número de grupos y apoyar la
-        elección de $k$ y el índice de Davies-Bouldin ayuda a detectar
-        sobresegmentación, penalizando pares de grupos con centroides próximos y
-        alta dispersión interna. Emplearlos de forma conjunta reduce el riesgo de
-        sobreajustar a un único criterio.
-
-  \item \textbf{Validación de estabilidad.} Una solución estable mantiene sus
-        grupos principales cuando se introducen perturbaciones moderadas en los
-        datos de entrada. El bootstrapping evalúa esta propiedad
-        generando múltiples réplicas mediante muestreo con reemplazo, aplicando el
-        algoritmo en cada réplica y midiendo la consistencia de las asignaciones
-        con índices como el de Jaccard o la medida F. Un grupo inestable que se
-        fragmenta o fusiona ante pequeñas variaciones revela un perfil frágil que
-        requiere análisis adicional antes de fundamentar decisiones de gestión.
-        La validación por estabilidad cobra mayor relevancia cuando el tamaño
-        muestral es moderado, ya que en esas condiciones una sola observación
-        influyente puede alterar la configuración de los grupos.
-
-  \item \textbf{Validación externa.} Cuando existe una clasificación externa,
-        como la administrativa vigente, es posible contrastar la solución empírica
-        con esa referencia mediante índices de concordancia como el de Jaccard, la
-        medida F o el índice de Rand ajustado~\citep{Halkidi2001}. Un bajo acuerdo
-        entre la clasificación empírica y la administrativa no invalida la primera,
-        de hecho, dado que la clasificación administrativa ha mostrado limitaciones
-        documentadas en las Secciones~\ref{sec:sistema-hospitalario}
-        y~\ref{sec:grd-chile}, es esperable que una segmentación basada en datos
-        clínicos reales diverja de las etiquetas estructurales. El contraste
-        permite cuantificar esa divergencia y examinar los casos donde la
-        discrepancia es mayor.
-
-  \item \textbf{Validación cualitativa por interpretabilidad clínica.}
-        \citet{Wick2022} combinaron análisis estadístico con juicio
-        clínico experto para segmentar usuarios de alto costo, argumentando que el
-        análisis aislado puede producir grupos sin sentido clínico y que la
-        revisión por expertos asegura que los subgrupos resultantes sean relevantes
-        y accionables. En el contexto hospitalario, esto implica verificar que los
-        perfiles emergentes sean consistentes con el conocimiento sobre
-        especialización funcional y configuración de la red. Un grupo con alta
-        proporción de egresos del Capítulo XV de la CIE-10 debería estar
-        constituido por hospitales con unidades obstétricas robustas y uno con altos
-        índices de severidad y peso GRD medio debería contener hospitales con
-        capacidad de cuidados intensivos. Esta validación no reemplaza a las
-        métricas cuantitativas, pero aporta un filtro de plausibilidad clínica
-        indispensable para que los resultados sean adoptados por los tomadores de
-        decisiones.
-
+  \item \textbf{Geometría interna.} Silhouette, Calinski--Harabasz y
+    Davies--Bouldin describen cohesión y separación en el espacio utilizado.
+    La razón WSS/TSS expresa la dispersión intragrupo respecto de la total.
+    Evaluar en un bloque no usado para agrupar reduce la reutilización directa
+    de variables, pero los bloques siguen procediendo de los mismos hospitales
+    y período. La evaluación mantiene carácter interno.
+  \item \textbf{Estabilidad y sensibilidad.} El submuestreo sin reposición
+    examina cuánto cambian las asignaciones al retirar hospitales. ARI y NMI
+    comparan particiones y Jaccard describe el solapamiento de miembros por
+    grupo~\citep{Hennig2007}. Aquí el PCA y el número de grupos se mantienen
+    fijos en las réplicas, por lo que no se evalúa su incertidumbre. El
+    bootstrap con reposición cumple otro propósito: obtener intervalos de las
+    diferencias WSS/TSS en la comparación por bloques. La exclusión de años y
+    las alternativas de algoritmo o representación son sensibilidades
+    adicionales, no demostraciones de estabilidad longitudinal.
+  \item \textbf{Concordancia con MINSAL.} ARI corrige el acuerdo esperado por
+    azar. NMI normaliza la información compartida sin esa corrección. Ambos
+    describen semejanza de asignaciones. La clasificación administrativa no es
+    una referencia funcional validada: un acuerdo bajo no demuestra calidad,
+    superioridad ni complementariedad de la segmentación.
+  \item \textbf{Interpretación clínica.} La lectura de medianas, dispersión,
+    composición y cargas permite asignar etiquetas descriptivas. La revisión
+    por expertos puede aportar evidencia adicional, como ilustra
+    \citet{Wick2022}, pero no se realizó una validación clínica experta formal
+    de los perfiles en este estudio.
 \end{itemize}
 
 \subsection{Caracterización e interpretabilidad de los perfiles}
 \label{sec:interpretabilidad}
 
-Una vez asignadas las etiquetas de clúster, la caracterización de los perfiles se
-apoya en técnicas estadísticas directamente interpretables. Las pruebas de
-contraste por variable: Kruskal-Wallis para atributos numéricos y chi-cuadrado
-para categóricos permiten identificar qué indicadores difieren de forma
-significativa entre grupos y, por tanto, contribuyen a definir cada perfil. La
-regresión logística regularizada con penalización LASSO modela la pertenencia a
-cada grupo en función de las variables originales: sus coeficientes ofrecen una
-lectura directa de los determinantes de cada perfil y, al forzar a cero los
-coeficientes de las variables irrelevantes, producen una caracterización compacta
-y comunicable.
+Los perfiles se describen mediante tamaños de grupo, medianas y dispersión de
+indicadores en su escala original. Las etiquetas funcionales se asignan después
+del agrupamiento y resumen esos patrones. No son diagnósticos ni categorías
+administrativas.
 
-Este trabajo privilegia métodos intrínsecamente interpretables en línea con el
-argumento de \citet{Rudin2019}, quien sostiene que en contextos de toma de
-decisiones de alta responsabilidad un modelo directamente legible es preferible
-a la combinación de una caja negra con una explicación post-hoc que solo
-aproxima el razonamiento subyacente. Las técnicas de explicabilidad post-hoc como los valores
-SHAP~\citep{Lundberg2017} no se aplican en este trabajo dado que no hay un modelo
-de base complejo que requiera explicación auxiliar, se mencionan únicamente como
-posible extensión futura.
+Kruskal--Wallis y chi-cuadrado aportan estadísticos descriptivos complementarios.
+En el Nivel~1, los tamaños pequeños limitan las aproximaciones de los valores
+$p$ y 27 de las 28 variables numéricas examinadas participaron en la formación
+de los grupos. Benjamini--Hochberg aborda la multiplicidad, pero no esa
+reutilización. Por ello, los contrastes no validan la existencia de los grupos,
+un valor $p$ alto no demuestra homogeneidad y una prueba global no identifica
+por sí sola pares diferentes. El Nivel~2 se conserva como descripción
+exploratoria sin pruebas de hipótesis entre subgrupos.
+
+LASSO responde a una pregunta complementaria: qué indicadores reconstruyen la
+etiqueta MINSAL dentro del modelo regularizado. Sus coeficientes no son efectos
+causales ni determinantes de los grupos Ward. La interpretación se apoya así en
+representaciones y estadísticas directamente examinables, en consonancia con
+la preferencia por modelos interpretables en contextos de alta responsabilidad
+planteada por \citet{Rudin2019}.
 
 \section{Marco metodológico: CRISP-DM}
 \label{sec:crisp-dm}
