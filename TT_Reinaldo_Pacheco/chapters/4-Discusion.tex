@@ -1369,6 +1369,35 @@ Antes de presentar los resultados, es necesario delimitar el alcance de estas co
 
 La proyección PCA presentada en la Sección~\ref{sec:res-outliers} tiene un propósito exploratorio y descriptivo. Permite observar una representación bidimensional de las mismas etiquetas Ward, pero no constituye un algoritmo alternativo de clustering ni evidencia independiente de la estabilidad de la partición. Por esta razón, la sensibilidad algorítmica se evalúa mediante MST-kNN, K-means y mezclas gaussianas, junto con índices cuantitativos de concordancia entre particiones.
 
+\subsection*{Exploración de la granularidad con algoritmos alternativos}
+
+Para examinar cuántos grupos sostiene la red, se contrastaron
+técnicas que fijan $k$ (K-means++, Ward y GMM, este último con criterio BIC)
+con técnicas que no lo fijan de antemano (HDBSCAN, KNN-graph con Leiden y
+MST-kNN~\citep{Villalobos2016}). En K-means++ y Ward, el Silhouette más alto
+se obtiene en $k = 2$, que separa tres hospitales del resto; en GMM, el BIC
+alcanza su mínimo en $k = 4$, aunque esa solución tiene un Silhouette de
+$0{,}146$. Las segundas no identifican subgrupos densos
+dentro del núcleo: HDBSCAN clasifica a los 65 hospitales como ruido en todas
+las configuraciones exploradas, Leiden con resolución $0{,}5$ entrega una
+única comunidad y, con resoluciones mayores, particiones con Silhouette cercano
+a cero o negativo, y MST-kNN fragmenta el núcleo en un bloque principal,
+grupos pequeños y hospitales unitarios. Esta evidencia es compatible con un
+núcleo numeroso de hospitales sin fronteras internas nítidas más un conjunto
+reducido de establecimientos que se distancian del resto, pero no constituye
+una convergencia de métodos hacia una misma partición.
+
+La solución Ward con $K=2$ obtiene las mejores métricas internas
+(Tabla~\ref{tab:metricas-nivel1}) y ofrece una descripción general de la red,
+aunque concentra 62 hospitales en un solo grupo. La elección descriptiva de
+$K=4$ y el costo de esa mayor granularidad se discuten en la
+Sección~\ref{sec:nivel1}. La exploración algorítmica no establece una tipología
+única ni valida la subdivisión del núcleo generalista. Con mayor granularidad,
+el Silhouette de Ward se sitúa entre $0{,}15$ y $0{,}22$ para
+$k\in\{5,\ldots,10\}$, y ni K-means++ ni GMM superan $0{,}21$
+para $k\in\{5,\ldots,8\}$. Estos resultados describen una pérdida
+de cohesión en las alternativas examinadas.
+
 \subsection*{Sensibilidad frente al algoritmo MST-kNN}
 
 Se aplicó el algoritmo MST-kNN~\citep{inostroza2008} sobre la misma matriz institucional utilizada por Ward, explorando valores de $k$ entre 3 y 8 en modo mutuo. En esta configuración, dos hospitales se consideran vecinos solo cuando la relación de vecindad es recíproca. El algoritmo no impone un número fijo de grupos y puede producir grupos unitarios o pares, por lo que sus resultados no son directamente equivalentes a una partición de cuatro clústeres.
@@ -1448,6 +1477,27 @@ GMM y MST-kNN muestran una concordancia menor con la partición completa. Para G
 La separación entre el núcleo generalista y los hospitales especializados presenta una persistencia mayor que la composición interna del núcleo. MST-kNN mantiene a todos los hospitales especializados fuera de su bloque principal, mientras que GMM mantiene fuera a $90{,}9\%$ de ellos. Esta evidencia no implica que los grupos especializados se reproduzcan de manera idéntica entre métodos, sino que su diferenciación respecto del bloque generalista tiende a conservarse mejor que las fronteras internas del núcleo.
 
 En conjunto, los resultados describen una sensibilidad algorítmica asimétrica. La distinción entre hospitales especializados y el núcleo generalista se mantiene en mayor medida bajo mecanismos alternativos, mientras que la asignación detallada de los hospitales que integran el núcleo generalista depende más del algoritmo utilizado.
+
+\subsection*{Sensibilidad a la ponderación de diagnósticos}
+\label{sec:sensibilidad-diagnostica}
+
+La sensibilidad se evaluó reconstruyendo la matriz completa y aplicando Ward
+con $K=4$ bajo las variantes principal y ponderada definidas en la
+Sección~\ref{sec:pca-detalle}. La concordancia fue alta (ARI $=0{,}936$;
+NMI $=0{,}909$): los perfiles pediátrico y de especialización clínica se
+mantuvieron, y solo el Hospital San José de Parral pasó del grupo de carga
+clínica al núcleo generalista. La variante ponderada obtuvo un Silhouette de
+$0{,}399$, frente a $0{,}375$ con la variante principal. Estos resultados
+muestran que la decisión de incorporar diagnósticos secundarios tiene una
+influencia acotada, pero no nula, sobre la frontera entre esos dos grupos. No
+constituyen una prueba de superioridad, debido a que ambas construcciones se evalúan en
+los mismos hospitales y período.
+
+Con ocho componentes, la variante ponderada retiene el $72{,}3\,\%$ de la
+varianza de casuística frente al $71{,}8\,\%$ de la variante principal. Esta
+diferencia se reporta como antecedente descriptivo y no como prueba de
+superioridad. El barrido del número de componentes y las cargas de la solución
+adoptada se presentan en la Sección~\ref{anexo:pca} del Anexo.
 
 \subsection*{Sensibilidad temporal: exclusión de los años de pandemia (2020--2021)}
 

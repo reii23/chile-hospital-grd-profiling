@@ -35,7 +35,7 @@ construcción de variables institucionales, la reducción dimensional de la
 casuística y el preprocesamiento previo al modelado. El modelado corresponde a la
 ejecución del clustering jerárquico aglomerativo en dos niveles, incluyendo la
 elección del algoritmo, la selección del número de grupos y la subdivisión del
-núcleo mayoritario. La evaluación comprende la validación estadística de los
+núcleo mayoritario. La evaluación comprende la caracterización descriptiva de los
 grupos, el submuestreo para estabilidad, la selección de variables relevantes, el
 contraste con la clasificación administrativa del MINSAL y la detección de
 establecimientos atípicos. Por último, el despliegue se materializa, dentro del
@@ -510,7 +510,7 @@ ejemplo en las secciones de la CIE-9-MC.
 \section{Preparación de los datos}
 \label{sec:etl}
 
-La etapa de preparación transforma los seis archivos anuales heterogéneos en 
+La etapa de preparación transforma los seis archivos anuales heterogéneos en
 una única base depurada y estandarizada a nivel de registro. El proceso se articula en cinco pasos secuenciales: estandarización y limpieza,
 clasificación de la actividad, aplicación de los criterios de elegibilidad,
 construcción de variables e ingeniería de características, y
@@ -888,110 +888,29 @@ diferencia aislada de varianza acumulada: con $K=8$, la variante ponderada
 retiene $72{,}3\,\%$ frente a $71{,}8\,\%$ de la variante principal, una
 diferencia pequeña que se reporta solo como antecedente descriptivo.
 
-La sensibilidad se evaluó reconstruyendo la matriz completa y aplicando Ward
-con $K=4$ bajo ambas variantes. La concordancia fue alta (ARI $=0{,}936$;
-NMI $=0{,}909$): los perfiles pediátrico y de especialización clínica se
-mantuvieron, y solo el Hospital San José de Parral pasó del grupo de carga
-clínica al núcleo generalista. La variante ponderada obtuvo un Silhouette de
-$0{,}399$, frente a $0{,}375$ con la variante principal. Estos resultados
-muestran que la decisión de incorporar diagnósticos secundarios tiene una
-influencia acotada, pero no nula, sobre la frontera entre esos dos grupos. No
-constituyen una prueba de superioridad, debido a que, ambas construcciones se evalúan en
-los mismos hospitales y período. Las asignaciones, la contingencia y las
-métricas de esta sensibilidad se conservan en los artefactos reproducibles del
-repositorio. La misma comparación de varianza se repite bajo una representación
-composicional alternativa (CLR) como parte del análisis definido en la
+La sensibilidad a la variante diagnóstica se evalúa reconstruyendo la matriz
+institucional y aplicando Ward con $K=4$ bajo ambas construcciones. Se comparan
+las particiones mediante ARI y NMI, se examinan las reasignaciones de hospitales
+y se reporta el Silhouette de cada solución. Los resultados se presentan en la
+Sección~\ref{sec:sensibilidad-diagnostica}. La comparación bajo una
+representación composicional alternativa se define en la
 Sección~\ref{sec:sensibilidad-composicional}.
 
-El número de componentes a retener se fija en $K=8$, decisión que se
-verificó empíricamente mediante un barrido de $K \in \{8, 9, 10, 11\}$
-evaluando el efecto de cada valor sobre las métricas de validación interna
-del clustering final (Tabla~\ref{tab:barrido-k-pca}). Con la variante
-ponderada, las 8 componentes explican el 72{,}3\,\% de la varianza acumulada
-de las 63 columnas de casuística. Incorporar componentes adicionales
-incrementa la varianza retenida, pero no mejora la calidad de la partición
-resultante. Por el contrario, al aumentar $K$ de 8 a 11 (el número mínimo
-que acumularía el 80\,\% de la varianza) el coeficiente de Silhouette desciende
-de $0{,}398$ a $0{,}379$, el índice de Calinski-Harabasz cae de $22{,}1$ a
-$19{,}6$ y el índice de Davies-Bouldin empeora de $0{,}994$ a $1{,}076$. Las
-soluciones con 9, 10 y 11 componentes conservan la misma partición de cuatro
-perfiles, pero no mejoran sus métricas internas. Se retienen, por tanto, las 8
-componentes por ofrecer el mejor balance entre las tres métricas de validación
-interna y la parsimonia de la representación, y no un porcentaje de varianza
-explicada fijado de antemano: agregar componentes de casuística más allá de
-este punto introduce dimensiones que degradan la cohesión y separación del
-clustering sin alterar la partición.
+Se retienen ocho componentes tras examinar alternativas de 8 a 11 componentes
+sobre la matriz de casuística estandarizada. Para cada alternativa se evalúan
+Silhouette, Calinski--Harabasz y Davies--Bouldin del agrupamiento Ward con $K=4$.
+La decisión considera conjuntamente esas métricas y la parsimonia de la
+representación; no responde a un porcentaje de varianza fijado de antemano.
+El detalle del barrido y su interpretación se presentan en el
+Anexo (Sección~\ref{anexo:pca}, Tabla~\ref{tab:barrido-k-pca}).
 
-\begin{table}[htbp]
-\centering
-\caption{Efecto del número de componentes PCA de casuística sobre las métricas de validación interna (Ward $K=4$).}
-\label{tab:barrido-k-pca}
-\begin{tabular}{c c c c c l}
-\toprule
-\textbf{$K$ (componentes)} & \textbf{Varianza acum.} & \textbf{Silhouette} & \textbf{CH} & \textbf{DB} & \textbf{Tamaños} \\
-\midrule
-\bfseries 8 & \bfseries 72{,}3\,\% & \bfseries 0{,}398 & \bfseries 22{,}1 & \bfseries 0{,}994 & 3, 54, 5, 3 \\
-9 & 75{,}2\,\% & 0{,}391 & 21{,}1 & 1{,}031 & 3, 54, 5, 3 \\
-10 & 77{,}7\,\% & 0{,}383 & 20{,}3 & 1{,}046 & 3, 54, 5, 3 \\
-11 & 80{,}0\,\% & 0{,}379 & 19{,}6 & 1{,}076 & 3, 54, 5, 3 \\
-\bottomrule
-\end{tabular}
-\par\smallskip
-\begin{minipage}{\textwidth}
-\normalsize\raggedright
-\textit{Nota.} CH corresponde al índice de Calinski--Harabasz (un valor mayor indica mejor separación entre grupos); DB corresponde al índice de Davies--Bouldin (un valor menor indica grupos más compactos y separados).
-\end{minipage}
-\end{table}
-
-Cada componente admite una lectura interpretable a partir de sus cargas. La
-Tabla~\ref{tab:cargas-pca} reporta, para cada una de las 8 componentes, las
-tres variables originales con mayor magnitud de carga y su signo, lo que
-permite sostener empíricamente su interpretación clínica en lugar de
-describirla solo en términos generales.
-
-{
-\setstretch{1.0}
-\setlength{\LTleft}{0pt}
-\setlength{\LTright}{\fill}
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{1.4cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{3.45cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{3.45cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{3.45cm}@{}}
-\caption{Tres cargas de mayor magnitud por componente PCA de casuística.}
-\label{tab:cargas-pca} \\
-\toprule
-\textbf{Componente} & \textbf{Carga 1} & \textbf{Carga 2} & \textbf{Carga 3} \\
-\midrule
-\endfirsthead
-\multicolumn{4}{l}{\textit{Tabla~\thetable\ (continuación)}} \\
-\toprule
-\textbf{Componente} & \textbf{Carga 1} & \textbf{Carga 2} & \textbf{Carga 3} \\
-\midrule
-\endhead
-\bottomrule
-\endfoot
-\texttt{dim\_01} & $-$ Embarazo, parto y puerperio ($-0{,}24$) & $+$ Otros GRD fuera del Top-20 ($0{,}23$) & $-$ Procedimientos obstétricos ($-0{,}22$) \\
-\addlinespace[3pt]
-\texttt{dim\_02} & $-$ Enfermedades de la piel y tejido subcutáneo ($-0{,}27$) & $+$ Operaciones sobre el sistema nervioso ($0{,}24$) & $+$ Operaciones sobre el sistema endocrino ($0{,}23$) \\
-\addlinespace[3pt]
-\texttt{dim\_03} & $-$ Enfermedades del aparato circulatorio ($-0{,}32$) & $+$ Operaciones sobre el oído ($0{,}27$) & $+$ Malformaciones congénitas y anomalías cromosómicas ($0{,}25$) \\
-\addlinespace[3pt]
-\texttt{dim\_04} & $-$ PH procedimientos sobre extremidad superior ($-0{,}34$) & $-$ PH procedimientos sobre rodilla y extremidad inferior ($-0{,}31$) & $-$ Operaciones sobre el aparato musculoesquelético ($-0{,}31$) \\
-\addlinespace[3pt]
-\texttt{dim\_05} & $+$ Operaciones sobre el aparato respiratorio ($0{,}30$) & $-$ Enfermedades del ojo y sus anexos ($-0{,}27$) & $-$ Trastornos mentales y de comportamiento ($-0{,}26$) \\
-\addlinespace[3pt]
-\texttt{dim\_06} & $+$ Operaciones sobre el aparato digestivo ($0{,}37$) & $+$ Otros procedimientos diagnósticos y terapéuticos ($0{,}33$) & $+$ Operaciones sobre el sistema hemático y linfático ($0{,}32$) \\
-\addlinespace[3pt]
-\texttt{dim\_07} & $+$ PH colecistectomía laparoscópica ($0{,}36$) & $-$ MH trastornos del anteparto con complicaciones ($-0{,}33$) & $+$ PH cesárea ($0{,}26$) \\
-\addlinespace[3pt]
-\texttt{dim\_08} & $-$ Operaciones sobre el sistema endocrino ($-0{,}28$) & $+$ MH trastornos del anteparto con complicaciones ($0{,}26$) & $-$ Otros procedimientos diagnósticos y terapéuticos ($-0{,}22$) \\
-\bottomrule
-\end{longtable}
-}
-
-Estas componentes, denotadas \texttt{dim\_01} a \texttt{dim\_08}, reemplazan
-las 63 columnas originales de casuística, condensando el perfil
-clínico-quirúrgico de cada hospital en un espacio compacto interpretable. Las
-cargas completas de las 8 componentes sobre las 63 variables originales se
-reportan en el archivo \texttt{reports/tables/reduccion\_dimensional.csv} del
-repositorio del proyecto.
+Las componentes se interpretan examinando la magnitud y el signo de sus cargas
+sobre las variables originales. La Tabla~\ref{tab:cargas-pca} del Anexo
+presenta las tres cargas de mayor magnitud por componente. Las ocho componentes,
+denotadas \texttt{dim\_01} a \texttt{dim\_08}, sustituyen las 63 columnas
+originales de casuística en la matriz institucional. Las cargas completas se
+documentan entre los artefactos de reproducibilidad
+(Sección~\ref{anexo:repositorio}).
 
 \paragraph{Matriz final de variables}
 \label{sec:matriz-final}
@@ -1148,47 +1067,21 @@ la homogeneidad funcional dentro de cada perfil.
 \subsection{Motivación del enfoque en dos niveles}
 \label{sec:motivacion-jerarquico}
 
-La organización del procedimiento en dos niveles surge de la evidencia acumulada durante la exploración
-algorítmica. Para examinar cuántos grupos sostiene la red, se contrastaron
-técnicas que fijan $k$ (K-means++, Ward y GMM, este último con criterio BIC)
-con técnicas que no lo fijan de antemano (HDBSCAN, KNN-graph con Leiden y
-MST-kNN~\citep{Villalobos2016}). En K-means++ y Ward, el Silhouette más alto
-se obtiene en $k = 2$, que separa tres hospitales del resto; en GMM, el BIC
-alcanza su mínimo en $k = 4$, aunque esa solución tiene un Silhouette de
-$0{,}146$. Las segundas no identifican subgrupos densos
-dentro del núcleo: HDBSCAN clasifica a los 65 hospitales como ruido en todas
-las configuraciones exploradas, Leiden con resolución $0{,}5$ entrega una
-única comunidad y, con resoluciones mayores, particiones con Silhouette cercano
-a cero o negativo, y MST-kNN fragmenta el núcleo en un bloque principal,
-grupos pequeños y hospitales unitarios. Esta evidencia es compatible con un
-núcleo numeroso de hospitales sin fronteras internas nítidas más un conjunto
-reducido de establecimientos que se distancian del resto, pero no constituye
-una convergencia de métodos hacia una misma partición.
-
-Ante esta estructura, un agrupamiento global único resulta insatisfactorio en
-ambos extremos del rango. Con $k$ bajo, el corte más fuerte se produce en
-$k = 2$ (Silhouette $= 0{,}600$), que aísla un grupo pequeño del resto pero
-deja al 95\,\% de la red como un bloque indiferenciado, sin valor para el
-perfilamiento. Con $k$ alto, el coeficiente de Silhouette de Ward cae de
-$0{,}398$ en $k=4$ a valores entre $0{,}15$ y $0{,}22$ para $k \in \{5,\ldots,10\}$
-(Tabla~\ref{tab:metricas-nivel1}), y ni K-means++ ni GMM superan un
-Silhouette de $0{,}21$ en $k \in \{5,\ldots,8\}$, lo que indica que el sistema no sostiene
-una segmentación más granular sobre los 65 hospitales en conjunto.
-
-Para resolver esta dualidad, el procedimiento se organiza en dos niveles
-independientes:
+El procedimiento distingue la caracterización global de la red de la
+exploración interna de su grupo mayoritario. Esta organización permite examinar
+dos escalas de descripción sin atribuir el mismo alcance a sus resultados:
 
 \begin{itemize}
-  \item \textbf{Nivel 1 — partición global}: opera sobre los 65 hospitales y
-    separa los grupos funcionales diferenciados del núcleo general.
-  \item \textbf{Nivel 2 — subdivisión del núcleo generalista}: opera exclusivamente
-    sobre los hospitales asignados al grupo principal del Nivel~1 y explora
-    la estructura interna de ese conjunto, que el Nivel~1 trata como un bloque
-    homogéneo.
+  \item \textbf{Nivel 1 — partición global}: aplica Ward sobre los 65 hospitales
+    para identificar y caracterizar perfiles funcionales.
+  \item \textbf{Nivel 2 — exploración del núcleo generalista}: aplica Ward sobre
+    el grupo mayoritario del Nivel~1 para describir posibles matices internos.
+    Su estabilidad se evalúa separadamente y su interpretación es exploratoria.
 \end{itemize}
 
-Los grupos concretos obtenidos, su tamaño y sus perfiles característicos se
-presentan en el Capítulo~\ref{cap:resultados}.
+La evidencia de las alternativas algorítmicas se presenta en la
+Sección~\ref{sec:sensibilidad-analisis}. La composición y el alcance de cada
+nivel se discuten en las Secciones~\ref{sec:nivel1} y~\ref{sec:nivel2}.
 
 \subsection{Selección del número de grupos}
 \label{sec:seleccion-k}
@@ -1197,10 +1090,8 @@ El número de grupos se examina para $k \in \{2, 3, \ldots, 10\}$ con tres
 métricas internas: el coeficiente de Silhouette, el índice de Calinski-Harabasz
 y el índice de Davies-Bouldin, definidos en la Sección~\ref{sec:validacion}.
 Estas métricas describen el costo de cada alternativa en términos de cohesión y
-separación, pero no fijan $k$ por sí solas. En esta red, sus mejores valores
-tienden a obtenerse con $k$ bajo, porque una partición que aísla a los pocos
-establecimientos más extremos y concentra al resto en un único bloque es muy
-compacta y separada, aunque no permite perfilar la red.
+separación, pero no fijan $k$ por sí solas. La comparación numérica y la interpretación de las alternativas se presentan
+en la Sección~\ref{sec:nivel1}.
 
 Por ello, la elección de $k$ sigue un criterio descriptivo explícito:
 se adopta el menor $k$ cuyos grupos difieran en variables clínico-operativas
@@ -1265,22 +1156,14 @@ se aplica nuevamente clustering aglomerativo Ward sobre el subconjunto de
 hospitales del grupo principal. El número de subgrupos se selecciona con el
 mismo criterio multimétrico de la Sección~\ref{sec:seleccion-k}.
 
-Dado que el análisis opera sobre un subconjunto de $n = 54$ hospitales, el
-tamaño muestral efectivo del Nivel 2 es menor que el del Nivel 1, y los
-resultados deben interpretarse como exploratorios: sirven para generar
-hipótesis sobre matices funcionales dentro del grupo principal, como
-gradientes de complejidad o especialización parcial, y no para establecer
-fronteras funcionales con el mismo nivel de certeza que el Nivel 1. Esta
-cautela es particularmente necesaria cuando alguno de los subgrupos resultantes
-queda compuesto por una o dos observaciones, caso en el que las pruebas de
-significancia basadas en aproximaciones asintóticas, como Kruskal-Wallis,
-pierden validez y sus resultados deben leerse como puramente descriptivos y no
-como evidencia inferencial. La significancia estadística de cada subgrupo se
-evalúa, no obstante, con las mismas pruebas del Nivel 1
-(Sección~\ref{sec:validacion-grupos}), con el fin de distinguir qué
-subdivisiones cuentan con sustento estadístico razonable de cuáles son
-artefactos de la granularidad, reportando siempre el tamaño de cada subgrupo
-junto con el resultado de la prueba.
+Los subgrupos se caracterizan mediante tamaños, medianas y dispersión de las
+variables originales, y su estabilidad se evalúa bajo submuestreo. Este análisis
+sirve para explorar matices funcionales dentro del núcleo generalista, sin
+establecer una tipología confirmada. No se utiliza Kruskal--Wallis para validar
+los subgrupos: los tamaños pequeños comprometen su aproximación asintótica y
+las variables descriptivas se reutilizan después de formar los grupos. Los
+resultados se presentan en la Sección~\ref{sec:nivel2} y las asignaciones
+suplementarias en la Sección~\ref{anexo:nivel2-exploratorio}.
 
 % ============================================================================
 \section{Evaluación}
@@ -1288,9 +1171,10 @@ junto con el resultado de la prueba.
 % ============================================================================
 
 Esta sección corresponde a la etapa de evaluación de CRISP-DM y abarca la
-validación estadística de los grupos, la selección de variables relevantes,
-el contraste con la clasificación administrativa del MINSAL y la detección de
-hospitales atípicos.
+caracterización descriptiva de los grupos, la estabilidad bajo submuestreo,
+la selección de variables relevantes, el contraste con el MINSAL y la detección
+de hospitales atípicos. Se complementa con controles mediante matrices nulas
+y análisis de sensibilidad interna, con los alcances definidos en cada apartado.
 
 
 \subsection{Caracterización estadística post-hoc de los grupos}
@@ -1298,8 +1182,9 @@ hospitales atípicos.
 
 Una vez obtenida la partición, los grupos se caracterizan mediante contrastes
 estadísticos aplicados a variables expresadas en su escala original e
-interpretable. Estos análisis se realizan entre los cuatro grupos del Nivel~1
-y, de forma separada, entre los subgrupos obtenidos en el Nivel~2.
+interpretable. Los contrastes se restringen a los cuatro grupos del Nivel~1 y se utilizan
+con fines descriptivos. El Nivel~2 se describe sin pruebas de hipótesis entre
+subgrupos (Sección~\ref{sec:nivel2-metodo}).
 
 Para la caracterización se contrastan 28 variables numéricas: las 27 variables
 directas utilizadas en la matriz de agrupamiento y \texttt{peso\_medio\_cma},
@@ -1325,15 +1210,15 @@ La elección de la prueba depende de la naturaleza de la variable:
   resultado debe interpretarse de forma descriptiva.
 \end{itemize}
 
-El nivel de significancia se fija en $\alpha=0{,}05$. Dado que se realizan 28
-contrastes numéricos en cada nivel de análisis, los $p$-valores de
-Kruskal--Wallis se ajustan mediante el procedimiento de
-Benjamini--Hochberg~\citep{Benjamini1995}, con el fin de controlar la tasa de
-falsos descubrimientos dentro de cada familia de pruebas. La corrección no se
-aplica al contraste de Servicio de Salud, pues corresponde a una única prueba
-categórica por nivel.
-
-La significancia estadística se complementa con tamaños de efecto. Para las
+Se utiliza $p_{\mathrm{BH}}<0{,}05$ como criterio descriptivo para ordenar
+los contrastes, sin atribuirle alcance confirmatorio. Los 28 valores $p$ del
+Nivel~1 se ajustan mediante Benjamini--Hochberg~\citep{Benjamini1995}. Este
+ajuste aborda la multiplicidad, pero no la reutilización de los datos ni la
+aproximación asintótica poco confiable en los grupos de tres hospitales.
+El contraste de Servicio de Salud se reporta por separado; sus recuentos
+esperados pequeños también limitan la aproximación del valor $p$.
+Kruskal--Wallis es una prueba global y no permite concluir qué pares de grupos
+difieren. Los estadísticos se complementan con tamaños de efecto. Para las
 variables numéricas se emplea el épsilon cuadrado
 ($\varepsilon^2$), calculado a partir del estadístico de Kruskal--Wallis:
 
@@ -1436,8 +1321,8 @@ sin reposición, en lugar del \textit{bootstrap} clásico con reposición, evita
 que un mismo hospital aparezca múltiples veces en una réplica, lo que
 distorsionaría las distancias euclidianas entre observaciones y produciría
 estimaciones artificialmente optimistas de la cohesión. Con $n = 65$, mantener
-el 80\,\% garantiza subconjuntos de tamaño suficiente para que el clustering sea
-estable, mientras que el 20\,\% restante actúa como perturbación que revela si
+el 80\,\% conserva la mayor parte de los hospitales, mientras que el
+20\,\% restante actúa como perturbación para examinar si
 la estructura depende de hospitales individuales influyentes.
 
 Recalcular únicamente el coeficiente de Silhouette en cada submuestra, como se

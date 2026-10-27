@@ -580,3 +580,93 @@ centroide del núcleo, no como subtipos colectivos.
 Los resultados reproducibles de las 100 réplicas, matrices de coasignación y
 estabilidad individual se entregan en los archivos
 \texttt{reports/tables/estabilidad\_nivel2\_*.csv} del repositorio.
+
+\section{Detalle de la reducción dimensional de casuística}
+\label{anexo:pca}
+
+\subsection{Barrido del número de componentes}
+
+El número de componentes a retener se fija en $K=8$, decisión que se
+verificó empíricamente mediante un barrido de $K \in \{8, 9, 10, 11\}$
+evaluando el efecto de cada valor sobre las métricas de validación interna
+del clustering final (Tabla~\ref{tab:barrido-k-pca}). Con la variante
+ponderada, las 8 componentes explican el 72{,}3\,\% de la varianza acumulada
+de las 63 columnas de casuística. Incorporar componentes adicionales
+incrementa la varianza retenida, pero no mejora la calidad de la partición
+resultante. Por el contrario, al aumentar $K$ de 8 a 11 (el número mínimo
+que acumularía el 80\,\% de la varianza) el coeficiente de Silhouette desciende
+de $0{,}398$ a $0{,}379$, el índice de Calinski-Harabasz cae de $22{,}1$ a
+$19{,}6$ y el índice de Davies-Bouldin empeora de $0{,}994$ a $1{,}076$. Las
+soluciones con 9, 10 y 11 componentes conservan la misma partición de cuatro
+perfiles, pero no mejoran sus métricas internas. Se retienen, por tanto, las 8
+componentes por ofrecer el mejor balance entre las tres métricas de validación
+interna y la parsimonia de la representación, y no un porcentaje de varianza
+explicada fijado de antemano: agregar componentes de casuística más allá de
+este punto introduce dimensiones que degradan la cohesión y separación del
+clustering sin alterar la partición.
+
+\begin{table}[htbp]
+\centering
+\caption{Efecto del número de componentes PCA de casuística sobre las métricas de validación interna (Ward $K=4$).}
+\label{tab:barrido-k-pca}
+\begin{tabular}{c c c c c l}
+\toprule
+\textbf{$K$ (componentes)} & \textbf{Varianza acum.} & \textbf{Silhouette} & \textbf{CH} & \textbf{DB} & \textbf{Tamaños} \\
+\midrule
+\bfseries 8 & \bfseries 72{,}3\,\% & \bfseries 0{,}398 & \bfseries 22{,}1 & \bfseries 0{,}994 & 3, 54, 5, 3 \\
+9 & 75{,}2\,\% & 0{,}391 & 21{,}1 & 1{,}031 & 3, 54, 5, 3 \\
+10 & 77{,}7\,\% & 0{,}383 & 20{,}3 & 1{,}046 & 3, 54, 5, 3 \\
+11 & 80{,}0\,\% & 0{,}379 & 19{,}6 & 1{,}076 & 3, 54, 5, 3 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\textwidth}
+\normalsize\raggedright
+\textit{Nota.} CH corresponde al índice de Calinski--Harabasz (un valor mayor indica mejor separación entre grupos); DB corresponde al índice de Davies--Bouldin (un valor menor indica grupos más compactos y separados).
+\end{minipage}
+\end{table}
+
+\subsection{Cargas principales de las componentes}
+
+La magnitud de una carga expresa la contribución de la variable a la
+componente; su signo indica la dirección dentro de ese eje. El signo global
+de una componente puede invertirse sin alterar la representación ni las
+distancias entre hospitales. La tabla conserva las cargas de la solución
+utilizada en el trabajo.
+
+{
+\setstretch{1.0}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{\fill}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{1.4cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{3.45cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{3.45cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{3.45cm}@{}}
+\caption{Tres cargas de mayor magnitud por componente PCA de casuística.}
+\label{tab:cargas-pca} \\
+\toprule
+\textbf{Componente} & \textbf{Carga 1} & \textbf{Carga 2} & \textbf{Carga 3} \\
+\midrule
+\endfirsthead
+\multicolumn{4}{l}{\textit{Tabla~\thetable\ (continuación)}} \\
+\toprule
+\textbf{Componente} & \textbf{Carga 1} & \textbf{Carga 2} & \textbf{Carga 3} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\texttt{dim\_01} & $-$ Embarazo, parto y puerperio ($-0{,}24$) & $+$ Otros GRD fuera del Top-20 ($0{,}23$) & $-$ Procedimientos obstétricos ($-0{,}22$) \\
+\addlinespace[3pt]
+\texttt{dim\_02} & $-$ Enfermedades de la piel y tejido subcutáneo ($-0{,}27$) & $+$ Operaciones sobre el sistema nervioso ($0{,}24$) & $+$ Operaciones sobre el sistema endocrino ($0{,}23$) \\
+\addlinespace[3pt]
+\texttt{dim\_03} & $-$ Enfermedades del aparato circulatorio ($-0{,}32$) & $+$ Operaciones sobre el oído ($0{,}27$) & $+$ Malformaciones congénitas y anomalías cromosómicas ($0{,}25$) \\
+\addlinespace[3pt]
+\texttt{dim\_04} & $-$ PH procedimientos sobre extremidad superior ($-0{,}34$) & $-$ PH procedimientos sobre rodilla y extremidad inferior ($-0{,}31$) & $-$ Operaciones sobre el aparato musculoesquelético ($-0{,}31$) \\
+\addlinespace[3pt]
+\texttt{dim\_05} & $+$ Operaciones sobre el aparato respiratorio ($0{,}30$) & $-$ Enfermedades del ojo y sus anexos ($-0{,}27$) & $-$ Trastornos mentales y de comportamiento ($-0{,}26$) \\
+\addlinespace[3pt]
+\texttt{dim\_06} & $+$ Operaciones sobre el aparato digestivo ($0{,}37$) & $+$ Otros procedimientos diagnósticos y terapéuticos ($0{,}33$) & $+$ Operaciones sobre el sistema hemático y linfático ($0{,}32$) \\
+\addlinespace[3pt]
+\texttt{dim\_07} & $+$ PH colecistectomía laparoscópica ($0{,}36$) & $-$ MH trastornos del anteparto con complicaciones ($-0{,}33$) & $+$ PH cesárea ($0{,}26$) \\
+\addlinespace[3pt]
+\texttt{dim\_08} & $-$ Operaciones sobre el sistema endocrino ($-0{,}28$) & $+$ MH trastornos del anteparto con complicaciones ($0{,}26$) & $-$ Otros procedimientos diagnósticos y terapéuticos ($-0{,}22$) \\
+\bottomrule
+\end{longtable}
+}
