@@ -877,13 +877,14 @@ construcciones, se evaluaron ambas variantes de forma independiente. La variante
 unidad al capítulo de su causa de hospitalización. La variante \emph{ponderada}
 incorpora además los diagnósticos secundarios registrados, asignando peso
 $1{,}0$ al diagnóstico principal y $0{,}5$ a cada secundario, con el propósito
-de reflejar las comorbilidades del episodio sin que estas lleguen a dominar
-sobre el motivo principal de ingreso. La ponderación es, por tanto, por posición
+de incorporar las comorbilidades registradas dando mayor peso individual
+al diagnóstico principal. La ponderación es, por tanto, por posición
 del diagnóstico dentro del episodio y no por el peso relativo del GRD asignado.
 En el pipeline se utilizó la variante ponderada porque incorpora
 los diagnósticos secundarios disponibles para representar la carga clínica
-registrada, manteniendo el diagnóstico principal con el doble de peso para que
-el motivo de ingreso siga siendo dominante. La elección no se justifica por la
+registrada. El diagnóstico principal recibe el doble de peso que cada
+secundario, aunque varios diagnósticos secundarios pueden sumar una contribución
+mayor que la del principal. La elección no se justifica por la
 diferencia aislada de varianza acumulada: con $K=8$, la variante ponderada
 retiene $72{,}3\,\%$ frente a $71{,}8\,\%$ de la variante principal, una
 diferencia pequeña que se reporta solo como antecedente descriptivo.
@@ -1594,8 +1595,8 @@ complementarios, cada uno sensible a una faceta distinta de la atipicidad:
     valor de referencia equivalente a 3 desviaciones estándar bajo normalidad
     ($\text{MAD} \times 1{,}4826$). Esta normalización global, en lugar de una
     desviación estándar estimada dentro de cada grupo, evita depender de una
-    dispersión intra-clúster calculada con apenas 2 o 3 observaciones, como
-    ocurre en $C2$ ($n=2$) y $C0$ ($n=3$), donde esa estimación sería
+    dispersión intra-clúster calculada con pocos hospitales, como
+    ocurre en $C2$ ($n=5$), $C0$ y $C3$ ($n=3$ cada uno), donde esa estimación sería
     estadísticamente inestable.
 \end{enumerate}
 

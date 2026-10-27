@@ -63,7 +63,8 @@ descriptiva y no establece una superioridad entre clasificaciones.
 Los dos criterios de la hipótesis (Sección~\ref{sec:hipotesis}) no se
 contradicen con los resultados. En el primero, los cuatro grupos obtienen un
 Jaccard medio de al menos 0,60 bajo submuestreo: $C0$, $C1$ y $C3$ superan
-0,75 y $C2$ queda exactamente en ese límite ($0{,}750$), lo que lo sitúa como el
+0,75 y $C2$ queda aproximadamente en ese umbral ($0{,}750$, redondeado),
+lo que lo sitúa como el
 grupo de composición menos segura. En el segundo, las razones WSS/TSS en los
 bloques no utilizados para agrupar ($0{,}651$ y $0{,}469$) son inferiores al
 valor esperado por azar ($0{,}953$). Como ambas referencias se fijaron con los
@@ -106,20 +107,22 @@ de carga clínica. Por tanto, la demografía y la actividad obstétrica contribu
 de manera material a la separación y constituyen una dependencia explícita de
 la tipología, no un componente secundario.
 
-La comparación con MINSAL confirma que las dos clasificaciones describen
-dimensiones diferentes de la red. La concordancia entre Ward $K=4$ y las
+La comparación con MINSAL muestra que las dos clasificaciones asignan
+de forma distinta a los hospitales. La concordancia entre Ward $K=4$ y las
 categorías de Alta y Mediana Complejidad fue baja
 (ARI $=0{,}112$; NMI $=0{,}107$). En particular, el núcleo generalista contiene
 47 hospitales de Alta y 7 de Mediana Complejidad, mientras que el grupo de carga
 clínica reúne 2 y 3 establecimientos, respectivamente. Esta divergencia no
-implica que una clasificación sea intrínsecamente correcta y la otra incorrecta, sino que
-demuestra que la clasificación administrativa y el patrón de producción clínica no
-son intercambiables.
+implica que una clasificación sea intrínsecamente correcta y la otra incorrecta.
+Los índices describen diferencias de asignación, pero no demuestran por sí
+solos que ambas clasificaciones midan dimensiones distintas de la red.
 
 La comparación interna original mostró menor dispersión para Ward que para
 MINSAL en la matriz completa, pero no se interpreta como una prueba confirmatoria:
-Ward fue construido optimizando esa misma geometría. Para evitar esa circularidad,
-se realizó una validación cruzada por bloques. Con Ward $K=4$, la evaluación en
+Ward fue construido optimizando esa misma geometría. Para reducir la
+reutilización directa de variables se realizó una evaluación interna por
+bloques. Ambos bloques proceden de los mismos hospitales y período, por lo
+que esta evaluación no elimina la dependencia entre los datos. Con Ward $K=4$, la evaluación en
 un bloque de variables no utilizado para agrupar mantuvo menor WSS/TSS que
 MINSAL en ambas direcciones: $0{,}651$ frente a $0{,}956$ al evaluar casuística,
 y $0{,}469$ frente a $0{,}938$ al evaluar variables directas. Sin embargo, al
