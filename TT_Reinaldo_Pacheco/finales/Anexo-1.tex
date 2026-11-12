@@ -23,7 +23,10 @@ junto con las 8 componentes principales de casuística
 (\texttt{dim\_01} a \texttt{dim\_08}), conforman la matriz final de
 $65 \times 35$ variables descrita en la Sección~\ref{sec:matriz-final}.
 
-\begin{longtable}{p{4.0cm} p{5.8cm} p{2.0cm} p{2.2cm}}
+{
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{\fill}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{4.4cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{5cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{2.5cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{2.1cm}@{}}
 \caption{Diccionario de las 28 variables clínico-operativas directas construidas a nivel institucional.}
 \label{tab:anexo-diccionario} \\
 \toprule
@@ -151,6 +154,7 @@ Adimensional & Estadía \\
 
 \bottomrule
 \end{longtable}
+}
 
 Las ocho componentes de casuística
 (\texttt{dim\_01}--\texttt{dim\_08}) se obtuvieron mediante PCA de la matriz
@@ -174,10 +178,11 @@ y el peso medio GRD calculados con y sin los egresos diurnos.
 \centering
 \caption{Hospitalización diurna en los 65 hospitales elegibles (2019--2024).}
 \label{tab:anexo-diurna}
-\begin{tabular}{l r r r r}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X r r r r@{}}
 \toprule
 \textbf{Establecimiento} & \textbf{Diurnos / total} & \textbf{\% diurna} &
-\textbf{$\Delta$ estancia} & \textbf{$\Delta$ peso GRD} \\
+\shortstack{\textbf{$\Delta$}\\\textbf{estancia}} & \shortstack{\textbf{$\Delta$}\\\textbf{peso GRD}} \\
 \midrule
 Hospital Carlos Van Buren & 14.980 / 115.917 & 12,92 & 14,83\,\% & 6,71\,\% \\
 INER & 2.094 / 24.229 & 8,64 & 9,46\,\% & 4,99\,\% \\
@@ -186,7 +191,7 @@ Hospital Dr.\ Gustavo Fricke & 6.898 / 123.386 & 5,59 & 5,91\,\% & 3,89\,\% \\
 \midrule
 \textbf{Total red (65 hospitales)} & \textbf{55.328 / 4.881.973} & \textbf{1,13} & -- & -- \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \par\smallskip
 \begin{minipage}{\textwidth}
 \normalsize\raggedright
@@ -638,7 +643,7 @@ utilizada en el trabajo.
 \setstretch{1.0}
 \setlength{\LTleft}{0pt}
 \setlength{\LTright}{\fill}
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{1.4cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{3.45cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{3.45cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{3.45cm}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{2.4cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{3.8cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{3.8cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{3.8cm}@{}}
 \caption{Tres cargas de mayor magnitud por componente PCA de casuística.}
 \label{tab:cargas-pca} \\
 \toprule

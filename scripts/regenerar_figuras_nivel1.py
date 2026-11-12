@@ -10,7 +10,7 @@ from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
 from scipy.cluster.hierarchy import dendrogram, fcluster, linkage
 from sklearn.decomposition import PCA
-from sklearn.metrics import silhouette_score
+from sklearn.metrics import adjusted_rand_score, silhouette_score
 
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX_PATH = ROOT / "data" / "processed" / "hospital_matrix_scaled.parquet"
@@ -25,12 +25,15 @@ CLUSTER_COLORS = {
 CLUSTER_DISPLAY_NAMES = {
     "C0": "C0: pediátricos",
     "MAINSTREAM": "C1: núcleo generalista",
-    "C2": "C2: carga clínica",
-    "C3": "C3: perfil monográfico",
+    "C2": "C2: carga clínica heterogénea",
+    "C3": "C3: especialización clínica heterogénea",
 }
 
 
 def main() -> None:
+    plt.rcParams.update({"font.size": 13, "axes.titlesize": 14, "axes.labelsize": 13,
+                         "xtick.labelsize": 11, "ytick.labelsize": 11,
+                         "pdf.fonttype": 42})
     matrix = pd.read_parquet(MATRIX_PATH)
     hospital_ids = matrix.pop("COD_HOSPITAL").astype(str).tolist()
     X_scaled = matrix.to_numpy()
@@ -52,6 +55,8 @@ def main() -> None:
         k: fcluster(linkage_matrix, t=k, criterion="maxclust") - 1
         for k in (2, 3, 4)
     }
+    if adjusted_rand_score(cluster_by_leaf.to_numpy(), labels_by_k[4]) != 1.0:
+        raise ValueError("El árbol reconstruido no reproduce la asignación K=4 persistida.")
     silhouettes = {k: silhouette_score(X_scaled, labels) for k, labels in labels_by_k.items()}
 
     node_cluster_sets = {
@@ -75,12 +80,12 @@ def main() -> None:
         return float((linkage_matrix[-k, 2] + linkage_matrix[-(k - 1), 2]) / 2)
 
     cut_heights = {k: cut_height(k) for k in (2, 3, 4)}
-    figure, axis = plt.subplots(figsize=(17, 7))
+    figure, axis = plt.subplots(figsize=(11.5, 6.8))
     dendrogram(
         linkage_matrix,
         labels=hospital_ids,
         leaf_rotation=90,
-        leaf_font_size=6,
+        leaf_font_size=10,
         color_threshold=0.0,
         link_color_func=color_branch,
         ax=axis,
@@ -111,27 +116,38 @@ def main() -> None:
     ]
     axis.legend(
         handles=branch_handles + [fusion_handle] + cut_handles,
-        loc="upper left", fontsize=8, ncol=2,
+        loc="lower center", bbox_to_anchor=(0.5, 1.08), fontsize=12, ncol=2,
     )
     figure.tight_layout()
     dendrogram_path = OUTPUT_DIR / "dendrograma_ward_nivel1.png"
-    figure.savefig(dendrogram_path, dpi=200, bbox_inches="tight")
+    figure.savefig(dendrogram_path, dpi=300, bbox_inches="tight")
+    figure.savefig(dendrogram_path.with_suffix(".pdf"), bbox_inches="tight")
     plt.close(figure)
 
     pca = PCA(n_components=2, random_state=42)
     coordinates = pca.fit_transform(X_scaled)
-    figure, axes = plt.subplots(1, 3, figsize=(15, 5), sharex=True, sharey=True)
+    figure, axes = plt.subplots(1, 3, figsize=(11.5, 4.5), sharex=True, sharey=True)
     for axis, k in zip(axes, (2, 3, 4)):
-        axis.scatter(coordinates[:, 0], coordinates[:, 1], c=labels_by_k[k], cmap="tab10",
+        # Preserve the profile palette across figures, also for merged groups.
+        point_colors = []
+        for group in labels_by_k[k]:
+            members = labels_by_k[k] == group
+            profiles = set(cluster_by_leaf.to_numpy()[members])
+            profile = next(iter(profiles)) if len(profiles) == 1 else "MAINSTREAM"
+            if profiles == {"C2", "C3"}:
+                profile = "C3"
+            point_colors.append(CLUSTER_COLORS[profile])
+        axis.scatter(coordinates[:, 0], coordinates[:, 1], c=point_colors,
                      s=70, edgecolors="black", linewidth=0.6)
         axis.set_title(f"K={k} | Silhouette={silhouettes[k]:.3f}")
         axis.set_xlabel(f"PC1 ({pca.explained_variance_ratio_[0]:.1%})")
         axis.grid(True, alpha=0.3)
     axes[0].set_ylabel(f"PC2 ({pca.explained_variance_ratio_[1]:.1%})")
-    figure.suptitle("Proyección PCA de la matriz institucional (Ward, n=65)", y=1.02, fontsize=12)
+    figure.suptitle("Proyección PCA de la matriz institucional (Ward, n=65)", y=1.02, fontsize=15)
     figure.tight_layout()
     pca_path = OUTPUT_DIR / "pca_particiones_nivel1.png"
-    figure.savefig(pca_path, dpi=150, bbox_inches="tight")
+    figure.savefig(pca_path, dpi=300, bbox_inches="tight")
+    figure.savefig(pca_path.with_suffix(".pdf"), bbox_inches="tight")
     plt.close(figure)
 
     print(f"Dendrograma: {dendrogram_path}")

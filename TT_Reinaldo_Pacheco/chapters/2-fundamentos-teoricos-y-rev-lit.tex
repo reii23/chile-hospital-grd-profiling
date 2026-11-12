@@ -437,13 +437,18 @@ hospitales con perfiles de producción equivalentes dentro de cada grupo.
 administrativa del Ministerio de Salud se corresponde con la casuística
 real de los hospitales. Mediante un algoritmo genético que combina selección de
 variables y clustering, los autores buscaron subconjuntos de indicadores del DEIS
-que replicaran los cinco grupos MINSAL (alta complejidad adultos, alta complejidad
+que replicaran cinco grupos derivados de la clasificación MINSAL
+(alta complejidad adultos, alta complejidad
 pediátrica, mediana complejidad, baja complejidad y psiquiátricos) usando datos
 del período 2014--2018. Aunque se encontraron conjuntos de variables con similitud
 superior a 0{,}9 respecto a la clasificación oficial, estas variables eran
-procedimientos muy específicos que cambiaban entre años, sin rasgos comunes
-estables a lo largo del período. El grupo de mediana complejidad fue el más
-inconsistente entre años. La conclusión es que no existe evidencia suficiente para
+procedimientos, diagnósticos y registros de servicios específicos. No encontraron
+variables relevantes comunes a los tres primeros años, y los dos últimos
+compartieron solo tres. Los autores también documentaron cambios en las
+categorías de registro del DEIS en 2017--2018, lo que limita la interpretación
+de esa variación como un cambio exclusivamente clínico. La categoría de mediana
+complejidad fue la que presentó mayores dificultades de reproducción mediante
+las variables seleccionadas. La conclusión es que no existe evidencia suficiente para
 establecer que la categorización MINSAL refleja la casuística de los
 hospitales, por lo que los autores recomiendan construir agrupamientos alternativos
 basados en variables de producción clínica para cualquier análisis de eficiencia.
@@ -458,10 +463,12 @@ categorización MINSAL mediante índices internos de validez de clustering
 todos los años analizados, con valores negativos en algunos casos, lo que indica
 que varios hospitales estaban mal asignados según el criterio de casuística.
 Compararon además particiones alternativas obtenidas mediante K-means, PAM,
-CLARA, FANNY, DBSCAN y un algoritmo NSGA-II multiobjetivo, encontrando que este
-último generó sistemáticamente las mejores particiones en términos de cohesión y
-separación, recomendando 3 o 4 grupos como configuración óptima según los datos
-de distancia euclidiana. El trabajo confirmó lo planteado por Carlier et al.:
+CLARA, FANNY, DBSCAN y una estrategia NSGA-II multiobjetivo. La selección de
+las mejores soluciones por año y distancia se realizó mediante la contribución
+al hipervolumen: NSGA-II obtuvo el mayor valor en el 90\,\% de los casos y
+CLARA en el 10\,\% restante. Esto no implica que NSGA-II maximizara cada
+índice por separado. Con distancia euclidiana, las soluciones seleccionadas
+recomendaron tres o cuatro grupos, con excepción de 2016. El trabajo confirmó lo planteado por Carlier et al.:
 la categorización MINSAL no es la primera recomendación para análisis de
 eficiencia técnica, y propuso una nueva categorización de consenso basada en los
 mejores resultados por año como punto de partida para trabajos futuros.
@@ -508,7 +515,7 @@ Chile: \citet{Villalobos2016} & Agrupar perfiles de producción y evaluar eficie
 \addlinespace
 Chile: \citet{Carlier2020} & Examinar la categorización MINSAL con indicadores DEIS de 2014--2018. Algoritmo genético de selección y agrupamiento. & Contrastar las asignaciones con MINSAL sin usar su etiqueta para construir los perfiles funcionales. & Reconstruir categorías administrativas es un objetivo distinto de descubrir perfiles. Sus variables y períodos no equivalen a la matriz GRD actual. \\
 \addlinespace
-Chile: \citet{Giglio2021} & Examinar la clasificación y particiones alternativas. 187 hospitales, datos de 2014--2018. CRISP-DM y comparación de técnicas de agrupamiento. & Organizar el flujo reproducible y comparar métricas internas y alternativas algorítmicas. & Su representación se aproxima a la casuística mediante indicadores DEIS. Sus recomendaciones de granularidad no fijan el corte de este estudio. \\
+Chile: \citet{Giglio2021} & Examinar la clasificación y particiones alternativas. 187 hospitales, datos de 2014--2018. CRISP-DM y comparación de técnicas de agrupamiento. & Organizar el flujo reproducible y comparar métricas internas y alternativas algorítmicas. & Su representación se aproxima a la casuística mediante indicadores DEIS. Las soluciones euclidianas de tres o cuatro grupos tienen una excepción en 2016 y no fijan el corte de este estudio. \\
 \addlinespace
 Presente trabajo & Caracterizar 65 hospitales con GRD de 2019--2024. 27 indicadores y ocho componentes de casuística. Ward y análisis complementarios. & Integrar producción, severidad, consumo esperado de recursos y composición clínica. Documentar estabilidad, sensibilidad y atipicidad. & Evaluación interna sobre una red y período agregados. No incluye validación clínica experta formal ni evaluación de eficiencia, y no demuestra superioridad frente a MINSAL. \\
 \bottomrule
@@ -529,13 +536,16 @@ y atipicidad considerados en esta investigación. Esta diferencia delimita el
 alcance del flujo propuesto, sin implicar que los trabajos anteriores carezcan
 de reproducibilidad.
 
-\textbf{No integración de dimensiones clínicas con indicadores de gestión.} Los
-estudios nacionales previos se focalizaron en variables agregadas de producción y
-complejidad (número de egresos, peso GRD medio, severidad media), pero no
-incorporaron la dimensión de casuística clínica mediante las clasificaciones
-CIE-10 y CIE-9-MC. La incorporación de esas composiciones permite describir explícitamente
-diferencias diagnósticas y de procedimientos que los indicadores agregados
-pueden ocultar, sin garantizar de antemano perfiles específicos.
+\textbf{Representación explícita de la composición clínica.} Los antecedentes
+nacionales ya utilizaron información clínica y de producción del DEIS.
+\citet{Carlier2020} seleccionaron indicadores que incluyen diagnósticos,
+procedimientos y registros de servicios, mientras que \citet{Giglio2021}
+filtraron variables de producción por su relación con pesos GRD. La diferencia
+de este trabajo reside en construir e integrar vectores de composición mediante
+capítulos CIE-10, secciones CIE-9-MC y GRD frecuentes, junto con los indicadores
+institucionales. Esa representación permite describir explícitamente la mezcla
+diagnóstica y de procedimientos, sin atribuir a los estudios previos una
+ausencia de información clínica ni garantizar perfiles específicos.
 
 \textbf{Detección de atípicos limitada a un único criterio ad-hoc.} De los
 trabajos revisados en esta línea, solo \citet{Villalobos2016} abordó la

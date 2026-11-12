@@ -408,7 +408,7 @@ respecto del núcleo generalista, pero no equivale a una validación externa.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{img/dendrograma_ward_nivel1.png}
+\includegraphics[width=\textwidth]{img/dendrograma_ward_nivel1.pdf}
 \caption{Dendrograma Ward del Nivel~1, partición en cuatro clústeres ($K=4$).}
 \label{fig:dendrograma-global}
 \end{figure}
@@ -508,7 +508,7 @@ adicional de validez del clustering.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{img/pca_particiones_nivel1.png}
+\includegraphics[width=\textwidth]{img/pca_particiones_nivel1.pdf}
 \caption{Proyecciones PCA de la matriz institucional para las soluciones Ward con $K=2$, $K=3$ y $K=4$.}
 \label{fig:pca-nivel1}
 \end{figure}
@@ -623,7 +623,7 @@ Para localizar esta variabilidad, la Tabla~\ref{tab:estabilidad-grupo} desagrega
 \centering
 \caption{Estabilidad de la partición desagregada por clúster del Nivel 1 (100 submuestras).}
 \label{tab:estabilidad-grupo}
-\begin{tabular}{l c c c}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X c >{\centering\arraybackslash}p{3cm} >{\centering\arraybackslash}p{2.5cm}}
 \toprule
 \textbf{Clúster} & \textbf{$n$} &
 \textbf{Estabilidad individual (media)} &
@@ -634,7 +634,7 @@ $C1$ (núcleo generalista) & 54 & 0,943 & 0,966 \\
 $C2$ (carga clínica heterogénea) & 5 & 0,959 & 0,750 \\
 $C3$ (especialización clínica heterogénea) & 3 & 0,885 & 0,890 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 El clúster pediátrico $C0$ presenta coasignación y solapamiento perfectos en las 100 réplicas, lo que es consistente con su perfil clínico claramente diferenciado respecto del resto de la red. El núcleo generalista $C1$, que reúne 54 hospitales, también muestra una elevada estabilidad conjunta: su Jaccard promedio es $0{,}966$ y su estabilidad individual media alcanza $0{,}943$. Así, la mayor parte de los hospitales generalistas conserva su relación de proximidad con los demás integrantes del núcleo al modificar la muestra de análisis.
@@ -996,7 +996,7 @@ sentido inverso, al agrupar con componentes de casuística y evaluar sobre las
 variables directas, Ward $K=4$ obtuvo WSS/TSS $=0{,}469$, frente a $0{,}938$
 para MINSAL, con una diferencia de $0{,}470$ (IC 95\,\%
 $[0{,}233;0{,}637]$). En ambas direcciones, la partición de cuatro grupos
-conserva menor dispersión en el bloque retenido.
+conserva menor dispersión en el bloque no utilizado para agrupar.
 
 Respecto del segundo criterio de la hipótesis de trabajo
 (Sección~\ref{sec:hipotesis}), ambas razones WSS/TSS de Ward $K=4$ ($0{,}651$ y
@@ -1013,27 +1013,27 @@ agrupamiento más que la partición adoptada.
 \caption{Validación cruzada de homogeneidad interna por bloques de variables (Ward $K=4$ y $K=2$ vs.~MINSAL).}
 \label{tab:homogeneidad-cruzada}
 
-\begin{tabular}{l c c c c}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X c c c >{\centering\arraybackslash}p{3.3cm}}
 \toprule
 \textbf{Bloque de agrupamiento} & \textbf{$K$ Ward} &
-\textbf{WSS/TSS Ward} & \textbf{WSS/TSS MINSAL} &
+\shortstack{\textbf{WSS/TSS}\\\textbf{Ward}} & \shortstack{\textbf{WSS/TSS}\\\textbf{MINSAL}} &
 \textbf{Diferencia (IC 95\,\%)} \\
 \midrule
 Directas $\rightarrow$ casuística & 4 & 0,651 & 0,956 &
-0,304 $[0,173;0,499]$ \\
+\shortstack{0,304\\$[0,173;0,499]$} \\
 Casuística $\rightarrow$ directas & 4 & 0,469 & 0,938 &
-0,470 $[0,233;0,637]$ \\
+\shortstack{0,470\\$[0,233;0,637]$} \\
 \addlinespace
 Directas $\rightarrow$ casuística & 2 & 0,846 & 0,956 &
-0,110 $[-0,055;0,268]$ \\
+\shortstack{0,110\\$[-0,055;0,268]$} \\
 Casuística $\rightarrow$ directas & 2 & 0,678 & 0,938 &
-0,260 $[-0,078;0,475]$ \\
+\shortstack{0,260\\$[-0,078;0,475]$} \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \par\smallskip
 \begin{minipage}{\textwidth}
 \normalsize\raggedright
-\textit{Nota.} Ward se ajusta solo en el bloque de agrupamiento, ambas particiones se evalúan en el bloque retenido. La diferencia reportada es $\mathrm{WSS/TSS}_{\mathrm{MINSAL}}-\mathrm{WSS/TSS}_{\mathrm{Ward}}$; valores positivos favorecen menor dispersión para Ward. Los intervalos se obtuvieron mediante 5.000 remuestreos de los
+\textit{Nota.} Ward se ajusta solo en el bloque de agrupamiento, ambas particiones se evalúan en el bloque no utilizado para agrupar. La diferencia reportada es $\mathrm{WSS/TSS}_{\mathrm{MINSAL}}-\mathrm{WSS/TSS}_{\mathrm{Ward}}$; valores positivos favorecen menor dispersión para Ward. Los intervalos se obtuvieron mediante 5.000 remuestreos de los
 65 hospitales. La evaluación cruzada por bloques no es independiente en sentido
 temporal: ambos bloques derivan de los mismos establecimientos y período.
 \end{minipage}
@@ -1045,7 +1045,7 @@ bootstrap incluyen cero en ambas direcciones. Por tanto, esta evaluación no
 entrega evidencia robusta de que Ward sea más homogéneo que MINSAL cuando se
 controla simultáneamente la reutilización del espacio de evaluación y el número
 de grupos. El resultado más acotado es que la solución Ward $K=4$ conserva una
-compactación mayor en bloques retenidos, aunque parte de esa diferencia puede
+compactación mayor en los bloques no utilizados para agrupar, aunque parte de esa diferencia puede
 asociarse a su mayor granularidad. En consecuencia, el estudio no establece una
 superioridad general de la clasificación funcional sobre la administrativa, aunque sí
 documenta que ambas organizan de manera distinta la actividad hospitalaria y que
@@ -1067,9 +1067,11 @@ refuerza la conclusión acotada de que las etiquetas administrativas no capturan
 por sí solas una estructura compacta de actividad clínica y casuística.
 
 Los resultados también actualizan y matizan el hallazgo de \citet{Carlier2020},
-quienes identificaron a la categoría de mediana complejidad como la menos
-consistente entre años al intentar reproducir la clasificación administrativa
-mediante indicadores de producción. En la presente partición, siete de los diez
+quienes encontraron mayores dificultades para reproducir la categoría de
+mediana complejidad mediante los indicadores de producción seleccionados. Este
+resultado describe la correspondencia con la categoría administrativa, sin
+constituir una evaluación de estabilidad temporal equivalente al submuestreo
+realizado en esta tesis. En la presente partición, siete de los diez
 hospitales MINSAL de mediana complejidad se integran al núcleo generalista $C1$,
 junto con 47 hospitales de alta complejidad, los tres restantes se ubican en el
 grupo $C2$, que también contiene dos hospitales de alta complejidad. Esta
@@ -1355,7 +1357,7 @@ La Figura~\ref{fig:outliers-pca} presenta una proyección bidimensional mediante
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{img/atipicos_pca.png}
+\includegraphics[width=\textwidth]{img/atipicos_pca.pdf}
 \caption{Proyección PCA de los establecimientos, partición Ward $K=4$. Los círculos rojos indican hospitales atípicos.}
 \label{fig:outliers-pca}
 \end{figure}
@@ -1592,7 +1594,10 @@ resultado central, la evidencia que lo respalda y el límite que condiciona su
 interpretación. Se incluyen las sensibilidades que modifican conclusiones
 principales, de modo que su efecto quede visible junto al resultado que matizan.
 
-\begin{longtable}{p{2.6cm} p{4.4cm} p{3.6cm} p{3.6cm}}
+{
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{\fill}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{2.2cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{4cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{3.6cm}@{\hspace{0.25cm}}>{\raggedright\arraybackslash}p{4cm}@{}}
 \caption{Síntesis de resultados por objetivo específico.}
 \label{tab:sintesis-objetivos} \\
 \toprule
@@ -1622,7 +1627,7 @@ Decisión descriptiva: $K=2$ obtiene mejores métricas internas. \\
 3. Estabilidad &
 La estructura global se reproduce bajo submuestreo. &
 ARI mediano $0{,}917$; Jaccard $\geq 0{,}750$ en los cuatro grupos. &
-$C2$ queda en el límite de estabilidad ($0{,}750$), se disuelve al excluir
+$C2$ queda aproximadamente en el umbral de estabilidad ($0{,}750$, redondeado), se disuelve al excluir
 el bloque demográfico-obstétrico y recibe tres hospitales del núcleo al
 excluir 2020--2021. \\
 \addlinespace
@@ -1631,8 +1636,8 @@ Los perfiles se distinguen sobre todo por composición etaria y actividad
 gineco-obstétrica. &
 Mayores $\varepsilon^2$ en \texttt{tasa\_partos}, \texttt{edad\_mediana} e
 ingresos obstétricos. &
-Las pruebas por variable son descriptivas: no superan una nula que preserva
-la covarianza ($p_{\mathrm{emp}}=0{,}1198$). \\
+Las pruebas por variable son descriptivas y no aportan evidencia concluyente
+frente a la nula que preserva la covarianza ($p_{\mathrm{emp}}=0{,}1198$). \\
 \addlinespace
 5. Atípicos &
 Nueve hospitales marcados por al menos un criterio; tres por dos o más. &
@@ -1646,7 +1651,8 @@ Baja concordancia: ambas clasificaciones asignan de forma distinta a los
 hospitales. &
 ARI $=0{,}112$; menor dispersión de Ward $K=4$ en bloques no utilizados para
 agrupar. &
-Con $K=2$ los intervalos de las diferencias incluyen el cero: no hay
-superioridad entre clasificaciones. \\
+Con $K=2$ los intervalos de las diferencias incluyen el cero. No se establece
+superioridad al igualar el número de grupos. \\
 \bottomrule
 \end{longtable}
+}
