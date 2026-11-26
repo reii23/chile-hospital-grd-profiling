@@ -483,7 +483,7 @@ Semilla aleatoria &
 
 Reproducibilidad &
 Implementación &
-Python 3.11, dependencias de ejecución en \texttt{requirements.txt}, herramientas de desarrollo y pruebas en \texttt{requirements-dev.txt}, y metadatos y configuración de pruebas en \texttt{pyproject.toml}. \\
+Python 3.11 o 3.12 (ejecución verificada con 3.12.3), dependencias de ejecución en \texttt{requirements.txt}, herramientas de desarrollo y pruebas en \texttt{requirements-dev.txt}, y metadatos y configuración de pruebas en \texttt{pyproject.toml}. \\
 
 \bottomrule
 \end{longtable}
@@ -568,7 +568,29 @@ contrastes estadísticos consumen la partición reportada. Esta se fija en
 parámetros consolidados en la Tabla~\ref{tab:anexo-parametros} y las semillas
 aleatorias fijadas en el código, esta organización permite reconstruir el flujo
 de procesamiento y los análisis descritos en el
-Capítulo~\ref{cap:metodologia}.
+Capítulo~\ref{cap:metodologia}. La Tabla~\ref{tab:anexo-reproducibilidad}
+resume dónde se encuentra cada elemento necesario para una reproducción
+completa.
+
+\begin{table}[htbp]
+\centering
+\caption{Elementos necesarios para reproducir los resultados.}
+\label{tab:anexo-reproducibilidad}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.3cm} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Elemento} & \textbf{Disponibilidad} \\
+\midrule
+Insumos & Egresos GRD 2019--2024 en el Tablero GRD del MINSAL (descarga pública); tablas maestras CIE-10, CIE-9-MC y de establecimientos, y Base de Establecimientos del DEIS, incluidas en \texttt{insumos/} \\
+Artefactos intermedios & Matriz institucional, componentes de casuística y tablas de resultados versionadas en \texttt{data/processed/} y \texttt{reports/tables/} \\
+Versiones de dependencias & Versiones exactas en \texttt{requirements.txt} y \texttt{requirements-dev.txt}; Python 3.11 o 3.12 \\
+Parámetros & Tabla~\ref{tab:anexo-parametros} y semilla \texttt{RANDOM\_STATE = 42} fijada en el código \\
+Procedimiento de ejecución & Secuencia de \textit{scripts} descrita en \texttt{README.md}: consolidación, matriz, partición y análisis \\
+Verificación & 62 pruebas automatizadas, incluidas cinco de regresión sobre las cifras reportadas (Tabla~\ref{tab:pruebas}) \\
+Condiciones de acceso & Código bajo licencia MIT; los datos se rigen por las condiciones de sus titulares (MINSAL y DEIS) \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 \section{Detalle suplementario del Nivel 2}
 \label{anexo:nivel2-exploratorio}
