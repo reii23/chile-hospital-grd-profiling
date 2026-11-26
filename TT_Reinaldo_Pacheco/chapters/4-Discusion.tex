@@ -386,6 +386,23 @@ Fuente: elaboración propia.
 \end{minipage}
 \end{table}
 
+Cuatro resultados indican que los grupos adicionales de $K=4$ aportan
+información y no solo una partición más fina. Primero, $K=2$ solo separa a los
+tres hospitales pediátricos, mientras que $K=4$ distingue además dos perfiles
+con diferencias clínicas legibles en escala original: $C2$ ingresa el
+$74{,}7\,\%$ de sus egresos por urgencia y $C3$ el $34{,}6\,\%$, con peso medio
+GRD de $0{,}95$ y $1{,}87$, respectivamente (Tabla~\ref{tab:c2-c3}). Segundo,
+esa división es estable: el ARI mediano sube de $0{,}773$ con $K=3$ a $0{,}917$
+con $K=4$, y todos los grupos superan un Jaccard de $0{,}60$, mientras que
+$K=5$ cae a $0{,}555$. Tercero, el índice de Davies--Bouldin de $K=4$
+($0{,}994$) es mejor que el de $K=3$ y que el de todas las soluciones con más
+grupos (Tabla~\ref{tab:metricas-nivel1}). Cuarto, en la validación cruzada por
+bloques (Sección~\ref{sec:res-homogeneidad-cruzada}), las particiones de cuatro
+grupos son más compactas en las variables no utilizadas para agrupar que las
+de dos ($0{,}651$ y $0{,}469$ frente a $0{,}846$ y $0{,}678$). Estos resultados
+respaldan la elección, pero no la convierten en un óptimo estadístico: $K=4$
+sigue siendo una decisión descriptiva.
+
 El dendrograma de la Figura~\ref{fig:dendrograma-global} ilustra el proceso de
 fusión jerárquica de Ward y los cortes correspondientes a $K=2$, $K=3$ y $K=4$.
 La figura es una representación descriptiva de la estructura del agrupamiento
