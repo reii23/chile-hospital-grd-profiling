@@ -58,7 +58,7 @@ utilizados para agrupar, pero al igualar el número de grupos ($K=2$) los
 intervalos de las diferencias incluyen el cero, por lo que la comparación es
 descriptiva y no establece una superioridad entre clasificaciones.
 
-\section{Contraste de la hipótesis de trabajo}
+\section{Respuesta a la pregunta de investigación y contraste de la hipótesis}
 
 Los dos criterios de la hipótesis (Sección~\ref{sec:hipotesis}) no se
 contradicen con los resultados. En el primero, los cuatro grupos obtienen un
@@ -69,22 +69,49 @@ grupo de composición menos segura. En el segundo, las razones WSS/TSS en los
 bloques no utilizados para agrupar ($0{,}651$ y $0{,}469$) son inferiores al
 valor esperado por azar ($0{,}953$). Como ambas referencias se fijaron con los
 resultados ya conocidos, este contraste es interpretativo y no confirmatorio.
-Las conclusiones detalladas y sus alcances se desarrollan a continuación.
 
-La respuesta a la pregunta de investigación es afirmativa: los datos GRD permiten
-identificar perfiles funcionales distinguibles que no coinciden de forma estrecha
-con la clasificación administrativa vigente. La solución Ward con $K=4$, aplicada
-sobre una matriz de $65 \times 35$ variables, distingue tres hospitales
-pediátricos, un núcleo generalista de 54 establecimientos, un grupo de cinco
-hospitales con carga clínica y estancia prolongada, y tres establecimientos de
-especialización clínica heterogénea. La elección de cuatro grupos es una
-decisión descriptiva: la solución $K=2$ obtiene los mejores valores en las tres
-métricas internas, pero reduce la red a un bloque de 62 hospitales y tres casos
-singulares, lo que no permite el perfilamiento funcional propuesto. El paso de
-tres a cuatro grupos divide un conjunto de ocho hospitales en dos grupos que
-difieren en su forma de ingreso (urgencia frente a actividad programada) y en
-su peso medio GRD, y la evaluación posterior por submuestreo mostró que ambos
-son más estables que el grupo de ocho del que provienen.
+Respecto de la pregunta de investigación, los resultados permiten identificar
+agrupamientos empíricos que pueden interpretarse como perfiles funcionales
+exploratorios, sujetos a las limitaciones de la muestra y de la fuente de datos.
+La solución Ward con $K=4$, aplicada sobre una matriz de $65 \times 35$
+variables, distingue tres hospitales pediátricos, un núcleo generalista de 54
+establecimientos, un grupo de cinco hospitales con carga clínica y estancia
+prolongada, y tres establecimientos de especialización clínica heterogénea.
+Estos agrupamientos se reproducen en la réplica típica del submuestreo (ARI
+mediano de $0{,}917$), aunque el grupo de carga clínica es el menos estable.
+La elección de cuatro grupos es una decisión descriptiva: la solución $K=2$
+obtiene los mejores valores en las tres métricas internas, pero reduce la red a
+un bloque de 62 hospitales y tres casos singulares. El paso de tres a cuatro
+grupos divide un conjunto de ocho hospitales en dos grupos que difieren en su
+forma de ingreso (urgencia frente a actividad programada) y en su peso medio
+GRD, y ambos son más estables que el grupo de ocho del que provienen.
+
+Frente a la clasificación administrativa, la concordancia fue baja
+(ARI $=0{,}112$; NMI $=0{,}107$): el núcleo generalista contiene 47 hospitales
+de Alta y 7 de Mediana Complejidad, y el grupo de carga clínica reúne 2 y 3
+establecimientos, respectivamente. Ambas clasificaciones asignan de forma
+distinta a los hospitales, pero esta divergencia no indica cuál es correcta ni
+demuestra por sí sola que midan dimensiones distintas de la red.
+
+\section{Alcances y limitaciones}
+
+Los perfiles describen actividad clínica registrada, no calidad, desempeño ni
+eficiencia. El estudio no incorporó costos, camas, equipamiento, dotación de
+personal, tiempos de espera ni desenlaces posteriores al alta, por lo que los
+resultados pueden apoyar una caracterización complementaria de la red, pero no
+justifican por sí solos decisiones de financiamiento ni de asignación de
+recursos.
+
+La validación realizada es interna. El submuestreo demuestra que la partición
+es estable frente a una perturbación específica, la exclusión aleatoria del
+$20\,\%$ de los hospitales, pero no demuestra que los perfiles se generalicen
+a hospitales nuevos, a otros períodos ni a fuentes de datos independientes.
+Lo mismo ocurre con la validación cruzada por bloques, cuyos dos bloques
+provienen de los mismos hospitales y período. Tampoco se contó con una
+evaluación de especialistas clínicos ni de gestores de la red que confirmara
+que las etiquetas asignadas representan adecuadamente las funciones efectivas
+de los establecimientos; esas etiquetas son, por tanto, interpretaciones
+derivadas de los indicadores.
 
 La matriz final integra 27 variables clínico-operativas directas y ocho
 componentes principales de casuística. Estas componentes condensan
@@ -107,42 +134,17 @@ de carga clínica. Por tanto, la demografía y la actividad obstétrica contribu
 de manera material a la separación y constituyen una dependencia explícita de
 la tipología, no un componente secundario.
 
-La comparación con MINSAL muestra que las dos clasificaciones asignan
-de forma distinta a los hospitales. La concordancia entre Ward $K=4$ y las
-categorías de Alta y Mediana Complejidad fue baja
-(ARI $=0{,}112$; NMI $=0{,}107$). En particular, el núcleo generalista contiene
-47 hospitales de Alta y 7 de Mediana Complejidad, mientras que el grupo de carga
-clínica reúne 2 y 3 establecimientos, respectivamente. Esta divergencia no
-implica que una clasificación sea intrínsecamente correcta y la otra incorrecta.
-Los índices describen diferencias de asignación, pero no demuestran por sí
-solos que ambas clasificaciones midan dimensiones distintas de la red.
+En la comparación de compactación con MINSAL, Ward $K=4$ mantuvo menor
+WSS/TSS en los bloques no utilizados para agrupar ($0{,}651$ frente a $0{,}956$
+al evaluar casuística, y $0{,}469$ frente a $0{,}938$ al evaluar variables
+directas). Sin embargo, al restringir Ward a $K=2$ para igualar el número de
+categorías de MINSAL, los intervalos bootstrap de ambas diferencias incluyeron
+cero. La ventaja observada depende, en parte, de la mayor granularidad de la
+solución y no permite declarar una clasificación superior para fines
+administrativos u operativos.
 
-La comparación interna original mostró menor dispersión para Ward que para
-MINSAL en la matriz completa, pero no se interpreta como una prueba confirmatoria:
-Ward fue construido optimizando esa misma geometría. Para reducir la
-reutilización directa de variables se realizó una evaluación interna por
-bloques. Ambos bloques proceden de los mismos hospitales y período, por lo
-que esta evaluación no elimina la dependencia entre los datos. Con Ward $K=4$, la evaluación en
-un bloque de variables no utilizado para agrupar mantuvo menor WSS/TSS que
-MINSAL en ambas direcciones: $0{,}651$ frente a $0{,}956$ al evaluar casuística,
-y $0{,}469$ frente a $0{,}938$ al evaluar variables directas. Sin embargo, al
-restringir Ward a $K=2$ para igualar el número de categorías de MINSAL, los
-intervalos bootstrap de ambas diferencias incluyeron cero. Por tanto, el estudio
-no establece una superioridad robusta de homogeneidad frente a MINSAL al controlar
-simultáneamente el espacio de evaluación y el número de grupos. La conclusión
-sostenible es más acotada: los perfiles Ward $K=4$ conservan compactación en
-los bloques no utilizados para agrupar, pero su mayor granularidad contribuye a esa ventaja y no
-permite declarar una clasificación superior para fines administrativos u
-operativos.
-
-Los análisis de estabilidad y sensibilidad matizan el alcance de esta conclusión.
-La estabilidad se evaluó exclusivamente como propiedad interna de la solución
-Ward bajo submuestreo, y no como una comparación frente a MINSAL, cuyas categorías
-administrativas no se reestiman al modificar la muestra. En 100 submuestras sin
-reposición del $80\,\%$ de los hospitales, la mediana del ARI respecto de la
-solución completa fue $0{,}917$ y la del NMI fue $0{,}890$.
-En contraste, la subdivisión exploratoria del núcleo generalista no alcanzó una
-estabilidad comparable: para $K_{sub}=9$, la mediana de ARI fue $0{,}559$ y la
+La subdivisión exploratoria del núcleo generalista no alcanzó una estabilidad
+comparable a la de la partición principal: para $K_{sub}=9$, la mediana de ARI fue $0{,}559$ y la
 de NMI fue $0{,}774$, mientras que incluso la solución más compacta, $K_{sub}=2$, obtuvo un ARI
 mediano de $0{,}526$. Por ello, la tesis no sostiene nueve subtipos funcionales
 generalizables: presenta solo una separación exploratoria amplia en dos bloques
@@ -170,14 +172,6 @@ partición exceda una geometría correlacionada sin grupos explícitos. Esta
 limitación refuerza la necesidad de validación externa con nuevos años,
 hospitales o variables no utilizadas para descubrir la partición.
 
-La interpretación de los grupos debe mantener una distinción fundamental: los
-perfiles identificados describen actividad clínica registrada, pero no miden
-calidad, desempeño ni eficiencia. El estudio no incorporó costos, camas,
-equipamiento, dotación de personal, tiempos de espera ni desenlaces posteriores
-al alta. Por ello, los resultados pueden apoyar una caracterización
-complementaria de la red, pero no justifican por sí solos decisiones de
-financiamiento, asignación de recursos o evaluación de desempeño institucional.
-
 Las principales limitaciones se relacionan con la naturaleza administrativa de
 los datos, la heterogeneidad en las prácticas de codificación, la inclusión de
 los años afectados por la pandemia de COVID-19, la geometría composicional de
@@ -193,10 +187,16 @@ submuestreo y frente a la exclusión de 2020--2021 permite
 sostener la existencia de perfiles generales, pero no interpretar de manera
 rígida las asignaciones que se encuentran próximas a los límites entre grupos.
 
-Como trabajo futuro, resulta prioritario validar longitudinalmente el pipeline
-con nuevos años de egresos y evaluar su generalización al incorporar hospitales
-recientemente integrados al sistema GRD. También sería relevante combinar el
-perfil funcional con demanda territorial, recursos humanos, camas, costos y
-resultados clínicos. Esa integración permitiría pasar desde una tipología
-descriptiva de la producción hacia análisis más completos de organización,
-capacidad y eficiencia de la red asistencial.
+\section{Trabajo futuro}
+
+Resulta prioritario validar longitudinalmente el pipeline con nuevos años de
+egresos y evaluar su generalización al incorporar los siete hospitales
+excluidos y otros recientemente integrados al sistema GRD. Una segunda línea es
+la validación externa de los perfiles con especialistas clínicos y gestores de
+la red, que contraste las etiquetas propuestas con el conocimiento de las
+funciones efectivas de cada establecimiento. También sería relevante combinar
+el perfil funcional con demanda territorial, recursos humanos, camas, costos y
+resultados clínicos, y explorar otras medidas de distancia que comparen la
+forma de los perfiles y no solo su nivel. Esa integración permitiría pasar
+desde una tipología descriptiva de la producción hacia análisis más completos
+de organización, capacidad y eficiencia de la red asistencial.
