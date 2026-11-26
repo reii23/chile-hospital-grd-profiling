@@ -664,6 +664,31 @@ final se evalúa en la Sección~\ref{sec:sensibilidad-elegibilidad}. El detalle
 de los siete establecimientos excluidos se presenta en la
 Tabla~\ref{tab:anexo-excluidos} del Anexo~\ref{anexo:hospitales}.
 
+Como los distintos análisis del trabajo operan sobre conjuntos de hospitales
+diferentes, la Tabla~\ref{tab:universos} resume cuál se utiliza en cada uno.
+Todos los resultados principales se calculan sobre los 65 hospitales
+elegibles; los demás conjuntos corresponden a pruebas de sensibilidad o de
+estabilidad que modifican deliberadamente ese universo.
+
+\begin{table}[htbp]
+\centering
+\caption{Conjunto de hospitales utilizado en cada análisis.}
+\label{tab:universos}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X c >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Análisis} & \textbf{Hospitales} & \textbf{Conjunto} \\
+\midrule
+Base depurada & 72 & Todos los establecimientos con egresos GRD en 2019--2024 (5.808.515 egresos) \\
+Matriz institucional, agrupamiento, caracterización, atípicos y contraste con MINSAL & 65 & Hospitales elegibles, con los seis años del período (5.756.850 egresos) \\
+Simulación del error según años disponibles & 65 & Hospitales elegibles, submuestreando de uno a cinco de sus años \\
+Estabilidad por submuestreo & 52 & En cada réplica, 80\,\% de los 65 hospitales elegibles, sorteados sin reposición \\
+Sensibilidad al criterio de elegibilidad & 72 & Base completa sin filtro temporal; la concordancia se calcula sobre los 65 hospitales comunes \\
+Sensibilidad temporal, composicional, de bloques y de variante diagnóstica & 65 & Hospitales elegibles, con la matriz recalculada según cada variante \\
+Exclusión previa de atípicos & 58 & Los 65 hospitales elegibles sin las siete marcas de Isolation Forest \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
 
 \subsection{Construcción de variables e ingeniería de características}
 \label{sec:variables}
