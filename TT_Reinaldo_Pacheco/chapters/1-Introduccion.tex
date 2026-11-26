@@ -68,6 +68,15 @@ confundirse con el \emph{nivel de complejidad} administrativo del MINSAL,
 basado en infraestructura. El perfil funcional integra estas cuatro dimensiones
 junto con las modalidades de ingreso y egreso.
 
+Para el procedimiento analítico se emplea una terminología fija. El
+\textbf{agrupamiento} (\textit{clustering}) es el método que reúne hospitales
+según su similitud; cada conjunto resultante es un \textbf{grupo}, y el conjunto
+de grupos adoptado como resultado del trabajo es la \textbf{segmentación}. Un
+grupo pasa a denominarse \textbf{perfil funcional} cuando se interpreta según
+la actividad que lo caracteriza. El término \textbf{partición} se reserva para
+cualquier división de los hospitales en grupos, incluidas las alternativas que
+se comparan con la segmentación adoptada.
+
 \subsection{Motivación y brecha de investigación}
 \label{sec:motivacion}
 
@@ -85,7 +94,7 @@ funcional hospitalaria es escasa y carece de un marco reproducible que integre
 aprendizaje no supervisado con mecanismos robustos de limpieza, adaptados a un
 ecosistema de datos de calidad heterogénea. La experiencia internacional en
 sistemas complejos como el francés y el chino respalda la utilidad de la
-segmentación funcional (o \emph{análisis de conglomerados}) sobre datos de
+segmentación funcional mediante agrupamiento sobre datos de
 producción hospitalaria~\citep{Chrusciel2021, Liu2025}, pero su aplicación al
 caso chileno permanece escasamente explorada, en particular en lo relativo a
 controlar el ruido de codificación y severidad propio de los registros
@@ -375,7 +384,7 @@ brevemente el contenido de cada uno.
   \item \textbf{Capítulo 2. Antecedentes.}
         Se revisan los conceptos fundamentales del sistema GRD y su implementación
         en Chile, las clasificaciones clínicas CIE-10 y CIE-9-MC, la experiencia
-        internacional en perfilamiento hospitalario mediante clustering, y los
+        internacional en perfilamiento hospitalario mediante agrupamiento, y los
         antecedentes nacionales del Departamento de Ingeniería Informática de la
         USACH. Se presentan también las técnicas computacionales empleadas:
         aprendizaje no supervisado, reducción de dimensionalidad, detección de
@@ -386,7 +395,7 @@ brevemente el contenido de cada uno.
         presentan las fuentes de datos, los criterios de elegibilidad de
         hospitales, el proceso de extracción y construcción de variables a nivel
         institucional, el preprocesamiento y normalización, y el esquema de
-        clustering jerárquico y validación estadística aplicado.
+        agrupamiento jerárquico y validación estadística aplicado.
 
   \item \textbf{Capítulo 4. Resultados y análisis.}
         Se presentan y discuten los perfiles funcionales emergentes identificados

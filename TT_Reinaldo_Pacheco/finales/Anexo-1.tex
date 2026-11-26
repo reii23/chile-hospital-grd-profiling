@@ -8,7 +8,7 @@
 Este anexo reúne antecedentes de respaldo para la caracterización funcional
 presentada en los Capítulos~\ref{cap:metodologia} y~\ref{cap:resultados}. Se
 incluyen el diccionario de variables institucionales, el listado de
-establecimientos incluidos y excluidos, la asignación final de clústeres y los
+establecimientos incluidos y excluidos, la asignación final de grupos y los
 principales parámetros del pipeline computacional.
 
 \section{Diccionario de variables institucionales}
@@ -17,7 +17,7 @@ principales parámetros del pipeline computacional.
 La Tabla~\ref{tab:anexo-diccionario} detalla las 28 variables
 clínico-operativas directas construidas a nivel institucional. La variable
 \texttt{peso\_medio\_cma} se conserva para fines descriptivos, pero fue excluida
-de la matriz empleada en el clustering debido a que no es estructuralmente
+de la matriz empleada en el agrupamiento debido a que no es estructuralmente
 comparable entre todos los establecimientos. Las 27 variables directas restantes,
 junto con las 8 componentes principales de casuística
 (\texttt{dim\_01} a \texttt{dim\_08}), conforman la matriz final de
@@ -77,7 +77,7 @@ Proporción de egresos registrados como Cirugía Mayor Ambulatoria sobre el tota
 Proporción & CMA \\
 
 \texttt{peso\_medio\_cma} &
-Promedio del peso relativo GRD entre los egresos de CMA. Se emplea de forma descriptiva y se excluye del clustering final. &
+Promedio del peso relativo GRD entre los egresos de CMA. Se emplea de forma descriptiva y se excluye del agrupamiento final. &
 Adimensional & CMA \\
 
 \texttt{pct\_pediatrico} &
@@ -274,7 +274,7 @@ $C1$, por lo que no constituyen categorías funcionales validadas equivalentes a
 del Nivel~1.
 
 \begin{longtable}{p{1.3cm} p{6.8cm} p{2.4cm} p{1.0cm} p{1.0cm}}
-\caption{Asignación de los 65 establecimientos a los clústeres de Nivel~1 y Nivel~2 (Ward) y categoría MINSAL.}
+\caption{Asignación de los 65 establecimientos a los grupos de Nivel~1 y Nivel~2 (Ward) y categoría MINSAL.}
 \label{tab:anexo-hospitales} \\
 \toprule
 \textbf{Código} & \textbf{Establecimiento} & \textbf{MINSAL} & \textbf{N1} & \textbf{N2} \\
@@ -397,7 +397,7 @@ Establecimientos incluidos &
 
 Variables directas &
 Variables construidas &
-28 variables institucionales, con \texttt{peso\_medio\_cma} excluida de la matriz de clustering. \\
+28 variables institucionales, con \texttt{peso\_medio\_cma} excluida de la matriz de agrupamiento. \\
 
 Matriz final &
 Dimensión &
@@ -419,28 +419,28 @@ Casuística &
 Componentes retenidas &
 8 componentes principales, con $72{,}3\,\%$ de varianza acumulada. \\
 
-Clustering Nivel 1 &
+Agrupamiento Nivel 1 &
 Algoritmo &
-Clustering jerárquico aglomerativo Ward con distancia euclidiana. \\
+Agrupamiento jerárquico aglomerativo Ward con distancia euclidiana. \\
 
-Clustering Nivel 1 &
+Agrupamiento Nivel 1 &
 Valores evaluados &
 $K \in \{2,\ldots,10\}$. \\
 
-Clustering Nivel 1 &
+Agrupamiento Nivel 1 &
 Solución reportada &
 $K=4$, seleccionada con un criterio descriptivo explícito (Sección~\ref{sec:seleccion-k}), con tamaños
 $[3,54,5,3]$. \\
 
-Clustering Nivel 2 &
+Agrupamiento Nivel 2 &
 Subconjunto analizado &
 Núcleo generalista $C1$ ($n=54$). \\
 
-Clustering Nivel 2 &
+Agrupamiento Nivel 2 &
 Algoritmo &
-Clustering jerárquico aglomerativo Ward. \\
+Agrupamiento jerárquico aglomerativo Ward. \\
 
-Clustering Nivel 2 &
+Agrupamiento Nivel 2 &
 Solución reportada &
 $K_{sub}=9$, de carácter exploratorio suplementario, que maximiza el número de
 subgrupos con al menos cuatro hospitales sin introducir pares. \\
@@ -505,7 +505,7 @@ los siguientes directorios principales:
   construcción de variables.
 
   \item \texttt{src/modeling/}: módulos para construcción de matrices,
-  reducción dimensional, clustering y comparación de métodos.
+  reducción dimensional, agrupamiento y comparación de métodos.
 
   \item \texttt{src/utils/}: funciones auxiliares de entrada, salida y
   validación de datos, con un registro único de rutas de artefactos.
@@ -594,7 +594,7 @@ estabilidad individual se entregan en los archivos
 El número de componentes a retener se fija en $K=8$, decisión que se
 verificó empíricamente mediante un barrido de $K \in \{8, 9, 10, 11\}$
 evaluando el efecto de cada valor sobre las métricas de validación interna
-del clustering final (Tabla~\ref{tab:barrido-k-pca}). Con la variante
+del agrupamiento final (Tabla~\ref{tab:barrido-k-pca}). Con la variante
 ponderada, las 8 componentes explican el 72{,}3\,\% de la varianza acumulada
 de las 63 columnas de casuística. Incorporar componentes adicionales
 incrementa la varianza retenida, pero no mejora la calidad de la partición
@@ -608,7 +608,7 @@ componentes por ofrecer el mejor balance entre las tres métricas de validación
 interna y la parsimonia de la representación, y no un porcentaje de varianza
 explicada fijado de antemano: agregar componentes de casuística más allá de
 este punto introduce dimensiones que degradan la cohesión y separación del
-clustering sin alterar la partición.
+agrupamiento sin alterar la partición.
 
 \begin{table}[htbp]
 \centering

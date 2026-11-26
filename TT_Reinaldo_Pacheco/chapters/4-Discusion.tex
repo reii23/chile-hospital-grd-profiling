@@ -5,7 +5,7 @@
 \label{cap:resultados}
 
 En este capítulo se presentan los resultados obtenidos tras aplicar el
-procedimiento de clustering a los egresos hospitalarios de establecimientos
+procedimiento de agrupamiento a los egresos hospitalarios de establecimientos
 públicos chilenos de alta y mediana complejidad durante el período 2019--2024.
 Se reportan la selección de las particiones global del Nivel~1 y del núcleo
 generalista del Nivel~2, junto con los perfiles clínico-operativos de los grupos
@@ -49,20 +49,20 @@ el resultado central, su evidencia y su límite.
 El universo final de análisis, tras aplicar los criterios de inclusión y
 exclusión descritos en la Sección~\ref{sec:elegibilidad}, quedó constituido por
 $n=65$ establecimientos. La caracterización de estos hospitales se realizó a
-partir de una matriz integrada de 35 variables empleadas en el clustering. Esta
+partir de una matriz integrada de 35 variables empleadas en el agrupamiento. Esta
 matriz combina 27 variables clínico-operativas directas, descritas en la
 Tabla~\ref{tab:variables}, y ocho componentes principales de casuística
 (\texttt{dim\_01} a \texttt{dim\_08}), que concentran el $72{,}3\%$ de la
 varianza acumulada de la representación de casuística.
 
 El indicador \texttt{peso\_medio\_cma} se reporta en la estadística descriptiva,
-pero no se incorpora en la matriz de clustering. Su exclusión responde a que no
+pero no se incorpora en la matriz de agrupamiento. Su exclusión responde a que no
 es una medida comparable cuando un establecimiento no registra actividad CMA,
 pues en ese caso no corresponde interpretar la ausencia de casos como un peso
 medio de complejidad nulo.
 
 La Tabla~\ref{tab:resumen-matriz} sintetiza la composición de la matriz
-institucional utilizada como entrada al procedimiento de clustering.
+institucional utilizada como entrada al procedimiento de agrupamiento.
 
 \begin{table}[htbp]
 \centering
@@ -86,12 +86,12 @@ Egresos del universo analizado (65 hospitales) & 5.756.850 \\
 \quad Variables de casuística CIE-10 / CIE-9-MC / GRD & 63 \\
 \quad \textbf{Total de variables originales} & \textbf{91} \\
 \addlinespace
-\multicolumn{2}{l}{\textit{Matriz final utilizada en el clustering}} \\
+\multicolumn{2}{l}{\textit{Matriz final utilizada en el agrupamiento}} \\
 \addlinespace
 \quad Variables clínico-operativas directas & 27 \\
 \quad \textit{(6 gestión + 2 diversidad + 1 CMA + 18 perfil funcional)} & \\
 \quad Componentes PCA de casuística & 8 \\
-\quad \textbf{Total de variables en clustering} & \textbf{35} \\
+\quad \textbf{Total de variables en agrupamiento} & \textbf{35} \\
 \quad Varianza de casuística retenida con 8 componentes & 72{,}3\% \\
 \bottomrule
 \end{tabular}
@@ -150,7 +150,7 @@ egresos pediátricos varía entre $0{,}0\%$ y $96{,}6\%$.
 El peso medio GRD también presenta variación entre establecimientos, con valores
 entre $0{,}670$ y $2{,}237$, al igual que los indicadores de edad, actividad
 obstétrica, uso de pabellón, cirugía mayor ambulatoria y comorbilidades. Esta
-heterogeneidad multidimensional motiva el uso de clustering como herramienta
+heterogeneidad multidimensional motiva el uso de agrupamiento como herramienta
 exploratoria para identificar perfiles funcionales de hospitales con patrones de
 actividad y casuística relativamente similares.
 
@@ -204,7 +204,7 @@ ponderación por $1/\sqrt{p_b}$ por bloque conserva exactamente la partición
 principal ($ARI=NMI=1{,}000$) y mejora marginalmente sus métricas internas.
 En cambio, al excluir las siete variables demográfico-obstétricas, la
 concordancia disminuye de forma importante ($ARI=0{,}571$; $NMI=0{,}599$): los
-clústeres pediátrico ($C0$) y de especialización clínica ($C3$) permanecen separados, pero seis hospitales
+grupos pediátrico ($C0$) y de especialización clínica ($C3$) permanecen separados, pero seis hospitales
 del núcleo y tres del grupo $C2$ cambian de agrupación. La menor cohesión de
 esta solución (Silhouette $=0{,}238$ frente a $0{,}398$) indica que el bloque
 excluido contribuye materialmente a la separación, por tanto, los perfiles no
@@ -236,10 +236,10 @@ dimensiones clínicas, incluidas algunas cargas obstétricas.
 \end{minipage}
 \end{table}
 
-\section{Clustering de nivel 1}
+\section{Agrupamiento de nivel 1}
 \label{sec:nivel1}
 
-El clustering de Nivel 1 se aplicó sobre el universo de 65 establecimientos,
+El agrupamiento de Nivel 1 se aplicó sobre el universo de 65 establecimientos,
 siguiendo la metodología descrita en la
 Sección~\ref{sec:metodo-clustering}. Para examinar el comportamiento de las
 métricas de validación en función del número de grupos ($K$), se evaluaron las
@@ -254,7 +254,7 @@ Tabla~\ref{tab:metricas-nivel1}.
 \begin{tabular}{c c c c l}
 \toprule
 \textbf{$K$} & \textbf{Silhouette} & \textbf{Calinski-Harabasz} &
-\textbf{Davies-Bouldin} & \textbf{Tamaños de clústeres} \\
+\textbf{Davies-Bouldin} & \textbf{Tamaños de grupos} \\
 \midrule
 2 & 0,600 & 25,3 & 0,485 & 62, 3 \\
 3 & 0,448 & 23,4 & 1,260 & 54, 8, 3 \\
@@ -391,10 +391,10 @@ fusión jerárquica de Ward y los cortes correspondientes a $K=2$, $K=3$ y $K=4$
 La figura es una representación descriptiva de la estructura del agrupamiento
 y, por sí sola, no constituye una validación independiente de la partición.
 
-Los tres hospitales pediátricos del clúster $C0$ se separan claramente del
+Los tres hospitales pediátricos del grupo $C0$ se separan claramente del
 núcleo generalista, pues entre el $92{,}5\,\%$ y el $96{,}6\,\%$ de sus egresos
 corresponden a población pediátrica y sus coeficientes Silhouette individuales
-son positivos ($0{,}640$ a $0{,}742$). Los tres establecimientos del clúster $C3$ presentan
+son positivos ($0{,}640$ a $0{,}742$). Los tres establecimientos del grupo $C3$ presentan
 un perfil de mayor complejidad y especialización, aunque sus valores individuales
 de Silhouette son más heterogéneos. Por ello, la caracterización de los grupos
 pequeños se limita a describir sus perfiles clínico-operativos. En particular,
@@ -409,18 +409,18 @@ respecto del núcleo generalista, pero no equivale a una validación externa.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{img/dendrograma_ward_nivel1.pdf}
-\caption{Dendrograma Ward del Nivel~1, partición en cuatro clústeres ($K=4$).}
+\caption{Dendrograma Ward del Nivel~1, partición en cuatro grupos ($K=4$).}
 \label{fig:dendrograma-global}
 \end{figure}
 
-Para caracterizar cuantitativamente los cuatro clústeres obtenidos, la
+Para caracterizar cuantitativamente los cuatro grupos obtenidos, la
 Tabla~\ref{tab:perfiles-nivel1} presenta las medianas de variables
 clínico-operativas seleccionadas. Estas diferencias permiten describir los
 perfiles antes de asignarles etiquetas funcionales.
 
 \begin{table}[htbp]
 \centering
-\caption{Medianas de los perfiles funcionales de los clústeres del Nivel 1
+\caption{Medianas de los perfiles funcionales de los grupos del Nivel 1
 ($K=4$).}
 \label{tab:perfiles-nivel1}
 \begin{tabular}{l c c c c}
@@ -451,7 +451,7 @@ no recibió nombres ni categorías funcionales durante la construcción de la
 partición.
 
 \begin{itemize}
-    \item \textbf{Clúster $C0$ ($n=3$): Hospitales Pediátricos.} Concentra
+    \item \textbf{Grupo $C0$ ($n=3$): Hospitales Pediátricos.} Concentra
     prácticamente la totalidad de sus egresos en población pediátrica
     ($95{,}4\%$) y registra una edad mediana de ingreso de $4{,}9$ años, con
     actividad geriátrica y obstétrica nula. El peso medio GRD ($1{,}202$) y la
@@ -460,7 +460,7 @@ partición.
     Río, el Hospital de Niños Dr.\ Luis Calvo Mackenna y el Hospital Dr.\
     Exequiel González Cortés.
 
-    \item \textbf{Clúster $C3$ ($n=3$): grupo de especialización clínica
+    \item \textbf{Grupo $C3$ ($n=3$): grupo de especialización clínica
     heterogénea.} Registra el peso medio GRD más alto entre los cuatro perfiles
     (mediana $1{,}874$), la mayor edad mediana de la red ($63{,}5$ años), la
     estancia media más prolongada ($9{,}5$ días) y actividad obstétrica,
@@ -476,7 +476,7 @@ partición.
     etiqueta describe un patrón de especialización clínica del grupo, sin
     atribuir carácter monográfico al conjunto de sus tres establecimientos.
 
-    \item \textbf{Clúster $C2$ ($n=5$): grupo de carga clínica heterogénea.}
+    \item \textbf{Grupo $C2$ ($n=5$): grupo de carga clínica heterogénea.}
     Comparte con $C3$ una estancia media prolongada ($8{,}7$ días, frente a
     $9{,}5$ en $C3$) y una población de mayor edad (edad mediana $56{,}8$ años;
     $37{,}2\%$ de egresos geriátricos), pero su peso medio GRD ($0{,}945$) es
@@ -493,7 +493,7 @@ partición.
     denominación descriptiva $C2$, sin imponer una etiqueta funcional breve que
     simplifique en exceso a sus cinco integrantes.
 
-    \item \textbf{Clúster $C1$ ($n=54$): Núcleo Generalista.} Es el grupo
+    \item \textbf{Grupo $C1$ ($n=54$): Núcleo Generalista.} Es el grupo
     mayoritario de hospitales generales de la red pública. Presenta una mediana
     de 13.124 egresos anuales, estancia media de $6{,}9$ días, peso medio GRD de $0{,}947$ y una composición asistencial mixta, con $14{,}2\%$ de egresos pediátricos, $25{,}5\%$ de egresos geriátricos, $20{,}0\%$ de ingresos obstétricos y una proporción de egresos neonatales de $2{,}9\%$. La diversidad y el equilibrio relativo de su actividad
     permiten describirlo como el Núcleo Generalista de la red.
@@ -504,7 +504,7 @@ Figura~\ref{fig:pca-nivel1} ilustra la disposición de los hospitales en las dos
 primeras componentes principales para las soluciones $K=2$, $K=3$ y $K=4$. Esta
 proyección facilita examinar visualmente la separación de los establecimientos
 especializados respecto del núcleo generalista, pero no constituye una prueba
-adicional de validez del clustering.
+adicional de validez del agrupamiento.
 
 \begin{figure}[htbp]
 \centering
@@ -517,8 +517,8 @@ adicional de validez del clustering.
 \section{Subtipología exploratoria del bloque generalista (nivel 2)}
 \label{sec:nivel2}
 
-Dado que el clúster $C1$ concentra 54 de los 65 hospitales
-($83{,}1\%$ del sistema), se aplicó un segundo nivel de clustering sobre este
+Dado que el grupo $C1$ concentra 54 de los 65 hospitales
+($83{,}1\%$ del sistema), se aplicó un segundo nivel de agrupamiento sobre este
 subconjunto, de acuerdo con el diseño descrito en la
 Sección~\ref{sec:nivel2-metodo}. Al operar sobre un subconjunto de hospitales,
 esta subdivisión tiene un carácter exploratorio: su propósito no es establecer
@@ -530,11 +530,11 @@ La búsqueda de configuraciones para
 $K_{sub}\in\{2,3,\ldots,10\}$ se presenta en la
 Tabla~\ref{tab:metricas-nivel2}. Además de las métricas internas, se reportan
 los tamaños de grupo, la cantidad de grupos unitarios y el número de
-subclústeres con al menos cuatro hospitales.
+subgrupos con al menos cuatro hospitales.
 
 \begin{table}[htbp]
 \centering
-\caption{Búsqueda de subclústeres Ward en el núcleo generalista (Nivel~2, $n=54$).}
+\caption{Búsqueda de subgrupos Ward en el núcleo generalista (Nivel~2, $n=54$).}
 \label{tab:metricas-nivel2}
 
 \begin{tabular}{c c c c c c l}
@@ -594,7 +594,7 @@ inferencias ni para etiquetar categorías hospitalarias.
 \section{Estabilidad de la partición mediante submuestreo}
 \label{sec:res-estabilidad}
 
-Siguiendo el procedimiento descrito en la Sección~\ref{sec:bootstrap}, se ejecutaron 100 iteraciones de submuestreo sin reposición. En cada réplica se seleccionó el $80\,\%$ de los 65 hospitales ($n_{\text{sub}}=52$), se recalculó el preprocesamiento y se aplicó clustering jerárquico Ward con $K=4$. La Tabla~\ref{tab:estabilidad-global} presenta los intervalos percentilares empíricos (percentiles 2{,}5 y 97{,}5) del coeficiente Silhouette de cada submuestra y de la concordancia entre su partición y la asignación original, medida mediante ARI y NMI.
+Siguiendo el procedimiento descrito en la Sección~\ref{sec:bootstrap}, se ejecutaron 100 iteraciones de submuestreo sin reposición. En cada réplica se seleccionó el $80\,\%$ de los 65 hospitales ($n_{\text{sub}}=52$), se recalculó el preprocesamiento y se aplicó agrupamiento jerárquico Ward con $K=4$. La Tabla~\ref{tab:estabilidad-global} presenta los intervalos percentilares empíricos (percentiles 2{,}5 y 97{,}5) del coeficiente Silhouette de cada submuestra y de la concordancia entre su partición y la asignación original, medida mediante ARI y NMI.
 
 \begin{table}[htbp]
 \centering
@@ -615,17 +615,17 @@ NMI vs. partición original & 0,890 & 0,655 & 1,000 \\
 La mediana del Silhouette en las submuestras ($0{,}392$) es cercana al valor obtenido para la partición completa de 65 hospitales ($0{,}398$). Por tanto, la estructura de cohesión y separación observada en la solución principal se reproduce habitualmente al retirar una fracción de los establecimientos. No obstante, el intervalo percentilar $[0{,}247;\,0{,}508]$ muestra que la calidad interna de la partición varía entre réplicas: algunas submuestras
 producen agrupamientos menos compactos que la solución calculada sobre el conjunto completo y otras, más compactos.
 
-La concordancia con la partición original es alta en la réplica típica, pues las medianas de ARI y NMI alcanzan $0{,}917$ y $0{,}890$, respectivamente. Sin embargo, los percentiles inferiores de ambas métricas (ARI $=0{,}588$ y NMI $=0{,}655$) indican que existen submuestras en las que la composición de los grupos se modifica en mayor medida. En consecuencia, los resultados respaldan una estructura global generalmente reproducible, pero no implican que la pertenencia de todos los hospitales a su clúster se conserve con la misma consistencia en cada submuestra.
+La concordancia con la partición original es alta en la réplica típica, pues las medianas de ARI y NMI alcanzan $0{,}917$ y $0{,}890$, respectivamente. Sin embargo, los percentiles inferiores de ambas métricas (ARI $=0{,}588$ y NMI $=0{,}655$) indican que existen submuestras en las que la composición de los grupos se modifica en mayor medida. En consecuencia, los resultados respaldan una estructura global generalmente reproducible, pero no implican que la pertenencia de todos los hospitales a su grupo se conserve con la misma consistencia en cada submuestra.
 
-Para localizar esta variabilidad, la Tabla~\ref{tab:estabilidad-grupo} desagrega la estabilidad por clúster mediante dos indicadores. La estabilidad individual promedio corresponde a la coasignación media de cada hospital con los demás integrantes de su clúster original, condicionada a las réplicas en que ambos hospitales fueron seleccionados. El índice de Jaccard promedio cuantifica el solapamiento entre los integrantes originales de cada clúster presentes en una submuestra y el grupo de dicha réplica con el que presentan mayor coincidencia.
+Para localizar esta variabilidad, la Tabla~\ref{tab:estabilidad-grupo} desagrega la estabilidad por grupo mediante dos indicadores. La estabilidad individual promedio corresponde a la coasignación media de cada hospital con los demás integrantes de su grupo original, condicionada a las réplicas en que ambos hospitales fueron seleccionados. El índice de Jaccard promedio cuantifica el solapamiento entre los integrantes originales de cada grupo presentes en una submuestra y el grupo de dicha réplica con el que presentan mayor coincidencia.
 
 \begin{table}[htbp]
 \centering
-\caption{Estabilidad de la partición desagregada por clúster del Nivel 1 (100 submuestras).}
+\caption{Estabilidad de la partición desagregada por grupo del Nivel 1 (100 submuestras).}
 \label{tab:estabilidad-grupo}
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X c >{\centering\arraybackslash}p{3cm} >{\centering\arraybackslash}p{2.5cm}}
 \toprule
-\textbf{Clúster} & \textbf{$n$} &
+\textbf{Grupo} & \textbf{$n$} &
 \textbf{Estabilidad individual (media)} &
 \textbf{Jaccard promedio} \\
 \midrule
@@ -637,11 +637,11 @@ $C3$ (especialización clínica heterogénea) & 3 & 0,885 & 0,890 \\
 \end{tabularx}
 \end{table}
 
-El clúster pediátrico $C0$ presenta coasignación y solapamiento perfectos en las 100 réplicas, lo que es consistente con su perfil clínico claramente diferenciado respecto del resto de la red. El núcleo generalista $C1$, que reúne 54 hospitales, también muestra una elevada estabilidad conjunta: su Jaccard promedio es $0{,}966$ y su estabilidad individual media alcanza $0{,}943$. Así, la mayor parte de los hospitales generalistas conserva su relación de proximidad con los demás integrantes del núcleo al modificar la muestra de análisis.
+El grupo pediátrico $C0$ presenta coasignación y solapamiento perfectos en las 100 réplicas, lo que es consistente con su perfil clínico claramente diferenciado respecto del resto de la red. El núcleo generalista $C1$, que reúne 54 hospitales, también muestra una elevada estabilidad conjunta: su Jaccard promedio es $0{,}966$ y su estabilidad individual media alcanza $0{,}943$. Así, la mayor parte de los hospitales generalistas conserva su relación de proximidad con los demás integrantes del núcleo al modificar la muestra de análisis.
 
-El clúster $C2$ registra la mayor estabilidad individual promedio entre los grupos no pediátricos ($0{,}959$), aunque su Jaccard promedio es el menor de la partición ($0{,}750$). Esto señala que sus hospitales tienden a mantener una alta coasignación con sus pares originales cuando son seleccionados, pero que la composición completa del grupo es más sensible a la omisión de algunos establecimientos en las submuestras. Esta sensibilidad es coherente con el tamaño reducido del clúster ($n=5$), pues la exclusión de uno o más de sus integrantes altera proporcionalmente su composición en mayor medida que en el núcleo generalista.
+El grupo $C2$ registra la mayor estabilidad individual promedio entre los grupos no pediátricos ($0{,}959$), aunque su Jaccard promedio es el menor de la partición ($0{,}750$). Esto señala que sus hospitales tienden a mantener una alta coasignación con sus pares originales cuando son seleccionados, pero que la composición completa del grupo es más sensible a la omisión de algunos establecimientos en las submuestras. Esta sensibilidad es coherente con el tamaño reducido del grupo ($n=5$), pues la exclusión de uno o más de sus integrantes altera proporcionalmente su composición en mayor medida que en el núcleo generalista.
 
-Por su parte, el clúster de especialización clínica heterogénea $C3$ presenta estabilidad individual media de $0{,}885$ y un Jaccard promedio de $0{,}890$. Ambos valores son inferiores a los observados en $C0$ y $C1$, pero no permiten caracterizar a $C3$ como un grupo inestable, pues en la mayoría de
+Por su parte, el grupo de especialización clínica heterogénea $C3$ presenta estabilidad individual media de $0{,}885$ y un Jaccard promedio de $0{,}890$. Ambos valores son inferiores a los observados en $C0$ y $C1$, pero no permiten caracterizar a $C3$ como un grupo inestable, pues en la mayoría de
 las réplicas sus tres hospitales conservan una asociación reconocible.
 
 Respecto del primer criterio de la hipótesis de trabajo (Sección~\ref{sec:hipotesis}), los cuatro grupos superan el umbral de 0,60 bajo el cual \citet{Hennig2007} considera que un grupo no es confiable, de modo que el criterio no se contradice. Tres grupos superan además el valor de 0,75 que ese autor asocia a un grupo estable ($C0$, $C1$ y $C3$), mientras que $C2$ queda aproximadamente en ese umbral ($0{,}750$, redondeado). Por ello, $C2$ se interpreta como un patrón presente en los datos cuya composición exacta es la menos segura de la partición. En conjunto, el submuestreo muestra que la partición de Nivel~1 es predominantemente reproducible, aunque la estabilidad de los grupos pequeños y la asignación de algunos establecimientos específicos dependen en mayor medida de la composición de la muestra analizada. Estos resultados constituyen evidencia de sensibilidad interna del procedimiento y deben interpretarse junto con los análisis descriptivos, de sensibilidad temporal y de detección de observaciones atípicas presentados en las secciones precedentes.
@@ -662,18 +662,18 @@ entre grupos.
 Entre las variables evaluadas se incluye \texttt{peso\_medio\_cma}, que se
 reporta de forma descriptiva y se incorpora a esta caracterización posterior al
 agrupamiento. Sin embargo, dicho indicador fue excluido de la matriz utilizada
-para construir los clústeres, debido a que no es comparable en establecimientos
+para construir los grupos, debido a que no es comparable en establecimientos
 sin actividad CMA, como se indicó en la Sección~\ref{sec:universo}.
 
 Estos resultados deben interpretarse como una caracterización posterior al
-agrupamiento. Dado que los clústeres se construyeron a partir de estas mismas
+agrupamiento. Dado que los grupos se construyeron a partir de estas mismas
 variables, la significancia estadística no constituye una validación
 independiente de la partición. En cambio, permite identificar qué variables
 presentan mayores diferencias entre los perfiles resultantes y ordenar su
 contribución descriptiva mediante $\varepsilon^2$.
 
 En el Nivel~1 (Tabla~\ref{tab:kruskal-nivel1}), 26 de las 28 variables
-presentan $p_{\text{BH}}<0{,}05$ entre los cuatro clústeres. Este conteo se usa
+presentan $p_{\text{BH}}<0{,}05$ entre los cuatro grupos. Este conteo se usa
 como criterio descriptivo para ordenar variables y no como evidencia
 inferencial: dos grupos tienen solo tres hospitales, lo que vuelve aproximada
 la distribución asintótica en que se basa la prueba, y las variables
@@ -685,7 +685,7 @@ entre el perfil pediátrico, los establecimientos de mayor especialización y lo
 hospitales generalistas, particularmente respecto de la composición etaria de
 los egresos y de la actividad gineco-obstétrica.
 
-Solo \texttt{cv\_estancia} y \texttt{pabellones\_promedio} quedan sobre ese umbral, lo que indica que son las variables en que los cuatro clústeres difieren menos. No implica que estas variables sean idénticas entre grupos ni que carezcan de relevancia clínica individual.
+Solo \texttt{cv\_estancia} y \texttt{pabellones\_promedio} quedan sobre ese umbral, lo que indica que son las variables en que los cuatro grupos difieren menos. No implica que estas variables sean idénticas entre grupos ni que carezcan de relevancia clínica individual.
 
 \begin{table}[htbp]
 \centering
@@ -788,7 +788,7 @@ concluyente lo esperable de una geometría correlacionada sin una estructura de
 grupos explícita. La Tabla~\ref{tab:nulas-circularidad} resume los resultados de
 ambas nulas. Estas pruebas mantienen utilidad descriptiva para ordenar los
 atributos que difieren en la partición obtenida, pero no aportan validación
-independiente de los clústeres.
+independiente de los grupos.
 
 \begin{table}[htbp]
 \centering
@@ -813,11 +813,11 @@ entre la covarianza muestral simulada y la observada de 0,308.
 
 En el Nivel~2 no se aplicaron pruebas de hipótesis entre los nueve subgrupos exploratorios. Dos de ellos contienen un solo hospital, lo que impide la aproximación en que se basa Kruskal--Wallis, y todos se formaron con las mismas variables que se contrastarían. Además, la partición no es estable bajo submuestreo (ARI mediano $0{,}559$; Sección~\ref{sec:nivel2}). La asignación de los subgrupos se conserva en el Anexo como material descriptivo (Sección~\ref{anexo:nivel2-exploratorio}).
 
-Adicionalmente, se examinó la asociación entre la asignación de clústeres y la pertenencia a Servicios de Salud mediante una prueba de chi-cuadrado de independencia. En el Nivel~1 se obtuvo $\chi^2=65{,}329$ ($\text{gl}=84$, $p=0{,}935$), mientras que en el Nivel~2 se obtuvo $\chi^2=206{,}944$ ($\text{gl}=224$, $p=0{,}787$). En ambos niveles no se detectó una asociación entre los clústeres y el Servicio de Salud.
+Adicionalmente, se examinó la asociación entre la asignación de grupos y la pertenencia a Servicios de Salud mediante una prueba de chi-cuadrado de independencia. En el Nivel~1 se obtuvo $\chi^2=65{,}329$ ($\text{gl}=84$, $p=0{,}935$), mientras que en el Nivel~2 se obtuvo $\chi^2=206{,}944$ ($\text{gl}=224$, $p=0{,}787$). En ambos niveles no se detectó una asociación entre los grupos y el Servicio de Salud.
 
 Estas tablas de contingencia son dispersas, pues relacionan un número reducido de hospitales con numerosas categorías territoriales y administrativas, de modo que la mayoría de sus recuentos esperados es inferior a cinco y los valores $p$ del chi-cuadrado son solo aproximados. Por la misma razón, el V de Cramér sin corrección puede sobreestimar la
 asociación. Sus valores alcanzan $0{,}579$ en el Nivel~1 y $0{,}692$
-en el Nivel~2. Al aplicar la corrección de sesgo de \citet{Bergsma2013}, el V de Cramér es aproximadamente cero en ambos niveles. Por ello, bajo esta especificación no se observa una asociación apreciable entre los clústeres y los Servicios de Salud. Este resultado no permite descartar de forma concluyente toda influencia territorial o administrativa, pero no aporta evidencia de que la segmentación obtenida esté determinada por dicha pertenencia.
+en el Nivel~2. Al aplicar la corrección de sesgo de \citet{Bergsma2013}, el V de Cramér es aproximadamente cero en ambos niveles. Por ello, bajo esta especificación no se observa una asociación apreciable entre los grupos y los Servicios de Salud. Este resultado no permite descartar de forma concluyente toda influencia territorial o administrativa, pero no aporta evidencia de que la segmentación obtenida esté determinada por dicha pertenencia.
 
 \section{Comparación con la clasificación MINSAL}
 \label{sec:res-minsal}
@@ -830,11 +830,11 @@ presenta la distribución de los 65 hospitales entre ambas clasificaciones.
 
 \begin{table}[htbp]
 \centering
-\caption{Tabla de contingencia entre los clústeres del Nivel~1 y la clasificación administrativa MINSAL.}
+\caption{Tabla de contingencia entre los grupos del Nivel~1 y la clasificación administrativa MINSAL.}
 \label{tab:contingencia-minsal}
 \begin{tabular}{l c c c}
 \toprule
-\textbf{Clúster} & \textbf{Alta Complejidad} &
+\textbf{Grupo} & \textbf{Alta Complejidad} &
 \textbf{Mediana Complejidad} & \textbf{Total} \\
 \midrule
 $C0$ (pediátricos) & 3 & 0 & 3 \\
@@ -852,7 +852,7 @@ baja entre la clasificación administrativa y la segmentación funcional
 obtenida a partir de los egresos hospitalarios. Esta diferencia es consistente
 con que ambas clasificaciones organizan los establecimientos mediante criterios
 distintos. La clasificación MINSAL constituye una referencia administrativa,
-mientras que los clústeres de este estudio se construyen a partir de la
+mientras que los grupos de este estudio se construyen a partir de la
 producción, la complejidad clínica y la composición de la casuística observada
 en los egresos.
 
@@ -887,7 +887,7 @@ directamente sobre su homogeneidad interna. Para comparar la compactación de lo
 grupos, se siguió el procedimiento descrito en la
 Sección~\ref{sec:comparacion-homogeneidad}. El coeficiente Silhouette y la
 dispersión intragrupo normalizada (WSS/TSS) se calcularon sobre la misma matriz
-preprocesada de 35 variables empleada en el clustering. De forma
+preprocesada de 35 variables empleada en el agrupamiento. De forma
 complementaria, la dispersión robusta se resumió mediante la desviación absoluta
 mediana normalizada (MAD normalizado) sobre las 27 variables
 clínico-operativas directas.
@@ -1119,7 +1119,7 @@ Complejidad $=1$ y Mediana Complejidad $=0$.
 El modelo utilizó 27 variables clínico-operativas directas sobre los 65
 hospitales, excluyendo las ocho componentes PCA de casuística y el indicador
 \texttt{peso\_medio\_cma}. Esta exclusión mantiene la consistencia con la
-matriz de clustering, pues \texttt{peso\_medio\_cma} no es comparable cuando un
+matriz de agrupamiento, pues \texttt{peso\_medio\_cma} no es comparable cuando un
 establecimiento no registra actividad CMA.
 
 La selección se evaluó mediante validación cruzada estratificada de cinco
@@ -1228,7 +1228,7 @@ red hospitalaria.
 
 \label{sec:res-outliers}
 
-\subsection{Influencia de las marcas globales antes del clustering}
+\subsection{Influencia de las marcas globales antes del agrupamiento}
 \label{sec:res-outliers-preclustering}
 
 Como prueba de sensibilidad previa, Isolation Forest se ajustó globalmente
@@ -1283,7 +1283,7 @@ Cuatro establecimientos fueron marcados en los cuatro niveles de contaminación 
 
 \label{sec:res-outliers-combinados}
 
-La detección combinó los tres criterios descritos en la Sección~\ref{sec:outliers-metodo}: Isolation Forest ajustado globalmente con contaminación $=10\,\%$, distancia al centroide del clúster normalizada mediante la MAD global y Silhouette individual negativo. Se consideraron como casos de detección concordante los hospitales que cumplieron al menos dos de estos criterios.
+La detección combinó los tres criterios descritos en la Sección~\ref{sec:outliers-metodo}: Isolation Forest ajustado globalmente con contaminación $=10\,\%$, distancia al centroide del grupo normalizada mediante la MAD global y Silhouette individual negativo. Se consideraron como casos de detección concordante los hospitales que cumplieron al menos dos de estos criterios.
 
 La Tabla~\ref{tab:outliers} presenta los nueve hospitales marcados por al menos un criterio. Tres de ellos cumplen dos o más criterios: el Hospital Dr.\ Eduardo Pereira Ramírez, el Instituto de Neurocirugía Dr.\ Alfonso Asenjo y el Hospital de Urgencia Asistencia Pública Dr.\ Alejandro del Río. Los seis establecimientos restantes fueron identificados por una sola medida, por lo que su señalamiento depende de ese criterio particular.
 
@@ -1300,7 +1300,7 @@ La Tabla~\ref{tab:outliers} presenta los nueve hospitales marcados por al menos 
 \renewcommand{\arraystretch}{1.15}
 \begin{tabular}{p{5.4cm} c c p{5.3cm}}
 \toprule
-\textbf{Establecimiento} & \textbf{Clúster} & \textbf{$n$} & \textbf{Criterio(s)} \\
+\textbf{Establecimiento} & \textbf{Grupo} & \textbf{$n$} & \textbf{Criterio(s)} \\
 \midrule
 
 \textbf{Hospital Dr.\ Eduardo Pereira Ramírez}
@@ -1343,7 +1343,7 @@ Distancia al centroide ($z_{\mathrm{MAD}}=3{,}521$) \\
 \end{tabular}
 \end{table}
 
-Isolation Forest se ajustó una sola vez sobre la totalidad de los 65 hospitales. Por tanto, sus marcas indican que un establecimiento resulta relativamente aislable respecto de la red completa en el espacio de 35 variables utilizado, y no que sea necesariamente atípico dentro de su propio clúster. En cambio, la distancia al centroide evalúa el alejamiento respecto del centroide del grupo asignado, aunque su estandarización se realizó mediante la dispersión global de las distancias. El Silhouette individual resume la coherencia relativa entre la asignación del hospital a su grupo y su proximidad a los demás grupos.
+Isolation Forest se ajustó una sola vez sobre la totalidad de los 65 hospitales. Por tanto, sus marcas indican que un establecimiento resulta relativamente aislable respecto de la red completa en el espacio de 35 variables utilizado, y no que sea necesariamente atípico dentro de su propio grupo. En cambio, la distancia al centroide evalúa el alejamiento respecto del centroide del grupo asignado, aunque su estandarización se realizó mediante la dispersión global de las distancias. El Silhouette individual resume la coherencia relativa entre la asignación del hospital a su grupo y su proximidad a los demás grupos.
 
 El Hospital Dr.\ Eduardo Pereira Ramírez es el único establecimiento que reúne los tres criterios y que, además, presenta Silhouette individual negativo. Esto indica que su perfil se aleja del centroide de $C3$, es identificado por Isolation Forest respecto de la red global y presenta una asignación menos coherente que la del resto de los hospitales según esta medida. El Instituto de Neurocirugía Dr.\ Alfonso Asenjo y el HUAP Dr.\ Alejandro del Río cumplen los criterios de Isolation Forest y distancia al centroide, pero mantienen valores positivos de Silhouette individual.
 
@@ -1369,7 +1369,7 @@ La Figura~\ref{fig:outliers-pca} presenta una proyección bidimensional mediante
 
 Antes de presentar los resultados, es necesario delimitar el alcance de estas comparaciones. Los algoritmos alternativos, las proyecciones bidimensionales y la solución Ward principal se construyen sobre la misma matriz de 35 variables y el mismo conjunto de 65 hospitales. Por ello, las comparaciones algorítmicas corresponden a un análisis de sensibilidad interna y no a una validación externa. Una validación externa requeriría contrastar la partición con hospitales, períodos o fuentes de información no utilizados en su construcción, lo que no se dispone en este estudio.
 
-La proyección PCA presentada en la Sección~\ref{sec:res-outliers} tiene un propósito exploratorio y descriptivo. Permite observar una representación bidimensional de las mismas etiquetas Ward, pero no constituye un algoritmo alternativo de clustering ni evidencia independiente de la estabilidad de la partición. Por esta razón, la sensibilidad algorítmica se evalúa mediante MST-kNN, K-means y mezclas gaussianas, junto con índices cuantitativos de concordancia entre particiones.
+La proyección PCA presentada en la Sección~\ref{sec:res-outliers} tiene un propósito exploratorio y descriptivo. Permite observar una representación bidimensional de las mismas etiquetas Ward, pero no constituye un algoritmo alternativo de agrupamiento ni evidencia independiente de la estabilidad de la partición. Por esta razón, la sensibilidad algorítmica se evalúa mediante MST-kNN, K-means y mezclas gaussianas, junto con índices cuantitativos de concordancia entre particiones.
 
 \subsection*{Exploración de la granularidad con algoritmos alternativos}
 
@@ -1402,7 +1402,7 @@ de cohesión en las alternativas examinadas.
 
 \subsection*{Sensibilidad frente al algoritmo MST-kNN}
 
-Se aplicó el algoritmo MST-kNN~\citep{inostroza2008} sobre la misma matriz institucional utilizada por Ward, explorando valores de $k$ entre 3 y 8 en modo mutuo. En esta configuración, dos hospitales se consideran vecinos solo cuando la relación de vecindad es recíproca. El algoritmo no impone un número fijo de grupos y puede producir grupos unitarios o pares, por lo que sus resultados no son directamente equivalentes a una partición de cuatro clústeres.
+Se aplicó el algoritmo MST-kNN~\citep{inostroza2008} sobre la misma matriz institucional utilizada por Ward, explorando valores de $k$ entre 3 y 8 en modo mutuo. En esta configuración, dos hospitales se consideran vecinos solo cuando la relación de vecindad es recíproca. El algoritmo no impone un número fijo de grupos y puede producir grupos unitarios o pares, por lo que sus resultados no son directamente equivalentes a una partición de cuatro grupos.
 
 La Tabla~\ref{tab:mstknn-sensibilidad} presenta el comportamiento de la solución al variar $k$. A medida que aumenta el número de vecinos, disminuyen los grupos descubiertos y los grupos unitarios, mientras que el bloque de mayor tamaño aumenta desde 23 hospitales con $k=3$ hasta 39 con $k=8$. Esto muestra que la granularidad obtenida mediante MST-kNN depende de la definición de vecindad seleccionada.
 
@@ -1550,7 +1550,7 @@ Los 65 hospitales del universo final poseen cobertura completa para los seis añ
 
 Siguiendo el procedimiento descrito en la Sección~\ref{sec:sensibilidad-composicional}, se reconstruyó la representación de casuística aplicando una transformación CLR a los vectores composicionales antes del PCA. Esta alternativa considera explícitamente que las proporciones de capítulos diagnósticos, procedimientos y GRD forman composiciones sujetas a la restricción de suma constante.
 
-La partición obtenida mediante CLR+PCA reproduce exactamente la asignación Ward principal: $\text{ARI}=1{,}000$, $\text{NMI}=1{,}000$ y cero hospitales cambian de clúster. Los tamaños de los grupos se mantienen en $[3,54,5,3]$, como confirma la Tabla~\ref{tab:contingencia-clr}.
+La partición obtenida mediante CLR+PCA reproduce exactamente la asignación Ward principal: $\text{ARI}=1{,}000$, $\text{NMI}=1{,}000$ y cero hospitales cambian de grupo. Los tamaños de los grupos se mantienen en $[3,54,5,3]$, como confirma la Tabla~\ref{tab:contingencia-clr}.
 
 \begin{table}[htbp]
 \centering

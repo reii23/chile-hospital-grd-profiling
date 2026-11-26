@@ -345,7 +345,7 @@ decisión permitió evitar que las diferencias estructurales entre ambos niveles
 determaran los resultados. En cada nivel se identificaron tres grupos de
 desempeño denominados ``excelente'', ``medio'' e ``inferior''. Estas
 denominaciones se establecieron a partir de los valores promedio de los
-indicadores DRG en cada conglomerado.
+indicadores DRG en cada grupo.
 
 El resultado más relevante para este trabajo es que los hospitales de una misma
 categoría administrativa presentaban perfiles de desempeño marcadamente
@@ -394,7 +394,7 @@ una parte importante de la heterogeneidad entre hospitales. Asimismo, ilustra
 la utilidad de procedimientos de selección de variables para construir modelos
 parsimoniosos y reducir la incorporación de variables redundantes o altamente
 colineales. Aunque el estudio se orienta a explicar costos y no a construir
-conglomerados hospitalarios, aporta un antecedente metodológico para seleccionar
+grupos hospitalarios, aporta un antecedente metodológico para seleccionar
 indicadores relevantes en el análisis de la heterogeneidad funcional
 hospitalaria~\citep{Havranek2023}.
 
@@ -436,7 +436,7 @@ hospitales con perfiles de producción equivalentes dentro de cada grupo.
 \citet{Carlier2020} evaluaron directamente si la categorización
 administrativa del Ministerio de Salud se corresponde con la casuística
 real de los hospitales. Mediante un algoritmo genético que combina selección de
-variables y clustering, los autores buscaron subconjuntos de indicadores del DEIS
+variables y agrupamiento, los autores buscaron subconjuntos de indicadores del DEIS
 que replicaran cinco grupos derivados de la clasificación MINSAL
 (alta complejidad adultos, alta complejidad
 pediátrica, mediana complejidad, baja complejidad y psiquiátricos) usando datos
@@ -458,7 +458,7 @@ basado en CRISP-DM sobre 187 hospitales públicos chilenos con datos del períod
 2014--2018. A diferencia del trabajo anterior, seleccionaron variables del DEIS
 filtradas por correlación con los pesos DRG, aproximando así la casuística
 sin requerir la implementación completa del sistema. Los autores evaluaron la
-categorización MINSAL mediante índices internos de validez de clustering
+categorización MINSAL mediante índices internos de validez de agrupamiento
 (Silhouette y Ball-Hall) obteniendo valores de Silhouette inferiores a 0{,}2 en
 todos los años analizados, con valores negativos en algunos casos, lo que indica
 que varios hospitales estaban mal asignados según el criterio de casuística.
@@ -509,7 +509,7 @@ Francia: \citet{Chrusciel2021} & Identificar perfiles y funciones de red. 427 ho
 \addlinespace
 China: \citet{Liu2025} & Evaluar desempeño de 306 hospitales de Sichuan. Seis indicadores GRD, análisis factorial y agrupamiento jerárquico. & Reducir indicadores correlacionados antes de agrupar. Distinguir heterogeneidad dentro de categorías administrativas. & Incluye costos, eficiencia y mortalidad. Sus etiquetas de desempeño no equivalen a perfiles funcionales. Los autores advierten diferencias regionales de agrupadores. \\
 \addlinespace
-Suiza: \citet{Havranek2023} & Explicar costos ajustados por casuística. 116 hospitales y datos de 2019. Regresión y selección de atributos organizacionales y regionales. & Delimitar el alcance de indicadores de casuística frente a factores estructurales y seleccionar atributos según el objetivo analítico. & Explica costos, no construye clústeres. Esta tesis no incorpora los costos ni todos los atributos estructurales de ese modelo. \\
+Suiza: \citet{Havranek2023} & Explicar costos ajustados por casuística. 116 hospitales y datos de 2019. Regresión y selección de atributos organizacionales y regionales. & Delimitar el alcance de indicadores de casuística frente a factores estructurales y seleccionar atributos según el objetivo analítico. & Explica costos, no construye grupos. Esta tesis no incorpora los costos ni todos los atributos estructurales de ese modelo. \\
 \addlinespace
 Chile: \citet{Villalobos2016} & Agrupar perfiles de producción y evaluar eficiencia. 193 hospitales, datos de 2014. Agrupamiento por grafos seguido de DEA. & Incluir MST-kNN como contraste algorítmico y distinguir perfilamiento de evaluación de eficiencia. & Usa producción como aproximación a la casuística ante una implementación GRD parcial. Aquí no se realiza DEA. \\
 \addlinespace
@@ -572,7 +572,7 @@ hospitalaria, habilitando la distinción de perfiles funcionales específicos y
 (Silhouette por observación, Isolation Forest y distancia normalizada al
 centroide) con evaluación explícita de sensibilidad a sus parámetros, en
 lugar de un único criterio ad-hoc. Isolation Forest se aplica antes del
-clustering como una prueba de influencia: se excluyen temporalmente sus marcas,
+agrupamiento como una prueba de influencia: se excluyen temporalmente sus marcas,
 se re-estima la partición y se cuantifica el cambio resultante. Los criterios que
 requieren grupos (Silhouette individual y distancia al centroide) se utilizan
 posteriormente para caracterizar asignaciones ambiguas o alejadas. Esta

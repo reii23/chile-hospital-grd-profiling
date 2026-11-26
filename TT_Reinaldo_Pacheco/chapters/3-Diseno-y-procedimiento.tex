@@ -33,7 +33,7 @@ entre años y la identificación de problemas de calidad. La preparación de los
 datos abarca la estandarización, limpieza y transformación de los registros, la
 construcción de variables institucionales, la reducción dimensional de la
 casuística y el preprocesamiento previo al modelado. El modelado corresponde a la
-ejecución del clustering jerárquico aglomerativo en dos niveles, incluyendo la
+ejecución del agrupamiento jerárquico aglomerativo en dos niveles, incluyendo la
 elección del algoritmo, la selección del número de grupos y la subdivisión del
 núcleo mayoritario. La evaluación comprende la caracterización descriptiva de los
 grupos, el submuestreo para estabilidad, la selección de variables relevantes, el
@@ -51,7 +51,7 @@ ejecución se realizan en Linux Mint 22.3 (base Ubuntu 24.04) sobre equipo perso
 con procesador AMD Ryzen AI 7 350, 24 GB RAM y SSD NVMe. No se requiere
 infraestructura de servidores adicional.}, elegido porque permite integrar en un
 mismo entorno el procesamiento de datos, el modelado estadístico y la generación
-de visualizaciones, y porque las librerías de clustering, validación e
+de visualizaciones, y porque las librerías de agrupamiento, validación e
 interpretación empleadas están disponibles de forma nativa en este lenguaje.
 Las versiones utilizadas y sus roles en el pipeline se detallan en la
 Tabla~\ref{tab:software}.
@@ -66,7 +66,7 @@ Tabla~\ref{tab:software}.
 \hline
 \texttt{pandas}      & 2.2.3  & Manipulación y transformación de datos \\
 \texttt{numpy}       & 1.26.4 & Cálculo numérico \\
-\texttt{scikit-learn}& 1.4.2  & Clustering, métricas de validación y reducción de dimensionalidad \\
+\texttt{scikit-learn}& 1.4.2  & Agrupamiento, métricas de validación y reducción de dimensionalidad \\
 \texttt{scipy}       & 1.13.1 & Pruebas estadísticas de contraste entre grupos \\
 \texttt{statsmodels} & 0.14.2 & Modelos estadísticos complementarios \\
 \texttt{matplotlib}  & 3.8.4  & Visualizaciones \\
@@ -153,7 +153,7 @@ incorporen nuevos años de datos al sistema.
 Esta definición de la unidad de análisis tiene una consecuencia directa sobre el
 tamaño muestral relevante para toda la inferencia estadística del trabajo. Si
 bien la base procesada contiene 5{,}808{,}515 egresos individuales, estos se
-agregan en indicadores institucionales, de modo que el clustering, las pruebas
+agregan en indicadores institucionales, de modo que el agrupamiento, las pruebas
 de significancia, la detección de atípicos y el contraste con la clasificación
 MINSAL operan sobre $n = 65$ hospitales, no sobre el volumen de egresos. El
 tamaño de la base de egresos permite construir indicadores institucionales
@@ -1038,7 +1038,7 @@ niveles de análisis.
 \label{sec:algoritmo}
 
 
-Se aplica clustering aglomerativo jerárquico con el método de Ward sobre
+Se aplica agrupamiento aglomerativo jerárquico con el método de Ward sobre
 la matriz preprocesada, utilizando la distancia euclidiana como métrica
 de disimilitud entre observaciones.
 La elección sobre alternativas particionales como
@@ -1051,7 +1051,7 @@ partición particular, haciendo visible cómo se fusionan los hospitales y a qu�
 costo de cohesión.
 
 El criterio de enlace de Ward minimiza, en cada fusión, el incremento de la suma
-de cuadrados intra-grupo. Para dos clústeres $A$ y $B$, el criterio es:
+de cuadrados intra-grupo. Para dos grupos $A$ y $B$, el criterio es:
 
 \begin{equation}
   \Delta(A, B) = \frac{|A|\,|B|}{|A| + |B|}
@@ -1059,7 +1059,7 @@ de cuadrados intra-grupo. Para dos clústeres $A$ y $B$, el criterio es:
   \label{eq:ward}
 \end{equation}
 
-donde $|A|$ y $|B|$ son los tamaños de los clústeres y $\mathbf{c}_A$,
+donde $|A|$ y $|B|$ son los tamaños de los grupos y $\mathbf{c}_A$,
 $\mathbf{c}_B$ sus centroides. Este criterio produce grupos compactos y
 relativamente equilibrados, propiedad deseable cuando el objetivo es maximizar
 la homogeneidad funcional dentro de cada perfil.
@@ -1134,12 +1134,12 @@ Nivel~1.
 
 Una vez obtenida la partición, cada grupo se caracteriza mediante un
 procedimiento \textit{post-hoc} calculando las medianas de las variables
-originales (en escala interpretable) por cluster y se identifican los atributos
+originales (en escala interpretable) por grupo y se identifican los atributos
 en los que cada grupo se distingue del resto. A partir de este perfil de
 medianas se asigna a cada grupo una etiqueta funcional descriptiva.
 
 El aspecto metodológicamente relevante es que esta etiquetación se realiza
-después del clustering y no se entrega ninguna etiqueta al
+después del agrupamiento y no se entrega ninguna etiqueta al
 algoritmo. El agrupamiento opera exclusivamente sobre las variables de actividad
 clínica. Este
 orden garantiza que los perfiles describan patrones emergentes de los datos y no
@@ -1153,7 +1153,7 @@ Capítulo~\ref{cap:resultados}.
 El grupo mayoritario identificado en el Nivel 1 concentra la mayor parte de los
 65 hospitales del sistema y presenta heterogeneidad interna que el Nivel 1 no
 discrimina al tratarlo como un bloque homogéneo. Para explorar esta estructura,
-se aplica nuevamente clustering aglomerativo Ward sobre el subconjunto de
+se aplica nuevamente agrupamiento aglomerativo Ward sobre el subconjunto de
 hospitales del grupo principal. El número de subgrupos se selecciona con el
 mismo criterio multimétrico de la Sección~\ref{sec:seleccion-k}.
 
@@ -1190,9 +1190,9 @@ subgrupos (Sección~\ref{sec:nivel2-metodo}).
 Para la caracterización se contrastan 28 variables numéricas: las 27 variables
 directas utilizadas en la matriz de agrupamiento y \texttt{peso\_medio\_cma},
 indicador que se conserva con fines descriptivos, pero que no participa en la
-formación de los clústeres por su ausencia estructural en establecimientos sin
+formación de los grupos por su ausencia estructural en establecimientos sin
 actividad CMA. Las ocho componentes principales de casuística utilizadas en el
-clustering no se someten a este contraste, pues no poseen una interpretación
+agrupamiento no se someten a este contraste, pues no poseen una interpretación
 clínico-operativa directa. Adicionalmente, se examina la asociación entre la
 pertenencia a un grupo y el Servicio de Salud de cada establecimiento.
 
@@ -1257,7 +1257,7 @@ caracterización descriptiva \textit{post-hoc}. Su finalidad es
 identificar qué atributos presentan mayor contraste entre los perfiles ya
 formados, ordenar su importancia relativa mediante tamaños de efecto y apoyar
 la interpretación clínico-operativa de cada grupo. No se interpretan como
-evidencia de que los clústeres constituyan la única estructura posible ni como
+evidencia de que los grupos constituyan la única estructura posible ni como
 una validación externa de su existencia.
 
 La evaluación de la estabilidad y del alcance de la partición se aborda mediante
@@ -1280,7 +1280,7 @@ forma independiente cada una de las 35 columnas entre los 65 hospitales
 covarianza real entre variables y entre hospitales, preservando exactamente
 la distribución marginal (escala y forma) de cada variable individual. Sobre
 cada matriz nula se repite el flujo íntegro: preprocesamiento (log1p y
-escalado robusto), clustering aglomerativo Ward con $K=4$, y Kruskal-Wallis
+escalado robusto), agrupamiento aglomerativo Ward con $K=4$, y Kruskal-Wallis
 con corrección BH sobre las mismas 28 variables interpretables. El
 procedimiento se repite 500 veces, registrando en cada repetición cuántas de
 las 28 variables resultan significativas ($p_{\text{BH}} \leq 0{,}05$).
@@ -1295,7 +1295,7 @@ pero no conserva las correlaciones presentes en la matriz institucional.
 Como control más exigente, se simulan además 500 matrices normales
 multivariadas de 65 hospitales con la media y matriz de covarianza estimadas
 sobre las 36 variables numéricas transformadas y escaladas. En cada réplica se
-aplica Ward sobre las 35 variables de la matriz de clustering y
+aplica Ward sobre las 35 variables de la matriz de agrupamiento y
 Kruskal--Wallis con corrección BH sobre las 28 variables interpretables. Esta
 nula conserva en esperanza la covarianza lineal observada, pero no preserva las
 observaciones originales, las etiquetas hospitalarias ni una estructura de
@@ -1311,7 +1311,7 @@ nulas se reportan en el Capítulo~\ref{cap:resultados}.
 La robustez de la partición se evalúa mediante submuestreo repetido. En cada
 una de las 100 iteraciones se selecciona aleatoriamente, sin reposición, el
 80\,\% de los hospitales ($n_{\text{sub}} = 52$ de 65) y sobre ese subconjunto
-se re-ejecuta el clustering aglomerativo Ward con $K=4$. En cada réplica se
+se re-ejecuta el agrupamiento aglomerativo Ward con $K=4$. En cada réplica se
 re-ajustan la transformación logarítmica y el escalado robusto sobre los 52
 hospitales seleccionados; en cambio, las componentes PCA de casuística se
 conservan tal como fueron estimadas con los 65 hospitales, y $K$ se mantiene
@@ -1345,20 +1345,20 @@ adicionales:
     todo y no solo su cohesión interna.
   \item \textbf{Matriz de coasignación}: para cada par de hospitales que son
     muestreados juntos en una misma iteración, se registra si quedan en el
-    mismo clúster. La proporción de iteraciones en que ambos coinciden,
+    mismo grupo. La proporción de iteraciones en que ambos coinciden,
     acumulada sobre las 100 réplicas, produce una matriz de $65 \times 65$
     que resume qué pares de hospitales tienden a agruparse de forma
     consistente.
   \item \textbf{Estabilidad individual}: a partir de la matriz de
     coasignación, se define la estabilidad de un hospital como su
     coasignación promedio con el resto de los integrantes de su propio
-    clúster original, es decir, la proporción de sus ``vecinos'' de grupo que
+    grupo original, es decir, la proporción de sus ``vecinos'' de grupo que
     conserva a través de las submuestras.
   \item \textbf{Jaccard e estabilidad por grupo}: para cada uno de los cuatro
-    clústeres originales, se calcula en cada submuestra el índice de Jaccard
-    entre sus miembros presentes en esa submuestra y el clúster de la
+    grupos originales, se calcula en cada submuestra el índice de Jaccard
+    entre sus miembros presentes en esa submuestra y el grupo de la
     partición submuestreada con mayor solapamiento, y se promedia sobre las
-    submuestras en que el clúster tiene representantes. Esto permite
+    submuestras en que el grupo tiene representantes. Esto permite
     identificar si alguno de los cuatro grupos es sistemáticamente menos
     estable que los demás, en lugar de reportar una única cifra agregada para
     toda la partición.
@@ -1439,7 +1439,7 @@ son independientes, pero su valor bajo asignaciones aleatorias tiende a ser
 positivo, sobre todo con grupos pequeños, por lo que se interpreta junto con el
 ARI y no de forma aislada.
 
-El propósito del contraste no es validar el clustering mediante la etiqueta
+El propósito del contraste no es validar el agrupamiento mediante la etiqueta
 MINSAL ni demostrar que uno supera al otro, sino cuantificar en qué medida ambas
 perspectivas coinciden o divergen. La clasificación MINSAL se basa en
 infraestructura física y dotación de camas, mientras que la segmentación empírica se basa en
@@ -1460,7 +1460,7 @@ segmentación con la clasificación del MINSAL, por lo que el contraste que sigu
 es descriptivo y no se interpreta como una prueba de superioridad entre
 clasificaciones. Para describir cuán dispersos quedan los hospitales dentro de
 cada clasificación se compara, sobre la misma matriz preprocesada
-$X$ usada para el clustering y las mismas 27 variables directas, la dispersión
+$X$ usada para el agrupamiento y las mismas 27 variables directas, la dispersión
 intragrupo de la partición Ward y la de la clasificación MINSAL, mediante tres
 medidas complementarias:
 
@@ -1571,7 +1571,7 @@ los casos degrada o transforma materialmente la estructura, estos se conservan
 en la partición reportada y se interpretan como perfiles poco frecuentes o
 influyentes, no como errores automáticos.
 
-Después del clustering, se aplica una estrategia que combina tres criterios
+Después del agrupamiento, se aplica una estrategia que combina tres criterios
 complementarios, cada uno sensible a una faceta distinta de la atipicidad:
 
 \begin{enumerate}
@@ -1583,19 +1583,19 @@ complementarios, cada uno sensible a una faceta distinta de la atipicidad:
     características. A diferencia de LOF, no requiere definir un radio de
     vecindad y es robusto con muestras pequeñas. El modelo se ajusta \textbf{una
     sola vez, de forma global}, sobre los 65 hospitales y las 35 variables de la
-    matriz institucional, y no se ajusta por separado dentro de cada clúster. Se
+    matriz institucional, y no se ajusta por separado dentro de cada grupo. Se
     reporta con este alcance explícito para no sugerir que la técnica detecta
     atipicidad ``dentro de'' cada grupo cuando, en realidad, compara a cada
     hospital contra la totalidad de la red.
   \item \textbf{Distancia euclidiana al centroide}: se calcula la distancia de
-    cada hospital al centroide de su propio clúster y se normaliza mediante la
+    cada hospital al centroide de su propio grupo y se normaliza mediante la
     mediana de la desviación absoluta (MAD) de esa distancia, calculada sobre el
-    conjunto completo de 65 hospitales y no dentro de cada clúster por separado.
+    conjunto completo de 65 hospitales y no dentro de cada grupo por separado.
     Se marca como atípico todo hospital cuya distancia normalizada supere un
     valor de referencia equivalente a 3 desviaciones estándar bajo normalidad
     ($\text{MAD} \times 1{,}4826$). Esta normalización global, en lugar de una
     desviación estándar estimada dentro de cada grupo, evita depender de una
-    dispersión intra-clúster calculada con pocos hospitales, como
+    dispersión intra-grupo calculada con pocos hospitales, como
     ocurre en $C2$ ($n=5$), $C0$ y $C3$ ($n=3$ cada uno), donde esa estimación sería
     estadísticamente inestable.
 \end{enumerate}
@@ -1633,11 +1633,11 @@ Capítulo~\ref{cap:resultados}.
 
 La descripción clínica de cada grupo se apoya en una interpretación
 \textit{post-hoc} basada en las medianas de las variables más discriminantes,
-realizada exclusivamente después del clustering para no sesgar la formación de
+realizada exclusivamente después del agrupamiento para no sesgar la formación de
 los grupos. Complementariamente, se proyecta la matriz a dos dimensiones
 mediante PCA. Esta proyección tiene un propósito exclusivamente ilustrativo y
 exploratorio: facilita inspeccionar la disposición relativa de los hospitales y
-no constituye evidencia cuantitativa de la validez del clustering ni sustituye
+no constituye evidencia cuantitativa de la validez del agrupamiento ni sustituye
 los índices de concordancia de partición (ARI, NMI) que se emplean para ese
 propósito en la Sección~\ref{sec:sensibilidad}. Una proyección bidimensional
 omite necesariamente información de las 35 variables originales, por ello, su
@@ -1670,7 +1670,7 @@ contenido semántico y depende del orden en que se construyen las fusiones del
 etiquetas distintas. Por esta razón, la comparación entre particiones se realiza
 con índices invariantes y no contabilizando coincidencias de etiquetas, y la
 interpretación de cada prueba distingue explícitamente entre renumeración de
-clústeres y reasignación sustantiva de establecimientos.
+grupos y reasignación sustantiva de establecimientos.
 
 Las cuatro pruebas constituyen un análisis de sensibilidad interna: las
 particiones alternativas se construyen sobre la misma fuente de datos y el mismo
@@ -1685,12 +1685,12 @@ se restringe a los 65 hospitales presentes en ambas soluciones.
 
 Para evaluar si la estructura identificada es una propiedad genuina de los datos
 y no un artefacto del algoritmo aglomerativo Ward, se contrasta el resultado con
-cinco técnicas de clustering adicionales y una proyección exploratoria, resumidas en la
+cinco técnicas de agrupamiento adicionales y una proyección exploratoria, resumidas en la
 Tabla~\ref{tab:sensibilidad}.
 
 \begin{table}[htbp]
 \centering
-\caption{Técnicas de clustering empleadas en el análisis de sensibilidad.}
+\caption{Técnicas de agrupamiento empleadas en el análisis de sensibilidad.}
 \label{tab:sensibilidad}
 \begin{tabular}{p{4.2cm} p{3.0cm} p{4.5cm}}
 \toprule
@@ -1716,7 +1716,7 @@ La inclusión del algoritmo \textbf{MST-kNN}~\citep{inostroza2008}, utilizado pr
 razones: es el algoritmo de referencia desarrollado en el Departamento de
 Ingeniería Informática de la USACH, lo que sitúa este trabajo en continuidad con
 la línea de investigación local, y no requiere especificar el número de grupos,
-descubriendo automáticamente tanto los clústeres como los hospitales de perfil
+descubriendo automáticamente tanto los grupos como los hospitales de perfil
 único. Adicionalmente, el comportamiento de las métricas en rangos de mayor
 granularidad se examina con Ward para $k \in \{2, \ldots, 10\}$ y con K-means++
 y GMM para $k \in \{2, \ldots, 8\}$.
@@ -1733,7 +1733,7 @@ perturbación que sí modifica el universo es la contraria: eliminar por complet
 el filtro de presencia temporal e incorporar los 7 hospitales excluidos
 (Tabla~\ref{tab:anexo-excluidos}) con los datos parciales de uno o dos años que
 efectivamente tienen disponibles. Se reconstruye la matriz institucional sobre
-este universo ampliado de 72 hospitales, se repite el clustering aglomerativo
+este universo ampliado de 72 hospitales, se repite el agrupamiento aglomerativo
 Ward con $K=4$ y la concordancia con la partición original se calcula
 restringiendo la comparación a los 65 hospitales presentes en ambas soluciones.
 
@@ -1751,7 +1751,7 @@ período y no a un cambio en la composición del universo de análisis. Sobre es
 matriz alternativa, construida con 4.158.029 egresos de los años 2019 y
 2022--2024 (un 72{,}2\,\% de los 5.756.850 egresos del universo analizado en el
 período completo), se repiten el
-preprocesamiento de la Sección~\ref{sec:preprocesamiento} y el clustering
+preprocesamiento de la Sección~\ref{sec:preprocesamiento} y el agrupamiento
 aglomerativo Ward con $K=4$.
 
 Esta prueba incorpora un segundo nivel de análisis, además de la comparación
