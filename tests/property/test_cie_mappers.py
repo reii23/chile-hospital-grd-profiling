@@ -5,6 +5,8 @@
 """
 from __future__ import annotations
 
+from pathlib import Path
+
 import pandas as pd
 import pytest
 from hypothesis import assume, given, settings, strategies as st
@@ -180,18 +182,21 @@ class TestMapeoTotal:
 # ----------------------------------------------------------------------------
 # Tests estructurales (Tarea 2.6: smoke sobre maestras reales)
 # ----------------------------------------------------------------------------
+MAESTRAS = Path(__file__).resolve().parents[2] / "insumos" / "maestras"
+
+
 class TestCoberturaMaestrasReales:
     """Verifica que las maestras CIE reales del repositorio tienen el número
     correcto de capítulos/secciones (Req 5.1, 6.1)."""
 
     @pytest.fixture(scope="class")
     def df_cie10_real(self):
-        path = "/home/reinaldo/tesis-pregrado/insumos/maestras/CIE-10.xlsx"
+        path = MAESTRAS / "CIE-10.xlsx"
         return pd.read_excel(path)
 
     @pytest.fixture(scope="class")
     def df_cie9_real(self):
-        path = "/home/reinaldo/tesis-pregrado/insumos/maestras/CIE-9 .xlsx"
+        path = MAESTRAS / "CIE-9 .xlsx"
         return pd.read_excel(path)
 
     def test_cie10_real_tiene_22_capitulos(self, df_cie10_real):

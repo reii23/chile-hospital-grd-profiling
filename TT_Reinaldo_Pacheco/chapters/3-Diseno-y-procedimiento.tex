@@ -137,6 +137,44 @@ herramientas de prueba, y \texttt{pyproject.toml} consolida los metadatos del
 paquete y la configuración de \texttt{pytest}. Las semillas aleatorias están
 fijadas en el código (\texttt{RANDOM\_STATE = 42}).
 
+La verificación del software se realiza con 62 pruebas automatizadas
+(\texttt{pytest} e \texttt{hypothesis}), todas aprobadas en la versión
+entregada. Se organizan en tres tipos, resumidos en la
+Tabla~\ref{tab:pruebas}. Las pruebas basadas en propiedades generan entradas
+aleatorias y comprueban invariantes que deben cumplirse para cualquier dato,
+por ejemplo, que cada vector de casuística sume uno o que la entropía
+normalizada permanezca entre cero y uno. Las pruebas de regresión comprueban
+que el pipeline reproduce, a partir de los artefactos versionados, las cifras
+centrales reportadas en el Capítulo~\ref{cap:resultados}.
+
+\begin{table}[htbp]
+\centering
+\caption{Pruebas automatizadas del pipeline.}
+\label{tab:pruebas}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.2cm} c >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Tipo} & \textbf{N.º} & \textbf{Aspectos verificados} \\
+\midrule
+Unitarias & 11 & Lectura y escritura de artefactos con validación de esquema y orden determinista \\
+Basadas en propiedades & 46 & Normalización y mapeo de códigos CIE-10 y CIE-9-MC (incluidas las tablas maestras reales), suma unitaria de los vectores de casuística, rango y propiedades de la entropía de Shannon, tasa de CMA, comorbilidades, clasificación de modalidad de atención y regla de elegibilidad \\
+Regresión & 5 & Matriz de 65 hospitales y 35 variables; ocho componentes de casuística centradas, no correlacionadas y ordenadas por varianza; partición Ward de tamaños 54, 5, 3 y 3; Silhouette de 0,398; coincidencia exacta con la asignación reportada \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+La cobertura de sentencias del paquete \texttt{src/} es de 29,8\,\%. Es alta
+en los módulos de transformación de egresos (75 a 94\,\%) y en el módulo de
+preprocesamiento y partición de referencia (97\,\%), y nula en los módulos de
+algoritmos alternativos, construcción de indicadores extendidos, reducción
+dimensional y ensamblado de la matriz. Los resultados de estos últimos se
+verifican de forma indirecta mediante las pruebas de regresión sobre los
+artefactos que producen. Estas pruebas comprueban la corrección computacional
+del pipeline, es decir, que cada etapa calcula lo que declara calcular. No
+establecen la validez metodológica de los perfiles, que se examina con los
+análisis de estabilidad, sensibilidad y validación cruzada por bloques del
+Capítulo~\ref{cap:resultados}.
+
 Los datos fuente corresponden a los seis archivos GRD públicos del MINSAL para el
 período 2019--2024, disponibles en la plataforma Tablero GRD del Ministerio de
 Salud~\citep{TableauGRD}. El código completo del proyecto, incluyendo notebooks,
