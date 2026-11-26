@@ -152,7 +152,7 @@ incorporen nuevos años de datos al sistema.
 
 Esta definición de la unidad de análisis tiene una consecuencia directa sobre el
 tamaño muestral relevante para toda la inferencia estadística del trabajo. Si
-bien la base procesada contiene 5{,}808{,}515 egresos individuales, estos se
+bien la base procesada contiene 5.808.515 egresos individuales, estos se
 agregan en indicadores institucionales, de modo que el agrupamiento, las pruebas
 de significancia, la detección de atípicos y el contraste con la clasificación
 MINSAL operan sobre $n = 65$ hospitales, no sobre el volumen de egresos. El
@@ -183,12 +183,12 @@ de cada archivo antes de cualquier proceso de limpieza o filtrado.
 \toprule
 \textbf{Año} & \textbf{Archivo} & \textbf{Registros} \\
 \midrule
-2019 & \texttt{GRD\_PUBLICO\_2019.txt} & 1{,}151{,}475 \\
-2020 & \texttt{GRD\_PUBLICO\_2020.txt} &   781{,}912 \\
-2021 & \texttt{GRD\_PUBLICO\_2021.txt} &   816{,}909 \\
-2022 & \texttt{GRD\_PUBLICO\_EXTERNO\_2022.txt} &   932{,}840 \\
-2023 & \texttt{GRD\_PUBLICO\_2023.txt} & 1{,}039{,}587 \\
-2024 & \texttt{GRD\_PUBLICO\_2024.txt} & 1{,}085{,}813 \\
+2019 & \texttt{GRD\_PUBLICO\_2019.txt} & 1.151.475 \\
+2020 & \texttt{GRD\_PUBLICO\_2020.txt} &   781.912 \\
+2021 & \texttt{GRD\_PUBLICO\_2021.txt} &   816.909 \\
+2022 & \texttt{GRD\_PUBLICO\_EXTERNO\_2022.txt} &   932.840 \\
+2023 & \texttt{GRD\_PUBLICO\_2023.txt} & 1.039.587 \\
+2024 & \texttt{GRD\_PUBLICO\_2024.txt} & 1.085.813 \\
 \midrule
 \textbf{Total} & & \textbf{5{,}808{,}536} \\
 \bottomrule
@@ -397,8 +397,8 @@ GRD y de la producción hospitalaria a lo largo del período. Esta limitación o
 en tres dimensiones.
 
 La primera es la pandemia de COVID-19. Los años 2020 y 2021 presentan caídas
-bruscas en el volumen de registros, con 781{,}912 y 816{,}909 egresos
-respectivamente, frente a 1{,}151{,}475 en 2019, lo que refleja la contracción de
+bruscas en el volumen de registros, con 781.912 y 816.909 egresos
+respectivamente, frente a 1.151.475 en 2019, lo que refleja la contracción de
 la actividad electiva durante la crisis sanitaria. Esta disminución no fue uniforme entre
 hospitales: los centros de mayor complejidad reconvirtieron actividad hacia la
 atención de pacientes críticos, alterando temporalmente sus perfiles de
@@ -534,7 +534,7 @@ equivalencia demostrada entre ambos campos.
 
 En esta fase además se descartan los registros con \texttt{COD\_HOSPITAL} vacío y
 aquellos cuya variable \texttt{TIPO\_ACTIVIDAD} no corresponde a ninguna de las
-modalidades reconocidas por el estándar GRD. De los 5{,}808{,}536 registros
+modalidades reconocidas por el estándar GRD. De los 5.808.536 registros
 originales, 21 fueron eliminados por estas razones, todos ellos del año 2019 y
 todos por presentar valores no estándar en \texttt{TIPO\_ACTIVIDAD}:
 específicamente las categorías \texttt{DESCONOCIDO} (18 registros) y
@@ -545,7 +545,7 @@ identifican el establecimiento tratante en la totalidad de sus filas. Cabe
 destacar que tampoco fue eliminado ningún registro por estancia negativa ni por
 fechas inválidas, dado que ambas condiciones se trataron mediante truncamiento y
 conversión a nulo respectivamente, conservando el registro en la base. El
-resultado es una base depurada de 5{,}808{,}515 registros, lo que confirma que
+resultado es una base depurada de 5.808.515 registros, lo que confirma que
 los archivos GRD presentan alta consistencia interna. Los seis archivos anuales depurados se consolidan en
 un único archivo en formato \texttt{parquet}, que permite su consulta eficiente
 sin necesidad de cargar el conjunto completo en memoria.
@@ -587,10 +587,10 @@ por tipo de actividad se presenta en la Tabla~\ref{tab:actividad}.
 \toprule
 \textbf{Tipo de actividad} & \textbf{Registros} & \textbf{\%} \\
 \midrule
-Hospitalización convencional     & 4{,}800{,}768 & 82{,}6 \\
-Cirugía mayor ambulatoria (CMA)  &   889{,}868   & 15{,}3 \\
-Hospitalización en urgencia      &    62{,}551   &  1{,}1 \\
-Hospitalización diurna           &    55{,}328   &  1{,}0 \\
+Hospitalización convencional     & 4.800.768 & 82{,}6 \\
+Cirugía mayor ambulatoria (CMA)  &   889.868   & 15{,}3 \\
+Hospitalización en urgencia      &    62.551   &  1{,}1 \\
+Hospitalización diurna           &    55.328   &  1{,}0 \\
 \midrule
 \textbf{Total}                   & \textbf{5{,}808{,}515} & \textbf{100{,}0} \\
 \bottomrule
