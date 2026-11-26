@@ -60,7 +60,7 @@ diagnósticos secundarios, los procedimientos realizados, la edad del paciente y
 otras variables demográficas.
 
 Los GRD tienen su origen a finales de la década de 1960 en la Universidad de
-Yale en Estados Unidos, donde fueron desarrollados inicialmente como una
+Yale en Estados Unidos~\citep{Fetter1980}, donde fueron desarrollados inicialmente como una
 herramienta para evaluar la calidad asistencial y medir la actividad
 hospitalaria. Su adopción se generalizó al incorporarse a los mecanismos de pago
 prospectivo, y en la actualidad constituyen un estándar internacional utilizado
@@ -586,7 +586,7 @@ frecuentes como errores que deban eliminarse.
 \label{sec:clustering}
 
 El aprendizaje no supervisado permite agrupar hospitales mediante similitudes
-en sus indicadores sin utilizar etiquetas funcionales previas. La clasificación
+en sus indicadores sin utilizar etiquetas funcionales previas~\citep{Jain2010}. La clasificación
 administrativa se conserva como referencia de contraste, no como una verdad
 objetivo que el agrupamiento deba reproducir. Los antecedentes de
 \citet{Chrusciel2021} y \citet{Liu2025} ilustran el uso de agrupamientos en
@@ -665,7 +665,8 @@ Un hospital puede resultar atípico por su especialización, por una combinació
 poco frecuente de actividad o por problemas de registro. Una marca estadística
 no distingue automáticamente estas causas ni implica un error que deba
 eliminarse (Sección~\ref{sec:grd-limitaciones}). Por ello se combinan señales
-con alcances distintos.
+con alcances distintos, siguiendo la distinción entre anomalías globales y
+contextuales de la literatura de detección de anomalías~\citep{Chandola2009}.
 
 Isolation Forest aísla observaciones mediante particiones aleatorias del
 espacio. Una trayectoria corta indica mayor facilidad de aislamiento y aporta
@@ -709,7 +710,7 @@ no son intercambiables~\citep{Halkidi2001}.
     comparan particiones y Jaccard describe el solapamiento de miembros por
     grupo~\citep{Hennig2007}. Aquí el PCA y el número de grupos se mantienen
     fijos en las réplicas, por lo que no se evalúa su incertidumbre. El
-    bootstrap con reposición cumple otro propósito: obtener intervalos de las
+    bootstrap con reposición~\citep{Efron1993} cumple otro propósito: obtener intervalos de las
     diferencias WSS/TSS en la comparación por bloques. La exclusión de años y
     las alternativas de algoritmo o representación son sensibilidades
     adicionales, no demostraciones de estabilidad longitudinal.

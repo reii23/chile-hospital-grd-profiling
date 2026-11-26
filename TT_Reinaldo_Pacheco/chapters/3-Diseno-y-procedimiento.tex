@@ -66,7 +66,7 @@ Tabla~\ref{tab:software}.
 \hline
 \texttt{pandas}      & 2.2.3  & Manipulación y transformación de datos \\
 \texttt{numpy}       & 1.26.4 & Cálculo numérico \\
-\texttt{scikit-learn}& 1.4.2  & Agrupamiento, métricas de validación y reducción de dimensionalidad \\
+\texttt{scikit-learn}~\citep{Pedregosa2011}& 1.4.2  & Agrupamiento, métricas de validación y reducción de dimensionalidad \\
 \texttt{scipy}       & 1.13.1 & Pruebas estadísticas de contraste entre grupos \\
 \texttt{statsmodels} & 0.14.2 & Modelos estadísticos complementarios \\
 \texttt{matplotlib}  & 3.8.4  & Visualizaciones \\
@@ -846,7 +846,7 @@ del establecimiento, mientras que los índices de severidad y mortalidad refleja
 la gravedad clínica de la población atendida.
 
 \textbf{Variables de diversidad diagnóstica:} Para cuantificar la amplitud del espectro clínico de cada hospital se emplea la
-entropía de Shannon normalizada sobre la distribución de GRD. Dada la
+entropía de Shannon~\citep{Shannon1948} normalizada sobre la distribución de GRD. Dada la
 distribución de frecuencias relativas $p_i$ de los $G$ grupos GRD distintos
 presentes en un hospital, el indicador se define como:
 
@@ -956,7 +956,7 @@ Estos tres vectores son, en sentido estricto, datos composicionales, pues cada
 fila es una distribución de proporciones que suma 1. Aplicar PCA y, más
 adelante, distancia euclidiana directamente sobre estas proporciones puede
 introducir el problema de la \emph{clausura composicional} (\textit{closure
-problem}). Como las partes deben sumar una constante, el incremento de una
+problem})~\citep{Aitchison1982}. Como las partes deben sumar una constante, el incremento de una
 proporción obliga necesariamente a la disminución de otras. Esto puede generar
 correlaciones y distancias artificiales que no reflejan diferencias reales en la
 actividad clínica. La Sección~\ref{sec:sensibilidad-composicional} define el
@@ -967,7 +967,7 @@ resultados del trabajo.
 \label{sec:pca-detalle}
 
 Sobre la matriz concatenada de casuística, previa estandarización de las
-proporciones, se aplica PCA. Dado que el vector de capítulos CIE-10 admite dos
+proporciones, se aplica PCA~\citep{Jolliffe2016}. Dado que el vector de capítulos CIE-10 admite dos
 construcciones, se evaluaron ambas variantes de forma independiente. La variante
 \emph{principal} considera únicamente el diagnóstico principal
 (\texttt{DIAGNOSTICO1}) de cada egreso, de modo que cada egreso aporta una
@@ -1135,7 +1135,7 @@ niveles de análisis.
 \label{sec:algoritmo}
 
 
-Se aplica agrupamiento aglomerativo jerárquico con el método de Ward sobre
+Se aplica agrupamiento aglomerativo jerárquico con el método de Ward~\citep{Ward1963} sobre
 la matriz preprocesada, utilizando la distancia euclidiana como métrica
 de disimilitud entre observaciones.
 La elección sobre alternativas particionales como
@@ -1297,7 +1297,7 @@ La elección de la prueba depende de la naturaleza de la variable:
 
 \begin{itemize}
   \item \textbf{Variables numéricas}: se utiliza la prueba de
-    Kruskal--Wallis, que contrasta si las distribuciones de una variable difieren
+    Kruskal--Wallis~\citep{KruskalWallis1952}, que contrasta si las distribuciones de una variable difieren
     entre los grupos sin requerir normalidad. Cuando las formas de las
     distribuciones son comparables, sus resultados pueden interpretarse
     principalmente como diferencias de localización entre grupos.
@@ -1435,8 +1435,8 @@ explícitamente la estabilidad de la partición mediante cuatro métricas
 adicionales:
 
 \begin{itemize}
-  \item \textbf{Concordancia global}: el Índice de Rand Ajustado (ARI) y la
-    Información Mutua Normalizada (NMI) entre la partición de cada submuestra
+  \item \textbf{Concordancia global}: el Índice de Rand Ajustado (ARI)~\citep{HubertArabie1985} y la
+    Información Mutua Normalizada (NMI)~\citep{Vinh2010} entre la partición de cada submuestra
     y la partición original de referencia, restringidos a los hospitales en
     común, cuantifican si la estructura de cuatro grupos se reproduce como un
     todo y no solo su cohesión interna.
@@ -1701,7 +1701,7 @@ complementarios, cada uno sensible a una faceta distinta de la atipicidad:
     conjunto completo de 65 hospitales y no dentro de cada grupo por separado.
     Se marca como atípico todo hospital cuya distancia normalizada supere un
     valor de referencia equivalente a 3 desviaciones estándar bajo normalidad
-    ($\text{MAD} \times 1{,}4826$). Esta normalización global, en lugar de una
+    ($\text{MAD} \times 1{,}4826$)~\citep{Leys2013}. Esta normalización global, en lugar de una
     desviación estándar estimada dentro de cada grupo, evita depender de una
     dispersión intra-grupo calculada con pocos hospitales, como
     ocurre en $C2$ ($n=5$), $C0$ y $C3$ ($n=3$ cada uno), donde esa estimación sería
