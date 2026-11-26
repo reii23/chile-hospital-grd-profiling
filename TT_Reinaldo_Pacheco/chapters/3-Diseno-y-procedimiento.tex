@@ -1657,6 +1657,17 @@ matriz de covarianza, operación mal condicionada cuando el número de variables
 una sensibilidad previa mediante Isolation Forest con dos criterios posteriores
 que requieren una partición ya construida.
 
+Los tres criterios se eligieron porque cada uno responde una pregunta distinta y
+ninguno exige estimar parámetros que la muestra no permite sostener. Isolation
+Forest pregunta si un hospital es raro frente a toda la red; no supone una
+distribución ni requiere definir una vecindad, y su único parámetro, la
+contaminación, se somete a sensibilidad. La distancia al centroide pregunta si
+un hospital está lejos del perfil al que fue asignado y usa la misma geometría
+euclidiana con la que Ward construye los grupos. El Silhouette individual
+pregunta si la asignación es ambigua, es decir, si el hospital está más cerca
+de otro grupo que del propio. Combinados, distinguen un hospital raro en la red
+de uno mal ubicado en su grupo, algo que ninguno de ellos permite por separado.
+
 Antes de ajustar Ward, Isolation Forest se entrena una vez sobre los 65
 hospitales y las 35 variables preprocesadas. Con contaminación $10\,\%$, sus
 marcas se excluyen temporalmente y Ward $K=4$ se re-estima sobre los hospitales
