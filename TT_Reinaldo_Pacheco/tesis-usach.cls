@@ -555,7 +555,7 @@
 \newcommand{\KeywordsES}[1]
 {
     \par\noindent
-    {\bf Palabras Claves\/}: #1
+    {\bf Palabras clave\/}: #1
 }
 \newcommand{\resumenCastellano}[1]
 {
