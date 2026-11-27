@@ -75,104 +75,36 @@ Tabla~\ref{tab:software}.
 \end{tabular}
 \end{table}
 
-La solución se organiza en tres capas con responsabilidades separadas. La
-primera es una biblioteca de funciones reutilizables, el paquete \texttt{src/},
-que no lee ni escribe archivos por sí misma salvo a través de un módulo de
-entrada y salida común. La segunda está formada por los \textit{scripts} de
-\texttt{scripts/}, que orquestan esas funciones, leen los insumos, ejecutan
-cada etapa del pipeline sin intervención manual y persisten los resultados. La
-tercera son los artefactos: archivos Parquet intermedios en
-\texttt{data/processed/} y tablas CSV en \texttt{reports/tables/}, de donde
-provienen todas las cifras del Capítulo~\ref{cap:resultados}. Esta separación
-hace que cada etapa pueda volver a ejecutarse de forma aislada a partir de los
-artefactos de la etapa anterior. Los \textit{notebooks} de \texttt{notebooks/}
-conservan el registro exploratorio del análisis y no forman parte de la cadena
-que produce los resultados reportados.
-
-La Tabla~\ref{tab:modulos} describe la responsabilidad de los módulos que
-intervienen en esa cadena y sus dependencias. El flujo de datos es lineal:
-\texttt{build\_extended\_grd.py} consolida los seis archivos anuales en un
-único archivo Parquet; \texttt{build\_dataset.py} construye a partir de él los
-indicadores, la casuística reducida y la matriz institucional;
-\texttt{build\_hierarchical\_clustering.py} aplica el preprocesamiento y Ward,
-y persiste la partición reportada; y los \textit{scripts} de análisis
-(\texttt{analyze\_*.py}, \texttt{compare\_*.py} y
-\texttt{evaluate\_*.py}) consumen esa partición para producir los contrastes y
-las pruebas de sensibilidad. Todos ellos obtienen la matriz preprocesada y la
-partición de referencia desde \texttt{src/modeling/referencia.py}, de modo que
-el preprocesamiento se define en un solo lugar y no puede divergir entre
-análisis.
-
-\begin{table}[htbp]
-\centering
-\caption{Módulos principales del pipeline, responsabilidades y dependencias internas.}
-\label{tab:modulos}
-\small
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.2cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{3.6cm}}
-\toprule
-\textbf{Módulo} & \textbf{Responsabilidad} & \textbf{Depende de} \\
-\midrule
-\texttt{src/utils/io.py} & Lectura y escritura de Parquet con validación de esquema y orden determinista de filas & --- \\
-\texttt{src/etl/cie\_mappers.py} & Asignación de códigos CIE-10 a capítulos y de códigos CIE-9-MC a secciones & --- \\
-\texttt{src/etl/diversity.py} & Medidas de diversidad diagnóstica (entropía) & --- \\
-\texttt{src/etl/casuistica.py} & Vectores de casuística por hospital (capítulos, secciones y GRD frecuentes) & \texttt{cie\_mappers}, \texttt{diversity} \\
-\texttt{src/etl/features\_extendidas.py} & Indicadores institucionales directos (producción, perfil funcional, CMA) & --- \\
-\texttt{src/modeling/reducer.py} & Estandarización y PCA de la casuística & --- \\
-\texttt{src/modeling/matriz.py} & Ensamblado de la matriz institucional de 65 hospitales y 35 variables & \texttt{io} \\
-\texttt{src/modeling/referencia.py} & Preprocesamiento único (log1p y escalado robusto), partición Ward de referencia y su Silhouette & \texttt{io} \\
-\texttt{src/modeling/mstknn.py} & Algoritmo MST-kNN para la sensibilidad algorítmica & --- \\
-\midrule
-\texttt{scripts/build\_extended\_grd.py} & Consolidación de los archivos GRD anuales & --- \\
-\texttt{scripts/build\_dataset.py} & Construcción de indicadores, casuística reducida y matriz & \texttt{casuistica}, \texttt{features\_extendidas}, \texttt{reducer}, \texttt{matriz}, \texttt{referencia}, \texttt{io} \\
-\texttt{scripts/build\_hierarchical\_clustering.py} & Partición reportada (Ward $K=4$) y su persistencia & \texttt{referencia} \\
-\texttt{scripts/analyze\_*.py}, \texttt{compare\_*.py}, \texttt{evaluate\_*.py} & Estabilidad, sensibilidad, atípicos y contraste con MINSAL & \texttt{referencia}, \texttt{io} \\
-\bottomrule
-\end{tabularx}
-\end{table}
+La solución se organiza en tres capas con responsabilidades separadas: una
+biblioteca de funciones reutilizables (\texttt{src/}), que accede a los archivos
+solo mediante un módulo común de entrada y salida; los \textit{scripts} de
+\texttt{scripts/}, que orquestan cada etapa sin intervención manual y persisten
+sus resultados; y los artefactos Parquet y CSV de \texttt{data/processed/} y
+\texttt{reports/tables/}, de donde provienen todas las cifras del
+Capítulo~\ref{cap:resultados}. El flujo es lineal:
+\texttt{build\_extended\_grd.py} consolida los archivos anuales,
+\texttt{build\_dataset.py} construye los indicadores, la casuística reducida y
+la matriz, \texttt{build\_hierarchical\_clustering.py} fija la partición
+reportada y los \textit{scripts} de análisis la consumen. Todos obtienen el
+preprocesamiento desde \texttt{src/modeling/referencia.py}, de modo que se
+define en un solo lugar. Los \textit{notebooks} conservan el registro
+exploratorio y no forman parte de esa cadena. La responsabilidad y las
+dependencias de cada módulo se detallan en la Tabla~\ref{tab:modulos} del
+Anexo~\ref{anexo:repositorio}.
 
 El entorno de ejecución está fijado: \texttt{requirements.txt} declara las
 versiones exactas de las dependencias, \texttt{requirements-dev.txt} agrega las
 herramientas de prueba, y \texttt{pyproject.toml} consolida los metadatos del
 paquete y la configuración de \texttt{pytest}. Las semillas aleatorias están
-fijadas en el código (\texttt{RANDOM\_STATE = 42}).
-
-La verificación del software se realiza con 62 pruebas automatizadas
-(\texttt{pytest} e \texttt{hypothesis}), todas aprobadas en la versión
-entregada. Se organizan en tres tipos, resumidos en la
-Tabla~\ref{tab:pruebas}. Las pruebas basadas en propiedades generan entradas
-aleatorias y comprueban invariantes que deben cumplirse para cualquier dato,
-por ejemplo, que cada vector de casuística sume uno o que la entropía
-normalizada permanezca entre cero y uno. Las pruebas de regresión comprueban
-que el pipeline reproduce, a partir de los artefactos versionados, las cifras
-centrales reportadas en el Capítulo~\ref{cap:resultados}.
-
-\begin{table}[htbp]
-\centering
-\caption{Pruebas automatizadas del pipeline.}
-\label{tab:pruebas}
-\small
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.2cm} c >{\raggedright\arraybackslash}X}
-\toprule
-\textbf{Tipo} & \textbf{N.º} & \textbf{Aspectos verificados} \\
-\midrule
-Unitarias & 11 & Lectura y escritura de artefactos con validación de esquema y orden determinista \\
-Basadas en propiedades & 46 & Normalización y mapeo de códigos CIE-10 y CIE-9-MC (incluidas las tablas maestras reales), suma unitaria de los vectores de casuística, rango y propiedades de la entropía de Shannon, tasa de CMA, comorbilidades, clasificación de modalidad de atención y regla de elegibilidad \\
-Regresión & 5 & Matriz de 65 hospitales y 35 variables; ocho componentes de casuística centradas, no correlacionadas y ordenadas por varianza; partición Ward de tamaños 54, 5, 3 y 3; Silhouette de 0,398; coincidencia exacta con la asignación reportada \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-La cobertura de sentencias del paquete \texttt{src/} es de 29,8\,\%. Es alta
-en los módulos de transformación de egresos (75 a 94\,\%) y en el módulo de
-preprocesamiento y partición de referencia (97\,\%), y nula en los módulos de
-algoritmos alternativos, construcción de indicadores extendidos, reducción
-dimensional y ensamblado de la matriz. Los resultados de estos últimos se
-verifican de forma indirecta mediante las pruebas de regresión sobre los
-artefactos que producen. Estas pruebas comprueban la corrección computacional
-del pipeline, es decir, que cada etapa calcula lo que declara calcular. No
-establecen la validez metodológica de los perfiles, que se examina con los
-análisis de estabilidad, sensibilidad y validación cruzada por bloques del
-Capítulo~\ref{cap:resultados}.
+fijadas en el código (\texttt{RANDOM\_STATE = 42}). La verificación del
+software se realiza con 62 pruebas automatizadas, todas aprobadas: 11
+unitarias, 46 basadas en propiedades y 5 de regresión, que comprueban que el
+pipeline reproduce las cifras centrales del Capítulo~\ref{cap:resultados}
+(Tabla~\ref{tab:pruebas} del Anexo~\ref{anexo:repositorio}). La cobertura de
+sentencias del paquete \texttt{src/} es de 29,8\,\%. Estas pruebas comprueban
+la corrección computacional del pipeline, no la validez metodológica de los
+perfiles, que se examina con los análisis de estabilidad, sensibilidad y
+validación cruzada por bloques del Capítulo~\ref{cap:resultados}.
 
 Los datos fuente corresponden a los seis archivos GRD públicos del MINSAL para el
 período 2019--2024, disponibles en la plataforma Tablero GRD del Ministerio de

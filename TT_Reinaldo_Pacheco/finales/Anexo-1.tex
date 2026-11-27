@@ -572,6 +572,63 @@ Capítulo~\ref{cap:metodologia}. La Tabla~\ref{tab:anexo-reproducibilidad}
 resume dónde se encuentra cada elemento necesario para una reproducción
 completa.
 
+La Tabla~\ref{tab:modulos} describe la responsabilidad de los módulos que
+intervienen en la cadena que produce los resultados y sus dependencias
+internas, obtenidas de las importaciones del código.
+
+\begin{table}[htbp]
+\centering
+\caption{Módulos principales del pipeline, responsabilidades y dependencias internas.}
+\label{tab:modulos}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.2cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{3.6cm}}
+\toprule
+\textbf{Módulo} & \textbf{Responsabilidad} & \textbf{Depende de} \\
+\midrule
+\texttt{src/utils/io.py} & Lectura y escritura de Parquet con validación de esquema y orden determinista de filas & --- \\
+\texttt{src/etl/cie\_mappers.py} & Asignación de códigos CIE-10 a capítulos y de códigos CIE-9-MC a secciones & --- \\
+\texttt{src/etl/diversity.py} & Medidas de diversidad diagnóstica (entropía) & --- \\
+\texttt{src/etl/casuistica.py} & Vectores de casuística por hospital (capítulos, secciones y GRD frecuentes) & \texttt{cie\_mappers}, \texttt{diversity} \\
+\texttt{src/etl/features\_extendidas.py} & Indicadores institucionales directos (producción, perfil funcional, CMA) & --- \\
+\texttt{src/modeling/reducer.py} & Estandarización y PCA de la casuística & --- \\
+\texttt{src/modeling/matriz.py} & Ensamblado de la matriz institucional de 65 hospitales y 35 variables & \texttt{io} \\
+\texttt{src/modeling/referencia.py} & Preprocesamiento único (log1p y escalado robusto), partición Ward de referencia y su Silhouette & \texttt{io} \\
+\texttt{src/modeling/mstknn.py} & Algoritmo MST-kNN para la sensibilidad algorítmica & --- \\
+\midrule
+\texttt{scripts/build\_extended\_grd.py} & Consolidación de los archivos GRD anuales & --- \\
+\texttt{scripts/build\_dataset.py} & Construcción de indicadores, casuística reducida y matriz & \texttt{casuistica}, \texttt{features\_extendidas}, \texttt{reducer}, \texttt{matriz}, \texttt{referencia}, \texttt{io} \\
+\texttt{scripts/build\_hierarchical\_clustering.py} & Partición reportada (Ward $K=4$) y su persistencia & \texttt{referencia} \\
+\texttt{scripts/analyze\_*.py}, \texttt{compare\_*.py}, \texttt{evaluate\_*.py} & Estabilidad, sensibilidad, atípicos y contraste con MINSAL & \texttt{referencia}, \texttt{io} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Las pruebas automatizadas se resumen en la Tabla~\ref{tab:pruebas}. Las basadas
+en propiedades generan entradas aleatorias y comprueban invariantes que deben
+cumplirse para cualquier dato, por ejemplo, que cada vector de casuística sume
+uno o que la entropía normalizada permanezca entre cero y uno. La cobertura de
+sentencias es alta en los módulos de transformación de egresos (75 a 94\,\%) y
+en el de preprocesamiento y partición de referencia (97\,\%), y nula en los
+módulos de algoritmos alternativos, indicadores extendidos, reducción
+dimensional y ensamblado de la matriz, cuyos resultados se verifican de forma
+indirecta mediante las pruebas de regresión sobre los artefactos que producen.
+
+\begin{table}[htbp]
+\centering
+\caption{Pruebas automatizadas del pipeline.}
+\label{tab:pruebas}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.2cm} c >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Tipo} & \textbf{N.º} & \textbf{Aspectos verificados} \\
+\midrule
+Unitarias & 11 & Lectura y escritura de artefactos con validación de esquema y orden determinista \\
+Basadas en propiedades & 46 & Normalización y mapeo de códigos CIE-10 y CIE-9-MC (incluidas las tablas maestras reales), suma unitaria de los vectores de casuística, rango y propiedades de la entropía de Shannon, tasa de CMA, comorbilidades, clasificación de modalidad de atención y regla de elegibilidad \\
+Regresión & 5 & Matriz de 65 hospitales y 35 variables; ocho componentes de casuística centradas, no correlacionadas y ordenadas por varianza; partición Ward de tamaños 54, 5, 3 y 3; Silhouette de 0,398; coincidencia exacta con la asignación reportada \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
 \begin{table}[htbp]
 \centering
 \caption{Elementos necesarios para reproducir los resultados.}
