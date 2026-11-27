@@ -59,20 +59,20 @@ Tabla~\ref{tab:software}.
 \centering
 \caption{Librerías principales del pipeline y sus roles}
 \label{tab:software}
-\begin{tabular}{lll}
+\begin{tabularx}{\textwidth}{ll>{\raggedright\arraybackslash}X}
 \hline
 \textbf{Librería} & \textbf{Versión} & \textbf{Rol en el pipeline} \\
 \hline
 \texttt{pandas}      & 2.2.3  & Manipulación y transformación de datos \\
 \texttt{numpy}       & 1.26.4 & Cálculo numérico \\
-\texttt{scikit-learn}~\citep{Pedregosa2011}& 1.4.2  & Agrupamiento, métricas de validación y reducción de dimensionalidad \\
+\texttt{scikit-learn} & 1.4.2  & Agrupamiento, métricas de validación y reducción de dimensionalidad~\citep{Pedregosa2011} \\
 \texttt{scipy}       & 1.13.1 & Pruebas estadísticas de contraste entre grupos \\
 \texttt{statsmodels} & 0.14.2 & Modelos estadísticos complementarios \\
 \texttt{matplotlib}  & 3.8.4  & Visualizaciones \\
 \texttt{seaborn}     & 0.13.2 & Visualizaciones estadísticas \\
 \texttt{pyarrow}     & 16.1.0 & Almacenamiento intermedio en formato Parquet \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 La solución se organiza en tres capas con responsabilidades separadas: una

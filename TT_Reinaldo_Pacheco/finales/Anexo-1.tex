@@ -585,20 +585,20 @@ internas, obtenidas de las importaciones del código.
 \toprule
 \textbf{Módulo} & \textbf{Responsabilidad} & \textbf{Depende de} \\
 \midrule
-\texttt{src/utils/io.py} & Lectura y escritura de Parquet con validación de esquema y orden determinista de filas & --- \\
-\texttt{src/etl/cie\_mappers.py} & Asignación de códigos CIE-10 a capítulos y de códigos CIE-9-MC a secciones & --- \\
-\texttt{src/etl/diversity.py} & Medidas de diversidad diagnóstica (entropía) & --- \\
-\texttt{src/etl/casuistica.py} & Vectores de casuística por hospital (capítulos, secciones y GRD frecuentes) & \texttt{cie\_mappers}, \texttt{diversity} \\
-\texttt{src/etl/features\_extendidas.py} & Indicadores institucionales directos (producción, perfil funcional, CMA) & --- \\
-\texttt{src/modeling/reducer.py} & Estandarización y PCA de la casuística & --- \\
-\texttt{src/modeling/matriz.py} & Ensamblado de la matriz institucional de 65 hospitales y 35 variables & \texttt{io} \\
-\texttt{src/modeling/referencia.py} & Preprocesamiento único (log1p y escalado robusto), partición Ward de referencia y su Silhouette & \texttt{io} \\
-\texttt{src/modeling/mstknn.py} & Algoritmo MST-kNN para la sensibilidad algorítmica & --- \\
+\texttt{src/\allowbreak{}utils/\allowbreak{}io.py} & Lectura y escritura de Parquet con validación de esquema y orden determinista de filas & --- \\
+\texttt{src/\allowbreak{}etl/\allowbreak{}cie\_\allowbreak{}mappers.py} & Asignación de códigos CIE-10 a capítulos y de códigos CIE-9-MC a secciones & --- \\
+\texttt{src/\allowbreak{}etl/\allowbreak{}diversity.py} & Medidas de diversidad diagnóstica (entropía) & --- \\
+\texttt{src/\allowbreak{}etl/\allowbreak{}casuistica.py} & Vectores de casuística por hospital (capítulos, secciones y GRD frecuentes) & \texttt{cie\_\allowbreak{}mappers}, \texttt{diversity} \\
+\texttt{src/\allowbreak{}etl/\allowbreak{}features\_\allowbreak{}extendidas.py} & Indicadores institucionales directos (producción, perfil funcional, CMA) & --- \\
+\texttt{src/\allowbreak{}modeling/\allowbreak{}reducer.py} & Estandarización y PCA de la casuística & --- \\
+\texttt{src/\allowbreak{}modeling/\allowbreak{}matriz.py} & Ensamblado de la matriz institucional de 65 hospitales y 35 variables & \texttt{io} \\
+\texttt{src/\allowbreak{}modeling/\allowbreak{}referencia.py} & Preprocesamiento único (log1p y escalado robusto), partición Ward de referencia y su Silhouette & \texttt{io} \\
+\texttt{src/\allowbreak{}modeling/\allowbreak{}mstknn.py} & Algoritmo MST-kNN para la sensibilidad algorítmica & --- \\
 \midrule
-\texttt{scripts/build\_extended\_grd.py} & Consolidación de los archivos GRD anuales & --- \\
-\texttt{scripts/build\_dataset.py} & Construcción de indicadores, casuística reducida y matriz & \texttt{casuistica}, \texttt{features\_extendidas}, \texttt{reducer}, \texttt{matriz}, \texttt{referencia}, \texttt{io} \\
-\texttt{scripts/build\_hierarchical\_clustering.py} & Partición reportada (Ward $K=4$) y su persistencia & \texttt{referencia} \\
-\texttt{scripts/analyze\_*.py}, \texttt{compare\_*.py}, \texttt{evaluate\_*.py} & Estabilidad, sensibilidad, atípicos y contraste con MINSAL & \texttt{referencia}, \texttt{io} \\
+\texttt{scripts/\allowbreak{}build\_\allowbreak{}extended\_\allowbreak{}grd.py} & Consolidación de los archivos GRD anuales & --- \\
+\texttt{scripts/\allowbreak{}build\_\allowbreak{}dataset.py} & Construcción de indicadores, casuística reducida y matriz & \texttt{casuistica}, \texttt{features\_\allowbreak{}extendidas}, \texttt{reducer}, \texttt{matriz}, \texttt{referencia}, \texttt{io} \\
+\texttt{scripts/\allowbreak{}build\_\allowbreak{}hierarchical\_\allowbreak{}clustering.py} & Partición reportada (Ward $K=4$) y su persistencia & \texttt{referencia} \\
+\texttt{scripts/\allowbreak{}analyze\_\allowbreak{}*.py}, \texttt{compare\_\allowbreak{}*.py}, \texttt{evaluate\_\allowbreak{}*.py} & Estabilidad, sensibilidad, atípicos y contraste con MINSAL & \texttt{referencia}, \texttt{io} \\
 \bottomrule
 \end{tabularx}
 \end{table}
